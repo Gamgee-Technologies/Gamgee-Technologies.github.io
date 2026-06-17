@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosie's Story | GAMGEE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
+    --green:#3C014E; --green-d:#2D0A47; --green-deep:#1E0230;
+    --coral:#DB4949; --coral-d:#EE3842;
+    --yellow:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+    --border:rgba(22,22,11,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  h1,h2,h3,h4,.logo,.btn{font-family:"Poppins",system-ui,sans-serif}
+
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+  .logo{font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
+  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink);transition:opacity .14s}
+  .navlinks a:not(.btn):hover{opacity:.65}
+  .navlinks a.active{color:var(--coral)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:14px;padding:11px 24px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(219,73,73,.28)}
+  .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none}
+
+  /* ── HAMBURGER ── */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
+  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* ── HERO ── */
+  .story-hero{padding:72px 0 56px}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:14px}
+  .story-hero h1{font-size:64px;font-weight:800;line-height:1.03;letter-spacing:-.03em;margin-bottom:20px}
+  .story-hero h1 .hl{color:var(--coral)}
+  .story-hero .lede{font-size:19px;color:var(--muted);line-height:1.6;max-width:36em}
+
+  /* ── MAIN LAYOUT: prose + sticky timeline ── */
+  .story-body{display:grid;grid-template-columns:1fr 300px;gap:80px;align-items:start;padding:0 0 100px}
+
+  /* ── PROSE ── */
+  .prose{max-width:none}
+  .prose-section{margin-bottom:56px}
+  .prose-section:last-child{margin-bottom:0}
+  .section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:20px;display:block}
+  .prose h2{font-size:32px;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:20px}
+  .prose p{font-size:17px;line-height:1.7;color:#2a2a1e;margin-bottom:18px;max-width:54ch}
+  .prose p:last-child{margin-bottom:0}
+  .prose p b{color:var(--ink);font-weight:600}
+
+  /* Photo with caption */
+  .story-photo{border-radius:20px;overflow:hidden;margin:36px 0;position:relative}
+  .story-photo img{width:100%;height:auto;display:block}
+  .story-photo figcaption{font-size:13px;color:var(--muted);margin-top:10px;padding:0 4px}
+
+  /* Mission card */
+  .mission-card{background:var(--green);color:#fff;border-radius:24px;padding:40px;margin-top:16px}
+  .mission-card .mc-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(117,209,220,.8);margin-bottom:16px}
+  .mission-card h2{font-size:28px;font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:18px}
+  .mission-card p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.82);margin-bottom:14px}
+  .mission-card p:last-of-type{margin-bottom:24px}
+  .mission-card .btn{font-size:15px;padding:14px 28px}
+
+  /* ── STICKY TIMELINE SIDEBAR ── */
+  .timeline-sidebar{position:sticky;top:100px;align-self:start}
+  .timeline-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:24px}
+
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;background:var(--border)}
+
+  .tl-item{position:relative;margin-bottom:28px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-dot{position:absolute;left:-28px;top:5px;width:15px;height:15px;border-radius:50%;border:2px solid var(--border);background:var(--cream);transition:border-color .2s,background .2s}
+  .tl-item.active .tl-dot{border-color:var(--coral);background:var(--coral)}
+  .tl-item.done .tl-dot{border-color:var(--green);background:var(--green)}
+  .tl-date{font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .tl-item.active .tl-date{color:var(--coral)}
+  .tl-item.done .tl-date{color:var(--green)}
+  .tl-title{font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+  .tl-desc{font-size:13px;color:var(--muted);line-height:1.55}
+
+  /* Sidebar CTA */
+  .sidebar-cta{margin-top:40px;background:#fff;border-radius:18px;padding:24px;border:1px solid var(--border)}
+  .sidebar-cta p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:16px}
+  .sidebar-cta .btn{width:100%;justify-content:center;font-size:14px;padding:13px 20px}
+
+  /* ── FOOTER ── */
+  footer{background:var(--cream);border-top:1px solid var(--border)}
+  .foot{display:flex;align-items:flex-start;justify-content:space-between;padding:56px 28px 32px;max-width:1200px;margin:0 auto;gap:40px}
+  .foot .brand{font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px}
+  .foot .tag2{margin-top:10px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+  .foot .footer-links{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  .foot .footer-links a{font-size:14px;text-decoration:none;color:var(--muted);transition:color .14s}
+  .foot .footer-links a:hover{color:var(--ink)}
+  .legal{max-width:1200px;margin:0 auto;padding:18px 28px 36px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid var(--border)}
+  .legal a{color:var(--muted);text-decoration:none}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .nav-toggle{display:flex}
+    .navlinks{display:none}
+    .nav-in{padding:16px 20px}
+    .page-wrap{padding:0 20px}
+
+    .story-hero{padding:40px 0 28px}
+    .story-hero h1{font-size:36px}
+    .story-hero .lede{font-size:16px}
+
+    .story-body{grid-template-columns:1fr;gap:0;padding-bottom:60px}
+    .timeline-sidebar{position:static;margin-bottom:36px;order:-1}
+    .timeline-sidebar .sidebar-cta{display:none}
+
+    /* Timeline vertical on mobile */
+    .timeline{padding-left:28px}
+    .timeline::before{display:block}
+    .tl-item{margin-bottom:20px;padding-left:0}
+    .tl-dot{display:block}
+
+    .prose-section{margin-bottom:40px}
+    .prose h2{font-size:26px;margin-bottom:16px}
+    .prose p{font-size:16px;line-height:1.65;margin-bottom:14px}
+
+    .story-photo{margin:28px 0}
+    .story-photo figcaption{font-size:12px}
+
+    .mission-card{padding:28px 22px;border-radius:20px}
+    .mission-card h2{font-size:22px;line-height:1.25}
+    .mission-card p{font-size:15px}
+    .mission-card .btn{width:100%;justify-content:center;padding:15px 24px;font-size:15px}
+
+    .foot{flex-direction:column;gap:20px;padding:40px 20px 24px}
+    .foot .footer-links{gap:20px}
+    .legal{flex-direction:column;gap:6px;padding:16px 20px 32px}
+  }
+
+  @media(max-width:560px){
+    .story-hero{padding:32px 0 22px}
+    .story-hero h1{font-size:28px;margin-bottom:14px}
+    .story-hero .lede{font-size:15px}
+
+    .prose h2{font-size:22px}
+    .prose p{font-size:15px;line-height:1.6}
+
+    .mission-card{padding:22px 18px}
+    .mission-card h2{font-size:20px}
+    .mission-card p{font-size:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/">GAMGEE</a>
+    <div class="navlinks">
+      <a href="/story/" class="active">Our story</a>
+      <a href="/#process">How it works</a>
+      <a class="btn btn-green" href="/apply/">Apply</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
+      const btn=this, menu=document.getElementById('mobile-menu');
+      const open=btn.classList.toggle('open');
+      menu.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open);
+    ">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+    <a href="/#process" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">How it works</a>
+    <a class="btn btn-green" href="/apply/">Apply now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-wrap">
+  <header class="story-hero">
+    <p class="eyebrow">How it's started</p>
+    <h1>Rosie's <span class="hl">story.</span></h1>
+    <p class="lede">How a machine-learning founder used AI to build a cancer treatment for his dog — and what we're doing now.</p>
+  </header>
+</div>
+
+<!-- BODY -->
+<div class="page-wrap">
+  <div class="story-body">
+
+    <!-- ── LEFT: PROSE ── -->
+    <article class="prose">
+
+      <div class="prose-section">
+        <span class="section-label">What I did for Rosie</span>
+        <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live.</p>
+
+        <figure class="story-photo">
+          <img src="/assets/story/Paul+Rosie.webp" alt="Paul and Rosie, Sydney, 2025">
+          <figcaption>Paul and Rosie, Sydney. 2025.</figcaption>
+        </figure>
+
+        <p>I am not a biologist. I have spent 17 years in machine learning. So I did what I know how to do. I started researching, using AI to map the specific mutations driving her cancer, design a personalised mRNA vaccine targeting those mutations, and coordinate its manufacture with researchers at UNSW.</p>
+
+        <p>In December 2025, Rosie received her first injection after a 14-hour drive to Queensland.</p>
+
+        <p>Three months later, the tumours on her legs had significantly reduced. <b>She is still here.</b></p>
+      </div>
+
+      <div class="prose-section">
+        <span class="section-label">Why I am building Gamgee</span>
+        <p>The science already exists. Genomic sequencing, protein modelling, mRNA synthesis — the tools are there. What I built for Rosie was not new science. It was new access.</p>
+
+        <p>I should not have been the only person who could do this. A background in machine learning and months of obsessive research should not be the price of admission. Every dog owner facing this diagnosis deserves the same options I had, without having to become a citizen scientist to get them.</p>
+      </div>
+
+      <div class="prose-section">
+        <div class="mission-card">
+          <div class="mc-label">Where we are right now</div>
+          <h2>The first end-to-end personalised cancer treatment protocol for dogs.</h2>
+          <p>Together with our partners at UNSW, the University of Queensland, and the Garvan Institute, we have built and validated it.</p>
+          <p>We are currently running a trial in Sydney, Australia. Applications are open worldwide — every case matters, and Sydney is where we start.</p>
+          <a class="btn btn-coral" href="/apply/">
+            Apply now
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- ── RIGHT: STICKY TIMELINE ── -->
+    <aside class="timeline-sidebar">
+      <p class="timeline-label">Timeline</p>
+
+      <div class="timeline">
+        <div class="tl-item done">
+          <div class="tl-dot"></div>
+          <div class="tl-date">May 2024</div>
+          <div class="tl-title">Diagnosis</div>
+          <div class="tl-desc">Mast cell cancer confirmed. Eleven months after first symptoms.</div>
+        </div>
+
+        <div class="tl-item done">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2024–2025</div>
+          <div class="tl-title">Research</div>
+          <div class="tl-desc">Genomic sequencing, protein modelling, 120 hours of ethics paperwork. AI-designed vaccine construct.</div>
+        </div>
+
+        <div class="tl-item done">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Dec 2025</div>
+          <div class="tl-title">Treatment</div>
+          <div class="tl-desc">First injection at the University of Queensland. Personalised mRNA vaccine plus supporting protocol.</div>
+        </div>
+
+        <div class="tl-item active">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Mar 2026</div>
+          <div class="tl-title">Response</div>
+          <div class="tl-desc">Tumours on her legs significantly reduced. She is still here.</div>
+        </div>
+      </div>
+
+      <div class="sidebar-cta">
+        <p>If your dog has been diagnosed, we'd like to hear from you.</p>
+        <a class="btn btn-coral" href="/apply/">
+          Apply now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/#process">How it works</a>
+      <a href="#">The science</a>
+      <a href="/apply/">Apply</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 GAMGEE · Sydney, Australia</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

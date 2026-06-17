@@ -3,60 +3,1118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gamgee</title>
+<title>GAMGEE — Homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet">
 <style>
-  body {
-    font-family: Georgia, 'Times New Roman', serif;
-    background: #faf8f5;
-    color: #222;
-    max-width: 600px;
-    margin: 80px auto;
-    padding: 0 24px;
-    line-height: 1.7;
-    font-size: 17px;
+  :root{
+    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
+    --green:#3C014E; --green-d:#2D0A47; --green-deep:#1E0230;
+    --coral:#DB4949; --coral-d:#EE3842;
+    --yellow:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+    --strip:clamp(300px,30vw,460px);   /* DNA ribbon band */
   }
-  h1 {
-    font-size: 22px;
-    font-weight: normal;
-    margin-bottom: 40px;
-    letter-spacing: 0.02em;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,h4,.logo,.btn,.num{font-family:"Poppins",system-ui,sans-serif}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:700;font-size:16px;
+       padding:16px 30px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(219,73,73,.30)}
+  .btn-green{background:var(--green);color:#fff;box-shadow:0 10px 24px rgba(54,6,75,.28)}
+  .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+
+
+  /* ── DNA helix ribbon: fixed vertical strip down the right ── */
+  #helix{
+    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2)); width:var(--strip); height:100vh; z-index:0;
+    opacity:1; pointer-events:none;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
+            mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
   }
-  p {
-    margin-bottom: 20px;
+  #helix-loader{
+    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2)); width:var(--strip); height:100vh; z-index:0; pointer-events:none;
+    display:flex; align-items:center; justify-content:center; opacity:.55; transition:opacity .6s;
   }
-  a {
-    color: #222;
+  .spinner{width:30px;height:30px;border:2px solid rgba(219,73,73,0.18);border-top-color:var(--coral);border-radius:50%;animation:sp .9s linear infinite;}
+  @keyframes sp{to{transform:rotate(360deg);}}
+  @media (prefers-reduced-motion:reduce){.spinner{animation:none;}}
+
+  /* content layer sits above the helix thread */
+  .page{position:relative; z-index:1}
+  .hero-helix-space{min-height:240px}
+
+  /* MEET PAUL intro card */
+  .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:start;background:#fff;padding:28px}
+  .intro-photo{border-radius:24px;overflow:hidden;aspect-ratio:16/9;min-height:280px;position:relative;background:var(--green);width:100%;max-width:100%}
+  .intro-photo img,.intro-photo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+  .video-control{
+    position:absolute;bottom:14px;right:14px;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:36px;height:36px;
+    background:rgba(8,8,8,.72);
+    backdrop-filter:blur(4px);
+    color:#fff;border:none;border-radius:50%;
+    cursor:pointer;
+    transition:background .15s,transform .1s;
+    z-index:2;padding:0;
   }
-  a:hover {
-    color: #555;
+  .video-control:hover{background:rgba(8,8,8,.9);transform:scale(1.06)}
+  .video-control svg{width:18px;height:18px;display:block;fill:#fff;stroke:none}
+  .intro-copy{display:flex;flex-direction:column;justify-content:flex-start}
+  .intro-copy h3{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:0 0 18px;max-width:40em}
+  .intro-copy h3 .g{color:var(--coral)}
+  .h3-split{display:block;white-space:nowrap;margin-top:10px}
+  .intro-copy p{font-size:17px;line-height:1.55;color:var(--muted);max-width:34em;margin:0}
+  .intro-copy p+p{margin-top:10px}
+  .intro-copy__location{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:flex-start;margin-top:12px;color:var(--muted);font-size:17px;line-height:1.6;max-width:34em}
+  .intro-copy__location svg{width:20px;height:20px;flex-shrink:0;stroke:var(--coral);fill:none;stroke-width:1.8;margin-top:3px}
+  .intro-copy__location p{margin:0}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;color:inherit;font-family:"Poppins",system-ui,sans-serif}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--green)}
+  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink)}
+  .navlinks .btn{padding:11px 24px;font-size:14px;color:#fff}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;padding:48px 0 52px;min-height:72vh}
+  .hero-note{font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:12px;line-height:100%;letter-spacing:0.12em;color:#000;margin-bottom:28px;text-transform:none}
+  .monospace-pill{font-size:12px;font-weight:500;letter-spacing:0.04em;padding:1px 5px;border:1px solid var(--border);border-radius:7px;margin-left:1px;white-space:nowrap;vertical-align:middle;background:#FDFDF5}
+  .hero h1{font-size:62px;font-weight:800;line-height:1.03;letter-spacing:-.025em}
+  .hero h1 .mark{background:#75D1DC;border-radius:12px;padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .hero h1 .g{color:var(--coral)}
+  .hero h1 .nowrap{white-space:nowrap;display:inline-block}
+  .hero .sub{margin-top:24px;max-width:25em;font-size:18px;color:var(--muted);line-height:1.6}
+  .hero .act{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
+  .hero .hero-link{font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;background:none;border:none;padding:0;margin:0;display:inline-flex;align-items:center;gap:10px;box-shadow:none}
+  .hero .hero-link:hover{text-decoration:underline}
+  .hero .note{margin-top:40px;font-size:13px;color:var(--muted);max-width:32em}
+  .panel{position:relative;border-radius:32px;background:var(--green);min-height:560px;overflow:hidden;
+         display:flex;align-items:center;justify-content:center}
+  .panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
+  .panel .paw{font-size:120px;opacity:.18;color:#fff}
+  .tag{position:absolute;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--ink);
+       font-weight:600;font-size:13px;padding:9px 15px;border-radius:999px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+  .tag .pd{width:9px;height:9px;border-radius:50%;background:var(--green)}
+  .tag.paul{left:20px;bottom:20px}
+  .tag.rosie{right:20px;bottom:64px}
+
+  /* generic block */
+  .block{border-radius:34px;padding:72px;margin:48px 0}
+  #meet{scroll-margin-top:140px;margin-top:0}
+  .block-green{background:var(--green);color:#fff}
+  .block-coral{background:var(--coral);color:#fff}
+  .block-mint{background:var(--mint)}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+
+  /* MISSION */
+  .mission h2{font-size:40px;font-weight:800;line-height:1.14;letter-spacing:-.02em;max-width:none}
+  .mission h2 .hl{color:var(--yellow)}
+  .mission h2 .mission-note{display:block;font-size:40px;line-height:1.14;margin-top:18px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  .card{background:#fff;color:var(--ink);border-radius:22px;padding:26px 22px;text-decoration:none;display:block;transition:transform .14s}
+  .card:hover{transform:translateY(-4px)}
+  .card .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--ink)}
+  .card .ct{margin-top:12px;font-size:17px;font-weight:600;line-height:1.4}
+  .card .ar{margin-top:22px;font-size:20px;color:var(--green)}
+  .card .card-btn{margin-top:22px}
+  .mission-note{display:block;color:var(--yellow);margin-top:26px;font-size:18px;font-weight:700;}
+  .full-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
+  .full-bleed .block{border-radius:0;padding:84px 0;margin:0}
+  .final p{margin:18px auto 0;font-size:16px;color:#fff;max-width:42em}
+
+  /* ROSIE */
+  .rosie{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:flex-start}
+  .avatar{width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;
+          align-items:center;justify-content:center;font-size:54px;flex-shrink:0;overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .rosie .ey{font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1;opacity:.9}
+  .rosie h3{font-size:40px;font-weight:800;line-height:50px;letter-spacing:0;margin:10px 0 16px;max-width:16em}
+  .rosie p{font-family:"Inter",system-ui,sans-serif;font-size:17px;font-weight:400;line-height:26px;max-width:42em;color:rgba(255,255,255,.92)}
+  .rosie p b{color:#fff}
+  .rosie .more{display:inline-flex;margin-top:22px;font-weight:700;text-decoration:none;color:#fff;
+              border-bottom:2px solid rgba(255,255,255,0);padding-bottom:3px}
+
+  /* PRESS */
+  .press{padding:40px 0;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
+  .press .cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-weight:700}
+  .press .lg{font-size:19px;font-weight:800;color:#a6a89c}
+
+  /* PROCESS */
+  .process .eyebrow{color:var(--ink)}
+  .process h2{font-size:44px;font-weight:800;letter-spacing:-.025em;margin:12px 0 6px;color:var(--ink)}
+  .process .lede{font-size:17px;color:var(--muted)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+  .step{border-radius:24px;padding:32px 28px 34px;min-height:340px;display:flex;flex-direction:column;gap:18px}
+  .s1{background:#3C014E;color:#fff}
+  .s2{background:#EE3842;color:#fff}
+  .s3{background:#34BBCB;color:#fff}
+  .s4{background:#220032;color:#fff}
+  .num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+       font-weight:800;font-size:18px;background:rgba(255,255,255,.22)}
+  .s3 .num{background:rgba(0,0,0,.12)}
+  .step h4{font-size:20px;font-weight:700;margin:22px 0 10px;letter-spacing:-.01em}
+  .step p{font-size:14px;line-height:1.6;opacity:.95}
+
+  /* DOUBLE COLORED CARDS */
+  .card-split{display:flex;flex-direction:column;border-radius:28px;overflow:hidden;margin:48px 0}
+  .card-split-top{border-radius:28px 28px 0 0;padding:56px}
+  .process .card-split-top{background:#DFF5F2}
+  .card-split-bottom{background:#fff;padding:40px 60px;border-radius:0 0 28px 28px;color:var(--ink)}
+  .card-split-bottom .cap{display:block;font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:12px;line-height:100%;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;text-align:center}
+  .card-split-bottom .partners{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:0;margin:0;justify-content:center}
+  .card-split-bottom .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
+  .card-split-bottom .partners img{height:48px;width:auto;max-width:180px;opacity:.65;object-fit:contain}
+  .card-split-bottom .partners img[alt]{display:inline-block}
+  .card-split-bottom .press-imgs img{height:48px;width:auto;max-width:180px;opacity:.65;object-fit:contain}
+  .full-bleed .wrap{padding-left:16px;padding-right:16px}
+  .dog-row{display:flex;gap:24px;flex-wrap:nowrap;justify-content:center;align-items:stretch;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin:18px -50vw 0;padding:0 16px;max-width:none;overflow:hidden}
+  .dog-row img{height:400px;width:calc((100% - 72px)/4);min-width:220px;aspect-ratio:3/4;object-fit:cover;object-position:center center;border-radius:18px;background:#fff;flex:0 0 auto}
+
+  /* PARTNERS */
+  .partners{padding:26px 0 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+  .partners .cap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);font-weight:700;margin-right:10px}
+  .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
+
+  /* FINAL CTA */
+  .final{text-align:center;padding:84px 72px}
+  .final h2{font-size:48px;font-weight:800;letter-spacing:-.03em;line-height:1.08;max-width:14em;margin:0 auto}
+  .final h2 .hl{color:var(--yellow)}
+  .final p{margin:22px auto 0;font-size:18px;color:rgba(255,255,255,.92);max-width:34em}
+  .final .btn{margin-top:32px;padding:22px 60px;font-size:20px}
+
+  /* BACKED */
+  .backed{text-align:center;padding:48px 0 18px}
+  .backed .cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .backed .row{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:50px;flex-wrap:wrap}
+  .backed .lg{font-size:17px;font-weight:700;color:#abad9f}
+
+  /* FOOTER */
+  footer{background:var(--green-deep);color:#fff;border-radius:34px 34px 0 0;margin-top:14px}
+  .foot{display:flex;align-items:flex-start;justify-content:space-between;padding:64px 72px 34px;max-width:1200px;margin:0 auto;gap:40px}
+  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
+  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+  .foot .footer-links{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+  .foot .footer-links a:hover{color:var(--ink)}
+  .email-hint{display:block;font-size:11px;color:rgba(0,0,0,.35);margin-top:2px;margin-left:0}
+  .legal{max-width:1200px;margin:0 auto;padding:18px 72px 38px;display:flex;justify-content:space-between;
+         font-size:12px;color:rgba(0,0,0,.6);border-top:1px solid rgba(0,0,0,.08)}
+  .legal a{color:rgba(0,0,0,.6);text-decoration:none}
+  footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
+
+  /* ── Hamburger menu ── */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;
+              background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;
+                   transition:transform .25s,opacity .25s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);
+               backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;
+                            color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
+  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+
+  @media(max-width:900px){
+    body{padding-right:0}
+    #helix,#helix-loader{width:100vw;left:0;right:auto}
+    #helix{opacity:0.08;-webkit-mask-image:none;mask-image:none}
+    .hero-helix-space{display:none}
+
+    /* Nav */
+    .nav-toggle{display:flex}
+    .navlinks{display:none}
+    .nav-in{padding:16px 20px}
+    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
+
+    /* Hero */
+    .hero{grid-template-columns:1fr;padding:0 0 44px;min-height:70vh;gap:28px;align-items:center}
+    .hero h1{font-size:42px}
+    .hero h1 .nowrap{white-space:normal}
+    .hero .sub{font-size:16px;max-width:none}
+    .hero .act{flex-direction:column;align-items:stretch;gap:12px;margin-top:28px}
+    .hero .act .btn{width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+    .hero .hero-link{justify-content:center;font-size:16px}
+    .panel{min-height:250px;max-height:300px;order:-1}
+    .panel img{object-position:center top}
+
+    /* Intro / Meet */
+    .intro{grid-template-columns:1fr;gap:24px;padding:8px 20px}
+    .intro-photo{min-height:0;aspect-ratio:16/9}
+    .intro-copy h3{font-size:26px}
+
+    /* Generic block */
+    .block{padding:24px 22px;border-radius:24px}
+    .block.intro{padding:24px 22px;border-radius:24px}
+
+    /* card-split */
+    .card-split{margin:32px 0}
+    .card-split-top{padding:24px 22px}
+    .card-split-bottom{padding:28px 22px}
+
+    /* Mission */
+    .mission h2{font-size:28px}
+    .mission h2 .mission-note{font-size:26px}
+    .mission-note{font-size:16px}
+    .cards{grid-template-columns:1fr;gap:14px}
+
+    /* Rosie */
+    .rosie{grid-template-columns:1fr;gap:18px;text-align:left;align-items:flex-start}
+    .avatar{width:80px;height:80px;font-size:38px}
+    .rosie h3{font-size:32px;line-height:42px}
+    .rosie p{font-size:16px;line-height:24px}
+    .h3-split{white-space:normal}
+
+    /* Process */
+    .process h2{font-size:30px}
+    .steps{grid-template-columns:1fr 1fr;gap:14px}
+    .step{padding:24px 20px 26px;min-height:0;gap:10px}
+    .step .num-title{display:flex;align-items:center;gap:10px}
+    .step h4{margin:0}
+
+    /* Hide connection card on mobile */
+    #connection{display:none}
+
+    /* Dog row — 2×2 grid on mobile */
+    .dog-row{flex-wrap:wrap;gap:10px;padding:0 12px;width:100%;left:auto;right:auto;margin-left:0;margin-right:0;margin-top:18px}
+    .dog-row img{height:200px;min-width:0;width:calc(50% - 5px);flex:0 0 calc(50% - 5px)}
+
+    /* Final CTA */
+    .final{padding:48px 22px;text-align:center}
+    .final h2{font-size:28px}
+    .final p{font-size:16px}
+    .final .btn{padding:16px 36px;font-size:17px}
+
+    /* Footer */
+    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
+    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+    .foot .footer-links a{margin-left:0;font-size:15px}
+    .email-hint{font-size:11px}
+    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
+
+    /* Press logos */
+    .press-imgs{gap:16px !important}
+    .card-split-bottom .partners img,.press-imgs img{height:36px}
+
+    /* Partners chips */
+    .partners .chip{padding:7px 14px;font-size:12px}
   }
-  .spacer {
-    margin-top: 48px;
+
+  @media(max-width:560px){
+    .steps{grid-template-columns:1fr}
+    .hero h1{font-size:34px}
+    .hero h1 .nowrap{white-space:normal}
+    .intro-copy h3{font-size:22px}
+    .dog-row img{height:160px}
+    .card-split-bottom .partners img,.press-imgs img{height:28px}
   }
-  .muted {
-    color: #777;
-    font-size: 14px;
+
+  /* ── MODALS ── */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;z-index:200;
+    background:rgba(22,22,11,.52);backdrop-filter:blur(6px);
+    align-items:center;justify-content:center;padding:20px;
+  }
+  .modal-overlay.open{display:flex}
+
+  .modal{
+    background:var(--cream);border-radius:28px;width:100%;max-width:520px;
+    max-height:90vh;overflow-y:auto;position:relative;
+    box-shadow:0 32px 80px rgba(22,22,11,.28);
+    animation:modalIn .22s cubic-bezier(.22,.9,.36,1) both;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+
+  .modal-head{
+    background:var(--green);color:#fff;border-radius:28px 28px 0 0;
+    padding:32px 36px 28px;
+  }
+  .modal-head .modal-eyebrow{
+    font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:8px;
+  }
+  .modal-head h3{
+    font-family:"Poppins",system-ui,sans-serif;font-size:24px;font-weight:800;
+    letter-spacing:-.02em;line-height:1.15;margin:0;
+  }
+  .modal-head p{margin:10px 0 0;font-size:14px;line-height:1.55;opacity:.82}
+
+  .modal-body{padding:32px 36px 36px}
+
+  .modal-close{
+    position:absolute;top:18px;right:18px;width:36px;height:36px;
+    background:rgba(255,255,255,.15);border:none;border-radius:50%;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    color:#fff;transition:background .14s;
+  }
+  .modal-close:hover{background:rgba(255,255,255,.28)}
+  .modal-close svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
+
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+  .form-group:last-of-type{margin-bottom:0}
+  .form-group label{
+    font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea{
+    font-family:"Inter",system-ui,sans-serif;font-size:15px;
+    padding:12px 16px;border-radius:12px;
+    border:1.5px solid rgba(22,22,11,.14);background:#fff;
+    color:var(--ink);transition:border-color .14s,box-shadow .14s;
+    outline:none;width:100%;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder{color:#a0a498}
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus{
+    border-color:var(--green);box-shadow:0 0 0 3px rgba(60,1,78,.12);
+  }
+  .form-group textarea{resize:vertical;min-height:96px;line-height:1.5}
+  .form-group select{
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b5f55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;
+  }
+
+  .modal-divider{height:1px;background:rgba(22,22,11,.08);margin:20px 0}
+
+  .modal-submit{
+    width:100%;margin-top:20px;
+    font-family:"Poppins",system-ui,sans-serif;font-size:16px;font-weight:700;
+    padding:16px 24px;border-radius:999px;border:none;cursor:pointer;
+    background:var(--coral);color:#fff;
+    box-shadow:0 10px 24px rgba(219,73,73,.30);
+    transition:transform .12s,box-shadow .12s;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+  }
+  .modal-submit:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(219,73,73,.36)}
+  .modal-submit:disabled{transform:none;cursor:not-allowed;opacity:.6}
+  .modal-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
+
+  .modal-success{
+    display:none;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:52px 36px;gap:16px;
+  }
+  .modal-success.show{display:flex}
+  .modal-success-icon{
+    width:64px;height:64px;border-radius:50%;background:var(--green);
+    display:flex;align-items:center;justify-content:center;margin-bottom:8px;
+  }
+  .modal-success-icon svg{width:28px;height:28px;stroke:#fff;stroke-width:2.4;fill:none}
+  .modal-success h4{
+    font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800;
+    letter-spacing:-.02em;margin:0;
+  }
+  .modal-success p{font-size:15px;color:var(--muted);margin:0;max-width:28em;line-height:1.6}
+
+  @media(max-width:760px){
+    .modal-head{padding:24px 22px 20px}
+    .modal-body{padding:24px 22px 28px}
+    .form-row{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 
-<h1>Gamgee</h1>
+<div id="helix-loader"><div class="spinner"></div></div>
+<div id="helix"></div>
 
-<p>Beyond AI, we believe that AI meets biology is the biggest oppportunity of the 21st century.</p>
+<div class="page">
+<nav>
+  <div class="nav-in">
+    <div class="logo">GAMGEE</div>
+    <div class="navlinks">
+      <a href="/story/">Our story</a>
+      <a href="#process">How it works</a>
+      <a class="btn btn-green" href="/apply/">Apply</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
+      const btn=this, menu=document.getElementById('mobile-menu');
+      const open=btn.classList.toggle('open');
+      menu.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open);
+    ">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+    <a href="#process" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">How it works</a>
+    <a class="btn btn-green" href="/apply/">Apply now</a>
+  </div>
+</nav>
 
-<p>We are the software company designing custom mRNA vaccines for dogs.</p>
+<!-- HERO -->
+<header class="wrap">
+  <div class="hero">
+    <div>
+      <p class="hero-note">Introducing our first product <span class="monospace-pill">ze-ets-001</span></p>
+      <h1><span class="nowrap">The <span class="mark">first personalised</span></span> cancer treatment protocol <span style="color:var(--coral)">for dogs.</span></h1>
+      <div class="act">
+        <a class="btn btn-coral" href="/apply/">Apply now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="hero-link" href="#process">How it Works →</a>
+      </div>
+    </div>
+    <div class="hero-helix-space" aria-hidden="true"></div>
+  </div>
+</header>
 
-<p>This is only just the beginning.</p>
+<!-- MEET PAUL -->
+<section class="wrap">
+  <div class="block intro" id="meet">
+    <div class="intro-photo">
+      <video autoplay muted loop playsinline src="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4" poster="./assets/GAMGEE images/rose-poster.jpg"></video>
+      <button class="video-control" type="button" aria-live="polite" aria-label="Unmute video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 7.5c1.5 1.5 1.5 4 0 5.5"/><path d="M19.5 4.5c3 3 3 7.5 0 10.5"/></svg>
+      </button>
+    </div>
+    <div class="intro-copy">
+      <h3>Hi, I'm Rosie and this is my dog dad Paul.<span class="h3-split">Welcome to <span class="g">GAMGEE.</span></span></h3>
+      <p>We are building personalised mRNA vaccines, built from your dog's own tumour, designed to help their immune system fight back.</p>
+      <div class="intro-copy__location">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p>Currently running clinical trials in Sydney, Australia — and accepting applications globally.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p class="spacer">
-  To register your interest, 
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwedcTfFSCQX1oPyckb3ZfioofOWIUC8i0H6B6wiBC2fo7qg/viewform">apply here</a>. 
-  Or read about our 
-  <a href="https://x.com/paul_conyngham/status/2036940410363535823">story here</a>.
-</p>
+<!-- PROCESS -->
+<section class="wrap process" id="process">
+  <div class="card-split">
+    <div class="card-split-top block-mint">
+      <div class="eyebrow">The Process</div>
+      <h2>From application to treatment.</h2>
+      <p class="lede">If selected, GAMGEE manages the entire process end to end.</p>
+      <div class="steps">
+        <div class="step s1">
+          <div class="num-title"><div class="num">01</div><h4>Review &amp; intake</h4></div>
+          <p>We review your application and reach out to discuss your dog's case. If there's a fit, we move forward together.</p>
+        </div>
+        <div class="step s2">
+          <div class="num-title"><div class="num">02</div><h4>Vet outreach &amp; collection</h4></div>
+          <p>We work with your vet to confirm the diagnosis, collect a tissue sample, and send it to our genomics lab.</p>
+        </div>
+        <div class="step s3">
+          <div class="num-title"><div class="num">03</div><h4>Vaccine creation</h4></div>
+          <p>We analyse the data, identify the mutations driving the cancer, and design a personalised protocol.</p>
+        </div>
+        <div class="step s4">
+          <div class="num-title"><div class="num">04</div><h4>Treatment</h4></div>
+          <p>Your dog receives their personalised treatment from a veterinary oncologist. We monitor response.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-split-bottom">
+      <div class="cap">Research &amp; clinical partners</div>
+      <div class="partners">
+        <img src="Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics">
+        <img src="Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute">
+        <img src="Logos/University of Queensland.png" alt="University of Queensland">
+      </div>
+    </div>
+  </div>
+</section>
 
-<p class="spacer muted">&mdash; Paul Steven Conyngham</p>
+<!-- ROSIE -->
+<section class="wrap" id="rosie">
+  <div class="card-split">
+    <div class="card-split-top block-coral">
+      <div class="rosie">
+        <div class="avatar"><img src="./assets/GAMGEE images/Rosie in circle.png" alt="Rosie"></div>
+        <div>
+          <div class="ey">Rosie's Story</div>
+          <h3><span class="h3-split">Two years and one breakthrough later,</span><span class="h3-split">she's still here.</span></h3>
+          <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live. <b>Two years and one breakthrough treatment later, she's still here.</b></p>
+          <a class="more" href="/story/">Read the full story →</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-split-bottom">
+      <div class="cap">As covered in</div>
+      <div class="press-imgs" style="display:flex;align-items:center;gap:30px;flex-wrap:wrap;justify-content:center">
+        <img src="Logos/IBTimes.png" alt="IBTimes">
+        <img src="Logos/Yahoo!_Finance_logo_2021.png" alt="Yahoo Finance">
+        <img src="Logos/UNSW Sydney.png" alt="UNSW">
+        <img src="Logos/inc.png" alt="Inc.">
+        <img src="Logos/the-australian-newspaper-logo-png-transparent.png" alt="The Australian">
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- CONNECTION -->
+<section class="wrap" id="connection">
+  <div class="card-split">
+    <div class="card-split-top block-green mission">
+      <h2>
+        Every dog deserves a fighting chance.<br>
+        The breakthrough already exists.<br>
+        <span class="mission-note">Our Mission: make it available to all.</span>
+      </h2>
+      <div class="cards">
+        <div class="card">
+          <div class="lbl">Media</div>
+          <div class="ct">Help us reach the dog owners who don't know this exists yet.</div>
+          <button class="btn btn-coral card-btn" onclick="openModal('modal-media')">Get in Touch →</button>
+        </div>
+        <div class="card">
+          <div class="lbl">Oncologists, Vets, Labs</div>
+          <div class="ct">Sydney is one city. Help us get to the rest.</div>
+          <button class="btn btn-coral card-btn" onclick="openModal('modal-partner')">Partner With Us →</button>
+        </div>
+        <div class="card">
+          <div class="lbl">Donate Data</div>
+          <div class="ct">Every case in our dataset makes the science stronger.</div>
+          <button class="btn btn-coral card-btn" onclick="openModal('modal-data')">Contribute Data →</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-split-bottom">
+      <div class="cap">Backed by</div>
+      <div class="partners">
+        <img src="Logos/University_of_Oxford.svg.png" alt="University of Oxford">
+        <img src="Logos/YCombinator.png" alt="Y Combinator">
+        <img src="Logos/Microsoft_logo_(2012).svg.png" alt="Microsoft">
+        <img src="Logos/airtree.png" alt="AirTree">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="full-bleed" id="apply">
+  <div class="block block-green final">
+    <div class="wrap">
+      <h2>If your dog has been diagnosed, <span class="hl">we'd like to hear from you.</span></h2>
+      <div class="dog-row">
+        <img src="./assets/GAMGEE images/Dog 1.png" alt="Dog 1">
+        <img src="./assets/GAMGEE images/Dog 2.png" alt="Dog 2">
+        <img src="./assets/GAMGEE images/Dog 3.png" alt="Dog 3">
+        <img src="./assets/GAMGEE images/Dog 4.png" alt="Dog 4">
+      </div>
+      <p>We'll help you determine whether GAMGEE is right for your dog and, if it is, get you connected with the right team.</p>
+      <a class="btn btn-coral" href="/apply/">Apply now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+    </div>
+    <div class="footer-links">
+      <h5>PRODUCT</h5>
+      <a href="#">How it works</a>
+      <a href="#">The science</a>
+      <a href="#">Apply</a>
+    </div>
+    <div class="footer-links">
+      <h5>CONTACT</h5>
+      <a href="mailto:hello@gamgee.io">hello@gamgee.io <span class="email-hint">General enquiries</span></a>
+      <a href="mailto:care@gamgee.io">care@gamgee.io <span class="email-hint">Patient consultations</span></a>
+      <a href="mailto:press@gamgee.io">press@gamgee.io <span class="email-hint">Press &amp; media</span></a>
+      <a href="mailto:partners@gamgee.io">partners@gamgee.io <span class="email-hint">Vets &amp; research partners</span></a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>&copy; 2026 GAMGEE &middot; Sydney, Australia</span>
+    <span><a href="#">Privacy</a> &middot; <a href="#">Terms</a></span>
+  </div>
+</footer>
+</div><!-- /.page -->
+
+<!-- ═══ MODAL: MEDIA ═══ -->
+<div class="modal-overlay" id="modal-media" role="dialog" aria-modal="true" aria-labelledby="modal-media-title">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeModal('modal-media')" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-eyebrow">Media Enquiries</div>
+      <h3 id="modal-media-title">Let's tell this story together.</h3>
+      <p>Get in touch and we'll connect you with the right person on our team.</p>
+    </div>
+    <div class="modal-body">
+      <div id="modal-media-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="media-first">First name</label>
+            <input type="text" id="media-first" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label for="media-last">Last name</label>
+            <input type="text" id="media-last" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="media-pub">Publication / outlet</label>
+          <input type="text" id="media-pub" placeholder="e.g. The Guardian, ABC News">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="media-email">Email address</label>
+            <input type="email" id="media-email" placeholder="jane@outlet.com">
+          </div>
+          <div class="form-group">
+            <label for="media-phone">Phone (optional)</label>
+            <input type="tel" id="media-phone" placeholder="+1 555 000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="media-msg">Message</label>
+          <textarea id="media-msg" placeholder="So excited to hear from you! Tell us about the story you're working on — and your deadline if you have one."></textarea>
+        </div>
+        <button class="modal-submit" onclick="submitModal('modal-media')">
+          Send enquiry
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="modal-success" id="modal-media-success">
+        <div class="modal-success-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h4>Message sent!</h4>
+        <p>Thanks for reaching out. Someone from our team will be in touch within one business day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: PARTNER ═══ -->
+<div class="modal-overlay" id="modal-partner" role="dialog" aria-modal="true" aria-labelledby="modal-partner-title">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeModal('modal-partner')" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-eyebrow">Research &amp; Clinical Partners</div>
+      <h3 id="modal-partner-title">Help us reach every dog that needs this.</h3>
+      <p>Whether you're a vet, oncologist, lab, or researcher — we'd love to connect.</p>
+    </div>
+    <div class="modal-body">
+      <div id="modal-partner-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="partner-first">First name</label>
+            <input type="text" id="partner-first" placeholder="Dr. Alex">
+          </div>
+          <div class="form-group">
+            <label for="partner-last">Last name</label>
+            <input type="text" id="partner-last" placeholder="Chen">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="partner-org">Organisation / institution</label>
+          <input type="text" id="partner-org" placeholder="e.g. University of Sydney, VCA Animal Hospital">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="partner-email">Email address</label>
+            <input type="email" id="partner-email" placeholder="alex@institution.edu">
+          </div>
+          <div class="form-group">
+            <label for="partner-phone">Phone (optional)</label>
+            <input type="tel" id="partner-phone" placeholder="+1 555 000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="partner-role">Role / speciality</label>
+          <select id="partner-role">
+            <option value="" disabled selected>Select one…</option>
+            <option>Veterinary oncologist</option>
+            <option>General veterinarian</option>
+            <option>Genomics / pathology lab</option>
+            <option>Research institution</option>
+            <option>Animal hospital / clinic</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="partner-location">Location (city &amp; country)</label>
+          <input type="text" id="partner-location" placeholder="e.g. Melbourne, Australia">
+        </div>
+        <div class="form-group">
+          <label for="partner-msg">Tell us about yourself</label>
+          <textarea id="partner-msg" placeholder="Tell us about your practice, your patients, or how we can help — we'd love to hear from you!"></textarea>
+        </div>
+        <button class="modal-submit" onclick="submitModal('modal-partner')">
+          Submit partnership enquiry
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="modal-success" id="modal-partner-success">
+        <div class="modal-success-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h4>Enquiry received!</h4>
+        <p>Our partnerships team will review your message and follow up within two business days.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: DATA DONOR ═══ -->
+<div class="modal-overlay" id="modal-data" role="dialog" aria-modal="true" aria-labelledby="modal-data-title">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeModal('modal-data')" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-eyebrow">Donate Data</div>
+      <h3 id="modal-data-title">Your dog's case could help thousands more.</h3>
+      <p>Anonymised clinical data from canine cancer cases strengthens our models and accelerates the science.</p>
+    </div>
+    <div class="modal-body">
+      <div id="modal-data-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="data-first">Your first name</label>
+            <input type="text" id="data-first" placeholder="Sam">
+          </div>
+          <div class="form-group">
+            <label for="data-last">Last name</label>
+            <input type="text" id="data-last" placeholder="Taylor">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="data-email">Email address</label>
+            <input type="email" id="data-email" placeholder="sam@email.com">
+          </div>
+          <div class="form-group">
+            <label for="data-phone">Phone (optional)</label>
+            <input type="tel" id="data-phone" placeholder="+1 555 000 0000">
+          </div>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="form-group">
+          <label for="data-dog">Dog's name</label>
+          <input type="text" id="data-dog" placeholder="e.g. Rosie">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="data-breed">Breed</label>
+            <input type="text" id="data-breed" placeholder="e.g. Golden Retriever">
+          </div>
+          <div class="form-group">
+            <label for="data-cancer">Cancer type (if known)</label>
+            <input type="text" id="data-cancer" placeholder="e.g. Mast cell tumour">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="data-records">What records do you have?</label>
+          <select id="data-records">
+            <option value="" disabled selected>Select one…</option>
+            <option>Biopsy / pathology reports</option>
+            <option>Genomic / sequencing data</option>
+            <option>Imaging (X-ray, MRI, CT)</option>
+            <option>Treatment history</option>
+            <option>Multiple of the above</option>
+            <option>Unsure — happy to discuss</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="data-msg">Anything else you'd like to share?</label>
+          <textarea id="data-msg" placeholder="Tell us about your dog's diagnosis, timeline, or anything else that might be helpful…"></textarea>
+        </div>
+        <button class="modal-submit" onclick="submitModal('modal-data')">
+          Submit contribution
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="modal-success" id="modal-data-success">
+        <div class="modal-success-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h4>Thank you — truly.</h4>
+        <p>Every case makes the science stronger. Our data team will reach out within a few days to walk you through the next steps.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+!async function(){
+  const el = document.getElementById('helix');
+  if (!window.THREE || !el) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W = el.clientWidth, H = el.clientHeight;
+
+  let urls = [];
+  try { urls = (await fetch('./assets/helix/manifest.json').then(r=>r.json())).map(f=>'./assets/helix/'+f); }
+  catch {
+    try { urls = (await fetch('https://dog.ceo/api/breeds/image/random/110').then(r=>r.json())).message; }
+    catch { urls = [...Array(110)].map((_,i)=>`https://placedog.net/120/90?id=${i+1}`); }
+  }
+
+  const PAPER = 0xF7F6E4;
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(PAPER, 0.02);
+  const cam = new THREE.PerspectiveCamera(54, W/H, 0.1, 100);
+  cam.position.z = 12;
+
+  const ren = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+  ren.setClearColor(0x000000, 0);
+  ren.setSize(W, H);
+  ren.setPixelRatio(Math.min(devicePixelRatio, 2));
+  el.appendChild(ren.domElement);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.9));
+  const dl = new THREE.DirectionalLight(0xffffff, 0.55);
+  dl.position.set(4,6,8); scene.add(dl);
+
+  const ldr = new THREE.TextureLoader();
+  ldr.crossOrigin = 'anonymous';
+  const texs = (await Promise.all(
+    urls.map(u => new Promise(res => ldr.load(u, res, undefined, () => res(null))))
+  )).filter(Boolean);
+
+  const loader = document.getElementById('helix-loader');
+  if (loader){ loader.style.opacity='0'; setTimeout(()=>loader.remove(),600); }
+  if (!texs.length) return;
+
+  let ti = 0; const nxt = () => texs[ti++ % texs.length];
+
+  function framedTex(tex){
+    const cW=128,cH=96,b=6;
+    const cv=document.createElement('canvas'); cv.width=cW; cv.height=cH;
+    const ctx=cv.getContext('2d');
+    ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,cW,cH);
+    try{ ctx.drawImage(tex.image,b,b,cW-b*2,cH-b*2); }catch(e){ return tex; }
+    return new THREE.CanvasTexture(cv);
+  }
+
+  // Straight vertical ribbon, sized to sit comfortably in the narrow strip
+  const R = 1.1, NPT = 12, TURNS = 9, HEIGHT = 34;
+  const N = NPT*TURNS, dY = HEIGHT/N, dA = 2*Math.PI/NPT;
+  const ds = Math.sqrt(R*dA*R*dA + dY*dY);
+  const PHOTO_W = ds*1.0, PHOTO_H = ds*0.74;
+  const PAN = HEIGHT*0.30;
+
+  const group = new THREE.Group();
+  scene.add(group);
+  const inner = new THREE.Group();
+  group.add(inner);
+
+  const photoG = new THREE.PlaneGeometry(PHOTO_W, PHOTO_H);
+  const _m = new THREE.Matrix4();
+
+  function placeStrand(phase){
+    for (let i=0;i<N;i++){
+      const a=i*dA+phase, y=i*dY-HEIGHT/2;
+      const pos=new THREE.Vector3(R*Math.cos(a), y, R*Math.sin(a));
+      const T=new THREE.Vector3(-R*Math.sin(a), dY/dA, R*Math.cos(a)).normalize();
+      const Nr=new THREE.Vector3(Math.cos(a),0,Math.sin(a));
+      const B=new THREE.Vector3().crossVectors(Nr,T).normalize();
+      const raw=nxt(); if(!raw) continue;
+      const plane=new THREE.Mesh(photoG, new THREE.MeshBasicMaterial({ map:framedTex(raw), side:THREE.DoubleSide }));
+      _m.makeBasis(T.clone().negate(), B.clone().negate(), Nr);
+      plane.quaternion.setFromRotationMatrix(_m);
+      plane.position.copy(pos);
+      inner.add(plane);
+    }
+  }
+  placeStrand(0);
+  placeStrand(Math.PI);
+
+  const TWO_PI=Math.PI*2;
+  let targetY=0, curY=0;
+  function onScroll(){
+    const maxS=document.documentElement.scrollHeight-window.innerHeight;
+    const p=maxS>0 ? Math.min(Math.max(window.scrollY/maxS,0),1) : 0;
+    targetY=(p-0.5)*PAN;
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  (function loop(){
+    requestAnimationFrame(loop);
+    if(!reduce){
+      inner.rotation.y += 0.0035;
+      if(inner.rotation.y>TWO_PI) inner.rotation.y -= TWO_PI;
+    }
+    curY += (targetY-curY)*0.08;
+    group.position.y = curY;
+    ren.render(scene,cam);
+  })();
+
+  window.addEventListener('resize', ()=>{
+    W=el.clientWidth; H=el.clientHeight;
+    cam.aspect=W/H; cam.updateProjectionMatrix(); ren.setSize(W,H);
+    onScroll();
+  });
+}();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.querySelector('.intro-photo video');
+  const control = document.querySelector('.intro-photo .video-control');
+  if (!video || !control) return;
+
+  function refreshButton() {
+    const isMuted = video.muted;
+    // YouTube-style filled speaker icons
+    control.innerHTML = isMuted
+      ? `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+           <path d="M3.63 3.63a.996.996 0 000 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .72.73 1.18 1.39.91.8-.33 1.55-.77 2.22-1.31l1.34 1.34a.996.996 0 101.41-1.41L5.05 3.63c-.39-.39-1.02-.39-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.23-1.22.86v.19c0 .38.25.71.61.85C17.18 6.54 19 9.06 19 12zm-8.71-6.29l-.17.17L12 7.76V6.41c0-.89-1.08-1.34-1.71-.71zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v1.79l2.48 2.48c.01-.08.02-.16.02-.24z"/>
+         </svg>`
+      : `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+         </svg>`;
+    control.setAttribute('aria-label', isMuted ? 'Unmute video' : 'Mute video');
+  }
+
+  refreshButton();
+  control.addEventListener('click', function() {
+    video.muted = !video.muted;
+    refreshButton();
+    video.play().catch(() => {});
+  });
+});
+</script>
+
+<script>
+function openModal(id) {
+  const overlay = document.getElementById(id);
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  const form = document.getElementById(id + '-form');
+  const success = document.getElementById(id + '-success');
+  if (form) form.style.display = '';
+  if (success) success.classList.remove('show');
+  overlay.querySelector('.modal-close').focus();
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function setLoading(modalId, loading) {
+  const btn = document.querySelector('#' + modalId + '-form .modal-submit');
+  if (!btn) return;
+  if (loading) {
+    btn.dataset.origText = btn.innerHTML;
+    btn.innerHTML = 'Sending...';
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+  } else {
+    btn.innerHTML = btn.dataset.origText || btn.innerHTML;
+    btn.disabled = false;
+    btn.style.opacity = '';
+  }
+}
+function showError(modalId, msg) {
+  let el = document.getElementById(modalId + '-error');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = modalId + '-error';
+    el.style.cssText = 'color:#DB4949;font-size:14px;margin-top:12px;padding:10px 14px;background:rgba(219,73,73,.08);border-radius:10px;';
+    document.getElementById(modalId + '-form').appendChild(el);
+  }
+  el.textContent = msg;
+}
+function clearError(modalId) {
+  const el = document.getElementById(modalId + '-error');
+  if (el) el.remove();
+}
+function submitModal(id) {
+  clearError(id);
+  var body = {};
+  if (id === 'modal-media') {
+    body = {
+      firstName: val('media-first'),
+      lastName: val('media-last'),
+      publication: val('media-pub'),
+      email: val('media-email'),
+      phone: val('media-phone'),
+      message: val('media-msg')
+    };
+    if (!body.email) return showError(id, 'Please enter your email address.');
+  } else if (id === 'modal-partner') {
+    body = {
+      firstName: val('partner-first'),
+      lastName: val('partner-last'),
+      organisation: val('partner-org'),
+      email: val('partner-email'),
+      phone: val('partner-phone'),
+      role: val('partner-role'),
+      location: val('partner-location'),
+      message: val('partner-msg')
+    };
+    if (!body.email) return showError(id, 'Please enter your email address.');
+  } else if (id === 'modal-data') {
+    body = {
+      firstName: val('data-first'),
+      lastName: val('data-last'),
+      email: val('data-email'),
+      phone: val('data-phone'),
+      dogName: val('data-dog'),
+      breed: val('data-breed'),
+      cancerType: val('data-cancer'),
+      recordsType: val('data-records'),
+      message: val('data-msg')
+    };
+    if (!body.email) return showError(id, 'Please enter your email address.');
+  }
+  var endpoint = id === 'modal-media' ? '/api/media'
+    : id === 'modal-partner' ? '/api/partners'
+    : '/api/donors';
+  setLoading(id, true);
+  fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function(r) { return r.json(); })
+    .then(function(data) {
+      setLoading(id, false);
+      if (data.error) return showError(id, data.error);
+      document.getElementById(id + '-form').style.display = 'none';
+      document.getElementById(id + '-success').classList.add('show');
+    }).catch(function() {
+      setLoading(id, false);
+      showError(id, 'Something went wrong. Please try again.');
+    });
+}
+function val(id) { return (document.getElementById(id) || {}).value || ''; }
+document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal(overlay.id);
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(o) {
+      closeModal(o.id);
+    });
+  }
+});
+</script>
 </body>
 </html>
