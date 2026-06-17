@@ -1,14 +1,14 @@
 [
-  "./assets/chain/dog_001.jpg",
-  "./assets/chain/dog_002.jpg",
-  "./assets/chain/dog_003.jpg",
-  "./assets/chain/dog_004.jpg",
-  "./assets/chain/dog_005.jpg",
-  "./assets/chain/dog_006.jpg",
-  "./assets/chain/dog_007.jpg",
-  "./assets/chain/dog_008.jpg",
-  "./assets/chain/dog_009.jpg",
-  "./assets/chain/dog_010.jpg",
-  "./assets/chain/dog_011.jpg",
-  "./assets/chain/dog_012.jpg"
+  "/assets/chain/dog_001.jpg",
+  "/assets/chain/dog_002.jpg",
+  "/assets/chain/dog_003.jpg",
+  "/assets/chain/dog_004.jpg",
+  "/assets/chain/dog_005.jpg",
+  "/assets/chain/dog_006.jpg",
+  "/assets/chain/dog_007.jpg",
+  "/assets/chain/dog_008.jpg",
+  "/assets/chain/dog_009.jpg",
+  "/assets/chain/dog_010.jpg",
+  "/assets/chain/dog_011.jpg",
+  "/assets/chain/dog_012.jpg"
 ]
