@@ -175,7 +175,7 @@
   .card-split-bottom .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
   .card-split-bottom .partners img{height:48px;width:auto;max-width:180px;opacity:.65;object-fit:contain}
   .card-split-bottom .partners img[alt]{display:inline-block}
-  .card-split-bottom .press-imgs img{height:36px;width:auto;max-width:120px;opacity:.65;object-fit:contain}
+  .card-split-bottom .press-imgs img{height:48px;width:auto;max-width:180px;opacity:.65;object-fit:contain}
   .full-bleed .wrap{padding-left:16px;padding-right:16px}
   .dog-row{display:flex;gap:24px;flex-wrap:nowrap;justify-content:center;align-items:stretch;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin:18px -50vw 0;padding:0 16px;max-width:none;overflow:hidden}
   .dog-row img{height:400px;width:calc((100% - 72px)/4);min-width:220px;aspect-ratio:3/4;object-fit:cover;object-position:center center;border-radius:18px;background:#fff;flex:0 0 auto}
@@ -243,7 +243,7 @@
 
     /* Hero */
     .hero{grid-template-columns:1fr;padding:0 0 44px;min-height:70vh;gap:28px;align-items:center}
-    .hero h1{font-size:42px}
+    .hero h1{font-size:42px;line-height:1.2;letter-spacing:0;font-family:"Poppins",system-ui,sans-serif}
     .hero h1 .nowrap{white-space:normal}
     .hero .sub{font-size:16px;max-width:none}
     .hero .act{flex-direction:column;align-items:stretch;gap:12px;margin-top:28px}
@@ -258,11 +258,11 @@
     .intro-copy h3{font-size:26px}
 
     /* Generic block */
-    .block{padding:24px 22px;border-radius:24px}
+    .block{padding:24px 22px;border-radius:24px;margin:48px 0}
     .block.intro{padding:24px 22px;border-radius:24px}
 
     /* card-split */
-    .card-split{margin:32px 0}
+    .card-split{margin:48px 0}
     .card-split-top{padding:24px 22px}
     .card-split-bottom{padding:28px 22px}
 
@@ -307,20 +307,21 @@
     .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
 
     /* Press logos */
-    .press-imgs{gap:16px !important}
-    .card-split-bottom .partners img,.press-imgs img{height:36px}
+    .press-imgs{gap:12px !important;flex-wrap:nowrap !important;overflow-x:hidden;justify-content:center}
+    .card-split-bottom .partners img,.card-split-bottom .press-imgs img{height:24px;max-width:70px}
 
     /* Partners chips */
     .partners .chip{padding:7px 14px;font-size:12px}
   }
 
   @media(max-width:560px){
+    .press-imgs{flex-wrap:wrap !important;overflow-x:visible}
     .steps{grid-template-columns:1fr}
     .hero h1{font-size:34px}
     .hero h1 .nowrap{white-space:normal}
     .intro-copy h3{font-size:22px}
     .dog-row img{height:160px}
-    .card-split-bottom .partners img,.press-imgs img{height:28px}
+    .card-split-bottom .partners img,.card-split-bottom .press-imgs img{height:22px;max-width:70px}
   }
 
   /* ── MODALS ── */
@@ -442,9 +443,9 @@
   <div class="nav-in">
     <div class="logo">GAMGEE</div>
     <div class="navlinks">
-      <a href="/story/">Our story</a>
+      <a href="GAMGEE_Story.html">Our story</a>
       <a href="#process">How it works</a>
-      <a class="btn btn-green" href="/apply/">Apply</a>
+      <a class="btn btn-green" href="GAMGEE_Apply.html">Apply</a>
     </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
       const btn=this, menu=document.getElementById('mobile-menu');
@@ -456,9 +457,9 @@
     </button>
   </div>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+    <a href="GAMGEE_Story.html" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
     <a href="#process" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">How it works</a>
-    <a class="btn btn-green" href="/apply/">Apply now</a>
+    <a class="btn btn-green" href="GAMGEE_Apply.html">Apply now</a>
   </div>
 </nav>
 
@@ -469,7 +470,7 @@
       <p class="hero-note">Introducing our first product <span class="monospace-pill">ze-ets-001</span></p>
       <h1><span class="nowrap">The <span class="mark">first personalised</span></span> cancer treatment protocol <span style="color:var(--coral)">for dogs.</span></h1>
       <div class="act">
-        <a class="btn btn-coral" href="/apply/">Apply now
+        <a class="btn btn-coral" href="GAMGEE_Apply.html">Apply now
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a class="hero-link" href="#process">How it Works →</a>
@@ -526,7 +527,7 @@
       </div>
     </div>
     <div class="card-split-bottom">
-      <div class="cap">Research &amp; clinical partners</div>
+      <div class="cap">In collaboration with</div>
       <div class="partners">
         <img src="assets/Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics">
         <img src="assets/Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute">
@@ -546,7 +547,7 @@
           <div class="ey">Rosie's Story</div>
           <h3><span class="h3-split">Two years and one breakthrough later,</span><span class="h3-split">she's still here.</span></h3>
           <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live. <b>Two years and one breakthrough treatment later, she's still here.</b></p>
-          <a class="more" href="/story/">Read the full story →</a>
+          <a class="more" href="GAMGEE_Story.html">Read the full story →</a>
         </div>
       </div>
     </div>
@@ -614,7 +615,7 @@
         <img src="./assets/GAMGEE images/Dog 4.png" alt="Dog 4">
       </div>
       <p>We'll help you determine whether GAMGEE is right for your dog and, if it is, get you connected with the right team.</p>
-      <a class="btn btn-coral" href="/apply/">Apply now
+      <a class="btn btn-coral" href="GAMGEE_Apply.html">Apply now
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
