@@ -748,10 +748,14 @@
     return el ? (el.value || '').trim() : '';
   }
 
-  // ── SUBMIT TO BACKEND ──
+  // ── REPLACE THIS URL with your Google Apps Script deployment URL ──
+  var FORM_ENDPOINT = 'YOUR_SCRIPT_URL';
+
+  // ── SUBMIT TO GOOGLE SHEETS ──
   function submitApplication() {
     var d = formData;
     var body = {
+      _sheet: 'Applications',
       email: d.email || '',
       name: d.name || '',
       phone: d.phone || '',
@@ -774,18 +778,16 @@
       notes: d.notes || ''
     };
 
-    fetch('/api/apply', {
+    fetch(FORM_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(body)
     }).then(function(r) { return r.json(); })
       .then(function(data) {
-        if (data.duplicate) {
-          console.log('[APPLY] Duplicate email:', d.email);
-        } else if (data.error) {
+        if (data.error) {
           console.error('[APPLY] Error:', data.error);
         } else {
-          console.log('[APPLY] Submitted:', data.id);
+          console.log('[APPLY] Submitted');
         }
       }).catch(function(err) {
         console.error('[APPLY] Failed:', err);

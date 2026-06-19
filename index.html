@@ -1038,11 +1038,15 @@ function clearError(modalId) {
   const el = document.getElementById(modalId + '-error');
   if (el) el.remove();
 }
+// ── REPLACE THIS URL with your Google Apps Script deployment URL ──
+var FORM_ENDPOINT = 'YOUR_SCRIPT_URL';
+
 function submitModal(id) {
   clearError(id);
   var body = {};
   if (id === 'modal-media') {
     body = {
+      _sheet: 'Media',
       firstName: val('media-first'),
       lastName: val('media-last'),
       publication: val('media-pub'),
@@ -1053,6 +1057,7 @@ function submitModal(id) {
     if (!body.email) return showError(id, 'Please enter your email address.');
   } else if (id === 'modal-partner') {
     body = {
+      _sheet: 'Partners',
       firstName: val('partner-first'),
       lastName: val('partner-last'),
       organisation: val('partner-org'),
@@ -1065,6 +1070,7 @@ function submitModal(id) {
     if (!body.email) return showError(id, 'Please enter your email address.');
   } else if (id === 'modal-data') {
     body = {
+      _sheet: 'Donors',
       firstName: val('data-first'),
       lastName: val('data-last'),
       email: val('data-email'),
@@ -1077,13 +1083,10 @@ function submitModal(id) {
     };
     if (!body.email) return showError(id, 'Please enter your email address.');
   }
-  var endpoint = id === 'modal-media' ? '/api/media'
-    : id === 'modal-partner' ? '/api/partners'
-    : '/api/donors';
   setLoading(id, true);
-  fetch(endpoint, {
+  fetch(FORM_ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(body)
   }).then(function(r) { return r.json(); })
     .then(function(data) {
