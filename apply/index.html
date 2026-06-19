@@ -785,6 +785,7 @@
 
     Promise.all(promises).then(function(files) {
       body.files = files;
+      console.log('[APPLY] Sending', files.length, 'files, payload size:', JSON.stringify(body).length, 'bytes');
       return fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
@@ -792,6 +793,7 @@
       });
     }).then(function(r) { return r.json(); })
       .then(function(data) {
+        console.log('[APPLY] Response:', JSON.stringify(data));
         if (data.error) {
           console.error('[APPLY] Error:', data.error);
         } else {
