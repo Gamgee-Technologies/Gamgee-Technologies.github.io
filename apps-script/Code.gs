@@ -1,7 +1,8 @@
 // GAMGEE Google Apps Script — receives form POSTs and writes to Google Sheet
 // Deploy as: Execute as Me > Anyone can access
 
-var SHEET_ID = '1q8FBO1IWx8w8g7cDTYisv0B_YMC3p_LO-ndOLl5RcZo';
+var SHEET_ID = '15MHWl4W-Fd6Ue_Eipe-RMK-8RKyNPeZFrTG_X-3i1_w';
+var FILES_FOLDER_ID = '1DyZ7AE24AMOB9Q8BRn1d-y1pj6so7x4-';
 
 function doPost(e) {
   try {
@@ -17,6 +18,7 @@ function doPost(e) {
     }
 
     if (sheetName === 'Applications') {
+      var fileUrls = saveFilesToDrive(data.files || [], data.email || 'unknown');
       sheet.appendRow([
         new Date(),
         data.email || '',
@@ -38,7 +40,8 @@ function doPost(e) {
         data.vetPractice || '',
         data.vetEmail || '',
         data.vetPhone || '',
-        data.notes || ''
+        data.notes || '',
+        fileUrls
       ]);
     } else if (sheetName === 'Media') {
       sheet.appendRow([
@@ -86,4 +89,29 @@ function doPost(e) {
       JSON.stringify({ error: err.message })
     ).setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+function saveFilesToDrive(files, email) {
+  if (!files || files.length === 0) return '';
+
+  var parentFolder = DriveApp.getFolderById(FILES_FOLDER_ID);
+
+  // Create or get subfolder by email
+  var folders = parentFolder.getFoldersByName(email);
+  var emailFolder = folders.hasNext() ? folders.next() : parentFolder.createFolder(email);
+
+  var urls = [];
+  for (var i = 0; i < files.length; i++) {
+    var f = files[i];
+    var blob = Utilities.newBlob(
+      Utilities.base64Decode(f.data),
+      f.type,
+      f.name
+    );
+    var file = emailFolder.createFile(blob);
+    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    urls.push(file.getUrl());
+  }
+
+  return urls.join(', ');
 }
