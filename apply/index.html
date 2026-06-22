@@ -881,8 +881,8 @@
       valid = false;
     }
 
-    // WhatsApp or Phone Call requires phone number
-    if (contactChecked && (contactChecked.value === 'WhatsApp' || contactChecked.value === 'Phone Call')) {
+    // WhatsApp or Phone requires phone number
+    if (contactChecked && (contactChecked.value === 'WhatsApp' || contactChecked.value === 'Phone')) {
       const phoneVal = phoneEl ? phoneEl.value.trim() : '';
       if (!phoneVal) {
         if (phoneEl) phoneEl.classList.add('invalid');
