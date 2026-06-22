@@ -665,6 +665,7 @@
     <p>Rosie reads every application — then Paul double-checks. If <span id="success-dog-inline">your dog</span> looks like a fit, you'll hear from us within 5 business days. We won't keep you waiting.</p>
     <div class="success-divider"></div>
     <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.5)">Questions in the meantime? <a class="email-link" href="mailto:hello@gamgee.io">hello@gamgee.io</a></p>
+    <a href="/" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--yellow);color:var(--ink);font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:background .2s">Return to home screen</a>
   </div>
 
   <div class="dog-ticker-section" id="dog-strip-wrap">
@@ -880,8 +881,8 @@
       valid = false;
     }
 
-    // WhatsApp requires phone number
-    if (contactChecked && contactChecked.value === 'WhatsApp') {
+    // WhatsApp or Phone Call requires phone number
+    if (contactChecked && (contactChecked.value === 'WhatsApp' || contactChecked.value === 'Phone Call')) {
       const phoneVal = phoneEl ? phoneEl.value.trim() : '';
       if (!phoneVal) {
         if (phoneEl) phoneEl.classList.add('invalid');
