@@ -7,7 +7,8 @@ var EMAIL_MAP = {
   'Applications': 'hello@gamgee.io',
   'Media': 'press@gamgee.io',
   'Partners': 'partners@gamgee.io',
-  'Donors': 'hello@gamgee.io'
+  'Donors': 'hello@gamgee.io',
+  'Referral': 'partners@gamgee.io'
 };
 
 function doGet(e) {
@@ -33,6 +34,8 @@ function doPost(e) {
     } else if (sheetName === 'Donors') {
       fileUrls = saveFilesToDrive(data.files || [], data.email || 'unknown', 'Data Contribution');
       sheet.appendRow([new Date(), data.firstName || '', data.lastName || '', data.email || '', data.phone || '', data.dogName || '', data.breed || '', data.cancerType || '', data.recordsType || '', data.message || '', fileUrls]);
+    } else if (sheetName === 'Referral') {
+      sheet.appendRow([new Date(), data.vetFirst || '', data.vetLast || '', data.clinicName || '', data.vetEmail || '', data.dogName || '', data.breed || '', data.age || '', data.diagnosis || '', data.stage || '', data.priorTx || '', data.ownerFirst || '', data.ownerLast || '', data.ownerEmail || '', data.ownerPhone || '', data.notes || '', data.consent || '']);
     }
 
     sendNotification(sheetName, data, fileUrls);
@@ -60,6 +63,9 @@ function sendNotification(sheetName, data, fileUrls) {
     subject = 'New Data Donor from ' + (data.firstName || '') + ' ' + (data.lastName || '');
     body = 'New data donor submission on gamgee.io\n\nName: ' + (data.firstName || '') + ' ' + (data.lastName || '') + '\nEmail: ' + (data.email || '') + '\nPhone: ' + (data.phone || '') + '\nDog name: ' + (data.dogName || '') + '\nBreed: ' + (data.breed || '') + '\nCancer type: ' + (data.cancerType || '') + '\nRecords type: ' + (data.recordsType || '') + '\n\nMessage:\n' + (data.message || '');
     if (fileUrls) body += '\n\nFiles uploaded: ' + fileUrls;
+  } else if (sheetName === 'Referral') {
+    subject = 'New Vet Referral from ' + (data.vetFirst || '') + ' ' + (data.vetLast || '') + ' — ' + (data.dogName || '');
+    body = 'New patient referral submitted on gamgee.io/vet\n\n--- VET DETAILS ---\nName: ' + (data.vetFirst || '') + ' ' + (data.vetLast || '') + '\nClinic: ' + (data.clinicName || '') + '\nEmail: ' + (data.vetEmail || '') + '\n\n--- PATIENT DETAILS ---\nDog name: ' + (data.dogName || '') + '\nBreed: ' + (data.breed || '') + '\nAge: ' + (data.age || '') + '\n\n--- DIAGNOSIS ---\nDiagnosis: ' + (data.diagnosis || '') + '\nStage: ' + (data.stage || '') + '\nPrior treatments: ' + (data.priorTx || '') + '\n\n--- OWNER DETAILS ---\nOwner name: ' + (data.ownerFirst || '') + ' ' + (data.ownerLast || '') + '\nOwner email: ' + (data.ownerEmail || '') + '\nOwner phone: ' + (data.ownerPhone || '') + '\n\n--- NOTES ---\n' + (data.notes || '') + '\n\nConsent: ' + (data.consent || 'No');
   }
   GmailApp.sendEmail(toEmail, subject, body);
 }
