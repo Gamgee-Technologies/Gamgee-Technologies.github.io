@@ -430,6 +430,24 @@
   }
   .modal-success p{font-size:15px;color:var(--muted);margin:0;max-width:28em;line-height:1.6}
 
+  /* File upload */
+  .drop-hint{background:#DFF5F2;border:1px solid var(--mint-d);border-radius:12px;padding:14px 16px 14px 20px;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;position:relative}
+  .drop-hint::before{content:'';position:absolute;left:10px;top:14px;bottom:14px;width:2px;background:var(--coral-d);border-radius:1px}
+  .drop-zone{border:2px dashed var(--border);border-radius:14px;padding:32px 20px;text-align:center;cursor:pointer;transition:border-color .14s,background .14s;background:#fff}
+  .drop-zone:hover,.drop-zone.dragover{border-color:var(--green);background:rgba(60,1,78,.03)}
+  .drop-zone svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.6;margin-bottom:10px}
+  .drop-zone p{font-size:14px;color:var(--muted);margin-bottom:4px}
+  .drop-zone .formats{font-size:12px;color:#a0a498;margin-bottom:14px}
+  .drop-zone .formats span{background:rgba(219,73,73,.1);color:var(--coral);border-radius:4px;padding:1px 6px;font-weight:600;margin:0 2px}
+  .btn-upload{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--coral);color:#fff;border:none;border-radius:999px;font-family:"Poppins",system-ui,sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:transform .12s}
+  .btn-upload:hover{transform:translateY(-1px)}
+  .file-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+  .file-chip{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--ink)}
+  .file-chip svg{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:1.6;flex-shrink:0}
+  .file-chip .fname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .file-chip .rm{background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center}
+  .file-chip .rm svg{width:14px;height:14px;stroke:var(--coral);fill:none;stroke-width:2}
+
   @media(max-width:760px){
     .modal-head{padding:24px 22px 20px}
     .modal-body{padding:24px 22px 28px}
@@ -449,6 +467,7 @@
     <div class="navlinks">
       <a href="/story/">Our story</a>
       <a href="#process">How it works</a>
+      <a href="/vet/">For Vets</a>
       <a class="btn btn-green" href="/apply/">Apply</a>
     </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
@@ -463,6 +482,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
     <a href="#process" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">How it works</a>
+    <a href="/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
     <a class="btn btn-green" href="/apply/">Apply now</a>
   </div>
 </nav>
@@ -843,6 +863,19 @@
           <label for="data-msg">Anything else you'd like to share?</label>
           <textarea id="data-msg" placeholder="Tell us about your dog's diagnosis, timeline, or anything else that might be helpful…"></textarea>
         </div>
+        <div class="modal-divider"></div>
+        <div class="form-group">
+          <label>Upload files (optional)</label>
+          <div class="drop-hint">Any documentation you can share — pathology reports, blood work, imaging — can help us expedite our review. Don't have anything yet? No problem.</div>
+          <div class="drop-zone" id="data-drop-zone" onclick="document.getElementById('data-file-input').click()" ondragover="handleDataDragOver(event)" ondragleave="handleDataDragLeave(event)" ondrop="handleDataDrop(event)">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Upload or drop your files here</p>
+            <p class="formats">Supported formats: <span>.pdf</span><span>.png</span><span>.jpg</span><span>.docx</span></p>
+            <button class="btn-upload" type="button">Select file</button>
+          </div>
+          <input type="file" id="data-file-input" multiple accept=".pdf,.png,.jpg,.jpeg,.docx" onchange="handleDataFileSelect(event)" style="display:none">
+          <div class="file-list" id="data-file-list"></div>
+        </div>
         <button class="modal-submit" onclick="submitModal('modal-data')">
           Submit contribution
           <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1089,7 +1122,23 @@ function submitModal(id) {
     if (!body.email) return showError(id, 'Please enter your email address.');
   }
   setLoading(id, true);
-  fetch(FORM_ENDPOINT, {
+
+  // Handle file uploads for data modal
+  if (id === 'modal-data' && dataUploadedFiles.length > 0) {
+    var promises = dataUploadedFiles.map(function(f) { return dataFileToBase64(f); });
+    Promise.all(promises).then(function(files) {
+      body.files = files;
+      return sendModal(id, body);
+    }).catch(function() {
+      setLoading(id, false);
+      showError(id, 'Something went wrong. Please try again.');
+    });
+  } else {
+    sendModal(id, body);
+  }
+}
+function sendModal(id, body) {
+  return fetch(FORM_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(body)
@@ -1105,6 +1154,79 @@ function submitModal(id) {
     });
 }
 function val(id) { return (document.getElementById(id) || {}).value || ''; }
+
+// ── FILE UPLOAD FOR DATA MODAL ──
+var dataUploadedFiles = [];
+var DATA_MAX_FILES = 3;
+var DATA_MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+function handleDataFileSelect(e) {
+  addDataFiles(Array.from(e.target.files));
+  e.target.value = '';
+}
+function handleDataDragOver(e) {
+  e.preventDefault();
+  document.getElementById('data-drop-zone').classList.add('dragover');
+}
+function handleDataDragLeave() {
+  document.getElementById('data-drop-zone').classList.remove('dragover');
+}
+function handleDataDrop(e) {
+  e.preventDefault();
+  document.getElementById('data-drop-zone').classList.remove('dragover');
+  addDataFiles(Array.from(e.dataTransfer.files));
+}
+function addDataFiles(files) {
+  var errEl = document.getElementById('data-drop-zone-error');
+  if (errEl) errEl.remove();
+  files.forEach(function(f) {
+    if (dataUploadedFiles.length >= DATA_MAX_FILES) {
+      showDataDropError('Maximum ' + DATA_MAX_FILES + ' files allowed.');
+      return;
+    }
+    if (f.size > DATA_MAX_FILE_SIZE) {
+      showDataDropError('"' + f.name + '" is too large (max 10MB).');
+      return;
+    }
+    if (!dataUploadedFiles.find(function(u) { return u.name === f.name && u.size === f.size; })) {
+      dataUploadedFiles.push(f);
+    }
+  });
+  renderDataFileList();
+}
+function showDataDropError(msg) {
+  var el = document.createElement('div');
+  el.id = 'data-drop-zone-error';
+  el.style.cssText = 'color:#DB4949;font-size:13px;margin-top:8px;';
+  el.textContent = msg;
+  document.getElementById('data-drop-zone').parentNode.appendChild(el);
+}
+function removeDataFile(idx) {
+  dataUploadedFiles.splice(idx, 1);
+  renderDataFileList();
+}
+function renderDataFileList() {
+  document.getElementById('data-file-list').innerHTML = dataUploadedFiles.map(function(f, i) {
+    return '<div class="file-chip">' +
+      '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
+      '<span class="fname">' + f.name + '</span>' +
+      '<button class="rm" onclick="removeDataFile(' + i + ')" aria-label="Remove file">' +
+      '<svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+      '</button></div>';
+  }).join('');
+}
+function dataFileToBase64(file) {
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var base64 = reader.result.split(',')[1];
+      resolve({ name: file.name, type: file.type, size: file.size, data: base64 });
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
   overlay.addEventListener('click', function(e) {
     if (e.target === overlay) closeModal(overlay.id);
