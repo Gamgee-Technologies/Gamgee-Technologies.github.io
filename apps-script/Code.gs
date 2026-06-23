@@ -24,14 +24,15 @@ function doPost(e) {
 
     var fileUrls = '';
     if (sheetName === 'Applications') {
-      fileUrls = saveFilesToDrive(data.files || [], data.email || 'unknown');
+      fileUrls = saveFilesToDrive(data.files || [], data.email || 'unknown', 'Apply');
       sheet.appendRow([new Date(), data.email || '', data.name || '', data.phone || '', data.contactPref || '', data.location || '', data.country || '', data.city || '', data.dogName || '', data.dogBreed || '', data.dogAge || '', data.dogSex || '', data.diagnosis || '', data.stage || '', data.treatment || '', data.tumourRemoved || '', data.vetName || '', data.vetPractice || '', data.vetEmail || '', data.vetPhone || '', data.notes || '', fileUrls]);
     } else if (sheetName === 'Media') {
       sheet.appendRow([new Date(), data.firstName || '', data.lastName || '', data.publication || '', data.email || '', data.phone || '', data.message || '']);
     } else if (sheetName === 'Partners') {
       sheet.appendRow([new Date(), data.firstName || '', data.lastName || '', data.organisation || '', data.email || '', data.phone || '', data.role || '', data.location || '', data.message || '']);
     } else if (sheetName === 'Donors') {
-      sheet.appendRow([new Date(), data.firstName || '', data.lastName || '', data.email || '', data.phone || '', data.dogName || '', data.breed || '', data.cancerType || '', data.recordsType || '', data.message || '']);
+      fileUrls = saveFilesToDrive(data.files || [], data.email || 'unknown', 'Data Contribution');
+      sheet.appendRow([new Date(), data.firstName || '', data.lastName || '', data.email || '', data.phone || '', data.dogName || '', data.breed || '', data.cancerType || '', data.recordsType || '', data.message || '', fileUrls]);
     }
 
     sendNotification(sheetName, data, fileUrls);
@@ -58,16 +59,24 @@ function sendNotification(sheetName, data, fileUrls) {
   } else if (sheetName === 'Donors') {
     subject = 'New Data Donor from ' + (data.firstName || '') + ' ' + (data.lastName || '');
     body = 'New data donor submission on gamgee.io\n\nName: ' + (data.firstName || '') + ' ' + (data.lastName || '') + '\nEmail: ' + (data.email || '') + '\nPhone: ' + (data.phone || '') + '\nDog name: ' + (data.dogName || '') + '\nBreed: ' + (data.breed || '') + '\nCancer type: ' + (data.cancerType || '') + '\nRecords type: ' + (data.recordsType || '') + '\n\nMessage:\n' + (data.message || '');
+    if (fileUrls) body += '\n\nFiles uploaded: ' + fileUrls;
   }
   GmailApp.sendEmail(toEmail, subject, body);
 }
 
-function saveFilesToDrive(files, email) {
+function saveFilesToDrive(files, email, category) {
   if (!files || files.length === 0) return '';
   try {
-    var parentFolder = DriveApp.getFolderById(FILES_FOLDER_ID);
-    var folders = parentFolder.getFoldersByName(email);
-    var emailFolder = folders.hasNext() ? folders.next() : parentFolder.createFolder(email);
+    var rootFolder = DriveApp.getFolderById(FILES_FOLDER_ID);
+
+    // Create category folder (Apply or Data Contribution)
+    var catFolders = rootFolder.getFoldersByName(category);
+    var catFolder = catFolders.hasNext() ? catFolders.next() : rootFolder.createFolder(category);
+
+    // Create or get email subfolder
+    var emailFolders = catFolder.getFoldersByName(email);
+    var emailFolder = emailFolders.hasNext() ? emailFolders.next() : catFolder.createFolder(email);
+
     var urls = [];
     for (var i = 0; i < files.length; i++) {
       var f = files[i];

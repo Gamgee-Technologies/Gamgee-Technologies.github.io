@@ -25,6 +25,7 @@
        padding:16px 30px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
   .btn:hover{transform:translateY(-2px)}
   .btn svg{width:16px;height:16px}
+  .card .btn{padding: 6px 28px}
   .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(219,73,73,.30)}
   .btn-green{background:var(--green);color:#fff;box-shadow:0 10px 24px rgba(54,6,75,.28)}
   .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.08)}
@@ -72,9 +73,9 @@
   .h3-split{display:block;white-space:nowrap;margin-top:10px}
   .intro-copy p{font-size:17px;line-height:1.55;color:var(--muted);max-width:34em;margin:0}
   .intro-copy p+p{margin-top:10px}
-  .intro-copy__location{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:flex-start;margin-top:12px;color:var(--muted);font-size:17px;line-height:1.6;max-width:34em}
-  .intro-copy__location svg{width:20px;height:20px;flex-shrink:0;stroke:var(--coral);fill:none;stroke-width:1.8;margin-top:3px}
-  .intro-copy__location p{margin:0}
+  .intro-copy__location{display:grid;grid-template-columns:auto 1fr;gap:5px;align-items:flex-start;margin-top:10px;color:var(--muted);font-size:14px;line-height:0.8;max-width:34em}
+  .intro-copy__location svg{width:20px;height:15px;flex-shrink:0;stroke:var(--coral);fill:none;stroke-width:1.8;margin-top:5px}
+  .intro-copy__location p{font-size:14px;line-height:1.4;margin:0}
 
   /* NAV */
   nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
@@ -90,7 +91,7 @@
   .hero-note{font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:12px;line-height:100%;letter-spacing:0.12em;color:#000;margin-bottom:28px;text-transform:none}
   .monospace-pill{font-size:12px;font-weight:500;letter-spacing:0.04em;padding:1px 5px;border:1px solid var(--border);border-radius:7px;margin-left:1px;white-space:nowrap;vertical-align:middle;background:#FDFDF5}
   .hero h1{font-size:62px;font-weight:800;line-height:1.03;letter-spacing:-.025em}
-  .hero h1 .mark{background:#75D1DC;border-radius:12px;padding:0 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .hero h1 .mark{display:inline-block;background:#75D1DC;border-radius:8px;padding:7px 10px;line-height:1;vertical-align:middle;box-decoration-break:clone;-webkit-box-decoration-break:clone}
   .hero h1 .g{color:var(--coral)}
   .hero h1 .nowrap{white-space:nowrap;display:inline-block}
   .hero .sub{margin-top:24px;max-width:25em;font-size:18px;color:var(--muted);line-height:1.6}
@@ -139,6 +140,7 @@
   .avatar img{width:100%;height:100%;object-fit:cover;display:block}
   .rosie .ey{font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1;opacity:.9}
   .rosie h3{font-size:40px;font-weight:800;line-height:50px;letter-spacing:0;margin:10px 0 16px;max-width:16em}
+  .rosie h3 .h3-split{margin-top:0px}
   .rosie p{font-family:"Inter",system-ui,sans-serif;font-size:17px;font-weight:400;line-height:26px;max-width:42em;color:rgba(255,255,255,.92)}
   .rosie p b{color:#fff}
   .rosie .more{display:inline-flex;margin-top:22px;font-weight:700;text-decoration:none;color:#fff;
@@ -159,11 +161,12 @@
   .s2{background:#EE3842;color:#fff}
   .s3{background:#34BBCB;color:#fff}
   .s4{background:#220032;color:#fff}
+  .num-title{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:130px}
   .num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
        font-weight:800;font-size:18px;background:rgba(255,255,255,.22)}
   .s3 .num{background:rgba(0,0,0,.12)}
-  .step h4{font-size:20px;font-weight:700;margin:22px 0 10px;letter-spacing:-.01em}
-  .step p{font-size:14px;line-height:1.6;opacity:.95}
+  .step h4{font-size:20px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em}
+  .step p{margin:0;font-size:14px;line-height:1.6;opacity:.95}
 
   /* DOUBLE COLORED CARDS */
   .card-split{display:flex;flex-direction:column;border-radius:28px;overflow:hidden;margin:48px 0}
