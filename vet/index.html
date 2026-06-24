@@ -133,9 +133,9 @@
   .sci-card p{font-size:14px;line-height:1.65;color:var(--muted)}
 
   /* Partners */
-  .partners{padding:24px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+  .partners{padding:24px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;isolation:isolate}
   .partners .cap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);font-weight:700;margin-right:8px}
-  .partners .pchip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
+  .partners .pchip{padding:9px 18px}
 
   /* Footer */
   footer{background:var(--cream);border-top:1px solid var(--border)}
@@ -254,9 +254,9 @@
     <a class="logo" href="/">GAMGEE</a>
     <div class="navlinks">
       <a href="/story/">Our story</a>
-      <a href="/#process">How it works</a>
       <a href="/vet/" class="active">For Vets</a>
-      <a class="btn btn-green" href="/apply/">Apply</a>
+      <a class="btn btn-green" href="/apply/">Apply
+      </a>
     </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
       const btn=this, menu=document.getElementById('mobile-menu');
@@ -269,7 +269,6 @@
   </div>
   <div class="mobile-menu" id="mobile-menu">
     <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
-    <a href="/#process" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">How it works</a>
     <a href="/vet/" class="active" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
     <a class="btn btn-green" href="/apply/">Apply now</a>
   </div>
@@ -292,6 +291,9 @@
     <div class="enroll-pill" style="display:inline-flex">
       <span class="pulse"></span>
       Currently enrolling &middot; Sydney clinical trial &middot; 2026
+    </div>
+    <div style="margin-top:14px">
+      <a href="#" class="btn btn-coral js-open-referral" style="padding:16px 34px;font-size:16px">Submit a Referral</a>
     </div>
   </div>
   <div class="stats-strip">
@@ -595,9 +597,9 @@
 <div class="wrap">
   <div class="partners">
     <span class="cap">In collaboration with</span>
-    <span class="pchip">UNSW Ramaciotti Centre for Genomics</span>
-    <span class="pchip">UNSW RNA Institute</span>
-    <span class="pchip">University of Queensland</span>
+    <span class="pchip" style="background:var(--cream);padding:6px 10px"><img src="assets/Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics" style="height:48px;mix-blend-mode:multiply"></span>
+    <span class="pchip"><img src="assets/Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute" style="height:48px"></span>
+    <span class="pchip"><img src="assets/Logos/University of Queensland.png" alt="University of Queensland" style="height:48px"></span>
   </div>
 </div>
 
@@ -610,8 +612,7 @@
     </div>
     <div class="footer-links">
       <h5>PRODUCT</h5>
-      <a href="/#process">How it works</a>
-      <a href="#">The science</a>
+      <a href="/vet/">For Vets</a>
       <a href="/apply/">Apply</a>
     </div>
   </div>
