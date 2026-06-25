@@ -193,8 +193,12 @@
   .consent-row{display:flex;align-items:flex-start;gap:11px;background:var(--mint);border-radius:15px;padding:16px 18px;margin-top:24px}
   .consent-row input[type=checkbox]{margin-top:3px;width:16px;height:16px;accent-color:var(--green);flex-shrink:0;cursor:pointer}
   .consent-row label{font-size:12.5px;color:var(--ink);line-height:1.5;cursor:pointer}
+  .consent-warning{display:none;font-size:13px;color:var(--coral);font-weight:600;margin-top:8px}
+  .consent-warning.show{display:block}
 
   .form-submit-row{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:24px}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
   .form-note{font-size:12px;color:var(--muted)}
   .form-note a{color:var(--green);font-weight:600;text-decoration:none}
   .form-note a:hover{text-decoration:underline}
@@ -698,6 +702,7 @@
           <input type="checkbox" id="consent" name="consent" required>
           <label for="consent">I confirm the owner is aware this referral is being made and has consented to GAMGEE contacting them directly with their details provided above.</label>
         </div>
+        <div class="consent-warning" id="consent-warning">Please gain consent from the owner before applying for referral.</div>
 
         <div class="form-submit-row">
           <button type="submit" class="btn btn-coral">Submit referral
@@ -754,16 +759,23 @@
     e.preventDefault();
     
     var consent = document.getElementById('consent');
+    var consentWarning = document.getElementById('consent-warning');
     if(!consent.checked){
+      consentWarning.classList.add('show');
       consent.focus();
       consent.scrollIntoView({behavior:'smooth', block:'center'});
       return;
     }
+    consentWarning.classList.remove('show');
     
     if(!form.checkValidity()){
       form.reportValidity();
       return;
     }
+
+    var submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
 
     var fd = new FormData(form);
     var data = {};
