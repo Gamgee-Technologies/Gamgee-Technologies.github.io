@@ -236,6 +236,7 @@
     .mobile-menu .btn{display:inline-block;text-align:center}
   }
   @media(max-width:600px){
+    .tabs-outer{display:none}
     .steps-grid{grid-template-columns:1fr}
     .sci-cards{grid-template-columns:1fr}
     .tl-track{grid-template-columns:1fr}
@@ -665,9 +666,10 @@
               <label for="stage">Stage</label>
               <select id="stage" name="stage" required>
                 <option value="" disabled selected>Select one&hellip;</option>
-                <option>Local (confined to primary site)</option>
-                <option>Regional (nearby lymph nodes)</option>
-                <option>Metastatic (spread to distant organs)</option>
+                <option>Stage 1</option>
+                <option>Stage 2</option>
+                <option>Stage 3</option>
+                <option>Stage 4</option>
                 <option>Not yet staged</option>
               </select>
             </div>
