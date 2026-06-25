@@ -311,12 +311,26 @@
   @media(max-width:600px){
     .app-wrap h1{font-size:30px}
     .app-wrap{padding:32px 18px 60px}
-    .stepper-wrap{padding:20px 18px 0}
-    .stepper{gap:0;justify-content:space-between}
-    .step-item:not(:last-child)::after{width:20px;margin:0 2px}
-    .step-num{width:24px;height:24px;font-size:11px}
-    .step-label{font-size:10px;white-space:normal;text-align:center;line-height:1.2;max-width:60px}
-    .row2{grid-template-columns:1fr}
+    .fcard{padding:22px 18px 26px;margin-bottom:14px}
+    .fcard-label{margin-bottom:14px}
+
+    /* Stepper */
+    .stepper-wrap{padding:18px 18px 0}
+    .stepper{display:flex;gap:3px;align-items:center}
+    .step-item{gap:5px;align-items:center}
+    .step-item:not(:last-child)::after{content:'';display:block;width:12px;height:1px;background:var(--border);flex-shrink:0}
+    .step-item:nth-child(2)::after{width:22px}
+    .step-num{width:22px;height:22px;font-size:10px;flex-shrink:0}
+    .step-label{font-size:10px;white-space:normal;text-align:left;line-height:1.2;max-width:52px}
+    .step-item:nth-child(3) .step-label{max-width:48px}
+
+    /* Form gaps — uniform */
+    .fg{gap:5px;margin-bottom:14px}
+    .fg:last-child{margin-bottom:0}
+    .row2{grid-template-columns:1fr;gap:0;margin-bottom:0}
+    .row2 .fg{margin-bottom:14px}
+    .row2:last-child .fg:last-child{margin-bottom:0}
+
     .location-cards{grid-template-columns:1fr}
     .btn-row{flex-direction:column-reverse;align-items:stretch}
     .btn-row .btn{justify-content:center}
