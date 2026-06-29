@@ -61,13 +61,13 @@
   /* Hero */
   .vet-hero{padding:52px 0 20px;text-align:center}
   .vet-hero .eyebrow{color:var(--green);margin-bottom:12px}
-  .vet-hero h1{font-size:52px;font-weight:800;letter-spacing:-.025em;line-height:1.06;margin:0 auto 20px}
+  .vet-hero h1{font-size:62px;font-weight:800;letter-spacing:-.025em;line-height:1.06;margin:0 auto 20px;color:#3C014E}
   .vet-hero h1 .mark{display:inline-block;line-height:1;background:var(--yellow);border-radius:16px;padding:5px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
   .vet-hero h1 .hero-break{display:block;margin-top:0.1em}
   .vet-hero .lede{font-size:18px;color:var(--muted);max-width:36em;margin:0 auto;line-height:1.65}
 
   /* Stats strip */
-  .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:22px;overflow:hidden;margin:28px 0 14px}
+  .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:22px;overflow:hidden;margin:28px 0 32px}
   .stat-item{padding:28px 18px;text-align:center;border-right:1px solid var(--mint-d)}
   .stat-item:last-child{border-right:none}
   .stat-num{font-family:Poppins;font-size:38px;font-weight:800;color:var(--green);letter-spacing:-.02em;line-height:1}
@@ -91,10 +91,10 @@
   .brief-link:hover{color:#fff}
 
   /* Tabs */
-  .tabs-outer{padding:32px 0 0 25px}
-  .tabs{display:inline-flex;gap:4px;background:#fff;padding:6px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
-  .tab{padding:10px 24px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;color:var(--muted);transition:all .18s}
-  .tab.active{background:var(--green);color:#fff;box-shadow:0 4px 12px rgba(54,6,75,.25)}
+  .tabs-outer{padding:50px 0 28px;display:flex;justify-content:center}
+  .tabs{display:inline-flex;gap:6px;background:#fff;padding:8px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+  .tab{padding:14px 56px;border-radius:999px;font-size:17px;font-weight:600;text-decoration:none;color:var(--ink);transition:all .18s}
+  .tab.active{background:var(--coral);color:#fff;box-shadow:0 4px 12px rgba(219,73,73,.25)}
   .tab:hover:not(.active){color:var(--ink)}
 
   /* Process steps */
@@ -120,7 +120,7 @@
 
   /* Callout card */
   .callout{background:#fff;border-radius:22px;padding:28px 32px;display:grid;grid-template-columns:60px 1fr;gap:22px;align-items:start;margin-top:18px}
-  .callout-icon{width:52px;height:52px;border-radius:16px;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+  .callout-icon{width:52px;height:52px;border-radius:16px;background:#3C014E;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .callout h4{font-size:15px;font-weight:700;margin-bottom:7px}
   .callout p{font-size:14px;line-height:1.65;color:var(--muted)}
 
@@ -128,7 +128,7 @@
   .sci-diagram-wrap{margin:0 0 36px;border-radius:20px;overflow:hidden;border:1.5px solid var(--mint-d);background:#fff}
   .sci-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .sci-card{background:var(--mint);border-radius:22px;padding:28px}
-  .sci-card-icon{width:46px;height:46px;border-radius:14px;background:var(--mint-d);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+  .sci-card-icon{width:46px;height:46px;border-radius:14px;background:#75D1DC4D;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
   .sci-card h4{font-size:15px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
   .sci-card p{font-size:14px;line-height:1.65;color:var(--muted)}
 
@@ -292,7 +292,7 @@
 
 <!-- STATS -->
 <section class="wrap">
-  <div style="text-align:center;padding:20px 0 4px">
+  <div style="text-align:center;padding:0 0 4px;margin-top:-8px">
     <div class="enroll-pill" style="display:inline-flex">
       <span class="pulse"></span>
       Currently enrolling &middot; Sydney clinical trial &middot; 2026
@@ -396,17 +396,17 @@
     <div class="we-handle">
       <div class="we-handle-label">We handle everything in between</div>
       <div class="chips">
-        <span class="chip">&#x1F9EC;&nbsp; Whole-exome sequencing</span>
-        <span class="chip">&#x1F916;&nbsp; AI neoantigen analysis</span>
-        <span class="chip">&#x2697;&#xFE0F;&nbsp; mRNA vaccine design</span>
-        <span class="chip">&#x1F3ED;&nbsp; GMP manufacturing</span>
-        <span class="chip">&#x1F9CA;&nbsp; Cold-chain delivery</span>
-        <span class="chip">&#x1F4CA;&nbsp; Outcome monitoring</span>
+        <span class="chip"><img src="../assets/icons/DNA.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Whole-exome sequencing</span>
+        <span class="chip"><img src="../assets/icons/Robot.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> AI neoantigen analysis</span>
+        <span class="chip"><img src="../assets/icons/Flask.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> mRNA vaccine design</span>
+        <span class="chip"><img src="../assets/icons/Factory.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> GMP manufacturing</span>
+        <span class="chip"><img src="../assets/icons/Snowflake.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Cold-chain delivery</span>
+        <span class="chip"><img src="../assets/icons/Bar Chart.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Outcome monitoring</span>
       </div>
     </div>
 
     <div class="callout">
-      <div class="callout-icon">&#x1F52C;</div>
+      <div class="callout-icon"><img src="../assets/icons/Microscope.svg" alt="" style="width:26px;height:26px;filter:brightness(0) invert(1)"></div>
       <div>
         <h4>You make the final call on every vaccine design.</h4>
         <p>Before we proceed to manufacturing, you receive a full design report showing every candidate neoantigen, its confidence score and what including or excluding it means for the final sequence. Most reviews take under 20 minutes. The report is yours to keep regardless of whether you proceed.</p>
@@ -462,150 +462,72 @@
 
 <!-- SCIENCE SECTION -->
 <section class="wrap" id="science">
-  <div class="block block-white">
+  <div class="block block-white" style="padding-bottom:32px">
     <div class="eyebrow" style="color:var(--coral)">The Science</div>
     <h2 style="font-size:40px;font-weight:800;letter-spacing:-.025em;margin:12px 0 10px;line-height:1.12">Each vaccine is built from<br>the tumour's own blueprint.</h2>
     <p style="font-size:17px;color:var(--muted);max-width:46em;line-height:1.65;margin-bottom:36px">Every tumour carries mutations that healthy cells do not. These mutations produce surface markers called neoantigens, flags that exist only on cancer cells. We read those flags, encode them into mRNA, and give the immune system a precise target list.</p>
 
     <!-- SCIENCE DIAGRAM -->
-    <div class="sci-diagram-wrap">
-      <svg viewBox="0 0 870 288" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
-        <defs>
-          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#abad9f"/>
-          </marker>
-          <marker id="ah-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#75D1DC"/>
-          </marker>
-          <marker id="ah-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="rgba(54,6,75,.4)"/>
-          </marker>
-        </defs>
-        <rect width="870" height="288" fill="#F7F6E4"/>
-        <rect x="0"   y="0" width="273" height="288" fill="rgba(54,6,75,.05)"/>
-        <rect x="299" y="0" width="273" height="288" fill="rgba(219,73,73,.05)"/>
-        <rect x="598" y="0" width="272" height="288" fill="rgba(117,209,220,.1)"/>
-        <line x1="273" y1="18" x2="273" y2="270" stroke="#E0DECC" stroke-width="1"/>
-        <line x1="597" y1="18" x2="597" y2="270" stroke="#E0DECC" stroke-width="1"/>
-        <!-- Inter-panel arrows -->
-        <line x1="278" y1="148" x2="293" y2="148" stroke="#abad9f" stroke-width="2" marker-end="url(#ah)"/>
-        <line x1="576" y1="148" x2="591" y2="148" stroke="#abad9f" stroke-width="2" marker-end="url(#ah)"/>
-        <!-- Step badges -->
-        <rect x="12" y="12" width="52" height="22" rx="11" fill="rgba(54,6,75,.12)"/>
-        <text x="38" y="27" text-anchor="middle" font-family="Poppins" font-size="11" font-weight="700" fill="#36064B">01</text>
-        <rect x="311" y="12" width="52" height="22" rx="11" fill="rgba(219,73,73,.12)"/>
-        <text x="337" y="27" text-anchor="middle" font-family="Poppins" font-size="11" font-weight="700" fill="#DB4949">02</text>
-        <rect x="610" y="12" width="52" height="22" rx="11" fill="rgba(117,209,220,.3)"/>
-        <text x="636" y="27" text-anchor="middle" font-family="Poppins" font-size="11" font-weight="700" fill="#0F2E34">03</text>
-        <!-- Panel titles -->
-        <text x="136" y="26" text-anchor="middle" font-family="Poppins" font-size="13" font-weight="700" fill="#36064B">Sequence the DNA</text>
-        <text x="435" y="26" text-anchor="middle" font-family="Poppins" font-size="13" font-weight="700" fill="#16160B">Find the targets</text>
-        <text x="734" y="26" text-anchor="middle" font-family="Poppins" font-size="13" font-weight="700" fill="#16160B">Train the immune system</text>
-        <!-- PANEL 1: DNA ladder comparison -->
-        <text x="77" y="52" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="rgba(54,6,75,.55)">Healthy cell</text>
-        <line x1="56"  y1="60" x2="56"  y2="205" stroke="rgba(54,6,75,.3)"  stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="98"  y1="60" x2="98"  y2="205" stroke="rgba(54,6,75,.3)"  stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="56" y1="72"  x2="98" y2="72"  stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="88"  x2="98" y2="88"  stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="104" x2="98" y2="104" stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="120" x2="98" y2="120" stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="136" x2="98" y2="136" stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="152" x2="98" y2="152" stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="168" x2="98" y2="168" stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="184" x2="98" y2="184" stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <line x1="56" y1="200" x2="98" y2="200" stroke="rgba(54,6,75,.2)" stroke-width="1.8"/>
-        <text x="185" y="52" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#DB4949">Cancer cell</text>
-        <line x1="163" y1="60" x2="163" y2="205" stroke="rgba(219,73,73,.35)" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="208" y1="60" x2="208" y2="205" stroke="rgba(219,73,73,.35)" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="163" y1="72"  x2="208" y2="72"  stroke="rgba(219,73,73,.2)" stroke-width="1.8"/>
-        <line x1="163" y1="88"  x2="208" y2="88"  stroke="rgba(219,73,73,.2)" stroke-width="1.8"/>
-        <line x1="163" y1="104" x2="208" y2="104" stroke="#DB4949" stroke-width="2.5"/>
-        <circle cx="185" cy="104" r="6.5" fill="#DB4949"/>
-        <line x1="163" y1="120" x2="208" y2="120" stroke="rgba(219,73,73,.2)" stroke-width="1.8"/>
-        <line x1="163" y1="136" x2="208" y2="136" stroke="rgba(219,73,73,.2)" stroke-width="1.8"/>
-        <line x1="163" y1="152" x2="208" y2="152" stroke="#DB4949" stroke-width="2.5"/>
-        <circle cx="185" cy="152" r="6.5" fill="#DB4949"/>
-        <line x1="163" y1="168" x2="208" y2="168" stroke="rgba(219,73,73,.2)" stroke-width="1.8"/>
-        <line x1="163" y1="184" x2="208" y2="184" stroke="rgba(219,73,73,.2)" stroke-width="1.8"/>
-        <line x1="163" y1="200" x2="208" y2="200" stroke="rgba(219,73,73,.2)" stroke-width="1.8"/>
-        <line x1="213" y1="104" x2="232" y2="97" stroke="#DB4949" stroke-width="1" opacity=".7"/>
-        <text x="235" y="94" font-family="Inter" font-size="9" font-weight="700" fill="#DB4949">Mutation</text>
-        <line x1="213" y1="152" x2="232" y2="159" stroke="#DB4949" stroke-width="1" opacity=".7"/>
-        <text x="235" y="163" font-family="Inter" font-size="9" font-weight="700" fill="#DB4949">Mutation</text>
-        <text x="136" y="228" text-anchor="middle" font-family="Inter" font-size="12" fill="#5b5f55">Tumour DNA is compared to healthy</text>
-        <text x="136" y="244" text-anchor="middle" font-family="Inter" font-size="12" fill="#5b5f55">blood sample DNA.</text>
-        <text x="136" y="262" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#36064B">Unique mutations become the targets</text>
-        <!-- PANEL 2: Ranked neoantigen list -->
-        <rect x="315" y="50"  width="248" height="38" rx="9" fill="rgba(219,73,73,.12)"/>
-        <rect x="315" y="50"  width="4"   height="38" rx="2" fill="#DB4949"/>
-        <circle cx="567" cy="69" r="13" fill="#DB4949" opacity=".15"/>
-        <text x="567" y="74" text-anchor="middle" font-family="Poppins" font-size="12" font-weight="800" fill="#DB4949">1</text>
-        <text x="329" y="67" font-family="Inter" font-size="12" font-weight="700" fill="#DB4949">KRAS G12V</text>
-        <text x="329" y="80" font-family="Inter" font-size="10" fill="rgba(219,73,73,.8)">Score 94 &middot; High immunogenicity</text>
-        <rect x="315" y="96"  width="248" height="34" rx="8" fill="rgba(0,0,0,.04)"/>
-        <rect x="315" y="96"  width="3.5" height="34" rx="1.5" fill="rgba(54,6,75,.25)"/>
-        <text x="329" y="116" font-family="Inter" font-size="11" fill="rgba(54,6,75,.65)">PIK3CA H1047R &middot; Score 81</text>
-        <rect x="315" y="137" width="248" height="34" rx="8" fill="rgba(0,0,0,.04)"/>
-        <rect x="315" y="137" width="3.5" height="34" rx="1.5" fill="rgba(54,6,75,.18)"/>
-        <text x="329" y="157" font-family="Inter" font-size="11" fill="rgba(54,6,75,.45)">TP53 R248W &middot; Score 72</text>
-        <rect x="315" y="178" width="248" height="34" rx="8" fill="rgba(0,0,0,.04)"/>
-        <rect x="315" y="178" width="3.5" height="34" rx="1.5" fill="rgba(54,6,75,.1)"/>
-        <text x="329" y="198" font-family="Inter" font-size="11" fill="rgba(54,6,75,.25)">CDKN2A &middot; Score 49</text>
-        <text x="435" y="228" text-anchor="middle" font-family="Inter" font-size="12" fill="#5b5f55">Thousands of somatic mutations ranked</text>
-        <text x="435" y="244" text-anchor="middle" font-family="Inter" font-size="12" fill="#5b5f55">by binding affinity and immunogenicity.</text>
-        <text x="435" y="262" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#36064B">Models trained on canine biology, not human</text>
-        <!-- PANEL 3: mRNA + immune response -->
-        <text x="734" y="51" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#0F2E34">mRNA sequence (codon-optimised)</text>
-        <path d="M 612 72 Q 626 58 640 72 Q 654 86 668 72 Q 682 58 696 72 Q 710 86 724 72 Q 738 58 752 72 Q 766 86 780 72 Q 794 58 808 72 Q 822 86 836 72 Q 850 58 864 72"
-              stroke="#75D1DC" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <line x1="720" y1="78" x2="720" y2="106" stroke="#75D1DC" stroke-width="1.8" stroke-dasharray="3 3" marker-end="url(#ah-teal)"/>
-        <circle cx="672" cy="153" r="36" fill="rgba(219,73,73,.09)" stroke="#DB4949" stroke-width="1.8"/>
-        <rect x="665" y="116" width="8"  height="18" rx="3" fill="#DB4949" opacity=".65"/>
-        <rect x="661" y="114" width="16" height="6"  rx="2" fill="#DB4949" opacity=".5"/>
-        <text x="672" y="157" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="rgba(16,16,11,.55)">cancer</text>
-        <text x="672" y="168" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="rgba(16,16,11,.55)">cell</text>
-        <circle cx="800" cy="150" r="30" fill="rgba(54,6,75,.09)" stroke="#36064B" stroke-width="1.8"/>
-        <rect x="793" y="119" width="8"  height="16" rx="3" fill="rgba(54,6,75,.55)"/>
-        <rect x="789" y="117" width="16" height="6"  rx="2" fill="rgba(54,6,75,.35)"/>
-        <text x="800" y="153" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="rgba(54,6,75,.7)">T-cell</text>
-        <text x="800" y="163" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="rgba(54,6,75,.7)">activated</text>
-        <path d="M 769 150 L 710 152" stroke="rgba(54,6,75,.35)" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#ah-dark)"/>
-        <text x="740" y="143" text-anchor="middle" font-family="Inter" font-size="9" fill="rgba(54,6,75,.5)" font-style="italic">recognises flag</text>
-        <text x="734" y="228" text-anchor="middle" font-family="Inter" font-size="12" fill="#5b5f55">mRNA instructs the dog's own cells to</text>
-        <text x="734" y="244" text-anchor="middle" font-family="Inter" font-size="12" fill="#5b5f55">display the neoantigen flags briefly.</text>
-        <text x="734" y="262" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#36064B">Immune system learns the target and attacks</text>
-      </svg>
+    <div class="sci-diagram-wrap" style="background:var(--coral);border-color:var(--coral);border-radius:24px">
+      <div style="padding:32px 24px">
+        <div class="sci-cards" style="margin-bottom:0">
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">01</div><h4 style="display:inline;vertical-align:middle">Sequence the DNA</h4>
+            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
+              <img src="../assets/vet/sequence_dna.png" alt="Sequence the DNA" style="width:100%;height:100%;object-fit:contain">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Tumour DNA is compared to healthy blood sample DNA.<br><strong style="color:var(--ink)">Unique mutations become the targets</strong></p>
+          </div>
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">02</div><h4 style="display:inline;vertical-align:middle">Find the targets</h4>
+            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
+              <img src="../assets/vet/find_targets.png" alt="Find the targets" style="width:100%;height:100%;object-fit:contain">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Thousands of somatic mutations ranked by binding affinity and immunogenicity. <strong style="color:var(--ink)">Models trained on canine biology, not human</strong></p>
+          </div>
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">03</div><h4 style="display:inline;vertical-align:middle">Train the immune system</h4>
+            <div style="text-align:left;height:160px;overflow:hidden;margin-top:14px">
+              <img src="../assets/vet/train_immune.png" alt="Train the immune system" style="width:100%;height:100%;object-fit:contain;object-position:left center">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">mRNA instructs the dog's own cells to display the neoantigen flags briefly. <strong style="color:var(--ink)">Immune system learns the target and attacks</strong></p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="sci-cards">
+    <div class="sci-cards" style="margin-top:18px">
       <div class="sci-card">
-        <div class="sci-card-icon">&#x1F9EC;</div>
+        <div class="sci-card-icon"><img src="../assets/icons/DNA.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
         <h4>Whole-exome sequencing</h4>
         <p>We compare DNA from the tumour biopsy against a matched blood sample. Only mutations present in the tumour, absent from healthy tissue, are candidate targets. Everything else is filtered out from the start.</p>
       </div>
       <div class="sci-card">
-        <div class="sci-card-icon">&#x1F3AF;</div>
+        <div class="sci-card-icon"><img src="../assets/icons/Target.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
         <h4>Neoantigen prioritisation</h4>
         <p>Our pipeline runs binding affinity predictions and immunogenicity scoring across all somatic mutations, using models trained on canine biology. The highest-confidence candidates are ranked and surfaced for your review before any manufacturing begins.</p>
       </div>
       <div class="sci-card">
-        <div class="sci-card-icon">&#x1F489;</div>
+        <div class="sci-card-icon"><img src="../assets/icons/Syringe.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
         <h4>mRNA delivery</h4>
         <p>Selected neoantigens are encoded into a codon-optimised mRNA sequence built for canine cells. When administered, the patient's cells briefly display cancer-specific markers, activating a targeted T-cell response directed only at tumour cells.</p>
+      </div>
+    </div>
+
+    <!-- Partner logos inside the white block -->
+    <div style="text-align:center;padding:0 0 2px;margin-top:36px">
+      <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--ink);margin-bottom:18px">In collaboration with</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap">
+        <img src="../assets/Logos/University of Queensland.png" alt="University of Queensland" style="height:44px">
+        <img src="../assets/Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics" style="height:44px">
+        <img src="../assets/Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute" style="height:44px">
       </div>
     </div>
   </div>
 </section>
 
-<!-- PARTNERS -->
-<div class="wrap">
-  <div class="partners">
-    <span class="cap">In collaboration with</span>
-    <span class="pchip" style="background:var(--cream);padding:6px 10px"><img src="../assets/Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics" style="height:48px;mix-blend-mode:multiply"></span>
-    <span class="pchip"><img src="../assets/Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute" style="height:48px"></span>
-    <span class="pchip"><img src="../assets/Logos/University of Queensland.png" alt="University of Queensland" style="height:48px"></span>
-  </div>
-</div>
+<!-- Spacer before footer -->
+<div style="height:24px"></div>
 
 <!-- FOOTER -->
 <footer>
