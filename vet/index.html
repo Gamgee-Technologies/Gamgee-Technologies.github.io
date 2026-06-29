@@ -150,12 +150,12 @@
   .legal a{color:var(--muted);text-decoration:none}
 
   /* Timeline */
-  .tl-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;padding-top:8px}
-  .tl-connector{position:absolute;top:34px;left:calc(12.5% + 2px);right:calc(12.5% + 2px);height:2px;background:var(--mint-d);z-index:0}
-  .tl-stage{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 20px;position:relative;z-index:1}
+  .tl-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;padding-top:8px;align-items:start}
+  .tl-connector{position:absolute;top:34px;left:26px;right:calc(25% - 26px);height:2px;background:var(--mint-d);z-index:0}
+  .tl-stage{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:0 20px;position:relative;z-index:1}
   .tl-node{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:800;font-size:15px;color:#fff;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.15);flex-shrink:0}
   .tl-dur{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-  .tl-name{font-family:Poppins;font-size:15px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em;line-height:1.25}
+  .tl-name{font-family:Poppins;font-size:15px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em;line-height:1.25;min-height:38px}
   .tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
 
   /* Referral modal */
@@ -423,36 +423,38 @@
     <p style="font-size:17px;color:var(--muted);max-width:42em;line-height:1.65;margin-bottom:52px">Indicative timings based on our first case. We share a more precise estimate with each referral once we have reviewed the case.</p>
 
     <!-- Horizontal timeline track -->
-    <div class="tl-track">
-      <!-- Connecting line sits behind nodes -->
-      <div class="tl-connector"></div>
+    <div style="background:#DFF5F2;border-radius:24px;padding:32px 24px">
+      <div class="tl-track">
+        <!-- Connecting line sits behind nodes -->
+        <div class="tl-connector"></div>
 
-      <div class="tl-stage">
-        <div class="tl-node" style="background:var(--green)">01</div>
-        <div class="tl-dur">Days 1-3</div>
-        <div class="tl-name">Sample to lab</div>
-        <div class="tl-desc">Kit ships to your clinic. Samples collected during your scheduled procedure and returned to our sequencing partner the same day.</div>
-      </div>
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--green)">01</div>
+          <div class="tl-dur">Days 1-3</div>
+          <div class="tl-name">Sample to lab</div>
+          <div class="tl-desc">Kit ships to your clinic. Samples collected during your scheduled procedure and returned to our sequencing partner the same day.</div>
+        </div>
 
-      <div class="tl-stage">
-        <div class="tl-node" style="background:var(--coral)">02</div>
-        <div class="tl-dur">Days 4-14</div>
-        <div class="tl-name">Sequencing and analysis</div>
-        <div class="tl-desc">Whole-exome sequencing and AI neoantigen ranking. A design report is prepared for your clinical review.</div>
-      </div>
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--coral)">02</div>
+          <div class="tl-dur">Days 4-14</div>
+          <div class="tl-name">Sequencing and analysis</div>
+          <div class="tl-desc">Whole-exome sequencing and AI neoantigen ranking. A design report is prepared for your clinical review.</div>
+        </div>
 
-      <div class="tl-stage">
-        <div class="tl-node" style="background:var(--yellow);color:#0F2E34">03</div>
-        <div class="tl-dur">Days 15-28</div>
-        <div class="tl-name">Design review and manufacturing</div>
-        <div class="tl-desc">You review and approve the neoantigen design. Our GMP partner manufactures the finalised mRNA sequence.</div>
-      </div>
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--yellow);color:#0F2E34">03</div>
+          <div class="tl-dur">Days 15-28</div>
+          <div class="tl-name">Design review and manufacturing</div>
+          <div class="tl-desc">You review and approve the neoantigen design. Our GMP partner manufactures the finalised mRNA sequence.</div>
+        </div>
 
-      <div class="tl-stage">
-        <div class="tl-node" style="background:var(--green-deep)">04</div>
-        <div class="tl-dur">Week 4+</div>
-        <div class="tl-name">Vaccine in hand</div>
-        <div class="tl-desc">Cold-chain delivery direct to your clinic, labeled with a printed dosing schedule. You administer on your timeline.</div>
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--green-deep)">04</div>
+          <div class="tl-dur">Week 4+</div>
+          <div class="tl-name">Vaccine in hand</div>
+          <div class="tl-desc">Cold-chain delivery direct to your clinic, labeled with a printed dosing schedule. You administer on your timeline.</div>
+        </div>
       </div>
     </div>
 
