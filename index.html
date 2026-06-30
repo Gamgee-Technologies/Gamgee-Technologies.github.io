@@ -151,6 +151,21 @@
   .press .cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-weight:700}
   .press .lg{font-size:19px;font-weight:800;color:#a6a89c}
 
+  /* PRESS TICKER */
+  .press-ticker{overflow:hidden;width:100%;position:relative;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
+            mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
+  }
+  .press-ticker-track{display:flex;gap:0;width:fit-content;padding:6px 0;
+    animation:ticker-scroll 45s linear infinite}
+  .press-ticker-track:hover{animation-play-state:paused}
+  .press-ticker-track a{display:flex;align-items:center;flex-shrink:0;text-decoration:none;margin-right:24px}
+  .press-ticker-track a img{height:48px;width:auto;max-width:180px;object-fit:contain;
+    filter:grayscale(1) brightness(1.5);opacity:.55;
+    transition:filter .35s ease,opacity .35s ease}
+  .press-ticker-track a:hover img{filter:grayscale(0) brightness(1);opacity:1}
+  @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
   /* PROCESS */
   .process .eyebrow{color:var(--ink)}
   .process h2{font-size:44px;font-weight:800;letter-spacing:-.025em;margin:12px 0 6px;color:var(--ink)}
@@ -178,8 +193,6 @@
   .card-split-bottom .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
   .card-split-bottom .partners img{height:48px;width:auto;max-width:180px;opacity:.65;object-fit:contain}
   .card-split-bottom .partners img[alt]{display:inline-block}
-  .card-split-bottom .press-imgs{display:flex;align-items:center;gap:30px;flex-wrap:wrap;justify-content:center}
-  .card-split-bottom .press-imgs img{height:48px;width:auto;max-width:180px;opacity:.65;object-fit:contain}
   .full-bleed .wrap{padding-left:16px;padding-right:16px}
   .dog-row{display:flex;gap:24px;flex-wrap:nowrap;justify-content:center;align-items:stretch;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin:18px -50vw 0;padding:0 16px;max-width:none;overflow:hidden}
   .dog-row img{height:400px;width:calc((100% - 72px)/4);min-width:220px;aspect-ratio:3/4;object-fit:cover;object-position:center center;border-radius:18px;background:#fff;flex:0 0 auto}
@@ -311,15 +324,16 @@
     .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
 
     /* Press logos */
-    .press-imgs{gap:8px !important;flex-wrap:nowrap !important;overflow-x:hidden;justify-content:center}
-    .card-split-bottom .partners img,.card-split-bottom .press-imgs img{height:20px;max-width:60px}
+    .card-split-bottom .partners img{height:20px;max-width:60px}
+    .press-ticker-track a{margin-right:18px}
+    .press-ticker-track{animation-duration:30s}
+    .press-ticker-track a img{height:34px;max-width:120px}
 
     /* Partners chips */
     .partners .chip{padding:7px 14px;font-size:12px}
   }
 
   @media(max-width:560px){
-    .press-imgs{flex-wrap:wrap !important;overflow-x:visible}
     .steps{grid-template-columns:1fr}
     .step .num-title{flex-direction:row;min-height:0}
     .step .num{width:36px;height:36px;font-size:14px}
@@ -330,7 +344,10 @@
     .intro-copy h3{font-size:22px}
     .intro-copy__location p{font-size:12px}
     .dog-row img{height:160px}
-    .card-split-bottom .partners img,.card-split-bottom .press-imgs img{height:22px;max-width:70px}
+    .card-split-bottom .partners img{height:22px;max-width:70px}
+    .press-ticker-track a{margin-right:12px}
+    .press-ticker-track{animation-duration:25s}
+    .press-ticker-track a img{height:26px;max-width:80px}
   }
 
   /* ── MODALS ── */
@@ -580,12 +597,46 @@
     </div>
     <div class="card-split-bottom">
       <div class="cap">As covered in</div>
-      <div class="press-imgs">
-        <img src="assets/Logos/IBTimes.png" alt="IBTimes">
-        <img src="assets/Logos/Yahoo!_Finance_logo_2021.png" alt="Yahoo Finance">
-        <img src="assets/Logos/UNSW Sydney.png" alt="UNSW">
-        <img src="assets/Logos/inc.png" alt="Inc.">
-        <img src="assets/Logos/the-australian-newspaper-logo-png-transparent.png" alt="The Australian">
+      <div class="press-ticker">
+        <div class="press-ticker-track">
+          <a href="https://www.theaustralian.com.au/business/technology/tech-boss-uses-ai-and-chatgpt-to-create-cancer-vaccine-for-his-dying-dog/news-story/292a21bcbe93efa17810bfcfcdfadbf7" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-australian.png" alt="The Australian"></a>
+          <a href="https://www.abc.net.au/news/2026-06-22/australian-dog-cancer-treated-via-mrna-vaccine-and-ai/106692668" target="_blank" rel="noopener"><img src="assets/LogosMedia/abc-news-australia.png" alt="ABC News Australia"></a>
+          <a href="https://news.unsw.edu.au/en/meet-the-man-who-designed-a-cancer-vaccine-for-his-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/unsw-sydney.png" alt="UNSW Sydney"></a>
+          <a href="https://fortune.com/2026/03/15/australian-tech-entrepreneur-ai-cancer-vaccine-dog-rosie-unsw-mrna/" target="_blank" rel="noopener"><img src="assets/LogosMedia/fortune.png" alt="Fortune"></a>
+          <a href="https://www.the-scientist.com/chatgpt-and-alphafold-help-design-personalized-vaccine-for-dog-with-cancer-74227" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-scientist.png" alt="The Scientist"></a>
+          <a href="https://www.ibtimes.co.uk/sydney-data-engineer-mrna-cancer-vaccine-dog-1785607" target="_blank" rel="noopener"><img src="assets/LogosMedia/ibtimes-uk.png" alt="IBTimes UK"></a>
+          <a href="https://finance.yahoo.com/news/mans-dog-riddled-tumors-dying-210500037.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo-finance.png" alt="Yahoo Finance"></a>
+          <a href="https://www.youtube.com/watch?v=14SgyUhSIGQ" target="_blank" rel="noopener"><img src="assets/LogosMedia/nbc-news.png" alt="NBC News"></a>
+          <a href="https://economictimes.indiatimes.com/magazines/panache/watching-his-dog-slowly-die-techie-refused-to-give-up-then-he-used-ai-and-created-a-custom-cancer-vaccine-for-his-pet-friend/articleshow/129594086.cms" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-economic-times.png" alt="The Economic Times"></a>
+          <a href="https://theconversation.com/a-man-used-ai-to-help-make-a-cancer-vaccine-for-his-dog-an-oncologist-urges-caution-278735" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-conversation.png" alt="The Conversation"></a>
+          <a href="https://reason.com/2026/03/19/man-successfully-designs-mrna-vaccine-to-treat-his-dogs-cancer/" target="_blank" rel="noopener"><img src="assets/LogosMedia/reason.png" alt="Reason"></a>
+          <a href="https://www.dawn.com/news/1982334" target="_blank" rel="noopener"><img src="assets/LogosMedia/dawn.png" alt="Dawn"></a>
+          <a href="https://www.cancerhealth.com/article/man-cures-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/cancer-health.png" alt="Cancer Health"></a>
+          <a href="https://ia.acs.org.au/article/2026/australian-uses-ai-to-design-cancer-vaccine-for-his-dog.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/acs-information-age.png" alt="ACS Information Age"></a>
+          <a href="https://www.geo.tv/latest/657755-one-man-his-dog-and-chatgpt-australias-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/geo-tv.png" alt="Geo TV"></a>
+          <a href="https://www.tbpndigest.com/story/2026-03-16/ai-assisted-dog-cancer-vaccine-goes-viral-what-actually-happened-with-paul-conyngham-and-rosie" target="_blank" rel="noopener"><img src="assets/LogosMedia/tbpn-digest.png" alt="TBPN Digest"></a>
+          <a href="https://www.thestar.com.my/tech/tech-news/2026/03/30/one-man-his-dog-and-chatgpt-australia039s-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-star-malaysia.png" alt="The Star Malaysia"></a>
+          <a href="https://uk.news.yahoo.com/solved-dog-cancer-three-ai-101000928.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo.png" alt="Yahoo News UK"></a>
+          <!-- duplicate set for seamless loop -->
+          <a href="https://www.theaustralian.com.au/business/technology/tech-boss-uses-ai-and-chatgpt-to-create-cancer-vaccine-for-his-dying-dog/news-story/292a21bcbe93efa17810bfcfcdfadbf7" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-australian.png" alt="The Australian"></a>
+          <a href="https://www.abc.net.au/news/2026-06-22/australian-dog-cancer-treated-via-mrna-vaccine-and-ai/106692668" target="_blank" rel="noopener"><img src="assets/LogosMedia/abc-news-australia.png" alt="ABC News Australia"></a>
+          <a href="https://news.unsw.edu.au/en/meet-the-man-who-designed-a-cancer-vaccine-for-his-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/unsw-sydney.png" alt="UNSW Sydney"></a>
+          <a href="https://fortune.com/2026/03/15/australian-tech-entrepreneur-ai-cancer-vaccine-dog-rosie-unsw-mrna/" target="_blank" rel="noopener"><img src="assets/LogosMedia/fortune.png" alt="Fortune"></a>
+          <a href="https://www.the-scientist.com/chatgpt-and-alphafold-help-design-personalized-vaccine-for-dog-with-cancer-74227" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-scientist.png" alt="The Scientist"></a>
+          <a href="https://www.ibtimes.co.uk/sydney-data-engineer-mrna-cancer-vaccine-dog-1785607" target="_blank" rel="noopener"><img src="assets/LogosMedia/ibtimes-uk.png" alt="IBTimes UK"></a>
+          <a href="https://finance.yahoo.com/news/mans-dog-riddled-tumors-dying-210500037.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo-finance.png" alt="Yahoo Finance"></a>
+          <a href="https://www.youtube.com/watch?v=14SgyUhSIGQ" target="_blank" rel="noopener"><img src="assets/LogosMedia/nbc-news.png" alt="NBC News"></a>
+          <a href="https://economictimes.indiatimes.com/magazines/panache/watching-his-dog-slowly-die-techie-refused-to-give-up-then-he-used-ai-and-created-a-custom-cancer-vaccine-for-his-pet-friend/articleshow/129594086.cms" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-economic-times.png" alt="The Economic Times"></a>
+          <a href="https://theconversation.com/a-man-used-ai-to-help-make-a-cancer-vaccine-for-his-dog-an-oncologist-urges-caution-278735" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-conversation.png" alt="The Conversation"></a>
+          <a href="https://reason.com/2026/03/19/man-successfully-designs-mrna-vaccine-to-treat-his-dogs-cancer/" target="_blank" rel="noopener"><img src="assets/LogosMedia/reason.png" alt="Reason"></a>
+          <a href="https://www.dawn.com/news/1982334" target="_blank" rel="noopener"><img src="assets/LogosMedia/dawn.png" alt="Dawn"></a>
+          <a href="https://www.cancerhealth.com/article/man-cures-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/cancer-health.png" alt="Cancer Health"></a>
+          <a href="https://ia.acs.org.au/article/2026/australian-uses-ai-to-design-cancer-vaccine-for-his-dog.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/acs-information-age.png" alt="ACS Information Age"></a>
+          <a href="https://www.geo.tv/latest/657755-one-man-his-dog-and-chatgpt-australias-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/geo-tv.png" alt="Geo TV"></a>
+          <a href="https://www.tbpndigest.com/story/2026-03-16/ai-assisted-dog-cancer-vaccine-goes-viral-what-actually-happened-with-paul-conyngham-and-rosie" target="_blank" rel="noopener"><img src="assets/LogosMedia/tbpn-digest.png" alt="TBPN Digest"></a>
+          <a href="https://www.thestar.com.my/tech/tech-news/2026/03/30/one-man-his-dog-and-chatgpt-australia039s-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-star-malaysia.png" alt="The Star Malaysia"></a>
+          <a href="https://uk.news.yahoo.com/solved-dog-cancer-three-ai-101000928.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo.png" alt="Yahoo News UK"></a>
+        </div>
       </div>
     </div>
   </div>
