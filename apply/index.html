@@ -376,12 +376,12 @@
 <div class="step-screen active" id="screen-1">
   <p class="eyebrow">Register Interest</p>
   <h1>Where is your dog?</h1>
-  <p class="lede">We're currently running our first trial in Sydney, Australia. Tell us where you're based and we'll show you the right path.</p>
+  <p class="lede">We're currently running our first trial in Australia. Tell us where you're based and we'll show you the right path.</p>
 
   <div class="location-cards">
-    <div class="loc-card" id="loc-sydney" onclick="selectLocation('sydney')">
-      <h3>Sydney, Australia</h3>
-      <p>We are actively selecting dogs for our Phase 1 trial. Apply now to be considered.</p>
+    <div class="loc-card" id="loc-australia" onclick="selectLocation('australia')">
+      <h3>Australia</h3>
+      <p>We are actively selecting dogs for our trial. Apply now to be considered.</p>
       <div class="loc-cta primary">Accepting applications →</div>
     </div>
     <div class="loc-card" id="loc-elsewhere" onclick="selectLocation('elsewhere')">
@@ -395,13 +395,13 @@
 </div>
 
 <!-- ════════════════════════════════
-     STEP 2A — YOUR DOG (SYDNEY)
+     STEP 2A — YOUR DOG (AUSTRALIA)
 ════════════════════════════════ -->
 <div class="step-screen" id="screen-2-sydney">
   <h1>Tell us about you</h1>
   <p class="lede">We review every application personally. The more you share, the faster we can tell you whether GAMGEE is a fit — and what a vaccine could look like for your dog.</p>
 
-  <div class="val-banner" id="val-sydney">Please enter your email address and let us know how you'd like to be contacted before continuing.</div>
+  <div class="val-banner" id="val-australia">Please enter your email address and let us know how you'd like to be contacted before continuing.</div>
 
   <div class="fcard">
     <div class="fcard-label">Your contact details</div>
@@ -420,6 +420,16 @@
       <label for="s-owner-phone">Phone <span class="opt">(optional)</span></label>
       <input type="tel" id="s-owner-phone" placeholder="+61 4XX XXX XXX">
       <span class="field-error" id="s-phone-err">Please enter your phone number for WhatsApp or Phone Call.</span>
+    </div>
+    <div class="row2">
+      <div class="fg">
+        <label for="s-country">Country</label>
+        <input type="text" id="s-country" value="Australia" readonly style="background:#f5f4ee;color:#5b5f55;cursor:not-allowed">
+      </div>
+      <div class="fg">
+        <label for="s-city">City / Region <span class="opt">(optional)</span></label>
+        <input type="text" id="s-city" placeholder="e.g. Sydney, Melbourne, Brisbane">
+      </div>
     </div>
     <div class="fg">
       <label>How would you like to be contacted?</label>
@@ -467,7 +477,7 @@
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Back
     </button>
-    <button class="btn btn-primary" onclick="validateAndContinue('sydney')">
+    <button class="btn btn-primary" onclick="validateAndContinue('australia')">
       Continue
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
@@ -727,8 +737,8 @@
   let formData = {};
 
   function captureFormData() {
-    const isSydney = selectedLocation === 'sydney';
-    const p = isSydney ? 's' : 'e';
+    const isAustralia = selectedLocation === 'australia';
+    const p = isAustralia ? 's' : 'e';
     formData = {
       // ── Contact ──
       name:        val(p + '-owner-name'),
@@ -736,9 +746,9 @@
       phone:       val(p + '-owner-phone'),
       contactPref: (document.querySelector('input[name="' + p + '-contact-pref"]:checked') || {}).value || '',
       // ── Location ──
-      isSydney:    isSydney,
-      country:     isSydney ? 'Australia' : val('e-country'),
-      city:        isSydney ? 'Sydney' : val('e-city'),
+      isAustralia: isAustralia,
+      country:     isAustralia ? 'Australia' : val('e-country'),
+      city:        isAustralia ? val('s-city') : val('e-city'),
       // ── Dog ──
       dogName:     val(p + '-dog-name'),
       dogBreed:    val(p + '-dog-breed'),
@@ -777,7 +787,7 @@
       name: d.name || '',
       phone: d.phone || '',
       contactPref: d.contactPref || '',
-      location: d.isSydney ? 'sydney' : 'elsewhere',
+      location: d.isAustralia ? 'australia' : 'elsewhere',
       country: d.country || '',
       city: d.city || '',
       dogName: d.dogName || '',
@@ -861,7 +871,7 @@
 
   // ── VALIDATION (step 2) ──
   function validateAndContinue(flow) {
-    const prefix = flow === 'sydney' ? 's' : 'e';
+    const prefix = flow === 'australia' ? 's' : 'e';
     const emailEl = document.getElementById(prefix + '-owner-email');
     const phoneEl = document.getElementById(prefix + '-owner-phone');
     const contactChecked = document.querySelector('input[name="' + prefix + '-contact-pref"]:checked');
@@ -1010,7 +1020,7 @@
     html += row('Email', d.email);
     html += rowIf('Phone', d.phone);
     html += row('Contact preference', d.contactPref);
-    html += row('Location', locationStr || (d.isSydney ? 'Sydney, Australia' : ''));
+    html += row('Location', locationStr || (d.isAustralia ? 'Australia' : ''));
 
     // ── Dog ──
     html += row("Dog's name", d.dogName);
