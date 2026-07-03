@@ -50,15 +50,15 @@
   .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.08)}
 
 
-  /* ── DNA helix ribbon: fixed vertical strip down the right ── */
+  /* ── DNA helix ribbon: centered between the hero highlight and header Apply button ── */
   #helix{
-    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2)); width:var(--strip); height:100vh; z-index:0;
+    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2 + 220px - var(--strip)/2)); width:var(--strip); height:100vh; z-index:0;
     opacity:1; pointer-events:none;
     -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
             mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
   }
   #helix-loader{
-    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2)); width:var(--strip); height:100vh; z-index:0; pointer-events:none;
+    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2 + 220px - var(--strip)/2)); width:var(--strip); height:100vh; z-index:0; pointer-events:none;
     display:flex; align-items:center; justify-content:center; opacity:.55; transition:opacity .6s;
   }
   .spinner{width:30px;height:30px;border:2px solid rgba(219,73,73,0.18);border-top-color:var(--coral);border-radius:50%;animation:sp .9s linear infinite;}
@@ -176,7 +176,7 @@
             mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
   }
   .press-ticker-track{display:flex;gap:0;width:fit-content;padding:6px 0;
-    animation:ticker-scroll 45s linear infinite}
+    animation:ticker-scroll 60s linear infinite}
   .press-ticker-track:hover{animation-play-state:paused}
   .press-ticker-track a{display:flex;align-items:center;flex-shrink:0;text-decoration:none;margin-right:24px}
   .press-ticker-track a img{height:48px;width:auto;max-width:180px;object-fit:contain;
@@ -346,7 +346,7 @@
     /* Press logos */
     .card-split-bottom .partners img{height:20px;max-width:60px}
     .press-ticker-track a{margin-right:18px}
-    .press-ticker-track{animation-duration:30s}
+    .press-ticker-track{animation-duration:40s}
     .press-ticker-track a img{height:34px;max-width:120px}
 
     /* Partners chips */
@@ -366,7 +366,7 @@
     .dog-row img{height:160px}
     .card-split-bottom .partners img{height:22px;max-width:70px}
     .press-ticker-track a{margin-right:12px}
-    .press-ticker-track{animation-duration:25s}
+    .press-ticker-track{animation-duration:35s}
     .press-ticker-track a img{height:26px;max-width:80px}
   }
 
@@ -640,6 +640,17 @@
           <a href="https://www.cnbctv18.com/technology/australian-man-uses-chatgpt-to-fight-dogs-cancer-sam-altman-calls-it-amazing-story-ws-l-19876339.htm" target="_blank" rel="noopener"><img src="assets/LogosMedia/cnbc.svg" alt="CNBC-TV18"></a>
           <a href="https://www.youtube.com/watch?v=MUqI_su1Cus" target="_blank" rel="noopener"><img src="assets/LogosMedia/hank-green.svg" alt="Hank Green"></a>
           <a href="https://www.youtube.com/watch?v=E0V8NAtLNRg" target="_blank" rel="noopener"><img src="assets/LogosMedia/core-memory-podcast.png" alt="Core Memory Podcast"></a>
+          <a href="https://www.youtube.com/watch?v=USEhHrY5ZEU" target="_blank" rel="noopener"><img src="assets/LogosMedia/cbs-news.png" alt="CBS News"></a>
+          <a href="https://www.infzm.com/contents/317926" target="_blank" rel="noopener"><img src="assets/LogosMedia/infzm.png" alt="INFZM"></a>
+          <a href="https://www.dailymail.com/news/article-15644819/paul-conyngham-dog-vaccine-cancer.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/daily-mail.png" alt="Daily Mail"></a>
+          <a href="https://nypost.com/2026/03/16/health/tech-pro-saves-his-dying-dog-by-using-chatgpt-to-code-a-custom-cancer-vaccine/" target="_blank" rel="noopener"><img src="assets/LogosMedia/new-york-post.png" alt="New York Post"></a>
+          <a href="https://www.youtube.com/watch?v=COYSRbF1F-Y" target="_blank" rel="noopener"><img src="assets/LogosMedia/today-show.png" alt="TODAY Show"></a>
+          <a href="https://youtu.be/-VrzRGXVZ6s?si=V9KcAntKt4DnMlqT&amp;t=739" target="_blank" rel="noopener"><img src="assets/LogosMedia/KBS.svg" alt="KBS"></a>
+          <a href="https://www.techradar.com/ai-platforms-assistants/a-guy-who-was-not-an-expert-used-chatgpt-to-make-a-custom-mrna-vaccine-for-his-dogs-cancer-and-other-incredible-tales-from-sam-altman" target="_blank" rel="noopener"><img src="assets/LogosMedia/techradar.svg" alt="TechRadar"></a>
+          <a href="https://www.ndtv.com/feature/australian-entrepreneur-uses-chatgpt-to-create-customised-vaccine-to-cure-dogs-cancer-11219043" target="_blank" rel="noopener"><img src="assets/LogosMedia/NDTV.png" alt="NDTV"></a>
+          <a href="https://www.indiatoday.in/technology/news/story/man-uses-chatgpt-and-alphafold-to-build-diy-mrna-cancer-vaccine-saves-dog-2882198-2026-03-15" target="_blank" rel="noopener"><img src="assets/LogosMedia/india-today.png" alt="India Today"></a>
+          <a href="https://www.hindustantimes.com/world-news/us-news/who-is-paul-conyngham-australian-tech-expert-creates-first-personalized-cancer-vaccine-for-his-dog-using-chatgpt-101773578023974.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/hindustan-times.svg" alt="Hindustan Times"></a>
+          <a href="https://www.newsweek.com/owner-no-medical-background-invents-cure-dogs-terminal-cancer-11684882" target="_blank" rel="noopener"><img src="assets/LogosMedia/newsweek.png" alt="Newsweek"></a>
           <!-- duplicate set for seamless loop -->
           <a href="https://www.theaustralian.com.au/business/technology/tech-boss-uses-ai-and-chatgpt-to-create-cancer-vaccine-for-his-dying-dog/news-story/292a21bcbe93efa17810bfcfcdfadbf7" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-australian.png" alt="The Australian"></a>
           <a href="https://www.abc.net.au/news/2026-06-22/australian-dog-cancer-treated-via-mrna-vaccine-and-ai/106692668" target="_blank" rel="noopener"><img src="assets/LogosMedia/abc-news-australia.png" alt="ABC News Australia"></a>
@@ -662,6 +673,17 @@
           <a href="https://www.cnbctv18.com/technology/australian-man-uses-chatgpt-to-fight-dogs-cancer-sam-altman-calls-it-amazing-story-ws-l-19876339.htm" target="_blank" rel="noopener"><img src="assets/LogosMedia/cnbc.svg" alt="CNBC-TV18"></a>
           <a href="https://www.youtube.com/watch?v=MUqI_su1Cus" target="_blank" rel="noopener"><img src="assets/LogosMedia/hank-green.svg" alt="Hank Green"></a>
           <a href="https://www.youtube.com/watch?v=E0V8NAtLNRg" target="_blank" rel="noopener"><img src="assets/LogosMedia/core-memory-podcast.png" alt="Core Memory Podcast"></a>
+          <a href="https://www.youtube.com/watch?v=USEhHrY5ZEU" target="_blank" rel="noopener"><img src="assets/LogosMedia/cbs-news.png" alt="CBS News"></a>
+          <a href="https://www.infzm.com/contents/317926" target="_blank" rel="noopener"><img src="assets/LogosMedia/infzm.png" alt="INFZM"></a>
+          <a href="https://www.dailymail.com/news/article-15644819/paul-conyngham-dog-vaccine-cancer.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/daily-mail.png" alt="Daily Mail"></a>
+          <a href="https://nypost.com/2026/03/16/health/tech-pro-saves-his-dying-dog-by-using-chatgpt-to-code-a-custom-cancer-vaccine/" target="_blank" rel="noopener"><img src="assets/LogosMedia/new-york-post.png" alt="New York Post"></a>
+          <a href="https://www.youtube.com/watch?v=COYSRbF1F-Y" target="_blank" rel="noopener"><img src="assets/LogosMedia/today-show.png" alt="TODAY Show"></a>
+          <a href="https://youtu.be/-VrzRGXVZ6s?si=V9KcAntKt4DnMlqT&amp;t=739" target="_blank" rel="noopener"><img src="assets/LogosMedia/KBS.svg" alt="KBS"></a>
+          <a href="https://www.techradar.com/ai-platforms-assistants/a-guy-who-was-not-an-expert-used-chatgpt-to-make-a-custom-mrna-vaccine-for-his-dogs-cancer-and-other-incredible-tales-from-sam-altman" target="_blank" rel="noopener"><img src="assets/LogosMedia/techradar.svg" alt="TechRadar"></a>
+          <a href="https://www.ndtv.com/feature/australian-entrepreneur-uses-chatgpt-to-create-customised-vaccine-to-cure-dogs-cancer-11219043" target="_blank" rel="noopener"><img src="assets/LogosMedia/NDTV.png" alt="NDTV"></a>
+          <a href="https://www.indiatoday.in/technology/news/story/man-uses-chatgpt-and-alphafold-to-build-diy-mrna-cancer-vaccine-saves-dog-2882198-2026-03-15" target="_blank" rel="noopener"><img src="assets/LogosMedia/india-today.png" alt="India Today"></a>
+          <a href="https://www.hindustantimes.com/world-news/us-news/who-is-paul-conyngham-australian-tech-expert-creates-first-personalized-cancer-vaccine-for-his-dog-using-chatgpt-101773578023974.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/hindustan-times.svg" alt="Hindustan Times"></a>
+          <a href="https://www.newsweek.com/owner-no-medical-background-invents-cure-dogs-terminal-cancer-11684882" target="_blank" rel="noopener"><img src="assets/LogosMedia/newsweek.png" alt="Newsweek"></a>
         </div>
       </div>
     </div>
@@ -977,6 +999,27 @@
 !async function(){
   const el = document.getElementById('helix');
   if (!window.THREE || !el) return;
+  const loaderEl = document.getElementById('helix-loader');
+
+  function alignHelix(){
+    if (window.innerWidth <= 900){
+      el.style.right = '';
+      if (loaderEl) loaderEl.style.right = '';
+      return;
+    }
+    const mark = document.querySelector('.hero h1 .mark');
+    const apply = document.querySelector('.navlinks .btn[href="/apply/"]');
+    if (!mark || !apply) return;
+    const strip = el.getBoundingClientRect().width || el.clientWidth;
+    const leftRef = mark.getBoundingClientRect().right;
+    const rightRef = apply.getBoundingClientRect().right;
+    const center = (leftRef + rightRef) / 2;
+    const right = Math.max(0, window.innerWidth - center - strip / 2);
+    el.style.right = `${right}px`;
+    if (loaderEl) loaderEl.style.right = `${right}px`;
+  }
+
+  alignHelix();
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W = el.clientWidth, H = el.clientHeight;
 
@@ -1079,6 +1122,7 @@
   })();
 
   window.addEventListener('resize', ()=>{
+    alignHelix();
     W=el.clientWidth; H=el.clientHeight;
     cam.aspect=W/H; cam.updateProjectionMatrix(); ren.setSize(W,H);
     onScroll();

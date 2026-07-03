@@ -402,7 +402,7 @@
   <h1>Tell us about you</h1>
   <p class="lede">We review every application personally. The more you share, the faster we can tell you whether GAMGEE is a fit — and what a vaccine could look like for your dog.</p>
 
-  <div class="val-banner" id="val-australia">Please enter your email address and let us know how you'd like to be contacted before continuing.</div>
+  <div class="val-banner" id="val-australia">Please fill in all required fields before continuing.</div>
 
   <div class="fcard">
     <div class="fcard-label">Your contact details</div>
@@ -424,12 +424,13 @@
     </div>
     <div class="row2">
       <div class="fg">
-        <label for="s-country">Country</label>
+        <label for="s-country">Country <span style="color:var(--coral)">*</span></label>
         <input type="text" id="s-country" value="Australia" readonly style="background:#f5f4ee;color:#5b5f55;cursor:not-allowed">
       </div>
       <div class="fg">
-        <label for="s-city">City / Region <span class="opt">(optional)</span></label>
+        <label for="s-city">City / Region <span style="color:var(--coral)">*</span></label>
         <input type="text" id="s-city" placeholder="e.g. Sydney, Melbourne, Brisbane">
+        <span class="field-error" id="s-city-err">Please enter your city or region.</span>
       </div>
     </div>
     <div class="fg">
@@ -493,7 +494,7 @@
   <h1>Tell us about you</h1>
   <p class="lede">We review every application personally. The more you share, the faster we can tell you whether GAMGEE is a fit — and what a vaccine could look like for your dog.</p>
 
-  <div class="val-banner" id="val-elsewhere">Please enter your email address and let us know how you'd like to be contacted before continuing.</div>
+  <div class="val-banner" id="val-elsewhere">Please fill in all required fields before continuing.</div>
 
   <div class="fcard">
     <div class="fcard-label">Your contact details</div>
@@ -515,12 +516,14 @@
     </div>
     <div class="row2">
       <div class="fg">
-        <label for="e-country">Country</label>
+        <label for="e-country">Country <span style="color:var(--coral)">*</span></label>
         <input type="text" id="e-country" placeholder="e.g. United States">
+        <span class="field-error" id="e-country-err">Please enter your country.</span>
       </div>
       <div class="fg">
-        <label for="e-city">City / Region <span class="opt">(optional)</span></label>
+        <label for="e-city">City / Region <span style="color:var(--coral)">*</span></label>
         <input type="text" id="e-city" placeholder="e.g. Boston, Ontario, Osaka">
+        <span class="field-error" id="e-city-err">Please enter your city or region.</span>
       </div>
     </div>
     <div class="fg">
@@ -880,6 +883,10 @@
     const emailErr = document.getElementById(prefix + '-email-err');
     const contactErr = document.getElementById(prefix + '-contact-err');
     const phoneErr = document.getElementById(prefix + '-phone-err');
+    const cityEl = document.getElementById(prefix + '-city');
+    const cityErr = document.getElementById(prefix + '-city-err');
+    const countryEl = flow !== 'australia' ? document.getElementById('e-country') : null;
+    const countryErr = flow !== 'australia' ? document.getElementById('e-country-err') : null;
 
     let valid = true;
 
@@ -889,6 +896,8 @@
     emailErr.classList.remove('show');
     contactErr.classList.remove('show');
     if (phoneErr) phoneErr.classList.remove('show');
+    if (cityErr) cityErr.classList.remove('show');
+    if (countryErr) countryErr.classList.remove('show');
     banner.classList.remove('show');
 
     // email check
@@ -914,6 +923,24 @@
         if (phoneErr) phoneErr.classList.add('show');
         valid = false;
       }
+    }
+
+    // country required (everywhere else only — Australia is prefilled)
+    if (countryEl) {
+      const countryVal = countryEl.value.trim();
+      if (!countryVal) {
+        countryEl.classList.add('invalid');
+        if (countryErr) countryErr.classList.add('show');
+        valid = false;
+      }
+    }
+
+    // city / region required (both routes)
+    const cityVal = cityEl ? cityEl.value.trim() : '';
+    if (!cityVal) {
+      if (cityEl) cityEl.classList.add('invalid');
+      if (cityErr) cityErr.classList.add('show');
+      valid = false;
     }
 
     if (!valid) {
