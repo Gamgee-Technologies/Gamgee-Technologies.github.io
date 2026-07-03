@@ -1068,10 +1068,10 @@
   }
 
   // Straight vertical ribbon, sized to sit comfortably in the narrow strip
-  const R = 1.1, NPT = 12, TURNS = 9, HEIGHT = 34;
+  const R = 1.32, NPT = 12, TURNS = 9, HEIGHT = 34;
   const N = NPT*TURNS, dY = HEIGHT/N, dA = 2*Math.PI/NPT;
   const ds = Math.sqrt(R*dA*R*dA + dY*dY);
-  const PHOTO_W = ds*1.0, PHOTO_H = ds*0.74;
+  const PHOTO_W = ds*1.12, PHOTO_H = ds*0.83;
   const PAN = HEIGHT*0.30;
 
   const group = new THREE.Group();
