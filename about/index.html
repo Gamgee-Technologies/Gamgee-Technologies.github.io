@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | GAMGEE</title>
+<meta name="description" content="Gamgee is building personalised mRNA cancer vaccines for dogs. Here's where we are today, and where we're going next.">
+
+<!-- Open Graph / WhatsApp, Facebook, LinkedIn link previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gamgee">
+<meta property="og:title" content="About GAMGEE">
+<meta property="og:description" content="Gamgee is building personalised mRNA cancer vaccines for dogs. Here's where we are today, and where we're going next.">
+<meta property="og:image" content="https://gamgee.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://gamgee.io/about/">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About GAMGEE">
+<meta name="twitter:description" content="Gamgee is building personalised mRNA cancer vaccines for dogs. Here's where we are today, and where we're going next.">
+<meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐶</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
+    --green:#3C014E; --green-d:#2D0A47; --green-deep:#1E0230;
+    --coral:#DB4949; --coral-d:#EE3842;
+    --yellow:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+    --border:rgba(22,22,11,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  h1,h2,h3,h4,.logo,.btn{font-family:"Poppins",system-ui,sans-serif}
+
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+  .logo{font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
+  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink);transition:opacity .14s}
+  .navlinks a:not(.btn):hover{opacity:.65}
+  .navlinks a.active{color:var(--coral)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:14px;padding:11px 24px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(219,73,73,.28)}
+  .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none}
+
+  /* ── HAMBURGER ── */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
+  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* ── HERO ── */
+  .about-hero{padding:68px 0 44px;max-width:720px;margin:0 auto;text-align:center}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:14px}
+  .about-hero h1{font-size:52px;font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:18px}
+  .about-hero h1 .hl{color:var(--coral)}
+  .about-hero .lede{font-size:18px;color:var(--muted);line-height:1.6;max-width:38em;margin:0 auto}
+
+  /* ── BODY: prose + sticky facts sidebar ── */
+  .about-body{padding:0 0 90px}
+  .about-grid{display:grid;grid-template-columns:1fr 300px;gap:64px;align-items:start;max-width:1040px;margin:0 auto}
+
+  .prose{max-width:640px}
+  .prose-section{margin-bottom:50px}
+  .prose-section:last-child{margin-bottom:0}
+  .section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:18px;display:block}
+  .prose h2{font-size:28px;font-weight:800;letter-spacing:-.025em;line-height:1.2;margin-bottom:18px}
+  .prose p{font-size:17px;line-height:1.7;color:#2a2a1e;margin-bottom:16px}
+  .prose p:last-child{margin-bottom:0}
+  .prose p b{color:var(--ink);font-weight:600}
+  .prose a{color:var(--ink);font-weight:600}
+  .prose a:hover{color:var(--coral)}
+  .signoff{color:var(--muted);font-size:15px;margin-top:6px}
+
+  /* Mission / status card */
+  .mission-card{background:var(--green);color:#fff;border-radius:22px;padding:36px}
+  .mission-card .mc-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(117,209,220,.8);margin-bottom:14px}
+  .mission-card h2{font-size:23px;font-weight:800;line-height:1.3;letter-spacing:-.015em;margin-bottom:14px}
+  .mission-card p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.85);margin-bottom:0}
+  .mission-card .btn{font-size:14.5px;padding:13px 26px;margin-top:22px}
+
+  /* ── SIDEBAR: TIMELINE (mirrors /story/) ── */
+  .about-sidebar{position:sticky;top:100px;align-self:start}
+  .timeline-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:24px}
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;background:var(--border)}
+  .tl-item{position:relative;margin-bottom:28px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-dot{position:absolute;left:-28px;top:5px;width:15px;height:15px;border-radius:50%;border:2px solid var(--border);background:var(--cream)}
+  .tl-item.active .tl-dot{border-color:var(--coral);background:var(--coral)}
+  .tl-item.done .tl-dot{border-color:var(--green);background:var(--green)}
+  .tl-date{font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .tl-item.active .tl-date{color:var(--coral)}
+  .tl-item.done .tl-date{color:var(--green)}
+  .tl-title{font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+  .tl-desc{font-size:13px;color:var(--muted);line-height:1.55}
+
+  .sidebar-cta{margin-top:40px;background:#fff;border-radius:18px;padding:24px;border:1px solid var(--border)}
+  .sidebar-cta p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:16px}
+  .sidebar-cta .btn{width:100%;justify-content:center;font-size:14px;padding:13px 20px}
+
+  /* ── FOOTER ── */
+  footer{background:var(--cream);border-top:1px solid var(--border)}
+  .foot{display:flex;align-items:flex-start;justify-content:space-between;padding:64px 72px 34px;max-width:1200px;margin:0 auto;gap:40px}
+  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
+  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+  .foot .footer-links{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+  .foot .footer-links a:hover{color:var(--ink)}
+  .legal{max-width:1200px;margin:0 auto;padding:18px 72px 38px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+  .legal a{color:var(--muted);text-decoration:none}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:960px){
+    .about-grid{grid-template-columns:1fr;gap:0;max-width:640px}
+    .about-sidebar{position:static;order:-1;margin-bottom:40px}
+    .about-sidebar .sidebar-cta{display:none}
+  }
+
+  @media(max-width:900px){
+    .nav-toggle{display:flex}
+    .navlinks{display:none}
+    .nav-in{padding:16px 20px}
+    .page-wrap{padding:0 20px}
+
+    .about-hero{padding:40px 0 28px}
+    .about-hero h1{font-size:34px}
+    .about-hero .lede{font-size:16px}
+
+    .about-body{padding-bottom:60px}
+    .prose-section{margin-bottom:40px}
+    .prose h2{font-size:24px;margin-bottom:16px}
+    .prose p{font-size:16px;line-height:1.65;margin-bottom:14px}
+
+    .mission-card{padding:26px 22px;border-radius:20px}
+    .mission-card h2{font-size:20px;line-height:1.3}
+    .mission-card .btn{width:100%;justify-content:center;padding:15px 24px;font-size:15px}
+
+    .foot{flex-direction:column;gap:20px;padding:40px 20px 24px}
+    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+    .foot .footer-links a{margin-left:0;font-size:15px}
+    .legal{flex-direction:column;gap:6px;padding:16px 20px 32px}
+  }
+
+  @media(max-width:560px){
+    .about-hero{padding:32px 0 22px}
+    .about-hero h1{font-size:27px;margin-bottom:14px}
+    .about-hero .lede{font-size:15px}
+    .prose h2{font-size:21px}
+    .prose p{font-size:15px;line-height:1.6}
+    .mission-card{padding:22px 18px}
+    .mission-card h2{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/">GAMGEE</a>
+    <div class="navlinks">
+      <a href="/story/">Our story</a>
+      <a href="/about/" class="active">About</a>
+      <a href="/vet/">For Vets</a>
+      <a class="btn btn-green" href="/apply/">Apply</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
+      const btn=this, menu=document.getElementById('mobile-menu');
+      const open=btn.classList.toggle('open');
+      menu.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open);
+    ">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+    <a href="/about/" class="active" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
+    <a href="/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
+    <a class="btn btn-green" href="/apply/">Apply now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-wrap">
+  <header class="about-hero">
+    <p class="eyebrow">About Gamgee</p>
+    <h1>This is only <span class="hl">the beginning.</span></h1>
+    <p class="lede">Beyond AI, we believe that AI meets biology is the biggest opportunity of the 21st century. We're the software company designing custom mRNA cancer vaccines for dogs — and dogs are just where we're starting.</p>
+  </header>
+</div>
+
+<!-- BODY -->
+<div class="page-wrap">
+  <div class="about-body">
+    <div class="about-grid">
+
+      <article class="prose">
+
+        <div class="prose-section">
+          <span class="section-label">What we do</span>
+          <p>We design personalised mRNA vaccines, built from your dog's own tumour, engineered to help their immune system recognise it and fight back. We manage the process end to end: genomic sequencing, vaccine design, and treatment under veterinary oncologist supervision.</p>
+          <p>It started with one dog. <a href="/story/">Read Rosie's story →</a></p>
+        </div>
+
+        <div class="prose-section">
+          <span class="section-label">Where we are today</span>
+          <p>We're not just developing a cancer vaccine for dogs — we're proving it works. Together with our partners, we're currently running clinical trials in Australia, and accepting applications globally.</p>
+
+          <div class="mission-card">
+            <div class="mc-label">Current status</div>
+            <h2>In clinical trials now, with treatment already underway.</h2>
+            <p>First treatment began in December 2025. This phase is expected to close around December 2026.</p>
+            <a class="btn btn-coral" href="/apply/">
+              Apply now
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="prose-section">
+          <span class="section-label">What's next</span>
+          <p>Cancer doesn't stop at dogs. Once this trial phase wraps, we're planning to extend the same personalised protocol to more species and more forms of cancer over time, as the science and the infrastructure mature.</p>
+          <p class="signoff">— Paul Steven Conyngham</p>
+        </div>
+
+      </article>
+
+      <aside class="about-sidebar">
+        <p class="timeline-label">Timeline</p>
+
+        <div class="timeline">
+          <div class="tl-item done">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Dec 2025</div>
+            <div class="tl-title">Treatment begins</div>
+            <div class="tl-desc">First dogs began treatment under the protocol.</div>
+          </div>
+
+          <div class="tl-item active">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Now</div>
+            <div class="tl-title">Trial underway</div>
+            <div class="tl-desc">Actively monitoring dogs enrolled in the Australian trial.</div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">Dec 2026</div>
+            <div class="tl-title">Trial phase closes</div>
+            <div class="tl-desc">Personalised therapeutic vaccine trials like ours typically run 6–12 months per cohort.</div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">~Jan 2027</div>
+            <div class="tl-title">Opens for Cats</div>
+            <div class="tl-desc">Extend the same personalised protocol to cats.</div>
+          </div>
+        </div>
+
+        <div class="sidebar-cta">
+          <p>If your dog has been diagnosed, we'd like to hear from you.</p>
+          <a class="btn btn-coral" href="/apply/">
+            Apply now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+    </div>
+    <div class="footer-links">
+      <h5>PRODUCT</h5>
+      <a href="/vet/">For Vets</a>
+      <a href="/apply/">Apply</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 GAMGEE · San Francisco, United States</span>
+    <span><a href="/privacy&terms/#privacy">Privacy</a> · <a href="/privacy&terms/#terms">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
