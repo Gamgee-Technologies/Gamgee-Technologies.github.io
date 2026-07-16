@@ -387,8 +387,8 @@
     </div>
     <div class="loc-card" id="loc-elsewhere" onclick="selectLocation('elsewhere')">
       <h3>Everywhere else</h3>
-      <p>Applications are open globally. Local cases may move faster, but we review every submission. The more you share, the more we can do.</p>
-      <div class="loc-cta">Apply →</div>
+      <p>GAMGEE is expanding. Join the waitlist for updates on new regions, availability, and what's next.</p>
+      <div class="loc-cta">Join Waitlist →</div>
     </div>
   </div>
 
@@ -567,13 +567,56 @@
     </div>
   </div>
 
+  <div class="fcard">
+    <div class="fcard-label">Health situation <span class="opt">(optional)</span></div>
+    <div class="row2">
+      <div class="fg">
+        <label for="e-dog-diagnosis">Diagnosis</label>
+        <input type="text" id="e-dog-diagnosis" placeholder="e.g. Mast cell tumour">
+      </div>
+      <div class="fg">
+        <label for="e-dog-stage">Stage (if known)</label>
+        <select id="e-dog-stage">
+          <option value="" disabled selected>Select…</option>
+          <option>Stage 1</option>
+          <option>Stage 2</option>
+          <option>Stage 3</option>
+          <option>Stage 4</option>
+          <option>Unknown / not staged</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg">
+      <label for="e-dog-treatment">Current or prior treatment</label>
+      <textarea id="e-dog-treatment" placeholder="e.g. Surgery completed, now exploring adjuvant options. No chemo yet."></textarea>
+    </div>
+    <div class="fg">
+      <label class="check-opt">
+        <input type="checkbox" id="e-tumour-removed">
+        <span class="check-box-sq"></span>
+        <div class="check-opt-body">
+          <span>The tumour has been fully removed</span>
+          <span class="note">If the tumour has been fully removed, we may not be able to help at this stage. We will review your case and be in touch.</span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="fcard-label">Anything else <span class="opt">(optional)</span></div>
+    <div class="fg" style="margin-bottom:0">
+      <label for="e-extra-notes">Notes for our team</label>
+      <textarea id="e-extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation — anything that might help us…"></textarea>
+    </div>
+  </div>
+
   <div class="btn-row">
     <button class="btn btn-ghost" onclick="goToStep(1)">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Back
     </button>
     <button class="btn btn-primary" onclick="validateAndContinue('elsewhere')">
-      Continue
+      Finish
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
   </div>
@@ -581,7 +624,7 @@
 </div>
 
 <!-- ════════════════════════════════
-     STEP 3 — HEALTH INFO
+     STEP 3 — HEALTH INFO (AUSTRALIA ONLY)
 ════════════════════════════════ -->
 <div class="step-screen" id="screen-3">
   <h1>Health information</h1>
@@ -759,17 +802,17 @@
       dogAge:      val(p + '-dog-age'),
       dogSex:      (document.getElementById(p + '-dog-sex') || {}).value || '',
       // ── Health ──
-      diagnosis:     val('dog-diagnosis'),
-      stage:         (document.getElementById('dog-stage') || {}).value || '',
-      treatment:     val('dog-treatment'),
-      tumourRemoved: (document.getElementById('tumour-removed') || {}).checked || false,
-      // ── Vet ──
-      vetName:     val('vet-name'),
-      vetPractice: val('vet-practice'),
-      vetEmail:    val('vet-email'),
-      vetPhone:    val('vet-phone'),
+      diagnosis:     isAustralia ? val('dog-diagnosis') : val('e-dog-diagnosis'),
+      stage:         (document.getElementById(isAustralia ? 'dog-stage' : 'e-dog-stage') || {}).value || '',
+      treatment:     isAustralia ? val('dog-treatment') : val('e-dog-treatment'),
+      tumourRemoved: (document.getElementById(isAustralia ? 'tumour-removed' : 'e-tumour-removed') || {}).checked || false,
+      // ── Vet (Australia only) ──
+      vetName:     isAustralia ? val('vet-name') : '',
+      vetPractice: isAustralia ? val('vet-practice') : '',
+      vetEmail:    isAustralia ? val('vet-email') : '',
+      vetPhone:    isAustralia ? val('vet-phone') : '',
       // ── Notes ──
-      notes:       val('extra-notes'),
+      notes:       isAustralia ? val('extra-notes') : val('e-extra-notes'),
     };
   }
 
@@ -870,7 +913,21 @@
     selectedLocation = loc;
     document.querySelectorAll('.loc-card').forEach(c => c.classList.remove('selected'));
     document.getElementById('loc-' + loc).classList.add('selected');
-    setTimeout(() => goToStep(2), 240);
+    setTimeout(() => { updateStepperForLocation(loc); goToStep(2); }, 240);
+  }
+
+  // Elsewhere skips Medical Information entirely, so the stepper shows
+  // 3 steps (Location, About you, Complete) instead of 4.
+  function updateStepperForLocation(loc) {
+    var si3 = document.getElementById('si-3');
+    var si4Num = document.querySelector('#si-4 .step-num-inner');
+    if (loc === 'elsewhere') {
+      si3.style.display = 'none';
+      si4Num.textContent = '3';
+    } else {
+      si3.style.display = '';
+      si4Num.textContent = '4';
+    }
   }
 
   // ── VALIDATION (step 2) ──
@@ -949,7 +1006,13 @@
       return;
     }
 
-    goToStep(3);
+    if (flow === 'elsewhere') {
+      captureFormData();
+      submitApplication();
+      goToStep(4);
+    } else {
+      goToStep(3);
+    }
   }
 
   // ── FILE HANDLING ──
