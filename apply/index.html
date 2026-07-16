@@ -214,6 +214,11 @@
     background:var(--green);border-radius:24px;padding:52px 40px 48px;
     text-align:center;color:#fff;margin-bottom:16px;position:relative;overflow:hidden;
   }
+  .success-hero.compact{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:340px;padding-top:40px;padding-bottom:40px;
+  }
+  .success-hero.compact h2{margin-bottom:0}
   /* subtle mRNA helix accent rings */
   .success-hero::before,.success-hero::after{
     content:'';position:absolute;border-radius:50%;
@@ -727,13 +732,13 @@
      STEP 4 — SUCCESS
 ════════════════════════════════ -->
 <div class="step-screen" id="screen-4">
-  <div class="success-hero">
+  <div class="success-hero" id="success-hero">
     <div class="success-check">
       <svg viewBox="0 0 32 32"><polyline class="check-path" points="6,17 13,24 26,10"/></svg>
     </div>
     <span class="success-dog-name" id="success-dog-label"></span>
     <h2 id="success-headline">You've taken the first step.</h2>
-    <p>Rosie reads every application - then Paul double-checks. If <span id="success-dog-inline">your dog</span> looks like a fit, you'll hear from us within 5 business days. We won't keep you waiting.</p>
+    <p id="success-long-text">Rosie reads every application - then Paul double-checks. If <span id="success-dog-inline">your dog</span> looks like a fit, you'll hear from us within 5 business days. We won't keep you waiting.</p>
     <div class="success-divider"></div>
     <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.5)">Questions in the meantime? <a class="email-link" href="mailto:hello@gamgee.io">hello@gamgee.io</a></p>
     <a href="/" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--yellow);color:var(--ink);font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:background .2s">Return to home screen</a>
@@ -1150,17 +1155,25 @@
 
   function personaliseSuccess() {
     var dogName = formData.dogName || '';
+    var isElsewhere = selectedLocation === 'elsewhere';
+    var hero = document.getElementById('success-hero');
     var label = document.getElementById('success-dog-label');
     var headline = document.getElementById('success-headline');
+    var longText = document.getElementById('success-long-text');
     var inline = document.getElementById('success-dog-inline');
-    if (dogName) {
-      label.textContent = dogName + ' · Application received';
-      headline.textContent = "You've taken the first step for " + dogName + ".";
-      if (inline) inline.textContent = dogName;
+
+    hero.classList.toggle('compact', isElsewhere);
+
+    if (isElsewhere) {
+      label.style.display = 'none';
+      headline.textContent = "You're on the waitlist.";
+      if (longText) longText.style.display = 'none';
     } else {
-      label.textContent = 'Application received';
-      headline.textContent = "You've taken the first step.";
-      if (inline) inline.textContent = 'your dog';
+      label.style.display = '';
+      label.textContent = dogName ? dogName + ' · Application received' : 'Application received';
+      headline.textContent = dogName ? "You've taken the first step for " + dogName + "." : "You've taken the first step.";
+      if (inline) inline.textContent = dogName || 'your dog';
+      if (longText) longText.style.display = '';
     }
   }
 
