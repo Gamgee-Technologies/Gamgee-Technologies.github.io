@@ -112,8 +112,11 @@
   .hero h1{font-size:62px;font-weight:800;line-height:1.03;letter-spacing:-.025em}
   .hero h1 .mark{display:inline-block;background:#75D1DC;border-radius:16px;padding:7px 10px;line-height:1;vertical-align:middle;box-decoration-break:clone;-webkit-box-decoration-break:clone}
   .hero h1 .g{color:var(--coral)}
-  .hero h1 .nowrap{white-space:nowrap;display:inline-block}
+  .hero h1 .mark-desktop-1{border-radius:16px 16px 16px 3px}
+  .hero h1 .mark-desktop-2{border-radius:16px 3px 16px 16px}
   .hero h1 .mark-mobile-group{display:none}
+  .hero h1 .nowrap{white-space:nowrap;display:inline-block}
+  .hero h1 .hero-lead-mobile{display:none}
   .hero .sub{margin-top:24px;max-width:25em;font-size:18px;color:var(--muted);line-height:1.6}
   .hero .act{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
   .hero .hero-link{font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;background:none;border:none;padding:0;margin:0;display:inline-flex;align-items:center;gap:10px;box-shadow:none}
@@ -376,7 +379,8 @@
     .process h2{font-size:28px;margin:6px 0 4px;line-height:34px}
     .hero h1{font-size:34px;line-height:1.05}
     .hero h1 .mark{display:inline;padding:1px 6px;line-height:1.05;border-radius:16px}
-    .hero h1 .nowrap{display:none}
+    .hero h1 .hero-lead-desktop{display:none}
+    .hero h1 .hero-lead-mobile{display:inline}
     .hero h1 .mark-mobile-group{display:inline}
     .hero h1 .mark-mobile-group .mark{display:inline-block;position:relative}
     .hero h1 .mark-mobile-group .mark:first-child{z-index:2;border-radius:14px 14px 0 0}
@@ -554,7 +558,7 @@
   <div class="hero">
     <div>
       <p class="hero-note">Introducing our first product <span class="monospace-pill">ze-ets-001</span></p>
-      <h1>The first <span class="nowrap"><span class="mark mark-desktop">personalized cancer treatment</span></span><span class="mark-mobile-group"><span class="mark">personalized</span> <span class="mark">cancer treatment</span></span> protocol <span style="color:var(--coral)">for dogs.</span></h1>
+      <h1><span class="hero-lead-desktop"><span class="nowrap">The first <span class="mark mark-desktop mark-desktop-1">personalized</span></span> <span class="mark mark-desktop mark-desktop-2">cancer treatment</span></span><span class="hero-lead-mobile">The first </span><span class="mark-mobile-group"><span class="mark">personalized</span> <span class="mark">cancer treatment</span></span> protocol <span style="color:var(--coral)">for dogs.</span></h1>
       <div class="act">
         <a class="btn btn-coral" href="/apply/">Apply now
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
