@@ -1099,10 +1099,10 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W = el.clientWidth, H = el.clientHeight;
 
-  const urls = Array.from(
-    {length:50},
-    (_,i)=>`./assets/helix/dog_${String(i+1).padStart(3,'0')}.jpg`
-  );
+  const ATLAS_URL = './assets/helix/helix-atlas.webp';
+  const ATLAS_COLS = 10;
+  const ATLAS_ROWS = 5;
+  const ATLAS_TILES = 50;
 
   const PAPER = 0xF7F6E4;
   const scene = new THREE.Scene();
@@ -1122,24 +1122,14 @@
 
   const ldr = new THREE.TextureLoader();
   ldr.crossOrigin = 'anonymous';
-  const texs = (await Promise.all(
-    urls.map(u => new Promise(res => ldr.load(u, res, undefined, () => res(null))))
-  )).filter(Boolean);
+  const atlas = await new Promise(res => ldr.load(ATLAS_URL, res, undefined, () => res(null)));
 
   const loader = document.getElementById('helix-loader');
   if (loader){ loader.style.opacity='0'; setTimeout(()=>loader.remove(),600); }
-  if (!texs.length) return;
-
-  let ti = 0; const nxt = () => texs[ti++ % texs.length];
-
-  function framedTex(tex){
-    const cW=128,cH=96,b=6;
-    const cv=document.createElement('canvas'); cv.width=cW; cv.height=cH;
-    const ctx=cv.getContext('2d');
-    ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,cW,cH);
-    try{ ctx.drawImage(tex.image,b,b,cW-b*2,cH-b*2); }catch(e){ return tex; }
-    return new THREE.CanvasTexture(cv);
-  }
+  if (!atlas) return;
+  atlas.generateMipmaps = false;
+  atlas.minFilter = THREE.LinearFilter;
+  atlas.magFilter = THREE.LinearFilter;
 
   // Straight vertical ribbon, sized to sit comfortably in the narrow strip
   const R = 1.32, NPT = 12, TURNS = 9, HEIGHT = 34;
@@ -1153,7 +1143,23 @@
   const inner = new THREE.Group();
   group.add(inner);
 
-  const photoG = new THREE.PlaneGeometry(PHOTO_W, PHOTO_H);
+  const photoMaterial = new THREE.MeshBasicMaterial({ map:atlas, side:THREE.DoubleSide });
+  const photoGeometries = Array.from({length:ATLAS_TILES}, (_,index) => {
+    const geometry = new THREE.PlaneGeometry(PHOTO_W, PHOTO_H);
+    const uv = geometry.attributes.uv;
+    const col = index % ATLAS_COLS;
+    const row = Math.floor(index / ATLAS_COLS);
+    const u0 = col / ATLAS_COLS;
+    const u1 = (col + 1) / ATLAS_COLS;
+    const v0 = 1 - (row + 1) / ATLAS_ROWS;
+    const v1 = 1 - row / ATLAS_ROWS;
+    uv.setXY(0,u0,v1);
+    uv.setXY(1,u1,v1);
+    uv.setXY(2,u0,v0);
+    uv.setXY(3,u1,v0);
+    return geometry;
+  });
+  let tileIndex = 0;
   const _m = new THREE.Matrix4();
 
   function placeStrand(phase){
@@ -1163,8 +1169,8 @@
       const T=new THREE.Vector3(-R*Math.sin(a), dY/dA, R*Math.cos(a)).normalize();
       const Nr=new THREE.Vector3(Math.cos(a),0,Math.sin(a));
       const B=new THREE.Vector3().crossVectors(Nr,T).normalize();
-      const raw=nxt(); if(!raw) continue;
-      const plane=new THREE.Mesh(photoG, new THREE.MeshBasicMaterial({ map:framedTex(raw), side:THREE.DoubleSide }));
+      const geometry = photoGeometries[tileIndex++ % ATLAS_TILES];
+      const plane=new THREE.Mesh(geometry, photoMaterial);
       _m.makeBasis(T.clone().negate(), B.clone().negate(), Nr);
       plane.quaternion.setFromRotationMatrix(_m);
       plane.position.copy(pos);
