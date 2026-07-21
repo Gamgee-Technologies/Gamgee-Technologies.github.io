@@ -219,7 +219,8 @@
   .card-split-bottom .partners img[alt]{display:inline-block}
   .full-bleed .wrap{padding-left:16px;padding-right:16px}
   .dog-row{display:flex;gap:24px;flex-wrap:nowrap;justify-content:center;align-items:stretch;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin:18px -50vw 0;padding:0 16px;max-width:none;overflow:hidden}
-  .dog-row img{height:400px;width:calc((100% - 72px)/4);min-width:220px;aspect-ratio:3/4;object-fit:cover;object-position:center center;border-radius:18px;background:#fff;flex:0 0 auto}
+  .dog-row picture{height:400px;width:calc((100% - 72px)/4);min-width:220px;aspect-ratio:3/4;flex:0 0 auto}
+  .dog-row img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:18px;background:#fff}
 
   /* PARTNERS */
   .partners{padding:26px 0 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
@@ -340,7 +341,7 @@
 
     /* Dog row — 2×2 grid on mobile */
     .dog-row{flex-wrap:wrap;gap:10px;padding:0 12px;width:100%;left:auto;right:auto;margin-left:0;margin-right:0;margin-top:18px}
-    .dog-row img{height:200px;min-width:0;width:calc(50% - 5px);flex:0 0 calc(50% - 5px)}
+    .dog-row picture{height:200px;min-width:0;width:calc(50% - 5px);flex:0 0 calc(50% - 5px)}
 
     /* Final CTA */
     .final{padding:48px 22px;text-align:center}
@@ -387,7 +388,7 @@
     .hero h1 .mark-mobile-group .mark:last-child{z-index:1;margin-top:-3px;border-radius:0 14px 14px 14px}
     .intro-copy h3{font-size:22px}
     .intro-copy__location p{font-size:12px}
-    .dog-row img{height:160px}
+    .dog-row picture{height:160px}
     .card-split-bottom .partners img{height:22px;max-width:70px}
     .press-ticker-track a{margin-right:12px}
     .press-ticker-track{animation-duration:35s}
@@ -762,10 +763,22 @@
     <div class="wrap">
       <h2>If your dog has been diagnosed, <span class="hl">we'd like to hear from you.</span></h2>
       <div class="dog-row">
-        <img src="./assets/GAMGEE images/Dog 1.png" alt="Dog 1">
-        <img src="./assets/GAMGEE images/Dog 2.png" alt="Dog 2">
-        <img src="./assets/GAMGEE images/Dog 3.png" alt="Dog 3">
-        <img src="./assets/GAMGEE images/Dog 4.png" alt="Dog 4">
+        <picture>
+          <source type="image/webp" srcset="./assets/GAMGEE images/webp/dog-1-320.webp 320w, ./assets/GAMGEE images/webp/dog-1-480.webp 480w, ./assets/GAMGEE images/webp/dog-1-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
+          <img src="./assets/GAMGEE images/Dog 1.png" width="657" height="754" alt="Dog 1">
+        </picture>
+        <picture>
+          <source type="image/webp" srcset="./assets/GAMGEE images/webp/dog-2-320.webp 320w, ./assets/GAMGEE images/webp/dog-2-480.webp 480w, ./assets/GAMGEE images/webp/dog-2-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
+          <img src="./assets/GAMGEE images/Dog 2.png" width="657" height="754" alt="Dog 2">
+        </picture>
+        <picture>
+          <source type="image/webp" srcset="./assets/GAMGEE images/webp/dog-3-320.webp 320w, ./assets/GAMGEE images/webp/dog-3-480.webp 480w, ./assets/GAMGEE images/webp/dog-3-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
+          <img src="./assets/GAMGEE images/Dog 3.png" width="657" height="754" alt="Dog 3">
+        </picture>
+        <picture>
+          <source type="image/webp" srcset="./assets/GAMGEE images/webp/dog-4-320.webp 320w, ./assets/GAMGEE images/webp/dog-4-480.webp 480w, ./assets/GAMGEE images/webp/dog-4-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
+          <img src="./assets/GAMGEE images/Dog 4.png" width="657" height="754" alt="Dog 4">
+        </picture>
       </div>
       <p>We'll help you determine whether GAMGEE is right for your dog and, if it is, get you connected with the right team.</p>
       <a class="btn btn-coral" href="/apply/">Apply now
@@ -1086,12 +1099,10 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W = el.clientWidth, H = el.clientHeight;
 
-  let urls = [];
-  try { urls = (await fetch('./assets/helix/manifest.json').then(r=>r.json())).map(f=>'./assets/helix/'+f); }
-  catch {
-    try { urls = (await fetch('https://dog.ceo/api/breeds/image/random/110').then(r=>r.json())).message; }
-    catch { urls = [...Array(110)].map((_,i)=>`https://placedog.net/120/90?id=${i+1}`); }
-  }
+  const urls = Array.from(
+    {length:50},
+    (_,i)=>`./assets/helix/dog_${String(i+1).padStart(3,'0')}.jpg`
+  );
 
   const PAPER = 0xF7F6E4;
   const scene = new THREE.Scene();
