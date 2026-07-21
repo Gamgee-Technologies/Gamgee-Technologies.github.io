@@ -1101,7 +1101,7 @@
 
   const urls = Array.from(
     {length:50},
-    (_,i)=>`./assets/helix/dog_${String(i+1).padStart(3,'0')}.jpg`
+    (_,i)=>`./assets/helix/webp/dog_${String(i+1).padStart(3,'0')}.webp`
   );
 
   const PAPER = 0xF7F6E4;
@@ -1122,12 +1122,15 @@
 
   const ldr = new THREE.TextureLoader();
   ldr.crossOrigin = 'anonymous';
+  const loadTexture = u => new Promise(res => ldr.load(u, res, undefined, () => res(null)));
+  const INITIAL_TEXTURE_COUNT = 8;
+  const BACKGROUND_BATCH_SIZE = 4;
+  const BACKGROUND_BATCH_DELAY = 250;
   const texs = (await Promise.all(
-    urls.map(u => new Promise(res => ldr.load(u, res, undefined, () => res(null))))
+    urls.slice(0, INITIAL_TEXTURE_COUNT).map(loadTexture)
   )).filter(Boolean);
 
   const loader = document.getElementById('helix-loader');
-  if (loader){ loader.style.opacity='0'; setTimeout(()=>loader.remove(),600); }
   if (!texs.length) return;
 
   let ti = 0; const nxt = () => texs[ti++ % texs.length];
@@ -1155,6 +1158,7 @@
 
   const photoG = new THREE.PlaneGeometry(PHOTO_W, PHOTO_H);
   const _m = new THREE.Matrix4();
+  const planes = [];
 
   function placeStrand(phase){
     for (let i=0;i<N;i++){
@@ -1169,10 +1173,41 @@
       plane.quaternion.setFromRotationMatrix(_m);
       plane.position.copy(pos);
       inner.add(plane);
+      planes.push(plane);
     }
   }
   placeStrand(0);
   placeStrand(Math.PI);
+
+  // Keep the helix visible with its first eight textures, then quietly replace
+  // repeated tiles as the remaining images arrive in small batches.
+  let nextTextureSlot = 0;
+  async function loadRemainingTextures(){
+    for(let i=INITIAL_TEXTURE_COUNT; i<urls.length; i+=BACKGROUND_BATCH_SIZE){
+      const batch = (await Promise.all(urls.slice(i, i+BACKGROUND_BATCH_SIZE).map(loadTexture))).filter(Boolean);
+      batch.forEach(raw => {
+        const planeIndex = Math.floor(nextTextureSlot++ * planes.length / (urls.length - INITIAL_TEXTURE_COUNT));
+        const plane = planes[Math.min(planeIndex, planes.length - 1)];
+        const oldMap = plane.material.map;
+        plane.material.map = framedTex(raw);
+        plane.material.needsUpdate = true;
+        if(oldMap && oldMap.isCanvasTexture) oldMap.dispose();
+      });
+      if(i + BACKGROUND_BATCH_SIZE < urls.length){
+        await new Promise(resolve => setTimeout(resolve, BACKGROUND_BATCH_DELAY));
+      }
+    }
+  }
+
+  if(loader){
+    loader.style.opacity='0';
+    setTimeout(()=>{
+      loader.remove();
+      loadRemainingTextures();
+    },600);
+  } else {
+    loadRemainingTextures();
+  }
 
   const TWO_PI=Math.PI*2;
   let targetY=0, curY=0;
