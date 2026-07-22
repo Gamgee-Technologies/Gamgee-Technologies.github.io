@@ -11,9 +11,9 @@
 <style>
   :root{
     --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
-    --green:#3C014E; --green-d:#2D0A47; --green-deep:#1E0230;
+    --purple:#3C014E; --purple-d:#2D0A47; --purple-deep:#1E0230;
     --coral:#DB4949; --coral-d:#EE3842;
-    --yellow:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+    --cyan:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
     --border:rgba(22,22,11,.10);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -31,7 +31,7 @@
   .navlinks a.active{color:var(--coral)}
   .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:14px;padding:11px 24px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
   .btn:hover{transform:translateY(-2px)}
-  .btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
+  .btn-green{background:var(--purple);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
   .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(219,73,73,.28)}
   .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none}
 
@@ -75,7 +75,7 @@
   .story-photo figcaption{font-size:13px;color:var(--muted);margin-top:10px;padding:0 4px}
 
   /* Mission card */
-  .mission-card{background:var(--green);color:#fff;border-radius:24px;padding:40px;margin-top:16px}
+  .mission-card{background:var(--purple);color:#fff;border-radius:24px;padding:40px;margin-top:16px}
   .mission-card .mc-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(117,209,220,.8);margin-bottom:16px}
   .mission-card h2{font-size:28px;font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:18px}
   .mission-card p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.82);margin-bottom:14px}
@@ -93,10 +93,10 @@
   .tl-item:last-child{margin-bottom:0}
   .tl-dot{position:absolute;left:-28px;top:5px;width:15px;height:15px;border-radius:50%;border:2px solid var(--border);background:var(--cream);transition:border-color .2s,background .2s}
   .tl-item.active .tl-dot{border-color:var(--coral);background:var(--coral)}
-  .tl-item.done .tl-dot{border-color:var(--green);background:var(--green)}
+  .tl-item.done .tl-dot{border-color:var(--purple);background:var(--purple)}
   .tl-date{font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
   .tl-item.active .tl-date{color:var(--coral)}
-  .tl-item.done .tl-date{color:var(--green)}
+  .tl-item.done .tl-date{color:var(--purple)}
   .tl-title{font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
   .tl-desc{font-size:13px;color:var(--muted);line-height:1.55}
 

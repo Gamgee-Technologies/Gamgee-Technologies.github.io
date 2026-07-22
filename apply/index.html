@@ -11,10 +11,10 @@
 <style>
   :root{
     --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
-    --green:#3C014E; --green-d:#2D0A47; --green-deep:#1E0230;
+    --purple:#3C014E; --purple-d:#2D0A47; --purple-deep:#1E0230;
     --step-done:#22A06B;
     --coral:#DB4949; --coral-d:#EE3842;
-    --yellow:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+    --cyan:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
     --border:rgba(22,22,11,.12);
     --card:#fff;
   }
@@ -64,7 +64,7 @@
     outline:none;width:100%;appearance:none;
   }
   .fg input::placeholder,.fg textarea::placeholder{color:#b0b4a8}
-  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(60,1,78,.10)}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(60,1,78,.10)}
   .fg input.invalid,.fg select.invalid{border-color:var(--coral);box-shadow:0 0 0 3px rgba(219,73,73,.12)}
   .fg textarea{resize:vertical;min-height:88px;line-height:1.55}
   .fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b5f55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
@@ -154,7 +154,7 @@
   .drop-hint{background:#DFF5F2;border:1px solid var(--mint-d);border-radius:12px;padding:14px 16px 14px 20px;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;position:relative}
   .drop-hint::before{content:'';position:absolute;left:10px;top:14px;bottom:14px;width:2px;background:var(--coral);border-radius:1px}
   .drop-zone{border:2px dashed var(--border);border-radius:14px;padding:32px 20px;text-align:center;cursor:pointer;transition:border-color .14s,background .14s;background:#fff}
-  .drop-zone:hover,.drop-zone.dragover{border-color:var(--green);background:rgba(60,1,78,.03)}
+  .drop-zone:hover,.drop-zone.dragover{border-color:var(--purple);background:rgba(60,1,78,.03)}
   .drop-zone svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.6;margin-bottom:10px}
   .drop-zone p{font-size:14px;color:var(--muted);margin-bottom:4px}
   .drop-zone .formats{font-size:12px;color:#a0a498;margin-bottom:14px}
@@ -164,7 +164,7 @@
   #file-input{display:none}
   .file-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
   .file-chip{display:flex;align-items:center;gap:10px;background:rgba(60,1,78,.06);border-radius:10px;padding:9px 12px;font-size:13px;font-weight:500}
-  .file-chip svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2;flex-shrink:0}
+  .file-chip svg{width:16px;height:16px;stroke:var(--purple);fill:none;stroke-width:2;flex-shrink:0}
   .file-chip .fname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .file-chip .rm{background:none;border:none;cursor:pointer;color:var(--muted);padding:0;display:flex;align-items:center;transition:color .14s}
   .file-chip .rm:hover{color:var(--coral)}
@@ -183,7 +183,7 @@
   .loc-cta:not(.primary):hover{border-color:rgba(22,22,11,.3)}
   .loc-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px}
   .loc-badge.active{background:rgba(219,73,73,.1);color:var(--coral)}
-  .loc-badge.open{background:rgba(60,1,78,.07);color:var(--green)}
+  .loc-badge.open{background:rgba(60,1,78,.07);color:var(--purple)}
   .loc-badge .dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
 
   /* ── NAV BUTTONS ── */
@@ -211,7 +211,7 @@
   #screen-4.active{animation:fadeUp .4s cubic-bezier(.22,.9,.36,1) both}
 
   .success-hero{
-    background:var(--green);border-radius:24px;padding:52px 40px 48px;
+    background:var(--purple);border-radius:24px;padding:52px 40px 48px;
     text-align:center;color:#fff;margin-bottom:16px;position:relative;overflow:hidden;
   }
   .success-hero.compact{
@@ -251,8 +251,8 @@
     line-height:1.12;letter-spacing:-.025em;margin-bottom:16px;
   }
   .success-hero p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.78);max-width:32em;margin:0 auto}
-  .success-hero .email-link{color:var(--yellow);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(117,209,220,.4)}
-  .success-hero .email-link:hover{border-color:var(--yellow)}
+  .success-hero .email-link{color:var(--cyan);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(117,209,220,.4)}
+  .success-hero .email-link:hover{border-color:var(--cyan)}
 
   .success-divider{
     width:40px;height:2px;background:rgba(117,209,220,.3);
@@ -741,7 +741,7 @@
     <p id="success-long-text">Rosie reads every application - then Paul double-checks. If <span id="success-dog-inline">your dog</span> looks like a fit, you'll hear from us within 5 business days. We won't keep you waiting.</p>
     <div class="success-divider"></div>
     <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.5)">Questions in the meantime? <a class="email-link" href="mailto:hello@gamgee.io">hello@gamgee.io</a></p>
-    <a href="/" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--yellow);color:var(--ink);font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:background .2s">Return to home screen</a>
+    <a href="/" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--cyan);color:var(--ink);font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:background .2s">Return to home screen</a>
   </div>
 
   <div class="dog-ticker-section" id="dog-strip-wrap">
