@@ -1,468 +1,467 @@
-1|<!DOCTYPE html>
-2|<html lang="en">
-3|<head>
-4|<meta charset="UTF-8">
-5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-6|<title>Gamgee | The AI First Genomics Company</title>
-7|<meta name="description" content="Gamgee is the AI first Genomics Company and the software company designing custom mRNA vaccines for dogs.">
-8|
-9|<!-- Open Graph / WhatsApp, Facebook, LinkedIn link previews -->
-10|<meta property="og:type" content="website">
-11|<meta property="og:site_name" content="Gamgee">
-12|<meta property="og:title" content="Gamgee | The AI First Genomics Company">
-13|<meta property="og:description" content="Gamgee is the AI first Genomics Company and the software company designing custom mRNA vaccines for dogs.">
-14|<meta property="og:image" content="https://gamgee.io/assets/og-image.png">
-15|<meta property="og:image:width" content="1200">
-16|<meta property="og:image:height" content="630">
-17|<meta property="og:url" content="https://gamgee.io/about/">
-18|
-19|<!-- Twitter/X card -->
-20|<meta name="twitter:card" content="summary_large_image">
-21|<meta name="twitter:title" content="Gamgee | The AI First Genomics Company">
-22|<meta name="twitter:description" content="Gamgee is the AI first Genomics Company and the software company designing custom mRNA vaccines for dogs.">
-23|<meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamgee | The AI First Genomics Company</title>
+<meta name="description" content="Gamgee is the AI first Genomics Company and the software company designing custom mRNA vaccines for dogs.">
+
+<!-- Open Graph / WhatsApp, Facebook, LinkedIn link previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gamgee">
+<meta property="og:title" content="Gamgee | The AI First Genomics Company">
+<meta property="og:description" content="Gamgee is the AI first Genomics Company and the software company designing custom mRNA vaccines for dogs.">
+<meta property="og:image" content="https://gamgee.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://gamgee.io/about/">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gamgee | The AI First Genomics Company">
+<meta name="twitter:description" content="Gamgee is the AI first Genomics Company and the software company designing custom mRNA vaccines for dogs.">
+<meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
 </script>
-24|
-25|<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iOTgiIHZpZXdCb3g9IjAgMCA5OCA5OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzgzMF81NzYpIj4KPHBhdGggZD0iTTcyLjE0NSA4Ny40NDg5QzcxLjIxNSA4NS4zMTg5IDY5Ljk5NSA4My4zNzg5IDY4LjQ2NSA4MS42Mzg5QzY2LjU4NSA3OS40OTg5IDY1LjAyNSA3Ny4xMzg5IDY0LjAxNSA3NC40Njg5QzYzLjU1NSA3My4yNDg5IDYzLjIxNSA3MS45Nzg5IDYyLjkyNSA3MC43MDg5QzYyLjQ5NSA2OC44MDg5IDYyLjMwNSA2Ni44Nzg5IDYyLjQ4NSA2NC45Mjg5QzYyLjQ4NSA2NC44Njg5IDYyLjQ4NSA2NC43OTg5IDYyLjQ2NSA2NC43Mjg5QzYyLjQ2NSA2NC43MDg5IDYyLjQyNSA2NC42OTg5IDYyLjM0NSA2NC42Mjg5QzYyLjA5NSA2NS4wMDg5IDYxLjgyNSA2NS4zNjg5IDYxLjYwNSA2NS43NTg5QzU5Ljc3NSA2OC45ODg5IDU5LjE5NTEgNzIuNDI4OSA1OS44MDUxIDc2LjA5ODlDNjAuMjA1MSA3OC41Mzg5IDYxLjE2NTEgODAuNzQ4OSA2Mi40MzUxIDgyLjgyODlDNjMuMDI1MSA4My43OTg5IDYzLjc0NSA4NC42Nzg5IDY0LjMxNSA4NS42NDg5QzY2LjI4NSA4OC45NDg5IDY3LjI3NSA5Mi41MDg5IDY3LjA3NSA5Ni4zNjg5QzY3LjA3NSA5Ni41MTg5IDY2LjkwNSA5Ny45MDg5IDY2LjkwNSA5Ny45MDg5QzY2LjkwNSA5Ny45MDg5IDY2Ljg5NSA5OC4wMzg5IDY2Ljg5NSA5OC4wNDg5QzY2Ljg5NSA5OC4wODg5IDcyLjcwNSA5OC4wNDg5IDcyLjcwNSA5OC4wNDg5QzczLjA0NSA5OC4wNDg5IDczLjM3NSA5OC4wMzg5IDczLjcwNSA5OC4wMTg5QzczLjcxNSA5Ny45Njg5IDczLjcyNSA5Ny45MTg5IDczLjczNSA5Ny44Njg5QzczLjczNSA5Ny43NTg5IDczLjc1NSA5Ny42MTg5IDczLjc2NSA5Ny40NDg5QzczLjg0NSA5Ni4yMjg5IDczLjg5NTEgOTQuOTk4OSA3My44MDUxIDkzLjc3ODlDNzMuNjU1MSA5MS41Njg5IDczLjA0NSA4OS40NTg5IDcyLjE2NSA4Ny40Mzg5TDcyLjE0NSA4Ny40NDg5WiIgZmlsbD0iIzNDMDE0RSIvPgo8cGF0aCBkPSJNODAuOTg1MiAzNC4xOTk5QzgwLjY5NTIgMzQuMDk5OSA4MC4zNzUxIDM0LjA3OTkgODAuMDY1MSAzNC4wNzk5Qzc1LjE0NTEgMzQuMDc5OSA3MC4yMjUyIDM0LjA3OTkgNjUuMjk1MiAzNC4wODk5QzY1LjExNTIgMzQuMDg5OSA2NC45NDUxIDM0LjA2OTkgNjQuNzY1MSAzNC4wODk5QzYzLjg0NTEgMzQuMTc5OSA2My4yMTUxIDMzLjc1OTkgNjIuNzA1MSAzMy4wMTk5QzYxLjU1NTEgMzEuMzM5OSA2MC4zNjUyIDI5LjY4OTkgNTkuMTg1MiAyOC4wMzk5QzU4Ljc4NTIgMjcuNDc5OSA1OC4zMDUxIDI3LjA0OTkgNTcuNzc1MSAyNi43MTk5QzU1LjQxNTEgMjQuNzA5OSA0Ny44NTUyIDI0LjcwOTkgNDQuMDU1MiAyNS42ODk5QzQzLjQyNTIgMjUuODQ5OSA0Mi44NzUxIDI1Ljk4OTkgNDIuMzE1MSAyNS41ODk... [truncated]
-26|<link rel="preconnect" href="https://fonts.googleapis.com">
-27|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-28|<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-29|<style>
-30|  :root{
-31|    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
-32|    --green:#3C014E; --green-d:#2D0A47; --green-deep:#1E0230;
-33|    --coral:#DB4949; --coral-d:#EE3842;
-34|    --yellow:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
-35|    --border:rgba(22,22,11,.10);
-36|  }
-37|  *{box-sizing:border-box;margin:0;padding:0}
-38|  html{scroll-behavior:smooth}
-39|  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
-40|  h1,h2,h3,h4,.logo,.btn{font-family:"Poppins",system-ui,sans-serif}
-41|
-42|  /* ── NAV ── */
-43|  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
-44|  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
-45|  .logo{font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
-46|  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
-47|  .navlinks a:not(.btn){text-decoration:none;color:var(--ink);transition:opacity .14s}
-48|  .navlinks a:not(.btn):hover{opacity:.65}
-49|  .navlinks a.active{color:var(--coral)}
-50|  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:14px;padding:11px 24px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
-51|  .btn:hover{transform:translateY(-2px)}
-52|  .btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
-53|  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(219,73,73,.28)}
-54|  .btn-white{background:#fff;color:var(--ink)}
-55|  .btn-outline{border:1.5px solid rgba(255,255,255,.6);color:#fff}
-56|  .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none}
-57|
-58|  /* ── HAMBURGER ── */
-59|  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
-60|  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
-61|  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-62|  .nav-toggle.open span:nth-child(2){opacity:0}
-63|  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-64|  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
-65|  .mobile-menu.open{display:flex}
-66|  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
-67|  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
-68|
-69|  /* ── LAYOUT HELPERS ── */
-70|  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
-71|  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:16px;display:block}
-72|  /* longhand top/bottom only — deliberately NOT touching left/right padding here.
-73|     Elements use class="wrap section" together, and .section's padding would otherwise
-74|     be the same shorthand property as .wrap's and fully override (not add to) it,
-75|     silently zeroing out .wrap's horizontal padding. Using longhand keeps .wrap's
-76|     horizontal padding intact so plain-text sections line up with the card's outer edge. */
-77|  .section{padding-top:56px;padding-bottom:56px}
-78|
-79|  /* ── HERO ── */
-80|  /* fills the screen on load: min-height is the viewport minus the sticky nav's own height (~80px),
-81|     with the content vertically centered inside it via flex */
-82|  .about-hero{min-height:calc(100svh - 80px);display:flex;flex-direction:column;justify-content:center;max-width:760px;margin:0 auto;text-align:center;padding:40px 0}
-83|  .about-hero h1{font-size:52px;font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:30px}
-84|  .about-hero h1 .hl{color:var(--coral)}
-85|  .statement-list{display:flex;flex-direction:column;gap:14px;max-width:34em;margin:0 auto}
-86|  .statement-list p{font-size:19px;font-weight:600;color:#2a2a1e;line-height:1.5}
-87|  .statement-list p:last-child{color:var(--coral)}
-88|
-89|  /* ── GENERIC ROUNDED BLOCK (matches homepage .block) ── */
-90|  .block{border-radius:34px;padding:64px;margin:44px 0}
-91|  .block-green{background:var(--green);color:#fff}
-92|  .block-deep{background:var(--green-deep);color:#fff}
-93|  .block-coral{background:var(--coral);color:#fff}
-94|  .block .eyebrow{color:inherit;opacity:.72}
-95|
-96|  .chip-dark{border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:10px 18px;font-size:13.5px;font-weight:600;color:#fff;background:rgba(255,255,255,.1)}
-97|
-98|  /* Small white stat/info cards (matches homepage .card) */
-99|  .card{background:#fff;color:var(--ink);border-radius:22px;padding:26px 24px;transition:transform .14s;box-shadow:0 8px 20px rgba(0,0,0,.05)}
-100|  .card:hover{transform:translateY(-3px)}
-101|  .cards-row{display:grid;gap:18px}
-102|
-103|  /* Quote / emphasis line with left accent border. No negative margin here on purpose: the
-104|     border itself is the visible left edge, and it sits flush with the cards/headings around it.
-105|     The text is indented past the border+padding, same as any normal blockquote. */
-106|  .quote-line{border-left:3px solid var(--coral);padding-left:22px;font-family:"Poppins",system-ui,sans-serif;font-size:19px;font-weight:600;line-height:1.5;max-width:44em;margin-top:32px}
-107|
-108|  /* ── TWO-COLUMN HEADING/GRID PATTERNS ── */
-109|  .section-heading{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start;margin-bottom:36px}
-110|  .section-heading h2{font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.18;max-width:14em}
-111|  .section-copy{max-width:640px;color:var(--muted);font-size:17px;line-height:1.7}
-112|  .section-copy p{margin-bottom:16px}
-113|  .section-copy p:last-child{margin-bottom:0}
-114|
-115|  .mission-statement{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:start}
-116|  .mission-statement h2{font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.02em;max-width:20em}
-117|
-118|  .origin-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:start}
-119|  .origin-grid h2{font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.02em;max-width:12em}
-120|  .origin-copy{max-width:38em}
-121|  .origin-copy .lead{font-family:"Poppins",system-ui,sans-serif;font-size:23px;font-weight:700;line-height:1.4;margin-bottom:18px}
-122|  .origin-copy p{font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.82);margin-bottom:14px}
-123|  .origin-copy p:last-of-type{margin-bottom:0}
-124|  .story-link{display:inline-flex;margin-top:20px;border-bottom:2px solid var(--yellow);padding-bottom:3px;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:700;text-decoration:none}
-125|  .story-link:hover{color:var(--yellow)}
-126|
-127|  /* Observe/Model/Alter/Learn steps (matches homepage process cards) */
-128|  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
-129|  .step{border-radius:20px;padding:26px 22px 28px;min-height:190px;display:flex;flex-direction:column;gap:16px}
-130|  .s1{background:#3C014E;color:#fff}
-131|  .s2{background:#DB4949;color:#fff}
-132|  .s3{background:#34BBCB;color:#fff}
-133|  .s4{background:#220032;color:#fff}
-134|  .num-title{display:flex;flex-direction:row;align-items:center;gap:12px}
-135|  .num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;background:rgba(255,255,255,.22)}
-136|  .step h4{font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em}
-137|  .step p{margin:0;font-size:13.5px;line-height:1.6;opacity:.95}
-138|
-139|  /* Why cancer statement */
-140|  .statement-hl{font-size:36px;font-weight:800;line-height:1.25;letter-spacing:-.02em;max-width:46em;margin-bottom:32px}
-141|  .statement-hl span{color:var(--coral)}
-142|  .two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-143|  .two-col .card p{font-size:16px;line-height:1.7;color:var(--muted);margin:0}
-144|  .sub-commitment{margin-top:20px}
-145|  .sub-commitment .card{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center}
-146|  .sub-commitment h3{font-size:22px;font-weight:800;letter-spacing:-.01em}
-147|  .sub-commitment p{font-size:16px;line-height:1.7;color:var(--muted);margin:0}
-148|
-149|  /* AI-first research loop: small card tiles */
-150|  .loop-grid{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
-151|  .loop-card{background:rgba(255,255,255,.08);border-radius:16px;padding:20px 18px}
-152|  .loop-card .ln{display:block;font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--yellow);margin-bottom:8px}
-153|  .loop-card p{margin:0;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.9)}
-154|
-155|  /* First product / operating targets */
-156|  .thesis-lead{font-size:34px;font-weight:800;line-height:1.18;letter-spacing:-.02em;max-width:22em;margin-bottom:32px}
-157|  .thesis-lead span{color:var(--coral)}
-158|  .targets-row{margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-159|  .target-card strong{display:block;margin-bottom:8px;color:var(--green);font-family:"Poppins",system-ui,sans-serif;font-size:40px;font-weight:800;line-height:1}
-160|  .target-card span{color:var(--muted);font-size:14.5px}
-161|  .targets-note{margin:16px 0 0;color:#8a8f84;font-size:12px}
-162|
-163|  /* Build with us */
-164|  .build-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:start}
-165|  .build-grid h2{font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.02em;max-width:12em}
-166|  .build-copy .lead{font-family:"Poppins",system-ui,sans-serif;font-size:20px;font-weight:700;line-height:1.4;margin-bottom:16px}
-167|  .build-copy p{font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.9);margin-bottom:14px}
-168|  .partner-chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
-169|  .build-actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
-170|
-171|  /* ── FOOTER ── */
-172|  footer{background:var(--cream);border-top:1px solid var(--border)}
-173|  .foot{display:flex;align-items:flex-start;justify-content:space-between;padding:64px 72px 34px;max-width:1200px;margin:0 auto;gap:40px}
-174|  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
-175|  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:24em;line-height:1.6}
-176|  .foot .footer-links{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
-177|  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
-178|  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
-179|  .foot .footer-links a:hover{color:var(--ink)}
-180|  .legal{max-width:1200px;margin:0 auto;padding:18px 72px 0;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
-181|  .legal a{color:var(--muted);text-decoration:none}
-182|  .disclaimer{max-width:1200px;margin:0 auto;padding:20px 72px 38px;color:#8a8f84;font-size:11px;line-height:1.6}
-183|
-184|  /* ── RESPONSIVE ── */
-185|  @media(max-width:900px){
-186|    .nav-toggle{display:flex}
-187|    .navlinks{display:none}
-188|    .nav-in{padding:16px 20px}
-189|    .wrap,.foot,.legal,.disclaimer{padding-left:20px;padding-right:20px}
-190|
-191|    .section{padding-top:36px;padding-bottom:36px}
-192|    .about-hero{min-height:calc(100svh - 72px);padding:36px 0}
-193|    .about-hero h1{font-size:32px;margin-bottom:22px}
-194|    .statement-list p{font-size:16px}
-195|
-196|    .block{padding:32px 22px;border-radius:24px;margin:28px 0}
-197|    .section-heading,.mission-statement,.origin-grid,.build-grid{grid-template-columns:1fr;gap:20px}
-198|    .section-heading h2,.mission-statement h2,.origin-grid h2,.build-grid h2{font-size:26px;max-width:none}
-199|    .statement-hl,.thesis-lead{font-size:25px}
-200|
-201|    .steps{grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
-202|    .step{padding:20px 18px 22px;min-height:0}
-203|
-204|    .two-col{grid-template-columns:1fr}
-205|    .sub-commitment .card{grid-template-columns:1fr;gap:12px}
-206|    .targets-row{grid-template-columns:1fr}
-207|
-208|    .loop-grid{grid-template-columns:1fr 1fr}
-209|    .partner-chips{gap:8px}
-210|    .build-actions{flex-direction:column;align-items:stretch}
-211|
-212|    .foot{flex-direction:column;gap:20px;padding:40px 20px 24px}
-213|    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
-214|    .foot .footer-links a{margin-left:0;font-size:15px}
-215|    .legal{flex-direction:column;gap:6px;padding:16px 20px 0}
-216|  }
-217|
-218|  @media(max-width:560px){
-219|    .steps{grid-template-columns:1fr}
-220|    .loop-grid{grid-template-columns:1fr}
-221|    .about-hero h1{font-size:27px}
-222|    .section-heading h2,.mission-statement h2,.origin-grid h2,.build-grid h2{font-size:22px}
-223|    .statement-hl,.thesis-lead{font-size:21px}
-224|    .origin-copy .lead{font-size:18px}
-225|  }
-226|</style>
-227|</head>
-228|<body>
-229|
-230|<!-- NAV -->
-231|<nav>
-232|  <div class="nav-in">
-233|    <a class="logo" href="/">GAMGEE</a>
-234|    <div class="navlinks">
-235|      <a href="/story/">Our story</a>
-236|      <a href="/about/" class="active">About</a>
-237|      <a href="/vet/">For Vets</a>
-238|      <a class="btn btn-green" href="/apply/">Apply</a>
-239|    </div>
-240|    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
-241|      const btn=this, menu=document.getElementById('mobile-menu');
-242|      const open=btn.classList.toggle('open');
-243|      menu.classList.toggle('open',open);
-244|      btn.setAttribute('aria-expanded',open);
-245|    ">
-246|      <span></span><span></span><span></span>
-247|    </button>
-248|  </div>
-249|  <div class="mobile-menu" id="mobile-menu">
-250|    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
-251|    <a href="/about/" class="active" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
-252|    <a href="/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
-253|    <a class="btn btn-green" href="/apply/">Apply now</a>
-254|  </div>
-255|</nav>
-256|
-257|<!-- HERO -->
-258|<div class="wrap">
-259|  <header class="about-hero" id="about">
-260|    <p class="eyebrow">The AI first Genomics Company</p>
-261|    <h1>We are <span class="hl">Gamgee.</span></h1>
-262|    <div class="statement-list">
-263|      <p>Beyond AI, we believe that AI meets biology is the biggest opportunity of the 21st century. We are the software company designing custom mRNA vaccines for dogs.</p>
-264|      <p>This is only just the beginning.</p>
-265|    </div>
-266|  </header>
-267|</div>
-268|
-269|<!-- MISSION -->
-270|<div class="wrap">
-271|  <section class="block block-coral mission-statement" id="mission">
-272|    <p class="eyebrow">Our mission</p>
-273|    <h2>Build autonomous systems that read biological failure, discover how to control it, and design precise repairs.</h2>
-274|  </section>
-275|</div>
-276|
-277|<!-- WHY GAMGEE EXISTS / READ-WRITE MODEL -->
-278|<div class="wrap section" id="read-write">
-279|  <div class="section-heading">
-280|    <div>
-281|      <p class="eyebrow">Why Gamgee exists</p>
-282|      <h2>From treatments for populations to interventions designed for one patient.</h2>
-283|    </div>
-284|    <div class="section-copy">
-285|      <p>Biology is becoming increasingly readable. We can sequence genomes, compare healthy and diseased tissue, observe gene expression, map immune activity, and watch cellular populations change over time.</p>
-286|      <p>But treatment is still usually chosen from a small menu designed for broad patient groups. Gamgee begins with the molecular state of one patient and designs around what is happening now.</p>
-287|    </div>
-288|  </div>
-289|
-290|  <div class="steps" aria-label="The read-write medicine model">
-291|    <div class="step s1">
-292|      <div class="num-title"><div class="num">01</div><h4>Observe</h4></div>
-293|      <p>Read the patient's biology at molecular resolution rather than infer it from population averages.</p>
-294|    </div>
-295|    <div class="step s2">
-296|      <div class="num-title"><div class="num">02</div><h4>Model</h4></div>
-297|      <p>Understand disease as a changing causal system, including uncertainty and competing explanations.</p>
-298|    </div>
-299|    <div class="step s3">
-300|      <div class="num-title"><div class="num">03</div><h4>Alter</h4></div>
-301|      <p>Design the intervention the present biological state demands, rather than force every problem into one modality.</p>
-302|    </div>
-303|    <div class="step s4">
-304|      <div class="num-title"><div class="num">04</div><h4>Learn</h4></div>
-305|      <p>Measure the outcome so the next intervention and the system that produced it can improve.</p>
-306|    </div>
-307|  </div>
-308|
-309|  <p class="quote-line">Genomics is how Gamgee begins to understand the system. Bioengineering is how we change it. Artificial intelligence connects the two.</p>
-310|</div>
-311|
-312|<!-- ORIGIN / ROSIE -->
-313|<div class="wrap">
-314|  <section class="block block-green origin-grid" id="rosie">
-315|    <div>
-316|      <p class="eyebrow">Our origin</p>
-317|      <h2>From one patient to a new kind of company.</h2>
-318|    </div>
-319|    <div class="origin-copy">
-320|      <p class="lead">Gamgee began with Rosie.</p>
-321|      <p>When Rosie developed cancer, we used genomics, artificial intelligence, and programmable medicine to turn the molecular features of her tumour into a treatment designed specifically for her.</p>
-322|      <p>Her treatment showed that an end-to-end personalised workflow could be built: sample, sequence, analyse, design, manufacture, administer, and measure.</p>
-323|      <p>That first treatment was not the destination. It exposed the path.</p>
-324|      <a class="story-link" href="/story/">Read Rosie's story →</a>
-325|    </div>
-326|  </section>
-327|</div>
-328|
-329|<!-- WHY CANCER -->
-330|<div class="wrap section" id="cancer">
-331|  <p class="eyebrow">Why cancer comes first</p>
-332|  <h2 class="statement-hl">Black holes force physics to confront its hardest questions. <span>Cancer does the same for biology:</span> it is biology at its most adversarial.</h2>
-333|
-334|  <div class="two-col">
-335|    <div class="card"><p>Cancer mutates, evolves, changes state, reshapes its environment, evades immune surveillance, and develops resistance to fixed treatments. It concentrates many of genomic medicine's hardest problems into one disease.</p></div>
-336|    <div class="card"><p>Understanding and controlling it requires advances in molecular sensing, causal models of changing cell populations, personalised intervention design, immune engineering, delivery, rapid manufacturing, and clinical measurement.</p></div>
-337|  </div>
-338|
-339|  <div class="sub-commitment">
-340|    <div class="card">
-341|      <h3>Dogs need better cancer treatments now.</h3>
-342|      <p>They are patients, not disposable models. Their cancers arise naturally inside functioning immune systems and evolve over time. Serving them responsibly requires personalised genomic medicine to become repeatable, manufacturable, and clinically useful.</p>
-343|    </div>
-344|  </div>
-345|</div>
-346|
-347|<!-- AI-FIRST -->
-348|<div class="wrap">
-349|  <section class="block block-deep origin-grid" id="ai-first">
-350|    <div>
-351|      <p class="eyebrow">AI-first from the ground up</p>
-352|      <h2>Build the company so more of the research loop can run itself.</h2>
-353|    </div>
-354|    <div class="origin-copy">
-355|      <p class="lead">AI-first does not mean adding a chatbot to a conventional laboratory.</p>
-356|      <p>Every paper, claim, dataset, patient sample, molecular design, experiment, failure, manufacturing run, and clinical outcome should become part of a connected research memory.</p>
-357|
-358|      <div class="loop-grid" aria-label="Machine-conducted research loop">
-359|        <div class="loop-card"><span class="ln">01</span><p>Search across disciplines and challenge published claims.</p></div>
-360|        <div class="loop-card"><span class="ln">02</span><p>Construct competing causal explanations and expose uncertainty.</p></div>
-361|        <div class="loop-card"><span class="ln">03</span><p>Choose the smallest experiment capable of deciding between them.</p></div>
-362|        <div class="loop-card"><span class="ln">04</span><p>Propose an intervention, interpret the result, and revise the model.</p></div>
-363|        <div class="loop-card"><span class="ln">05</span><p>Continue the loop with a research memory that grows rather than resets.</p></div>
-364|      </div>
-365|
-366|      <p style="margin-top:26px">Humans set the mission, define the evidence required, exercise scientific judgment, and enforce ethical and safety boundaries. Machines conduct more of the search, synthesis, experimental design, and iteration.</p>
-367|      <p class="quote-line">The central bet is that a sufficiently capable research system, connected to experimental and clinical reality, can discover fundamentally new ways of intervening in biology.</p>
-368|    </div>
-369|  </section>
-370|</div>
-371|
-372|<!-- FIRST PRODUCT -->
-373|<div class="wrap section" id="first-product">
-374|  <p class="eyebrow">The first product, not the final identity</p>
-375|  <h2 class="thesis-lead"><span>Custom mRNA vaccines</span> are where we begin.</h2>
-376|
-377|  <div class="two-col">
-378|    <div class="card"><p>They are valuable treatments in their own right and establish the practical foundation of the company: sequencing, analysis, design, manufacturing, clinical delivery, and response measurement.</p></div>
-379|    <div class="card"><p>Gamgee should not be defined by one therapeutic modality. The enduring company is the system that turns molecular state into intervention and becomes faster, cheaper, and more capable with every cycle.</p></div>
-380|  </div>
-381|
-382|  <p class="quote-line">Progress must show up in speed and cost. Custom medicine should move from an artisanal process toward an automated system that can reach far more patients.</p>
-383|
-384|  <p class="eyebrow" style="margin-top:36px">Long-term operating goals</p>
-385|  <div class="targets-row" aria-label="Long-term operating goals">
-386|    <div class="card target-card">
-387|      <strong>24 hours</strong>
-388|      <span>Produce a custom vaccine within 24 hours.</span>
-389|    </div>
-390|    <div class="card target-card">
-391|      <strong>$2,000</strong>
-392|      <span>Drive the cost of each custom vaccine down to $2,000.</span>
-393|    </div>
-394|  </div>
-395|  <p class="targets-note">These are development targets, not current product availability, turnaround, or pricing.</p>
-396|</div>
-397|
-398|<!-- REPAIR -->
-399|<div class="wrap section" id="repair">
-400|  <div class="section-heading">
-401|    <div>
-402|      <p class="eyebrow">From cancer to biological repair</p>
-403|      <h2>Make biological damage increasingly tractable.</h2>
-404|    </div>
-405|    <div class="section-copy">
-406|      <p>The tools built to understand, reach, and control malignant cells may eventually address other forms of biological damage.</p>
-407|      <p>Aging is not one disease. It is many failures accumulating over time. Gamgee's longer-term aim is to make those failures legible and repairable one by one, while restoring function without weakening the controls that protect against cancer.</p>
-408|      <p>We begin with an urgent commitment to dogs with cancer. We are building toward a broader system for biological repair.</p>
-409|    </div>
-410|  </div>
-411|</div>
-412|
-413|<!-- BUILD WITH US -->
-414|<div class="wrap">
-415|  <section class="block block-coral build-grid" id="build">
-416|    <div>
-417|      <p class="eyebrow">Build with us</p>
-418|      <h2>Help build the repair layer for biology.</h2>
-419|    </div>
-420|    <div class="build-copy">
-421|      <p class="lead">Gamgee sits at the intersection of software, genomics, immunology, RNA engineering, manufacturing, veterinary oncology, and clinical research.</p>
-422|      <p>We want to work with people and institutions who believe biology can become more understandable, programmable, and repairable without losing scientific rigor or respect for the patient.</p>
-423|      <p>We are especially interested in hearing from:</p>
-424|      <div class="partner-chips">
-425|        <span class="chip-dark">Veterinary oncologists &amp; specialty hospitals</span>
-426|        <span class="chip-dark">Computational biologists &amp; immunologists</span>
-427|        <span class="chip-dark">RNA, delivery &amp; manufacturing scientists</span>
-428|        <span class="chip-dark">Universities &amp; clinical-trial operators</span>
-429|        <span class="chip-dark">Animal-health &amp; comparative-oncology partners</span>
-430|        <span class="chip-dark">People building AI-native scientific systems</span>
-431|      </div>
-432|      <div class="build-actions">
-433|        <a class="btn btn-white" href="mailto:hello@gamgee.io?subject=Work%20with%20Gamgee">Work with Gamgee</a>
-434|        <a class="btn btn-outline" href="mailto:hello@gamgee.io">Contact us</a>
-435|      </div>
-436|    </div>
-437|  </section>
-438|</div>
-439|
-440|<!-- FOOTER -->
-441|<footer>
-442|  <div class="foot">
-443|    <div>
-444|      <div class="brand">GAMGEE</div>
-445|      <p class="tag2">The AI first Genomics Company. We are the software company designing custom mRNA vaccines for dogs.</p>
-446|    </div>
-447|    <div class="footer-links">
-448|      <h5>PRODUCT</h5>
-449|      <a href="/vet/">For Vets</a>
-450|      <a href="/apply/">Apply</a>
-451|    </div>
-452|  </div>
-453|  <div class="legal">
-454|    <span>© 2026 GAMGEE · San Francisco, United States</span>
-455|    <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
-456|  </div>
-457|  <p class="disclaimer">Gamgee is developing investigational veterinary technologies. Information on this website is provided for research and company information only and does not constitute veterinary advice, an offer of treatment, or a promise of study eligibility, safety, or efficacy. Clinical studies and product availability are subject to applicable regulatory, ethics, and veterinary oversight.</p>
-458|</footer>
-459|
-460|</body>
-461|</html>
-462|
+
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iOTgiIHZpZXdCb3g9IjAgMCA5OCA5OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzgzMF81NzYpIj4KPHBhdGggZD0iTTcyLjE0NSA4Ny40NDg5QzcxLjIxNSA4NS4zMTg5IDY5Ljk5NSA4My4zNzg5IDY4LjQ2NSA4MS42Mzg5QzY2LjU4NSA3OS40OTg5IDY1LjAyNSA3Ny4xMzg5IDY0LjAxNSA3NC40Njg5QzYzLjU1NSA3My4yNDg5IDYzLjIxNSA3MS45Nzg5IDYyLjkyNSA3MC43MDg5QzYyLjQ5NSA2OC44MDg5IDYyLjMwNSA2Ni44Nzg5IDYyLjQ4NSA2NC45Mjg5QzYyLjQ4NSA2NC44Njg5IDYyLjQ4NSA2NC43OTg5IDYyLjQ2NSA2NC43Mjg5QzYyLjQ2NSA2NC43MDg5IDYyLjQyNSA2NC42OTg5IDYyLjM0NSA2NC42Mjg5QzYyLjA5NSA2NS4wMDg5IDYxLjgyNSA2NS4zNjg5IDYxLjYwNSA2NS43NTg5QzU5Ljc3NSA2OC45ODg5IDU5LjE5NTEgNzIuNDI4OSA1OS44MDUxIDc2LjA5ODlDNjAuMjA1MSA3OC41Mzg5IDYxLjE2NTEgODAuNzQ4OSA2Mi40MzUxIDgyLjgyODlDNjMuMDI1MSA4My43OTg5IDYzLjc0NSA4NC42Nzg5IDY0LjMxNSA4NS42NDg5QzY2LjI4NSA4OC45NDg5IDY3LjI3NSA5Mi41MDg5IDY3LjA3NSA5Ni4zNjg5QzY3LjA3NSA5Ni41MTg5IDY2LjkwNSA5Ny45MDg5IDY2LjkwNSA5Ny45MDg5QzY2LjkwNSA5Ny45MDg5IDY2Ljg5NSA5OC4wMzg5IDY2Ljg5NSA5OC4wNDg5QzY2Ljg5NSA5OC4wODg5IDcyLjcwNSA5OC4wNDg5IDcyLjcwNSA5OC4wNDg5QzczLjA0NSA5OC4wNDg5IDczLjM3NSA5OC4wMzg5IDczLjcwNSA5OC4wMTg5QzczLjcxNSA5Ny45Njg5IDczLjcyNSA5Ny45MTg5IDczLjczNSA5Ny44Njg5QzczLjczNSA5Ny43NTg5IDczLjc1NSA5Ny42MTg5IDczLjc2NSA5Ny40NDg5QzczLjg0NSA5Ni4yMjg5IDczLjg5NTEgOTQuOTk4OSA3My44MDUxIDkzLjc3ODlDNzMuNjU1MSA5MS41Njg5IDczLjA0NSA4OS40NTg5IDcyLjE2NSA4Ny40Mzg5TDcyLjE0NSA4Ny40NDg5WiIgZmlsbD0iIzNDMDE0RSIvPgo8cGF0aCBkPSJNODAuOTg1MiAzNC4xOTk5QzgwLjY5NTIgMzQuMDk5OSA4MC4zNzUxIDM0LjA3OTkgODAuMDY1MSAzNC4wNzk5Qzc1LjE0NTEgMzQuMDc5OSA3MC4yMjUyIDM0LjA3OTkgNjUuMjk1MiAzNC4wODk5QzY1LjExNTIgMzQuMDg5OSA2NC45NDUxIDM0LjA2OTkgNjQuNzY1MSAzNC4wODk5QzYzLjg0NTEgMzQuMTc5OSA2My4yMTUxIDMzLjc1OTkgNjIuNzA1MSAzMy4wMTk5QzYxLjU1NTEgMzEuMzM5OSA2MC4zNjUyIDI5LjY4OTkgNTkuMTg1MiAyOC4wMzk5QzU4Ljc4NTIgMjcuNDc5OSA1OC4zMDUxIDI3LjA0OTkgNTcuNzc1MSAyNi43MTk5QzU1LjQxNTEgMjQuNzA5OSA0Ny44NTUyIDI0LjcwOTkgNDQuMDU1MiAyNS42ODk5QzQzLjQyNTIgMjUuODQ5OSA0Mi44NzUxIDI1Ljk4OTkgNDIuMzE1MSAyNS41ODk5QzM4LjU5NTEgMjIuOTI5OSAzNC4zNjUxIDIxLjg2OTkgMjkuOTA1MSAyMS4yNDk5QzI1LjgwNTEgMjAuNjY5OSAyMS43NTUxIDE5LjczOTkgMTcuNjc1MSAxOC45Nzk5QzE3LjA5NTEgMTguODY5OSAxNi41MTUxIDE4LjczOTkgMTUuOTM1MSAxOC43NTk5QzE1LjE5NTEgMTguNzc5OSAxNC44MzUxIDE5LjMzOTkgMTUuMTA1MSAyMC4wMzk5QzE1LjI5NTEgMjAuNTE5OSAxNS41ODUxIDIwLjk2OTkgMTUuOTA1MSAyMS4zNzk5QzE2LjgzNTEgMjIuNjE5OSAxNy44NDUxIDIzLjc5OTkgMTguNzQ1MSAyNS4wNTk5QzIwLjE0NTEgMjcuMDE5OSAyMC45NjUxIDI5LjI1OTkgMjEuNjg1MSAzMS41Mjk5QzIyLjY0NTEgMzQuNTc5OSAyNC40MjUxIDM2LjkzOTkgMjcuMjA1MSAzOC41NTk5QzI4LjYxNTEgMzkuMzc5OSAzMC44NzUyIDQwLjA1OTkgMzEuODA1MiA0MC4zMjk5QzMxLjk1NTIgNDAuNDY5OSAzMi4xMDUxIDQwLjU5OTkgMzIuMjU1MSA0MC43Mjk5QzMyLjIzNTEgNDEuNTA5OSAzMS44NjUyIDQzLjU0OTkgMzEuODA1MiA0My43OTk5QzMxLjMwNTIgNDUuNjc5OSAzMS4wNTUyIDQ5LjY0OTkgMzAuNzQ1MiA1MS43NDk5QzMwLjUyNTIgNTMuMjA5OSAzMC4zMDUxIDU0LjY1OTkgMzAuMDc1MSA1Ni4xMTk5QzI5LjY4NTEgNTguNjA5OSAyOS4yNjUyIDYxLjA4OTkgMjguODY1MiA2My41Nzk5QzI4LjMzNTIgNjYuODg5OSAyNy44NDUxIDcwLjIwOTkgMjcuMjc1MSA3My41MTk5QzI2Ljg1NTEgNzUuOTI5OSAyNS43NjUxIDc4LjA0OTkgMjQuMjc1MSA3OS45Nzk5QzIyLjU4NTEgODIuMTc5OSAyMC45MDUxIDg0LjM4OTkgMTkuMjI1MSA4Ni41OTk5QzE4LjIxNTEgODcuOTE5OSAxNy4yMTUxIDg5LjIyOTkgMTYuMjA1MSA5MC41NDk5QzE1LjgyNTEgOTEuMDQ5OSAxMy43MTg0IDkyLjU2NTYgMTMuMTcgOTQuNEMxMi43NjczIDk1Ljc0NzIgMTMuMTQgOTcuOTUgMTMuMTEgOThDMTYuNjEgMTAzLjUgMjUuODM0OCA5OCAyOS41IDk4TDU5LjU3NTEgOTguMDU5OUM1OS41ODUxIDk3LjkzOTkgNTkuNjE1MiA5Ny43MTk5IDU5LjYxNTIgOTcuNzE5OUM1OS43MTUyIDk2Ljg5OTkgNTkuODU1MSA5My45Mjk5IDU5LjY1NTEgOTIuNTk5OUM1OS4zNTUxIDkwLjUxOTkgNTguNzk1MSA4OC41MDk5IDU3LjgxNTEgODYuNjM5OUM1Ny4xNDUxIDg1LjM0OTkgNTYuMzQ1MSA4NC4xMjk5IDU1LjY1NTEgODIuODU5OUM1NC41NzUxIDgwLjg4OTkgNTQuMDM1MSA3OC43NTk5IDUzLjc1NTEgNzYuNTQ5OUM1My40NTUxIDc0LjE3OTkgNTMuNjE1MSA3MS44Mzk5IDU0LjE2NTEgNjkuNTE5OUM1NC44MDUxIDY2Ljg0OTkgNTUuOTU1MSA2NC40MTk5IDU3LjY2NTEgNjIuMjU5OUM2MC4xNTUxIDU5LjExOTkgNjMuMjU1MiA1Ni44MDk5IDY3LjA1NTIgNTUuNTE5OUM2OC4wNzUyIDU1LjE2OTkgNjkuMTc1MSA1NS4wMDk5IDcwLjI1NTEgNTQuODY5OUM3Mi44NDUxIDU0LjUyOTkgNzUuMTg1MiA1My42Mjk5IDc3LjE3NTIgNTEuOTE5OUM3OS4xMTUyIDUwLjI1OTkgODAuMzg1MSA0OC4xNDk5IDgwLjk2NTEgNDUuNjk5OUM4MS42NDUxIDQyLjgyOTkgODIuMTY1MSAzOS45MTk5IDgyLjY5NTEgMzcuMDE5OUM4Mi45MzUxIDM1LjcxOTkgODIuMTk1MiAzNC41ODk5IDgwLjk5NTIgMzQuMTg5OUw4MC45ODUyIDM0LjE5OTlaIiBmaWxsPSIjM0MwMTRFIi8+CjxwYXRoIGQ9Ik03MS41MzUxIDEzLjA2NzlDNzEuMjQ1MSAxMi45MTc5IDcwLjcwNTEgMTMuMDM4IDcwLjM4NTEgMTMuMjE4QzY5Ljg5NTEgMTMuNDg4IDY5LjQ3NTEgMTMuODk3OSA2OS4wNTUxIDE0LjI3NzlDNjcuMjM1MSAxNS45Mjc5IDY1LjMwNTEgMTcuNDI3OSA2My4wNzUxIDE4LjUwNzlDNjAuMzE1MSAxOS44Mzc5IDU3Ljk4NTEgMjEuNjc3OSA1NS45OTUxIDIzLjkyNzlDNTcuMjU1MSAyNC40Njc5IDU4LjQ1NTEgMjUuMTE3OSA1OS41MTUxIDI1Ljk3NzlDNjAuNTQ1MSAyNi44MDc5IDYxLjExNTEgMjcuNzc3OSA2MS44MTUxIDI4Ljg2NzlDNjIuMjE1MSAyOS40ODc5IDYyLjcwNTEgMzAuMjQ4IDYzLjE1NTEgMzAuODI4QzYzLjUzNTEgMzEuMzI4IDYzLjg4NTEgMzEuODY3OSA2NC4yOTUxIDMyLjMzNzlDNjQuNTg1MSAzMi42Njc5IDY0Ljg5NTEgMzIuNjg4IDY1LjM2NTEgMzIuNzM4QzY1LjgwNTEgMzIuNzg4IDY2LjIzNTEgMzIuODE3OSA2Ni42NzUxIDMyLjg0NzlDNjcuMTU1MSAzMi4xMTc5IDY3LjYyNTEgMzEuMzk4IDY4LjAyNTEgMzAuNjU4QzY5LjQyNTEgMjguMDg4IDY5Ljg0NTEgMjUuMjI4IDcwLjEyNTEgMjIuMzc4QzcwLjM4NTEgMTkuNzc4IDcwLjc3NTEgMTcuMjA3OSA3MS42MjUxIDE0LjcyNzlDNzEuNjk1MSAxNC41Mjc5IDcxLjc5NTEgMTQuMzE3OSA3MS43NzUxIDE0LjExNzlDNzEuNzQ1MSAxMy43NDc5IDcxLjc0NTEgMTMuMTY3OSA3MS41MzUxIDEzLjA1NzlWMTMuMDY3OVoiIGZpbGw9IiMzQzAxNEUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF84MzBfNTc2Ij4KPHJlY3Qgd2lkdGg9Ijk4IiBoZWlnaHQ9Ijk4IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
+    --green:#3C014E; --green-d:#2D0A47; --green-deep:#1E0230;
+    --coral:#DB4949; --coral-d:#EE3842;
+    --yellow:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+    --border:rgba(22,22,11,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  h1,h2,h3,h4,.logo,.btn{font-family:"Poppins",system-ui,sans-serif}
+
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+  .logo{font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
+  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink);transition:opacity .14s}
+  .navlinks a:not(.btn):hover{opacity:.65}
+  .navlinks a.active{color:var(--coral)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:14px;padding:11px 24px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(219,73,73,.28)}
+  .btn-white{background:#fff;color:var(--ink)}
+  .btn-outline{border:1.5px solid rgba(255,255,255,.6);color:#fff}
+  .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none}
+
+  /* ── HAMBURGER ── */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
+  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+
+  /* ── LAYOUT HELPERS ── */
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:16px;display:block}
+  /* longhand top/bottom only — deliberately NOT touching left/right padding here.
+     Elements use class="wrap section" together, and .section's padding would otherwise
+     be the same shorthand property as .wrap's and fully override (not add to) it,
+     silently zeroing out .wrap's horizontal padding. Using longhand keeps .wrap's
+     horizontal padding intact so plain-text sections line up with the card's outer edge. */
+  .section{padding-top:56px;padding-bottom:56px}
+
+  /* ── HERO ── */
+  /* fills the screen on load: min-height is the viewport minus the sticky nav's own height (~80px),
+     with the content vertically centered inside it via flex */
+  .about-hero{min-height:calc(100svh - 80px);display:flex;flex-direction:column;justify-content:center;max-width:760px;margin:0 auto;text-align:center;padding:40px 0}
+  .about-hero h1{font-size:52px;font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:30px}
+  .about-hero h1 .hl{color:var(--coral)}
+  .statement-list{display:flex;flex-direction:column;gap:14px;max-width:34em;margin:0 auto}
+  .statement-list p{font-size:19px;font-weight:600;color:#2a2a1e;line-height:1.5}
+  .statement-list p:last-child{color:var(--coral)}
+
+  /* ── GENERIC ROUNDED BLOCK (matches homepage .block) ── */
+  .block{border-radius:34px;padding:64px;margin:44px 0}
+  .block-green{background:var(--green);color:#fff}
+  .block-deep{background:var(--green-deep);color:#fff}
+  .block-coral{background:var(--coral);color:#fff}
+  .block .eyebrow{color:inherit;opacity:.72}
+
+  .chip-dark{border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:10px 18px;font-size:13.5px;font-weight:600;color:#fff;background:rgba(255,255,255,.1)}
+
+  /* Small white stat/info cards (matches homepage .card) */
+  .card{background:#fff;color:var(--ink);border-radius:22px;padding:26px 24px;transition:transform .14s;box-shadow:0 8px 20px rgba(0,0,0,.05)}
+  .card:hover{transform:translateY(-3px)}
+  .cards-row{display:grid;gap:18px}
+
+  /* Quote / emphasis line with left accent border. No negative margin here on purpose: the
+     border itself is the visible left edge, and it sits flush with the cards/headings around it.
+     The text is indented past the border+padding, same as any normal blockquote. */
+  .quote-line{border-left:3px solid var(--coral);padding-left:22px;font-family:"Poppins",system-ui,sans-serif;font-size:19px;font-weight:600;line-height:1.5;max-width:44em;margin-top:32px}
+
+  /* ── TWO-COLUMN HEADING/GRID PATTERNS ── */
+  .section-heading{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start;margin-bottom:36px}
+  .section-heading h2{font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.18;max-width:14em}
+  .section-copy{max-width:640px;color:var(--muted);font-size:17px;line-height:1.7}
+  .section-copy p{margin-bottom:16px}
+  .section-copy p:last-child{margin-bottom:0}
+
+  .mission-statement{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:start}
+  .mission-statement h2{font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.02em;max-width:20em}
+
+  .origin-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:start}
+  .origin-grid h2{font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.02em;max-width:12em}
+  .origin-copy{max-width:38em}
+  .origin-copy .lead{font-family:"Poppins",system-ui,sans-serif;font-size:23px;font-weight:700;line-height:1.4;margin-bottom:18px}
+  .origin-copy p{font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.82);margin-bottom:14px}
+  .origin-copy p:last-of-type{margin-bottom:0}
+  .story-link{display:inline-flex;margin-top:20px;border-bottom:2px solid var(--yellow);padding-bottom:3px;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:700;text-decoration:none}
+  .story-link:hover{color:var(--yellow)}
+
+  /* Observe/Model/Alter/Learn steps (matches homepage process cards) */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+  .step{border-radius:20px;padding:26px 22px 28px;min-height:190px;display:flex;flex-direction:column;gap:16px}
+  .s1{background:#3C014E;color:#fff}
+  .s2{background:#DB4949;color:#fff}
+  .s3{background:#34BBCB;color:#fff}
+  .s4{background:#220032;color:#fff}
+  .num-title{display:flex;flex-direction:row;align-items:center;gap:12px}
+  .num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;background:rgba(255,255,255,.22)}
+  .step h4{font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em}
+  .step p{margin:0;font-size:13.5px;line-height:1.6;opacity:.95}
+
+  /* Why cancer statement */
+  .statement-hl{font-size:36px;font-weight:800;line-height:1.25;letter-spacing:-.02em;max-width:46em;margin-bottom:32px}
+  .statement-hl span{color:var(--coral)}
+  .two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .two-col .card p{font-size:16px;line-height:1.7;color:var(--muted);margin:0}
+  .sub-commitment{margin-top:20px}
+  .sub-commitment .card{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center}
+  .sub-commitment h3{font-size:22px;font-weight:800;letter-spacing:-.01em}
+  .sub-commitment p{font-size:16px;line-height:1.7;color:var(--muted);margin:0}
+
+  /* AI-first research loop: small card tiles */
+  .loop-grid{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+  .loop-card{background:rgba(255,255,255,.08);border-radius:16px;padding:20px 18px}
+  .loop-card .ln{display:block;font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--yellow);margin-bottom:8px}
+  .loop-card p{margin:0;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.9)}
+
+  /* First product / operating targets */
+  .thesis-lead{font-size:34px;font-weight:800;line-height:1.18;letter-spacing:-.02em;max-width:22em;margin-bottom:32px}
+  .thesis-lead span{color:var(--coral)}
+  .targets-row{margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .target-card strong{display:block;margin-bottom:8px;color:var(--green);font-family:"Poppins",system-ui,sans-serif;font-size:40px;font-weight:800;line-height:1}
+  .target-card span{color:var(--muted);font-size:14.5px}
+  .targets-note{margin:16px 0 0;color:#8a8f84;font-size:12px}
+
+  /* Build with us */
+  .build-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:start}
+  .build-grid h2{font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.02em;max-width:12em}
+  .build-copy .lead{font-family:"Poppins",system-ui,sans-serif;font-size:20px;font-weight:700;line-height:1.4;margin-bottom:16px}
+  .build-copy p{font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.9);margin-bottom:14px}
+  .partner-chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+  .build-actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+
+  /* ── FOOTER ── */
+  footer{background:var(--cream);border-top:1px solid var(--border)}
+  .foot{display:flex;align-items:flex-start;justify-content:space-between;padding:64px 72px 34px;max-width:1200px;margin:0 auto;gap:40px}
+  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
+  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:24em;line-height:1.6}
+  .foot .footer-links{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+  .foot .footer-links a:hover{color:var(--ink)}
+  .legal{max-width:1200px;margin:0 auto;padding:18px 72px 0;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+  .legal a{color:var(--muted);text-decoration:none}
+  .disclaimer{max-width:1200px;margin:0 auto;padding:20px 72px 38px;color:#8a8f84;font-size:11px;line-height:1.6}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .nav-toggle{display:flex}
+    .navlinks{display:none}
+    .nav-in{padding:16px 20px}
+    .wrap,.foot,.legal,.disclaimer{padding-left:20px;padding-right:20px}
+
+    .section{padding-top:36px;padding-bottom:36px}
+    .about-hero{min-height:calc(100svh - 72px);padding:36px 0}
+    .about-hero h1{font-size:32px;margin-bottom:22px}
+    .statement-list p{font-size:16px}
+
+    .block{padding:32px 22px;border-radius:24px;margin:28px 0}
+    .section-heading,.mission-statement,.origin-grid,.build-grid{grid-template-columns:1fr;gap:20px}
+    .section-heading h2,.mission-statement h2,.origin-grid h2,.build-grid h2{font-size:26px;max-width:none}
+    .statement-hl,.thesis-lead{font-size:25px}
+
+    .steps{grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+    .step{padding:20px 18px 22px;min-height:0}
+
+    .two-col{grid-template-columns:1fr}
+    .sub-commitment .card{grid-template-columns:1fr;gap:12px}
+    .targets-row{grid-template-columns:1fr}
+
+    .loop-grid{grid-template-columns:1fr 1fr}
+    .partner-chips{gap:8px}
+    .build-actions{flex-direction:column;align-items:stretch}
+
+    .foot{flex-direction:column;gap:20px;padding:40px 20px 24px}
+    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+    .foot .footer-links a{margin-left:0;font-size:15px}
+    .legal{flex-direction:column;gap:6px;padding:16px 20px 0}
+  }
+
+  @media(max-width:560px){
+    .steps{grid-template-columns:1fr}
+    .loop-grid{grid-template-columns:1fr}
+    .about-hero h1{font-size:27px}
+    .section-heading h2,.mission-statement h2,.origin-grid h2,.build-grid h2{font-size:22px}
+    .statement-hl,.thesis-lead{font-size:21px}
+    .origin-copy .lead{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/">GAMGEE</a>
+    <div class="navlinks">
+      <a href="/story/">Our story</a>
+      <a href="/about/" class="active">About</a>
+      <a href="/vet/">For Vets</a>
+      <a class="btn btn-green" href="/apply/">Apply</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
+      const btn=this, menu=document.getElementById('mobile-menu');
+      const open=btn.classList.toggle('open');
+      menu.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open);
+    ">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+    <a href="/about/" class="active" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
+    <a href="/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
+    <a class="btn btn-green" href="/apply/">Apply now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="wrap">
+  <header class="about-hero" id="about">
+    <p class="eyebrow">The AI first Genomics Company</p>
+    <h1>We are <span class="hl">Gamgee.</span></h1>
+    <div class="statement-list">
+      <p>Beyond AI, we believe that AI meets biology is the biggest opportunity of the 21st century. We are the software company designing custom mRNA vaccines for dogs.</p>
+      <p>This is only just the beginning.</p>
+    </div>
+  </header>
+</div>
+
+<!-- MISSION -->
+<div class="wrap">
+  <section class="block block-coral mission-statement" id="mission">
+    <p class="eyebrow">Our mission</p>
+    <h2>Build autonomous systems that read biological failure, discover how to control it, and design precise repairs.</h2>
+  </section>
+</div>
+
+<!-- WHY GAMGEE EXISTS / READ-WRITE MODEL -->
+<div class="wrap section" id="read-write">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Why Gamgee exists</p>
+      <h2>From treatments for populations to interventions designed for one patient.</h2>
+    </div>
+    <div class="section-copy">
+      <p>Biology is becoming increasingly readable. We can sequence genomes, compare healthy and diseased tissue, observe gene expression, map immune activity, and watch cellular populations change over time.</p>
+      <p>But treatment is still usually chosen from a small menu designed for broad patient groups. Gamgee begins with the molecular state of one patient and designs around what is happening now.</p>
+    </div>
+  </div>
+
+  <div class="steps" aria-label="The read-write medicine model">
+    <div class="step s1">
+      <div class="num-title"><div class="num">01</div><h4>Observe</h4></div>
+      <p>Read the patient's biology at molecular resolution rather than infer it from population averages.</p>
+    </div>
+    <div class="step s2">
+      <div class="num-title"><div class="num">02</div><h4>Model</h4></div>
+      <p>Understand disease as a changing causal system, including uncertainty and competing explanations.</p>
+    </div>
+    <div class="step s3">
+      <div class="num-title"><div class="num">03</div><h4>Alter</h4></div>
+      <p>Design the intervention the present biological state demands, rather than force every problem into one modality.</p>
+    </div>
+    <div class="step s4">
+      <div class="num-title"><div class="num">04</div><h4>Learn</h4></div>
+      <p>Measure the outcome so the next intervention and the system that produced it can improve.</p>
+    </div>
+  </div>
+
+  <p class="quote-line">Genomics is how Gamgee begins to understand the system. Bioengineering is how we change it. Artificial intelligence connects the two.</p>
+</div>
+
+<!-- ORIGIN / ROSIE -->
+<div class="wrap">
+  <section class="block block-green origin-grid" id="rosie">
+    <div>
+      <p class="eyebrow">Our origin</p>
+      <h2>From one patient to a new kind of company.</h2>
+    </div>
+    <div class="origin-copy">
+      <p class="lead">Gamgee began with Rosie.</p>
+      <p>When Rosie developed cancer, we used genomics, artificial intelligence, and programmable medicine to turn the molecular features of her tumour into a treatment designed specifically for her.</p>
+      <p>Her treatment showed that an end-to-end personalised workflow could be built: sample, sequence, analyse, design, manufacture, administer, and measure.</p>
+      <p>That first treatment was not the destination. It exposed the path.</p>
+      <a class="story-link" href="/story/">Read Rosie's story →</a>
+    </div>
+  </section>
+</div>
+
+<!-- WHY CANCER -->
+<div class="wrap section" id="cancer">
+  <p class="eyebrow">Why cancer comes first</p>
+  <h2 class="statement-hl">Black holes force physics to confront its hardest questions. <span>Cancer does the same for biology:</span> it is biology at its most adversarial.</h2>
+
+  <div class="two-col">
+    <div class="card"><p>Cancer mutates, evolves, changes state, reshapes its environment, evades immune surveillance, and develops resistance to fixed treatments. It concentrates many of genomic medicine's hardest problems into one disease.</p></div>
+    <div class="card"><p>Understanding and controlling it requires advances in molecular sensing, causal models of changing cell populations, personalised intervention design, immune engineering, delivery, rapid manufacturing, and clinical measurement.</p></div>
+  </div>
+
+  <div class="sub-commitment">
+    <div class="card">
+      <h3>Dogs need better cancer treatments now.</h3>
+      <p>They are patients, not disposable models. Their cancers arise naturally inside functioning immune systems and evolve over time. Serving them responsibly requires personalised genomic medicine to become repeatable, manufacturable, and clinically useful.</p>
+    </div>
+  </div>
+</div>
+
+<!-- AI-FIRST -->
+<div class="wrap">
+  <section class="block block-deep origin-grid" id="ai-first">
+    <div>
+      <p class="eyebrow">AI-first from the ground up</p>
+      <h2>Build the company so more of the research loop can run itself.</h2>
+    </div>
+    <div class="origin-copy">
+      <p class="lead">AI-first does not mean adding a chatbot to a conventional laboratory.</p>
+      <p>Every paper, claim, dataset, patient sample, molecular design, experiment, failure, manufacturing run, and clinical outcome should become part of a connected research memory.</p>
+
+      <div class="loop-grid" aria-label="Machine-conducted research loop">
+        <div class="loop-card"><span class="ln">01</span><p>Search across disciplines and challenge published claims.</p></div>
+        <div class="loop-card"><span class="ln">02</span><p>Construct competing causal explanations and expose uncertainty.</p></div>
+        <div class="loop-card"><span class="ln">03</span><p>Choose the smallest experiment capable of deciding between them.</p></div>
+        <div class="loop-card"><span class="ln">04</span><p>Propose an intervention, interpret the result, and revise the model.</p></div>
+        <div class="loop-card"><span class="ln">05</span><p>Continue the loop with a research memory that grows rather than resets.</p></div>
+      </div>
+
+      <p style="margin-top:26px">Humans set the mission, define the evidence required, exercise scientific judgment, and enforce ethical and safety boundaries. Machines conduct more of the search, synthesis, experimental design, and iteration.</p>
+      <p class="quote-line">The central bet is that a sufficiently capable research system, connected to experimental and clinical reality, can discover fundamentally new ways of intervening in biology.</p>
+    </div>
+  </section>
+</div>
+
+<!-- FIRST PRODUCT -->
+<div class="wrap section" id="first-product">
+  <p class="eyebrow">The first product, not the final identity</p>
+  <h2 class="thesis-lead"><span>Custom mRNA vaccines</span> are where we begin.</h2>
+
+  <div class="two-col">
+    <div class="card"><p>They are valuable treatments in their own right and establish the practical foundation of the company: sequencing, analysis, design, manufacturing, clinical delivery, and response measurement.</p></div>
+    <div class="card"><p>Gamgee should not be defined by one therapeutic modality. The enduring company is the system that turns molecular state into intervention and becomes faster, cheaper, and more capable with every cycle.</p></div>
+  </div>
+
+  <p class="quote-line">Progress must show up in speed and cost. Custom medicine should move from an artisanal process toward an automated system that can reach far more patients.</p>
+
+  <p class="eyebrow" style="margin-top:36px">Long-term operating goals</p>
+  <div class="targets-row" aria-label="Long-term operating goals">
+    <div class="card target-card">
+      <strong>24 hours</strong>
+      <span>Produce a custom vaccine within 24 hours.</span>
+    </div>
+    <div class="card target-card">
+      <strong>$2,000</strong>
+      <span>Drive the cost of each custom vaccine down to $2,000.</span>
+    </div>
+  </div>
+  <p class="targets-note">These are development targets, not current product availability, turnaround, or pricing.</p>
+</div>
+
+<!-- REPAIR -->
+<div class="wrap section" id="repair">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">From cancer to biological repair</p>
+      <h2>Make biological damage increasingly tractable.</h2>
+    </div>
+    <div class="section-copy">
+      <p>The tools built to understand, reach, and control malignant cells may eventually address other forms of biological damage.</p>
+      <p>Aging is not one disease. It is many failures accumulating over time. Gamgee's longer-term aim is to make those failures legible and repairable one by one, while restoring function without weakening the controls that protect against cancer.</p>
+      <p>We begin with an urgent commitment to dogs with cancer. We are building toward a broader system for biological repair.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BUILD WITH US -->
+<div class="wrap">
+  <section class="block block-coral build-grid" id="build">
+    <div>
+      <p class="eyebrow">Build with us</p>
+      <h2>Help build the repair layer for biology.</h2>
+    </div>
+    <div class="build-copy">
+      <p class="lead">Gamgee sits at the intersection of software, genomics, immunology, RNA engineering, manufacturing, veterinary oncology, and clinical research.</p>
+      <p>We want to work with people and institutions who believe biology can become more understandable, programmable, and repairable without losing scientific rigor or respect for the patient.</p>
+      <p>We are especially interested in hearing from:</p>
+      <div class="partner-chips">
+        <span class="chip-dark">Veterinary oncologists &amp; specialty hospitals</span>
+        <span class="chip-dark">Computational biologists &amp; immunologists</span>
+        <span class="chip-dark">RNA, delivery &amp; manufacturing scientists</span>
+        <span class="chip-dark">Universities &amp; clinical-trial operators</span>
+        <span class="chip-dark">Animal-health &amp; comparative-oncology partners</span>
+        <span class="chip-dark">People building AI-native scientific systems</span>
+      </div>
+      <div class="build-actions">
+        <a class="btn btn-white" href="mailto:hello@gamgee.io?subject=Work%20with%20Gamgee">Work with Gamgee</a>
+        <a class="btn btn-outline" href="mailto:hello@gamgee.io">Contact us</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">The AI first Genomics Company. We are the software company designing custom mRNA vaccines for dogs.</p>
+    </div>
+    <div class="footer-links">
+      <h5>PRODUCT</h5>
+      <a href="/vet/">For Vets</a>
+      <a href="/apply/">Apply</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 GAMGEE · San Francisco, United States</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+  </div>
+  <p class="disclaimer">Gamgee is developing investigational veterinary technologies. Information on this website is provided for research and company information only and does not constitute veterinary advice, an offer of treatment, or a promise of study eligibility, safety, or efficacy. Clinical studies and product availability are subject to applicable regulatory, ethics, and veterinary oversight.</p>
+</footer>
+
+</body>
+</html>

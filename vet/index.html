@@ -1,507 +1,737 @@
-1|<!DOCTYPE html>
-2|<html lang="en">
-3|<head>
-4|<meta charset="UTF-8">
-5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-6|<title>GAMGEE - For Veterinary Oncologists</title>
-7|<link rel="preconnect" href="https://fonts.googleapis.com">
-8|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-9|<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-10|<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iOTgiIHZpZXdCb3g9IjAgMCA5OCA5OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzgzMF81NzYpIj4KPHBhdGggZD0iTTcyLjE0NSA4Ny40NDg5QzcxLjIxNSA4NS4zMTg5IDY5Ljk5NSA4My4zNzg5IDY4LjQ2NSA4MS42Mzg5QzY2LjU4NSA3OS40OTg5IDY1LjAyNSA3Ny4xMzg5IDY0LjAxNSA3NC40Njg5QzYzLjU1NSA3My4yNDg5IDYzLjIxNSA3MS45Nzg5IDYyLjkyNSA3MC43MDg5QzYyLjQ5NSA2OC44MDg5IDYyLjMwNSA2Ni44Nzg5IDYyLjQ4NSA2NC45Mjg5QzYyLjQ4NSA2NC44Njg5IDYyLjQ4NSA2NC43OTg5IDYyLjQ2NSA2NC43Mjg5QzYyLjQ2NSA2NC43MDg5IDYyLjQyNSA2NC42OTg5IDYyLjM0NSA2NC42Mjg5QzYyLjA5NSA2NS4wMDg5IDYxLjgyNSA2NS4zNjg5IDYxLjYwNSA2NS43NTg5QzU5Ljc3NSA2OC45ODg5IDU5LjE5NTEgNzIuNDI4OSA1OS44MDUxIDc2LjA5ODlDNjAuMjA1MSA3OC41Mzg5IDYxLjE2NTEgODAuNzQ4OSA2Mi40MzUxIDgyLjgyODlDNjMuMDI1MSA4My43OTg5IDYzLjc0NSA4NC42Nzg5IDY0LjMxNSA4NS42NDg5QzY2LjI4NSA4OC45NDg5IDY3LjI3NSA5Mi41MDg5IDY3LjA3NSA5Ni4zNjg5QzY3LjA3NSA5Ni41MTg5IDY2LjkwNSA5Ny45MDg5IDY2LjkwNSA5Ny45MDg5QzY2LjkwNSA5Ny45MDg5IDY2Ljg5NSA5OC4wMzg5IDY2Ljg5NSA5OC4wNDg5QzY2Ljg5NSA5OC4wODg5IDcyLjcwNSA5OC4wNDg5IDcyLjcwNSA5OC4wNDg5QzczLjA0NSA5OC4wNDg5IDczLjM3NSA5OC4wMzg5IDczLjcwNSA5OC4wMTg5QzczLjcxNSA5Ny45Njg5IDczLjcyNSA5Ny45MTg5IDczLjczNSA5Ny44Njg5QzczLjczNSA5Ny43NTg5IDczLjc1NSA5Ny42MTg5IDczLjc2NSA5Ny40NDg5QzczLjg0NSA5Ni4yMjg5IDczLjg5NTEgOTQuOTk4OSA3My44MDUxIDkzLjc3ODlDNzMuNjU1MSA5MS41Njg5IDczLjA0NSA4OS40NTg5IDcyLjE2NSA4Ny40Mzg5TDcyLjE0NSA4Ny40NDg5WiIgZmlsbD0iIzNDMDE0RSIvPgo8cGF0aCBkPSJNODAuOTg1MiAzNC4xOTk5QzgwLjY5NTIgMzQuMDk5OSA4MC4zNzUxIDM0LjA3OTkgODAuMDY1MSAzNC4wNzk5Qzc1LjE0NTEgMzQuMDc5OSA3MC4yMjUyIDM0LjA3OTkgNjUuMjk1MiAzNC4wODk5QzY1LjExNTIgMzQuMDg5OSA2NC45NDUxIDM0LjA2OTkgNjQuNzY1MSAzNC4wODk5QzYzLjg0NTEgMzQuMTc5OSA2My4yMTUxIDMzLjc1OTkgNjIuNzA1MSAzMy4wMTk5QzYxLjU1NTEgMzEuMzM5OSA2MC4zNjUyIDI5LjY4OTkgNTkuMTg1MiAyOC4wMzk5QzU4Ljc4NTIgMjcuNDc5OSA1OC4zMDUxIDI3LjA0OTkgNTcuNzc1MSAyNi43MTk5QzU1LjQxNTEgMjQuNzA5OSA0Ny44NTUyIDI0LjcwOTkgNDQuMDU1MiAyNS42ODk5QzQzLjQyNTIgMjUuODQ5OSA0Mi44NzUxIDI1Ljk4OTkgNDIuMzE1MSAyNS41ODk... [truncated]
-<!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMGEE - For Veterinary Oncologists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iOTgiIHZpZXdCb3g9IjAgMCA5OCA5OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzgzMF81NzYpIj4KPHBhdGggZD0iTTcyLjE0NSA4Ny40NDg5QzcxLjIxNSA4NS4zMTg5IDY5Ljk5NSA4My4zNzg5IDY4LjQ2NSA4MS42Mzg5QzY2LjU4NSA3OS40OTg5IDY1LjAyNSA3Ny4xMzg5IDY0LjAxNSA3NC40Njg5QzYzLjU1NSA3My4yNDg5IDYzLjIxNSA3MS45Nzg5IDYyLjkyNSA3MC43MDg5QzYyLjQ5NSA2OC44MDg5IDYyLjMwNSA2Ni44Nzg5IDYyLjQ4NSA2NC45Mjg5QzYyLjQ4NSA2NC44Njg5IDYyLjQ4NSA2NC43OTg5IDYyLjQ2NSA2NC43Mjg5QzYyLjQ2NSA2NC43MDg5IDYyLjQyNSA2NC42OTg5IDYyLjM0NSA2NC42Mjg5QzYyLjA5NSA2NS4wMDg5IDYxLjgyNSA2NS4zNjg5IDYxLjYwNSA2NS43NTg5QzU5Ljc3NSA2OC45ODg5IDU5LjE5NTEgNzIuNDI4OSA1OS44MDUxIDc2LjA5ODlDNjAuMjA1MSA3OC41Mzg5IDYxLjE2NTEgODAuNzQ4OSA2Mi40MzUxIDgyLjgyODlDNjMuMDI1MSA4My43OTg5IDYzLjc0NSA4NC42Nzg5IDY0LjMxNSA4NS42NDg5QzY2LjI4NSA4OC45NDg5IDY3LjI3NSA5Mi41MDg5IDY3LjA3NSA5Ni4zNjg5QzY3LjA3NSA5Ni41MTg5IDY2LjkwNSA5Ny45MDg5IDY2LjkwNSA5Ny45MDg5QzY2LjkwNSA5Ny45MDg5IDY2Ljg5NSA5OC4wMzg5IDY2Ljg5NSA5OC4wNDg5QzY2Ljg5NSA5OC4wODg5IDcyLjcwNSA5OC4wNDg5IDcyLjcwNSA5OC4wNDg5QzczLjA0NSA5OC4wNDg5IDczLjM3NSA5OC4wMzg5IDczLjcwNSA5OC4wMTg5QzczLjcxNSA5Ny45Njg5IDczLjcyNSA5Ny45MTg5IDczLjczNSA5Ny44Njg5QzczLjczNSA5Ny43NTg5IDczLjc1NSA5Ny42MTg5IDczLjc2NSA5Ny40NDg5QzczLjg0NSA5Ni4yMjg5IDczLjg5NTEgOTQuOTk4OSA3My44MDUxIDkzLjc3ODlDNzMuNjU1MSA5MS41Njg5IDczLjA0NSA4OS40NTg5IDcyLjE2NSA4Ny40Mzg5TDcyLjE0NSA4Ny40NDg5WiIgZmlsbD0iIzNDMDE0RSIvPgo8cGF0aCBkPSJNODAuOTg1MiAzNC4xOTk5QzgwLjY5NTIgMzQuMDk5OSA4MC4zNzUxIDM0LjA3OTkgODAuMDY1MSAzNC4wNzk5Qzc1LjE0NTEgMzQuMDc5OSA3MC4yMjUyIDM0LjA3OTkgNjUuMjk1MiAzNC4wODk5QzY1LjExNTIgMzQuMDg5OSA2NC45NDUxIDM0LjA2OTkgNjQuNzY1MSAzNC4wODk5QzYzLjg0NTEgMzQuMTc5OSA2My4yMTUxIDMzLjc1OTkgNjIuNzA1MSAzMy4wMTk5QzYxLjU1NTEgMzEuMzM5OSA2MC4zNjUyIDI5LjY4OTkgNTkuMTg1MiAyOC4wMzk5QzU4Ljc4NTIgMjcuNDc5OSA1OC4zMDUxIDI3LjA0OTkgNTcuNzc1MSAyNi43MTk5QzU1LjQxNTEgMjQuNzA5OSA0Ny44NTUyIDI0LjcwOTkgNDQuMDU1MiAyNS42ODk5QzQzLjQyNTIgMjUuODQ5OSA0Mi44NzUxIDI1Ljk4OTkgNDIuMzE1MSAyNS41ODk5QzM4LjU5NTEgMjIuOTI5OSAzNC4zNjUxIDIxLjg2OTkgMjkuOTA1MSAyMS4yNDk5QzI1LjgwNTEgMjAuNjY5OSAyMS43NTUxIDE5LjczOTkgMTcuNjc1MSAxOC45Nzk5QzE3LjA5NTEgMTguODY5OSAxNi41MTUxIDE4LjczOTkgMTUuOTM1MSAxOC43NTk5QzE1LjE5NTEgMTguNzc5OSAxNC44MzUxIDE5LjMzOTkgMTUuMTA1MSAyMC4wMzk5QzE1LjI5NTEgMjAuNTE5OSAxNS41ODUxIDIwLjk2OTkgMTUuOTA1MSAyMS4zNzk5QzE2LjgzNTEgMjIuNjE5OSAxNy44NDUxIDIzLjc5OTkgMTguNzQ1MSAyNS4wNTk5QzIwLjE0NTEgMjcuMDE5OSAyMC45NjUxIDI5LjI1OTkgMjEuNjg1MSAzMS41Mjk5QzIyLjY0NTEgMzQuNTc5OSAyNC40MjUxIDM2LjkzOTkgMjcuMjA1MSAzOC41NTk5QzI4LjYxNTEgMzkuMzc5OSAzMC44NzUyIDQwLjA1OTkgMzEuODA1MiA0MC4zMjk5QzMxLjk1NTIgNDAuNDY5OSAzMi4xMDUxIDQwLjU5OTkgMzIuMjU1MSA0MC43Mjk5QzMyLjIzNTEgNDEuNTA5OSAzMS44NjUyIDQzLjU0OTkgMzEuODA1MiA0My43OTk5QzMxLjMwNTIgNDUuNjc5OSAzMS4wNTUyIDQ5LjY0OTkgMzAuNzQ1MiA1MS43NDk5QzMwLjUyNTIgNTMuMjA5OSAzMC4zMDUxIDU0LjY1OTkgMzAuMDc1MSA1Ni4xMTk5QzI5LjY4NTEgNTguNjA5OSAyOS4yNjUyIDYxLjA4OTkgMjguODY1MiA2My41Nzk5QzI4LjMzNTIgNjYuODg5OSAyNy44NDUxIDcwLjIwOTkgMjcuMjc1MSA3My41MTk5QzI2Ljg1NTEgNzUuOTI5OSAyNS43NjUxIDc4LjA0OTkgMjQuMjc1MSA3OS45Nzk5QzIyLjU4NTEgODIuMTc5OSAyMC45MDUxIDg0LjM4OTkgMTkuMjI1MSA4Ni41OTk5QzE4LjIxNTEgODcuOTE5OSAxNy4yMTUxIDg5LjIyOTkgMTYuMjA1MSA5MC41NDk5QzE1LjgyNTEgOTEuMDQ5OSAxMy43MTg0IDkyLjU2NTYgMTMuMTcgOTQuNEMxMi43NjczIDk1Ljc0NzIgMTMuMTQgOTcuOTUgMTMuMTEgOThDMTYuNjEgMTAzLjUgMjUuODM0OCA5OCAyOS41IDk4TDU5LjU3NTEgOTguMDU5OUM1OS41ODUxIDk3LjkzOTkgNTkuNjE1MiA5Ny43MTk5IDU5LjYxNTIgOTcuNzE5OUM1OS43MTUyIDk2Ljg5OTkgNTkuODU1MSA5My45Mjk5IDU5LjY1NTEgOTIuNTk5OUM1OS4zNTUxIDkwLjUxOTkgNTguNzk1MSA4OC41MDk5IDU3LjgxNTEgODYuNjM5OUM1Ny4xNDUxIDg1LjM0OTkgNTYuMzQ1MSA4NC4xMjk5IDU1LjY1NTEgODIuODU5OUM1NC41NzUxIDgwLjg4OTkgNTQuMDM1MSA3OC43NTk5IDUzLjc1NTEgNzYuNTQ5OUM1My40NTUxIDc0LjE3OTkgNTMuNjE1MSA3MS44Mzk5IDU0LjE2NTEgNjkuNTE5OUM1NC44MDUxIDY2Ljg0OTkgNTUuOTU1MSA2NC40MTk5IDU3LjY2NTEgNjIuMjU5OUM2MC4xNTUxIDU5LjExOTkgNjMuMjU1MiA1Ni44MDk5IDY3LjA1NTIgNTUuNTE5OUM2OC4wNzUyIDU1LjE2OTkgNjkuMTc1MSA1NS4wMDk5IDcwLjI1NTEgNTQuODY5OUM3Mi44NDUxIDU0LjUyOTkgNzUuMTg1MiA1My42Mjk5IDc3LjE3NTIgNTEuOTE5OUM3OS4xMTUyIDUwLjI1OTkgODAuMzg1MSA0OC4xNDk5IDgwLjk2NTEgNDUuNjk5OUM4MS42NDUxIDQyLjgyOTkgODIuMTY1MSAzOS45MTk5IDgyLjY5NTEgMzcuMDE5OUM4Mi45MzUxIDM1LjcxOTkgODIuMTk1MiAzNC41ODk5IDgwLjk5NTIgMzQuMTg5OUw4MC45ODUyIDM0LjE5OTlaIiBmaWxsPSIjM0MwMTRFIi8+CjxwYXRoIGQ9Ik03MS41MzUxIDEzLjA2NzlDNzEuMjQ1MSAxMi45MTc5IDcwLjcwNTEgMTMuMDM4IDcwLjM4NTEgMTMuMjE4QzY5Ljg5NTEgMTMuNDg4IDY5LjQ3NTEgMTMuODk3OSA2OS4wNTUxIDE0LjI3NzlDNjcuMjM1MSAxNS45Mjc5IDY1LjMwNTEgMTcuNDI3OSA2My4wNzUxIDE4LjUwNzlDNjAuMzE1MSAxOS44Mzc5IDU3Ljk4NTEgMjEuNjc3OSA1NS45OTUxIDIzLjkyNzlDNTcuMjU1MSAyNC40Njc5IDU4LjQ1NTEgMjUuMTE3OSA1OS41MTUxIDI1Ljk3NzlDNjAuNTQ1MSAyNi44MDc5IDYxLjExNTEgMjcuNzc3OSA2MS44MTUxIDI4Ljg2NzlDNjIuMjE1MSAyOS40ODc5IDYyLjcwNTEgMzAuMjQ4IDYzLjE1NTEgMzAuODI4QzYzLjUzNTEgMzEuMzI4IDYzLjg4NTEgMzEuODY3OSA2NC4yOTUxIDMyLjMzNzlDNjQuNTg1MSAzMi42Njc5IDY0Ljg5NTEgMzIuNjg4IDY1LjM2NTEgMzIuNzM4QzY1LjgwNTEgMzIuNzg4IDY2LjIzNTEgMzIuODE3OSA2Ni42NzUxIDMyLjg0NzlDNjcuMTU1MSAzMi4xMTc5IDY3LjYyNTEgMzEuMzk4IDY4LjAyNTEgMzAuNjU4QzY5LjQyNTEgMjguMDg4IDY5Ljg0NTEgMjUuMjI4IDcwLjEyNTEgMjIuMzc4QzcwLjM4NTEgMTkuNzc4IDcwLjc3NTEgMTcuMjA3OSA3MS42MjUxIDE0LjcyNzlDNzEuNjk1MSAxNC41Mjc5IDcxLjc5NTEgMTQuMzE3OSA3MS43NzUxIDE0LjExNzlDNzEuNzQ1MSAxMy43NDc5IDcxLjc0NTEgMTMuMTY3OSA3MS41MzUxIDEzLjA1NzlWMTMuMDY3OVoiIGZpbGw9IiMzQzAxNEUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF84MzBfNTc2Ij4KPHJlY3Qgd2lkdGg9Ijk4IiBoZWlnaHQ9Ijk4IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=">
+<style>
+  :root{
+    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55; --border:rgba(22,22,11,.10);
+    --purple:#36064B; --purple-d:#29033A; --purple-deep:#1E0230;
+    --coral:#DB4949; --coral-d:#C53D3D;
+    --cyan:#75D1DC; --mint:#E3F4F2; --mint-d:#CDE9E6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,h4,.logo,.btn,.num{font-family:"Poppins",system-ui,sans-serif}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:700;font-size:16px;padding:16px 30px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px;flex-shrink:0}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(219,73,73,.30)}
+  .btn-green{background:var(--purple);color:#fff;box-shadow:0 10px 24px rgba(54,6,75,.28)}
+  .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.10)}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;color:inherit;font-family:"Poppins",system-ui,sans-serif}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--purple)}
+  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink)}
+  .navlinks .btn{padding:11px 24px;font-size:14px;color:#fff}
+  .navlinks a.active{color:var(--coral)}
+  
+  /* Mobile nav */
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:all .2s}
+  .nav-toggle span+span{margin-top:5px}
+  .mobile-menu{display:none}
+
+  /* Eyebrow */
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+
+  /* Blocks */
+  .block{border-radius:34px;padding:72px;margin:14px 0}
+  .block-green{background:var(--purple);color:#fff}
+  .block-mint{background:var(--mint)}
+  .block-white{background:#fff}
+
+  /* Enrollment status pill */
+  .enroll-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.25);border-radius:999px;padding:8px 18px;font-size:13px;font-weight:600;color:#166534;margin-bottom:22px}
+  .pulse{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulsebeat 2.2s ease-in-out infinite}
+  @keyframes pulsebeat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.25)}}
+
+  /* Hero */
+  .vet-hero{padding:52px 0 20px;text-align:center}
+  .vet-hero .eyebrow{color:var(--purple);margin-bottom:12px}
+  .vet-hero h1{font-size:62px;font-weight:800;letter-spacing:-.025em;line-height:1.06;margin:0 auto 20px;color:#3C014E}
+  .vet-hero h1 .mark{display:inline-block;line-height:1;background:var(--cyan);border-radius:16px;padding:5px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .vet-hero h1 .hero-break{display:block;margin-top:0.1em}
+  .vet-hero .lede{font-size:18px;color:var(--muted);max-width:36em;margin:0 auto;line-height:1.65}
+
+  /* Stats strip */
+  .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:22px;overflow:hidden;margin:28px 0 32px}
+  .stat-item{padding:28px 18px;text-align:center;border-right:1px solid var(--mint-d)}
+  .stat-item:last-child{border-right:none}
+  .stat-num{font-family:Poppins;font-size:38px;font-weight:800;color:var(--purple);letter-spacing:-.02em;line-height:1}
+  .stat-unit{font-size:20px;font-weight:700;margin-left:2px}
+  .stat-label{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+  /* Refer block */
+  .refer-block{padding:64px 72px}
+  .refer-block .eyebrow{color:rgba(255,255,255,.65);margin-bottom:14px}
+  .refer-block h2{font-size:44px;font-weight:800;letter-spacing:-.025em;line-height:1.08;color:#fff;margin-bottom:14px}
+  .refer-block h2 .hl{color:var(--cyan)}
+  .refer-block .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:44em;line-height:1.65;margin-bottom:36px}
+  .refer-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:34px}
+  .refer-card{background:rgba(255,255,255,.1);border-radius:22px;padding:26px 28px}
+  .refer-card h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:-.01em}
+  .refer-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .refer-card li{font-size:14px;color:rgba(255,255,255,.78);padding-left:20px;position:relative;line-height:1.5}
+  .refer-card li::before{content:'';position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+  .refer-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .brief-link{font-size:14px;font-weight:600;color:rgba(255,255,255,.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;transition:color .12s}
+  .brief-link:hover{color:#fff}
+
+  /* Tabs */
+  .tabs-outer{padding:50px 0 28px;display:flex;justify-content:center}
+  .tabs{display:inline-flex;gap:6px;background:#fff;padding:8px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+  .tab{padding:14px 56px;border-radius:999px;font-size:17px;font-weight:600;text-decoration:none;color:var(--ink);transition:all .18s}
+  .tab.active{background:var(--coral);color:#fff;box-shadow:0 4px 12px rgba(219,73,73,.25)}
+  .tab:hover:not(.active){color:var(--ink)}
+
+  /* Process steps */
+  .section-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--purple);margin-bottom:14px}
+  .section-h2{font-size:40px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px;line-height:1.12}
+  .section-lede{font-size:17px;color:var(--muted);max-width:38em;margin-bottom:36px;line-height:1.65}
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;min-height:230px}
+  .s1{background:var(--purple);color:#fff}
+  .s2{background:var(--coral);color:#fff}
+  .s3{background:var(--cyan);color:#0F2E34}
+  .step-badge{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.2);margin-bottom:18px;align-self:flex-start}
+  .s3 .step-badge{background:rgba(0,0,0,.1)}
+  .step h4{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+  .step p{font-size:14px;line-height:1.65;opacity:.95}
+  .step .step-time{margin-top:auto;padding-top:16px;font-size:12px;font-weight:600;opacity:.65}
+
+  /* We handle bar */
+  .we-handle{background:var(--purple-deep);border-radius:22px;padding:24px 28px;color:#fff;margin-top:18px}
+  .we-handle-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-bottom:14px}
+  .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{background:rgba(255,255,255,.12);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600}
+
+  /* Callout card */
+  .callout{background:#fff;border-radius:22px;padding:28px 32px;display:grid;grid-template-columns:60px 1fr;gap:22px;align-items:start;margin-top:18px}
+  .callout-icon{width:52px;height:52px;border-radius:16px;background:#3C014E;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .callout h4{font-size:15px;font-weight:700;margin-bottom:7px}
+  .callout p{font-size:14px;line-height:1.65;color:var(--muted)}
+
+  /* Science */
+  .sci-diagram-wrap{margin:0 0 36px;border-radius:20px;overflow:hidden;border:1.5px solid var(--mint-d);background:#fff}
+  .sci-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .sci-card{background:var(--mint);border-radius:22px;padding:28px}
+  .sci-card-icon{width:46px;height:46px;border-radius:14px;background:#75D1DC4D;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .sci-card h4{font-size:15px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+  .sci-card p{font-size:14px;line-height:1.65;color:var(--muted)}
+
+  /* Partners */
+  .partners{padding:24px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;isolation:isolate}
+  .partners .cap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-right:8px}
+  .partners .pchip{padding:9px 18px}
+
+  /* Footer */
+  footer{background:var(--cream);border-top:1px solid var(--border)}
+  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
+  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+  .foot-flag{display:flex;margin-bottom:-24px}
+  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
+  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+  .foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
+  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+  .foot .footer-links a:hover{color:var(--ink)}
+  .legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+  .legal a{color:var(--muted);text-decoration:none}
+  .flag-inline{display:none}
+
+  /* Timeline */
+  .tl-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;padding-top:8px;align-items:start}
+  .tl-connector{position:absolute;top:34px;left:26px;right:calc(25% - 26px);height:2px;background:var(--mint-d);z-index:0}
+  .tl-stage{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:0 20px;position:relative;z-index:1}
+  .tl-node{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:800;font-size:15px;color:#fff;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.15);flex-shrink:0}
+  .tl-dur{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .tl-name{font-family:Poppins;font-size:15px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em;line-height:1.25;min-height:38px}
+  .tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+  /* Referral modal */
+  .modal-overlay{position:fixed;inset:0;background:rgba(22,22,11,.6);backdrop-filter:blur(4px);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:48px 20px;overflow-y:auto}
+  .modal-overlay.open{display:flex}
+  .modal-box{background:#fff;border-radius:30px;max-width:680px;width:100%;position:relative;padding:48px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .modal-close{position:absolute;top:22px;right:22px;width:36px;height:36px;border-radius:50%;background:var(--mint);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--ink);line-height:1;transition:background .12s}
+  .modal-close:hover{background:var(--mint-d)}
+  .modal-head{margin-bottom:30px;padding-right:30px}
+  .modal-head .eyebrow{color:var(--purple);margin-bottom:10px}
+  .modal-head h2{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+  .modal-head p{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+  .f-section{margin-bottom:30px}
+  .f-section:last-of-type{margin-bottom:0}
+  .f-section-head{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1.5px solid var(--mint)}
+  .f-num{font-family:Poppins;font-size:12px;font-weight:800;color:var(--purple);background:var(--mint);width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+  .f-section-head h3{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .f-section-sub{font-size:12.5px;color:var(--muted);margin:-8px 0 16px 34px}
+
+  .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .f-field{display:flex;flex-direction:column;gap:6px}
+  .f-field.full{grid-column:1 / -1}
+  .f-field label{font-size:12px;font-weight:600;color:var(--ink)}
+  .f-field .opt{font-weight:400;color:var(--muted);font-style:italic}
+  .f-field input,.f-field select,.f-field textarea{
+    font-family:"Inter",sans-serif;font-size:14px;color:var(--ink);
+    background:var(--cream);border:1.5px solid var(--mint-d);border-radius:13px;
+    padding:12px 15px;outline:none;transition:border-color .14s,background .14s;width:100%;
+  }
+  .f-field input:focus,.f-field select:focus,.f-field textarea:focus{border-color:var(--purple);background:#fff}
+  .f-field textarea{resize:vertical;min-height:74px;font-family:"Inter",sans-serif;line-height:1.5}
+  .f-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b5f55' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:36px}
+
+  .consent-row{display:flex;align-items:flex-start;gap:11px;background:var(--mint);border-radius:15px;padding:16px 18px;margin-top:24px}
+  .consent-row input[type=checkbox]{margin-top:3px;width:16px;height:16px;accent-color:var(--purple);flex-shrink:0;cursor:pointer}
+  .consent-row label{font-size:12.5px;color:var(--ink);line-height:1.5;cursor:pointer}
+  .consent-warning{display:none;font-size:13px;color:var(--coral);font-weight:600;margin-top:8px}
+  .consent-warning.show{display:block}
+
+  .form-submit-row{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:24px}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .form-note{font-size:12px;color:var(--muted)}
+  .form-note a{color:var(--purple);font-weight:600;text-decoration:none}
+  .form-note a:hover{text-decoration:underline}
+
+  .success-card{text-align:center;padding:20px 0 4px;display:none}
+  .success-icon{width:58px;height:58px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:26px;color:var(--purple)}
+  .success-card h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+  .success-card p{font-size:14.5px;color:var(--muted);max-width:30em;margin:0 auto 26px;line-height:1.6}
+
+  /* Responsive */
+  @media(max-width:960px){
+    .vet-hero h1{font-size:38px}
+    .block,.refer-block{padding:40px 26px;border-radius:26px}
+    .steps-grid{grid-template-columns:1fr 1fr}
+    .sci-cards{grid-template-columns:1fr 1fr}
+    .stats-strip{grid-template-columns:1fr 1fr}
+    .stat-item:nth-child(2){border-right:none}
+    .stat-item:nth-child(3){border-right:1px solid var(--mint-d)}
+    .stat-item:nth-child(1),.stat-item:nth-child(2){border-bottom:1px solid var(--mint-d)}
+    .refer-cards{grid-template-columns:1fr}
+    .callout{grid-template-columns:1fr;gap:14px}
+    .tl-track{grid-template-columns:1fr 1fr;gap:32px 0;padding-top:0}
+    .tl-connector{display:none}
+    .modal-box{padding:32px 22px;border-radius:24px}
+    .modal-head{padding-right:36px}
+    .modal-head h2{font-size:24px}
+    .f-grid{grid-template-columns:1fr}
+    .f-section-sub{margin-left:0}
+    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
+    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
+    .foot-right{align-items:flex-start;gap:10px}
+    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+    .foot .footer-links a{margin-left:0;font-size:15px}
+    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
+    .foot-flag{display:none}
+    .flag-inline{display:inline-block}
+    .navlinks{display:none}
+    .nav-toggle{display:block}
+    .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:20px 28px;flex-direction:column;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:100}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{text-decoration:none;color:var(--ink);font-weight:600;font-size:16px;padding:8px 0}
+    .mobile-menu .btn{display:inline-block;text-align:center}
+  }
+  @media(max-width:600px){
+    .tabs-outer{display:none}
+    .steps-grid{grid-template-columns:1fr}
+    .sci-cards{grid-template-columns:1fr}
+    .tl-track{grid-template-columns:1fr}
+    .stats-strip{grid-template-columns:1fr 1fr}
+    .wrap{padding:0 16px}
+    .vet-hero h1{font-size:30px}
+    .refer-block h2{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/">GAMGEE</a>
+    <div class="navlinks">
+      <a href="/story/">Our story</a>
+      <a href="/about/" hidden style="display:none">About</a>
+      <a href="/vet/" class="active">For Vets</a>
+      <a class="btn btn-green" href="/apply/">Apply
+      </a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
+      const btn=this, menu=document.getElementById('mobile-menu');
+      const open=btn.classList.toggle('open');
+      menu.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open);
+    ">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+    <a href="/about/" hidden style="display:none" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
+    <a href="/vet/" class="active" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
+    <a class="btn btn-green" href="/apply/">Apply now</a>
+  </div>
+</nav>
+
+<div style="position:relative;z-index:1">
+
+<!-- HERO -->
+<header class="wrap">
+  <div class="vet-hero">
+    <div class="eyebrow">For Veterinary Oncologists</div>
+    <h1>Your patients have unique cancers.<br><span class="hero-break">Now we treat them <span class="mark">that way.</span></span></h1>
+    <p class="lede">GAMGEE designs a personalised mRNA cancer vaccine from each patient's own tumour DNA. You stay in the clinical driver's seat. We handle the science, from sequencing to delivery.</p>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="wrap">
+  <div style="text-align:center;padding:0 0 4px;margin-top:-8px">
+    <div class="enroll-pill" style="display:inline-flex">
+      <span class="pulse"></span>
+      Currently enrolling &middot; Australian clinical trial &middot; 2026
+    </div>
+    <div style="margin-top:14px">
+      <a href="#" class="btn btn-coral js-open-referral" style="padding:16px 34px;font-size:16px">Submit a Referral</a>
+    </div>
+  </div>
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num">~75<span class="stat-unit">%</span></div>
+      <div class="stat-label">Tumour reduction in<br>first documented case</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">~4<span class="stat-unit">wk</span></div>
+      <div class="stat-label">Biopsy to finished<br>vaccine in hand</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">&lt;20<span class="stat-unit">m</span></div>
+      <div class="stat-label">Your time needed for<br>vaccine design review</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">New clinical workflows<br>required from your team</div>
+    </div>
+  </div>
+</section>
+
+<!-- REFER A PATIENT (the giant badge, sits above the educational content) -->
+<section class="wrap" id="refer">
+  <div class="block-green refer-block" style="border-radius:34px;margin:14px 0">
+    <div class="eyebrow">Currently accepting referrals</div>
+    <h2>Ready to refer <span class="hl">a patient?</span></h2>
+    <p class="sub">Share your patient's contact details and a brief case summary. We reach out to the owner directly. You do not need to manage the conversation from there.</p>
+
+    <div class="refer-cards">
+      <div class="refer-card">
+        <h4>What to include</h4>
+        <ul>
+          <li>Your name, clinic name and direct contact</li>
+          <li>Dog's name, breed and age</li>
+          <li>Diagnosis, stage and prior treatments attempted</li>
+          <li>Owner's name and contact information</li>
+        </ul>
+      </div>
+      <div class="refer-card">
+        <h4>What happens next</h4>
+        <ul>
+          <li>We review the case and confirm eligibility</li>
+          <li>We contact the owner directly to walk them through the process</li>
+          <li>If accepted, a biopsy kit ships to your clinic</li>
+          <li>You receive updates at each stage</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="refer-actions">
+      <a class="btn btn-white js-open-referral" href="#">Submit a referral        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TABS: anchor links to the educational sections below -->
+<div class="wrap tabs-outer">
+  <div class="tabs">
+    <a class="tab active" href="#process">How it works</a>
+    <a class="tab" href="#timeline">Timeline</a>
+    <a class="tab" href="#science">The science</a>
+  </div>
+</div>
+
+<!-- PROCESS SECTION -->
+<section class="wrap" id="process">
+  <div class="block block-mint">
+    <div class="section-eyebrow">The Process</div>
+    <h2 class="section-h2">Three things we need from you.</h2>
+    <p class="section-lede">Most of your involvement happens in steps you are already performing. We are built to fit inside your clinical workflow, not change it.</p>
+
+    <div class="steps-grid">
+      <div class="step s1">
+        <div class="step-badge">Step 01 &middot; You</div>
+        <h4>Refer the case</h4>
+        <p>Submit a brief case summary: diagnosis, stage and prior treatments. We review the case and confirm eligibility before anything else moves.</p>
+        <div class="step-time">5 minutes &middot; No commitment required</div>
+      </div>
+      <div class="step s2">
+        <div class="step-badge">Step 02 &middot; You</div>
+        <h4>Collect biopsy samples</h4>
+        <p>A prepaid kit ships to your clinic. During the procedure you were already planning, drop in a tumour sample and a matched blood draw. Ship it back the same day.</p>
+        <div class="step-time">No new clinical workflow</div>
+      </div>
+      <div class="step s3">
+        <div class="step-badge">Step 03 &middot; You</div>
+        <h4>Administer the vaccine</h4>
+        <p>The finished vaccine arrives cold-chain labeled with a printed dosing schedule, including dog name, dose number and date window. You administer under your existing clinical judgment.</p>
+        <div class="step-time">Approx. 4 weeks after kit return</div>
+      </div>
+    </div>
+
+    <div class="we-handle">
+      <div class="we-handle-label">We handle everything in between</div>
+      <div class="chips">
+        <span class="chip"><img src="../assets/icons/DNA.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Whole-exome sequencing</span>
+        <span class="chip"><img src="../assets/icons/Robot.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> AI neoantigen analysis</span>
+        <span class="chip"><img src="../assets/icons/Flask.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> mRNA vaccine design</span>
+        <span class="chip"><img src="../assets/icons/Factory.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> GMP manufacturing</span>
+        <span class="chip"><img src="../assets/icons/Snowflake.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Cold-chain delivery</span>
+        <span class="chip"><img src="../assets/icons/Bar Chart.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Outcome monitoring</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-icon"><img src="../assets/icons/Microscope.svg" alt="" style="width:26px;height:26px;filter:brightness(0) invert(1)"></div>
+      <div>
+        <h4>You make the final call on every vaccine design.</h4>
+        <p>Before we proceed to manufacturing, you receive a full design report showing every candidate neoantigen, its confidence score and what including or excluding it means for the final sequence. Most reviews take under 20 minutes. The report is yours to keep regardless of whether you proceed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section class="wrap" id="timeline">
+  <div class="block block-white" style="padding-bottom:64px">
+    <div class="eyebrow" style="color:var(--purple);margin-bottom:14px">Timeline</div>
+    <h2 style="font-size:40px;font-weight:800;letter-spacing:-.025em;margin-bottom:10px;line-height:1.12">From referral to vaccine, approximately four weeks.</h2>
+    <p style="font-size:17px;color:var(--muted);max-width:42em;line-height:1.65;margin-bottom:52px">Indicative timings based on our first case. We share a more precise estimate with each referral once we have reviewed the case.</p>
+
+    <!-- Horizontal timeline track -->
+    <div style="background:#DFF5F2;border-radius:24px;padding:32px 24px">
+      <div class="tl-track">
+        <!-- Connecting line sits behind nodes -->
+        <div class="tl-connector"></div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--purple)">01</div>
+          <div class="tl-dur">Days 1-3</div>
+          <div class="tl-name">Sample to lab</div>
+          <div class="tl-desc">Kit ships to your clinic. Samples collected during your scheduled procedure and returned to our sequencing partner the same day.</div>
+        </div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--coral)">02</div>
+          <div class="tl-dur">Days 4-14</div>
+          <div class="tl-name">Sequencing and analysis</div>
+          <div class="tl-desc">Whole-exome sequencing and AI neoantigen ranking. A design report is prepared for your clinical review.</div>
+        </div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--cyan);color:#0F2E34">03</div>
+          <div class="tl-dur">Days 15-28</div>
+          <div class="tl-name">Design review and manufacturing</div>
+          <div class="tl-desc">You review and approve the neoantigen design. Our GMP partner manufactures the finalised mRNA sequence.</div>
+        </div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--purple-deep)">04</div>
+          <div class="tl-dur">Week 4+</div>
+          <div class="tl-name">Vaccine in hand</div>
+          <div class="tl-desc">Cold-chain delivery direct to your clinic, labeled with a printed dosing schedule. You administer on your timeline.</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:var(--muted);margin-top:40px;max-width:36em">These are indicative timings from a single case. Sequencing turnaround and manufacturing schedules may vary. We will give you a case-specific estimate before proceeding.</p>
+  </div>
+</section>
+
+<!-- SCIENCE SECTION -->
+<section class="wrap" id="science">
+  <div class="block block-white" style="padding-bottom:32px">
+    <div class="eyebrow" style="color:var(--coral)">The Science</div>
+    <h2 style="font-size:40px;font-weight:800;letter-spacing:-.025em;margin:12px 0 10px;line-height:1.12">Each vaccine is built from<br>the tumour's own blueprint.</h2>
+    <p style="font-size:17px;color:var(--muted);max-width:46em;line-height:1.65;margin-bottom:36px">Every tumour carries mutations that healthy cells do not. These mutations produce surface markers called neoantigens, flags that exist only on cancer cells. We read those flags, encode them into mRNA, and give the immune system a precise target list.</p>
+
+    <!-- SCIENCE DIAGRAM -->
+    <div class="sci-diagram-wrap" style="background:var(--coral);border-color:var(--coral);border-radius:24px">
+      <div style="padding:32px 24px">
+        <div class="sci-cards" style="margin-bottom:0">
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">01</div><h4 style="display:inline;vertical-align:middle">Sequence the DNA</h4>
+            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
+              <img src="../assets/vet/sequence_dna.png" alt="Sequence the DNA" style="width:100%;height:100%;object-fit:contain">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Tumour DNA is compared to healthy blood sample DNA.<br><strong style="color:var(--ink)">Unique mutations become the targets</strong></p>
+          </div>
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">02</div><h4 style="display:inline;vertical-align:middle">Find the targets</h4>
+            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
+              <img src="../assets/vet/find_targets.png" alt="Find the targets" style="width:100%;height:100%;object-fit:contain">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Thousands of somatic mutations ranked by binding affinity and immunogenicity. <strong style="color:var(--ink)">Models trained on canine biology, not human</strong></p>
+          </div>
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">03</div><h4 style="display:inline;vertical-align:middle">Train the immune system</h4>
+            <div style="text-align:left;height:160px;overflow:hidden;margin-top:14px">
+              <img src="../assets/vet/train_immune.png" alt="Train the immune system" style="width:100%;height:100%;object-fit:contain;object-position:left center">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">mRNA instructs the dog's own cells to display the neoantigen flags briefly. <strong style="color:var(--ink)">Immune system learns the target and attacks</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sci-cards" style="margin-top:18px">
+      <div class="sci-card">
+        <div class="sci-card-icon"><img src="../assets/icons/DNA.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
+        <h4>Whole-exome sequencing</h4>
+        <p>We compare DNA from the tumour biopsy against a matched blood sample. Only mutations present in the tumour, absent from healthy tissue, are candidate targets. Everything else is filtered out from the start.</p>
+      </div>
+      <div class="sci-card">
+        <div class="sci-card-icon"><img src="../assets/icons/Target.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
+        <h4>Neoantigen prioritisation</h4>
+        <p>Our pipeline runs binding affinity predictions and immunogenicity scoring across all somatic mutations, using models trained on canine biology. The highest-confidence candidates are ranked and surfaced for your review before any manufacturing begins.</p>
+      </div>
+      <div class="sci-card">
+        <div class="sci-card-icon"><img src="../assets/icons/Syringe.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
+        <h4>mRNA delivery</h4>
+        <p>Selected neoantigens are encoded into a codon-optimised mRNA sequence built for canine cells. When administered, the patient's cells briefly display cancer-specific markers, activating a targeted T-cell response directed only at tumour cells.</p>
+      </div>
+    </div>
+
+    <!-- Partner logos inside the white block -->
+    <div style="text-align:center;padding:0 0 2px;margin-top:36px">
+      <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--ink);margin-bottom:18px">In collaboration with</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap">
+        <img src="../assets/Logos/University of Queensland.png" alt="University of Queensland" style="height:44px">
+        <img src="../assets/Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics" style="height:44px">
+        <img src="../assets/Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute" style="height:44px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacer before footer -->
+<div style="height:24px"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+    </div>
+    <div class="foot-right">
+      <div class="footer-links">
+        <h5>PRODUCT</h5>
+        <a href="/vet/">For Vets</a>
+        <a href="/apply/">Apply</a>
+      </div>
+      <div class="foot-flag">
+        <img src="../assets/icons/us-flag.png" width="42" height="28" alt="United States" style="border-radius:2px;object-fit:cover">
+      </div>
+    </div>
+  </div>
+  <div class="legal">
+    <span>&copy; 2026 GAMGEE &middot; San Francisco, United States <img src="../assets/icons/us-flag.png" width="18" height="12" alt="" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"></span>
+    <span><a href="/privacy&terms/#privacy">Privacy</a> &middot; <a href="/privacy&terms/#terms">Terms</a></span>
+  </div>
+</footer>
+
+</div>
+
+<!-- REFERRAL MODAL -->
+<div class="modal-overlay" id="referralOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+
+    <div id="formView">
+      <div class="modal-head">
+        <div class="eyebrow">Patient Referral</div>
+        <h2 id="modalTitle">Refer a patient to GAMGEE.</h2>
+        <p>Tell us about the case and the owner. We review the details, then reach out to the owner directly. You stay in the loop throughout.</p>
+      </div>
+
+      <form id="referralForm" novalidate>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">1</span><h3>Your details</h3></div>
+          <div class="f-section-sub">As the referring clinician</div>
+          <div class="f-grid">
+            <div class="f-field"><label for="vetFirst">First name</label><input id="vetFirst" name="vetFirst" type="text" required></div>
+            <div class="f-field"><label for="vetLast">Last name</label><input id="vetLast" name="vetLast" type="text" required></div>
+            <div class="f-field full"><label for="clinicName">Clinic name</label><input id="clinicName" name="clinicName" type="text" required></div>
+            <div class="f-field full"><label for="vetEmail">Direct email</label><input id="vetEmail" name="vetEmail" type="email" required></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">2</span><h3>Patient details</h3></div>
+          <div class="f-grid">
+            <div class="f-field full"><label for="dogName">Dog's name</label><input id="dogName" name="dogName" type="text" required></div>
+            <div class="f-field"><label for="breed">Breed</label><input id="breed" name="breed" type="text" required></div>
+            <div class="f-field"><label for="age">Age <span class="opt">(years)</span></label><input id="age" name="age" type="number" min="0" step="0.5" required></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">3</span><h3>Diagnosis &amp; treatment history</h3></div>
+          <div class="f-grid">
+            <div class="f-field full"><label for="diagnosis">Diagnosis</label><input id="diagnosis" name="diagnosis" type="text" placeholder="e.g. Mast cell tumour, grade II" required></div>
+            <div class="f-field full">
+              <label for="stage">Stage</label>
+              <select id="stage" name="stage" required>
+                <option value="" disabled selected>Select one&hellip;</option>
+                <option>Stage 1</option>
+                <option>Stage 2</option>
+                <option>Stage 3</option>
+                <option>Stage 4</option>
+                <option>Not yet staged</option>
+              </select>
+            </div>
+            <div class="f-field full"><label for="priorTx">Prior treatments attempted</label><textarea id="priorTx" name="priorTx" placeholder="Surgery, chemotherapy, radiation, immunotherapy, dates and outcomes if known" required></textarea></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">4</span><h3>Owner's details</h3></div>
+          <div class="f-grid">
+            <div class="f-field"><label for="ownerFirst">Owner first name</label><input id="ownerFirst" name="ownerFirst" type="text" required></div>
+            <div class="f-field"><label for="ownerLast">Owner last name</label><input id="ownerLast" name="ownerLast" type="text" required></div>
+            <div class="f-field"><label for="ownerEmail">Owner email</label><input id="ownerEmail" name="ownerEmail" type="email" required></div>
+            <div class="f-field"><label for="ownerPhone">Owner phone</label><input id="ownerPhone" name="ownerPhone" type="tel" required></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">5</span><h3>Anything else <span class="opt" style="font-weight:400">(optional)</span></h3></div>
+          <div class="f-grid">
+            <div class="f-field full"><textarea id="notes" name="notes" placeholder="Any other context that would help us assess the case"></textarea></div>
+          </div>
+        </div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I confirm the owner is aware this referral is being made and has consented to GAMGEE contacting them directly with their details provided above.</label>
+        </div>
+        <div class="consent-warning" id="consent-warning">Please gain consent from the owner before applying for referral.</div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn btn-coral">Submit referral
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <span class="form-note">We typically respond within a few business days. Prefer to talk first? Email <a href="mailto:partners@gamgee.io">partners@gamgee.io</a></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="success-card" id="successCard">
+      <div class="success-icon">&#10003;</div>
+      <h2>Referral received.</h2>
+      <p>Thank you for thinking of GAMGEE for this case. We'll review the details and reach out to the owner directly. You'll be copied on next steps as the case progresses.</p>
+      <button class="btn btn-coral" id="successClose" style="display:inline-flex">Close</button>
+    </div>
+
+  </div>
+</div>
+
 <script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbH_xCsbTZPU1uOAYQxtywn_MbEd1EUDhqlNKRc0gmRiSFa2syYiKZxJv0WzlNZ-cv/exec';
+
+  const overlay = document.getElementById('referralOverlay');
+  const openTriggers = document.querySelectorAll('.js-open-referral');
+  const closeBtn = document.getElementById('modalClose');
+  const successCloseBtn = document.getElementById('successClose');
+  const formView = document.getElementById('formView');
+  const successCard = document.getElementById('successCard');
+  const form = document.getElementById('referralForm');
+
+  function openModal(e){
+    if(e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function resetModal(){
+    formView.style.display = 'block';
+    successCard.style.display = 'none';
+    form.reset();
+  }
+
+  openTriggers.forEach(el => el.addEventListener('click', openModal));
+  closeBtn.addEventListener('click', () => { closeModal(); setTimeout(resetModal, 300); });
+  successCloseBtn.addEventListener('click', () => { closeModal(); setTimeout(resetModal, 300); });
+  overlay.addEventListener('click', (e) => { if(e.target === overlay){ closeModal(); setTimeout(resetModal, 300); } });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && overlay.classList.contains('open')){ closeModal(); setTimeout(resetModal, 300); } });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    
+    var consent = document.getElementById('consent');
+    var consentWarning = document.getElementById('consent-warning');
+    if(!consent.checked){
+      consentWarning.classList.add('show');
+      consent.focus();
+      consent.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    consentWarning.classList.remove('show');
+    
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    var submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+
+    var fd = new FormData(form);
+    var data = {};
+    fd.forEach(function(v, k){ data[k] = v; });
+    data._sheet = 'Referral';
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(data)
+      });
+    } catch(err) {}
+
+    formView.style.display = 'none';
+    successCard.style.display = 'block';
+  });
 </script>
-11|<style>
-12|  :root{
-13|    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55; --border:rgba(22,22,11,.10);
-14|    --purple:#36064B; --purple-d:#29033A; --purple-deep:#1E0230;
-15|    --coral:#DB4949; --coral-d:#C53D3D;
-16|    --cyan:#75D1DC; --mint:#E3F4F2; --mint-d:#CDE9E6;
-17|  }
-18|  *{box-sizing:border-box;margin:0;padding:0}
-19|  html{scroll-behavior:smooth}
-20|  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
-21|  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
-22|  h1,h2,h3,h4,.logo,.btn,.num{font-family:"Poppins",system-ui,sans-serif}
-23|
-24|  /* Buttons */
-25|  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:700;font-size:16px;padding:16px 30px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
-26|  .btn:hover{transform:translateY(-2px)}
-27|  .btn svg{width:16px;height:16px;flex-shrink:0}
-28|  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(219,73,73,.30)}
-29|  .btn-green{background:var(--purple);color:#fff;box-shadow:0 10px 24px rgba(54,6,75,.28)}
-30|  .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.10)}
-31|
-32|  /* Nav */
-33|  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
-34|  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
-35|  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;color:inherit;font-family:"Poppins",system-ui,sans-serif}
-36|  .dot{width:14px;height:14px;border-radius:50%;background:var(--purple)}
-37|  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
-38|  .navlinks a:not(.btn){text-decoration:none;color:var(--ink)}
-39|  .navlinks .btn{padding:11px 24px;font-size:14px;color:#fff}
-40|  .navlinks a.active{color:var(--coral)}
-41|  
-42|  /* Mobile nav */
-43|  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
-44|  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:all .2s}
-45|  .nav-toggle span+span{margin-top:5px}
-46|  .mobile-menu{display:none}
-47|
-48|  /* Eyebrow */
-49|  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
-50|
-51|  /* Blocks */
-52|  .block{border-radius:34px;padding:72px;margin:14px 0}
-53|  .block-green{background:var(--purple);color:#fff}
-54|  .block-mint{background:var(--mint)}
-55|  .block-white{background:#fff}
-56|
-57|  /* Enrollment status pill */
-58|  .enroll-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.25);border-radius:999px;padding:8px 18px;font-size:13px;font-weight:600;color:#166534;margin-bottom:22px}
-59|  .pulse{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulsebeat 2.2s ease-in-out infinite}
-60|  @keyframes pulsebeat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.25)}}
-61|
-62|  /* Hero */
-63|  .vet-hero{padding:52px 0 20px;text-align:center}
-64|  .vet-hero .eyebrow{color:var(--purple);margin-bottom:12px}
-65|  .vet-hero h1{font-size:62px;font-weight:800;letter-spacing:-.025em;line-height:1.06;margin:0 auto 20px;color:#3C014E}
-66|  .vet-hero h1 .mark{display:inline-block;line-height:1;background:var(--cyan);border-radius:16px;padding:5px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-67|  .vet-hero h1 .hero-break{display:block;margin-top:0.1em}
-68|  .vet-hero .lede{font-size:18px;color:var(--muted);max-width:36em;margin:0 auto;line-height:1.65}
-69|
-70|  /* Stats strip */
-71|  .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:22px;overflow:hidden;margin:28px 0 32px}
-72|  .stat-item{padding:28px 18px;text-align:center;border-right:1px solid var(--mint-d)}
-73|  .stat-item:last-child{border-right:none}
-74|  .stat-num{font-family:Poppins;font-size:38px;font-weight:800;color:var(--purple);letter-spacing:-.02em;line-height:1}
-75|  .stat-unit{font-size:20px;font-weight:700;margin-left:2px}
-76|  .stat-label{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
-77|
-78|  /* Refer block */
-79|  .refer-block{padding:64px 72px}
-80|  .refer-block .eyebrow{color:rgba(255,255,255,.65);margin-bottom:14px}
-81|  .refer-block h2{font-size:44px;font-weight:800;letter-spacing:-.025em;line-height:1.08;color:#fff;margin-bottom:14px}
-82|  .refer-block h2 .hl{color:var(--cyan)}
-83|  .refer-block .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:44em;line-height:1.65;margin-bottom:36px}
-84|  .refer-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:34px}
-85|  .refer-card{background:rgba(255,255,255,.1);border-radius:22px;padding:26px 28px}
-86|  .refer-card h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:-.01em}
-87|  .refer-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-88|  .refer-card li{font-size:14px;color:rgba(255,255,255,.78);padding-left:20px;position:relative;line-height:1.5}
-89|  .refer-card li::before{content:'';position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
-90|  .refer-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-91|  .brief-link{font-size:14px;font-weight:600;color:rgba(255,255,255,.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;transition:color .12s}
-92|  .brief-link:hover{color:#fff}
-93|
-94|  /* Tabs */
-95|  .tabs-outer{padding:50px 0 28px;display:flex;justify-content:center}
-96|  .tabs{display:inline-flex;gap:6px;background:#fff;padding:8px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
-97|  .tab{padding:14px 56px;border-radius:999px;font-size:17px;font-weight:600;text-decoration:none;color:var(--ink);transition:all .18s}
-98|  .tab.active{background:var(--coral);color:#fff;box-shadow:0 4px 12px rgba(219,73,73,.25)}
-99|  .tab:hover:not(.active){color:var(--ink)}
-100|
-101|  /* Process steps */
-102|  .section-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--purple);margin-bottom:14px}
-103|  .section-h2{font-size:40px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px;line-height:1.12}
-104|  .section-lede{font-size:17px;color:var(--muted);max-width:38em;margin-bottom:36px;line-height:1.65}
-105|  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-106|  .step{border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;min-height:230px}
-107|  .s1{background:var(--purple);color:#fff}
-108|  .s2{background:var(--coral);color:#fff}
-109|  .s3{background:var(--cyan);color:#0F2E34}
-110|  .step-badge{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.2);margin-bottom:18px;align-self:flex-start}
-111|  .s3 .step-badge{background:rgba(0,0,0,.1)}
-112|  .step h4{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
-113|  .step p{font-size:14px;line-height:1.65;opacity:.95}
-114|  .step .step-time{margin-top:auto;padding-top:16px;font-size:12px;font-weight:600;opacity:.65}
-115|
-116|  /* We handle bar */
-117|  .we-handle{background:var(--purple-deep);border-radius:22px;padding:24px 28px;color:#fff;margin-top:18px}
-118|  .we-handle-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-bottom:14px}
-119|  .chips{display:flex;gap:10px;flex-wrap:wrap}
-120|  .chip{background:rgba(255,255,255,.12);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600}
-121|
-122|  /* Callout card */
-123|  .callout{background:#fff;border-radius:22px;padding:28px 32px;display:grid;grid-template-columns:60px 1fr;gap:22px;align-items:start;margin-top:18px}
-124|  .callout-icon{width:52px;height:52px;border-radius:16px;background:#3C014E;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-125|  .callout h4{font-size:15px;font-weight:700;margin-bottom:7px}
-126|  .callout p{font-size:14px;line-height:1.65;color:var(--muted)}
-127|
-128|  /* Science */
-129|  .sci-diagram-wrap{margin:0 0 36px;border-radius:20px;overflow:hidden;border:1.5px solid var(--mint-d);background:#fff}
-130|  .sci-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-131|  .sci-card{background:var(--mint);border-radius:22px;padding:28px}
-132|  .sci-card-icon{width:46px;height:46px;border-radius:14px;background:#75D1DC4D;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-133|  .sci-card h4{font-size:15px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
-134|  .sci-card p{font-size:14px;line-height:1.65;color:var(--muted)}
-135|
-136|  /* Partners */
-137|  .partners{padding:24px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;isolation:isolate}
-138|  .partners .cap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-right:8px}
-139|  .partners .pchip{padding:9px 18px}
-140|
-141|  /* Footer */
-142|  footer{background:var(--cream);border-top:1px solid var(--border)}
-143|  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
-144|  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
-145|  .foot-flag{display:flex;margin-bottom:-24px}
-146|  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
-147|  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
-148|  .foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
-149|  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
-150|  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
-151|  .foot .footer-links a:hover{color:var(--ink)}
-152|  .legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
-153|  .legal a{color:var(--muted);text-decoration:none}
-154|  .flag-inline{display:none}
-155|
-156|  /* Timeline */
-157|  .tl-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;padding-top:8px;align-items:start}
-158|  .tl-connector{position:absolute;top:34px;left:26px;right:calc(25% - 26px);height:2px;background:var(--mint-d);z-index:0}
-159|  .tl-stage{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:0 20px;position:relative;z-index:1}
-160|  .tl-node{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:800;font-size:15px;color:#fff;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.15);flex-shrink:0}
-161|  .tl-dur{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-162|  .tl-name{font-family:Poppins;font-size:15px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em;line-height:1.25;min-height:38px}
-163|  .tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
-164|
-165|  /* Referral modal */
-166|  .modal-overlay{position:fixed;inset:0;background:rgba(22,22,11,.6);backdrop-filter:blur(4px);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:48px 20px;overflow-y:auto}
-167|  .modal-overlay.open{display:flex}
-168|  .modal-box{background:#fff;border-radius:30px;max-width:680px;width:100%;position:relative;padding:48px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
-169|  .modal-close{position:absolute;top:22px;right:22px;width:36px;height:36px;border-radius:50%;background:var(--mint);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--ink);line-height:1;transition:background .12s}
-170|  .modal-close:hover{background:var(--mint-d)}
-171|  .modal-head{margin-bottom:30px;padding-right:30px}
-172|  .modal-head .eyebrow{color:var(--purple);margin-bottom:10px}
-173|  .modal-head h2{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
-174|  .modal-head p{font-size:14.5px;color:var(--muted);line-height:1.6}
-175|
-176|  .f-section{margin-bottom:30px}
-177|  .f-section:last-of-type{margin-bottom:0}
-178|  .f-section-head{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1.5px solid var(--mint)}
-179|  .f-num{font-family:Poppins;font-size:12px;font-weight:800;color:var(--purple);background:var(--mint);width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-180|  .f-section-head h3{font-size:15px;font-weight:700;letter-spacing:-.01em}
-181|  .f-section-sub{font-size:12.5px;color:var(--muted);margin:-8px 0 16px 34px}
-182|
-183|  .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-184|  .f-field{display:flex;flex-direction:column;gap:6px}
-185|  .f-field.full{grid-column:1 / -1}
-186|  .f-field label{font-size:12px;font-weight:600;color:var(--ink)}
-187|  .f-field .opt{font-weight:400;color:var(--muted);font-style:italic}
-188|  .f-field input,.f-field select,.f-field textarea{
-189|    font-family:"Inter",sans-serif;font-size:14px;color:var(--ink);
-190|    background:var(--cream);border:1.5px solid var(--mint-d);border-radius:13px;
-191|    padding:12px 15px;outline:none;transition:border-color .14s,background .14s;width:100%;
-192|  }
-193|  .f-field input:focus,.f-field select:focus,.f-field textarea:focus{border-color:var(--purple);background:#fff}
-194|  .f-field textarea{resize:vertical;min-height:74px;font-family:"Inter",sans-serif;line-height:1.5}
-195|  .f-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b5f55' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:36px}
-196|
-197|  .consent-row{display:flex;align-items:flex-start;gap:11px;background:var(--mint);border-radius:15px;padding:16px 18px;margin-top:24px}
-198|  .consent-row input[type=checkbox]{margin-top:3px;width:16px;height:16px;accent-color:var(--purple);flex-shrink:0;cursor:pointer}
-199|  .consent-row label{font-size:12.5px;color:var(--ink);line-height:1.5;cursor:pointer}
-200|  .consent-warning{display:none;font-size:13px;color:var(--coral);font-weight:600;margin-top:8px}
-201|  .consent-warning.show{display:block}
-202|
-203|  .form-submit-row{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:24px}
-204|  .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
-205|  @keyframes spin{to{transform:rotate(360deg)}}
-206|  .form-note{font-size:12px;color:var(--muted)}
-207|  .form-note a{color:var(--purple);font-weight:600;text-decoration:none}
-208|  .form-note a:hover{text-decoration:underline}
-209|
-210|  .success-card{text-align:center;padding:20px 0 4px;display:none}
-211|  .success-icon{width:58px;height:58px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:26px;color:var(--purple)}
-212|  .success-card h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
-213|  .success-card p{font-size:14.5px;color:var(--muted);max-width:30em;margin:0 auto 26px;line-height:1.6}
-214|
-215|  /* Responsive */
-216|  @media(max-width:960px){
-217|    .vet-hero h1{font-size:38px}
-218|    .block,.refer-block{padding:40px 26px;border-radius:26px}
-219|    .steps-grid{grid-template-columns:1fr 1fr}
-220|    .sci-cards{grid-template-columns:1fr 1fr}
-221|    .stats-strip{grid-template-columns:1fr 1fr}
-222|    .stat-item:nth-child(2){border-right:none}
-223|    .stat-item:nth-child(3){border-right:1px solid var(--mint-d)}
-224|    .stat-item:nth-child(1),.stat-item:nth-child(2){border-bottom:1px solid var(--mint-d)}
-225|    .refer-cards{grid-template-columns:1fr}
-226|    .callout{grid-template-columns:1fr;gap:14px}
-227|    .tl-track{grid-template-columns:1fr 1fr;gap:32px 0;padding-top:0}
-228|    .tl-connector{display:none}
-229|    .modal-box{padding:32px 22px;border-radius:24px}
-230|    .modal-head{padding-right:36px}
-231|    .modal-head h2{font-size:24px}
-232|    .f-grid{grid-template-columns:1fr}
-233|    .f-section-sub{margin-left:0}
-234|    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
-235|    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
-236|    .foot-right{align-items:flex-start;gap:10px}
-237|    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
-238|    .foot .footer-links a{margin-left:0;font-size:15px}
-239|    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
-240|    .foot-flag{display:none}
-241|    .flag-inline{display:inline-block}
-242|    .navlinks{display:none}
-243|    .nav-toggle{display:block}
-244|    .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:20px 28px;flex-direction:column;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:100}
-245|    .mobile-menu.open{display:flex}
-246|    .mobile-menu a{text-decoration:none;color:var(--ink);font-weight:600;font-size:16px;padding:8px 0}
-247|    .mobile-menu .btn{display:inline-block;text-align:center}
-248|  }
-249|  @media(max-width:600px){
-250|    .tabs-outer{display:none}
-251|    .steps-grid{grid-template-columns:1fr}
-252|    .sci-cards{grid-template-columns:1fr}
-253|    .tl-track{grid-template-columns:1fr}
-254|    .stats-strip{grid-template-columns:1fr 1fr}
-255|    .wrap{padding:0 16px}
-256|    .vet-hero h1{font-size:30px}
-257|    .refer-block h2{font-size:32px}
-258|  }
-259|</style>
-260|</head>
-261|<body>
-262|
-263|<!-- NAV -->
-264|<nav>
-265|  <div class="nav-in">
-266|    <a class="logo" href="/">GAMGEE</a>
-267|    <div class="navlinks">
-268|      <a href="/story/">Our story</a>
-269|      <a href="/about/" hidden style="display:none">About</a>
-270|      <a href="/vet/" class="active">For Vets</a>
-271|      <a class="btn btn-green" href="/apply/">Apply
-272|      </a>
-273|    </div>
-274|    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
-275|      const btn=this, menu=document.getElementById('mobile-menu');
-276|      const open=btn.classList.toggle('open');
-277|      menu.classList.toggle('open',open);
-278|      btn.setAttribute('aria-expanded',open);
-279|    ">
-280|      <span></span><span></span><span></span>
-281|    </button>
-282|  </div>
-283|  <div class="mobile-menu" id="mobile-menu">
-284|    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
-285|    <a href="/about/" hidden style="display:none" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
-286|    <a href="/vet/" class="active" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
-287|    <a class="btn btn-green" href="/apply/">Apply now</a>
-288|  </div>
-289|</nav>
-290|
-291|<div style="position:relative;z-index:1">
-292|
-293|<!-- HERO -->
-294|<header class="wrap">
-295|  <div class="vet-hero">
-296|    <div class="eyebrow">For Veterinary Oncologists</div>
-297|    <h1>Your patients have unique cancers.<br><span class="hero-break">Now we treat them <span class="mark">that way.</span></span></h1>
-298|    <p class="lede">GAMGEE designs a personalised mRNA cancer vaccine from each patient's own tumour DNA. You stay in the clinical driver's seat. We handle the science, from sequencing to delivery.</p>
-299|  </div>
-300|</header>
-301|
-302|<!-- STATS -->
-303|<section class="wrap">
-304|  <div style="text-align:center;padding:0 0 4px;margin-top:-8px">
-305|    <div class="enroll-pill" style="display:inline-flex">
-306|      <span class="pulse"></span>
-307|      Currently enrolling &middot; Australian clinical trial &middot; 2026
-308|    </div>
-309|    <div style="margin-top:14px">
-310|      <a href="#" class="btn btn-coral js-open-referral" style="padding:16px 34px;font-size:16px">Submit a Referral</a>
-311|    </div>
-312|  </div>
-313|  <div class="stats-strip">
-314|    <div class="stat-item">
-315|      <div class="stat-num">~75<span class="stat-unit">%</span></div>
-316|      <div class="stat-label">Tumour reduction in<br>first documented case</div>
-317|    </div>
-318|    <div class="stat-item">
-319|      <div class="stat-num">~4<span class="stat-unit">wk</span></div>
-320|      <div class="stat-label">Biopsy to finished<br>vaccine in hand</div>
-321|    </div>
-322|    <div class="stat-item">
-323|      <div class="stat-num">&lt;20<span class="stat-unit">m</span></div>
-324|      <div class="stat-label">Your time needed for<br>vaccine design review</div>
-325|    </div>
-326|    <div class="stat-item">
-327|      <div class="stat-num">0</div>
-328|      <div class="stat-label">New clinical workflows<br>required from your team</div>
-329|    </div>
-330|  </div>
-331|</section>
-332|
-333|<!-- REFER A PATIENT (the giant badge, sits above the educational content) -->
-334|<section class="wrap" id="refer">
-335|  <div class="block-green refer-block" style="border-radius:34px;margin:14px 0">
-336|    <div class="eyebrow">Currently accepting referrals</div>
-337|    <h2>Ready to refer <span class="hl">a patient?</span></h2>
-338|    <p class="sub">Share your patient's contact details and a brief case summary. We reach out to the owner directly. You do not need to manage the conversation from there.</p>
-339|
-340|    <div class="refer-cards">
-341|      <div class="refer-card">
-342|        <h4>What to include</h4>
-343|        <ul>
-344|          <li>Your name, clinic name and direct contact</li>
-345|          <li>Dog's name, breed and age</li>
-346|          <li>Diagnosis, stage and prior treatments attempted</li>
-347|          <li>Owner's name and contact information</li>
-348|        </ul>
-349|      </div>
-350|      <div class="refer-card">
-351|        <h4>What happens next</h4>
-352|        <ul>
-353|          <li>We review the case and confirm eligibility</li>
-354|          <li>We contact the owner directly to walk them through the process</li>
-355|          <li>If accepted, a biopsy kit ships to your clinic</li>
-356|          <li>You receive updates at each stage</li>
-357|        </ul>
-358|      </div>
-359|    </div>
-360|
-361|    <div class="refer-actions">
-362|      <a class="btn btn-white js-open-referral" href="#">Submit a referral        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-363|      </a>
-364|    </div>
-365|  </div>
-366|</section>
-367|
-368|<!-- TABS: anchor links to the educational sections below -->
-369|<div class="wrap tabs-outer">
-370|  <div class="tabs">
-371|    <a class="tab active" href="#process">How it works</a>
-372|    <a class="tab" href="#timeline">Timeline</a>
-373|    <a class="tab" href="#science">The science</a>
-374|  </div>
-375|</div>
-376|
-377|<!-- PROCESS SECTION -->
-378|<section class="wrap" id="process">
-379|  <div class="block block-mint">
-380|    <div class="section-eyebrow">The Process</div>
-381|    <h2 class="section-h2">Three things we need from you.</h2>
-382|    <p class="section-lede">Most of your involvement happens in steps you are already performing. We are built to fit inside your clinical workflow, not change it.</p>
-383|
-384|    <div class="steps-grid">
-385|      <div class="step s1">
-386|        <div class="step-badge">Step 01 &middot; You</div>
-387|        <h4>Refer the case</h4>
-388|        <p>Submit a brief case summary: diagnosis, stage and prior treatments. We review the case and confirm eligibility before anything else moves.</p>
-389|        <div class="step-time">5 minutes &middot; No commitment required</div>
-390|      </div>
-391|      <div class="step s2">
-392|        <div class="step-badge">Step 02 &middot; You</div>
-393|        <h4>Collect biopsy samples</h4>
-394|        <p>A prepaid kit ships to your clinic. During the procedure you were already planning, drop in a tumour sample and a matched blood draw. Ship it back the same day.</p>
-395|        <div class="step-time">No new clinical workflow</div>
-396|      </div>
-397|      <div class="step s3">
-398|        <div class="step-badge">Step 03 &middot; You</div>
-399|        <h4>Administer the vaccine</h4>
-400|        <p>The finished vaccine arrives cold-chain labeled with a printed dosing schedule, including dog name, dose number and date window. You administer under your existing clinical judgment.</p>
-401|        <div class="step-time">Approx. 4 weeks after kit return</div>
-402|      </div>
-403|    </div>
-404|
-405|    <div class="we-handle">
-406|      <div class="we-handle-label">We handle everything in between</div>
-407|      <div class="chips">
-408|        <span class="chip"><img src="../assets/icons/DNA.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Whole-exome sequencing</span>
-409|        <span class="chip"><img src="../assets/icons/Robot.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> AI neoantigen analysis</span>
-410|        <span class="chip"><img src="../assets/icons/Flask.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> mRNA vaccine design</span>
-411|        <span class="chip"><img src="../assets/icons/Factory.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> GMP manufacturing</span>
-412|        <span class="chip"><img src="../assets/icons/Snowflake.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Cold-chain delivery</span>
-413|        <span class="chip"><img src="../assets/icons/Bar Chart.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Outcome monitoring</span>
-414|      </div>
-415|    </div>
-416|
-417|    <div class="callout">
-418|      <div class="callout-icon"><img src="../assets/icons/Microscope.svg" alt="" style="width:26px;height:26px;filter:brightness(0) invert(1)"></div>
-419|      <div>
-420|        <h4>You make the final call on every vaccine design.</h4>
-421|        <p>Before we proceed to manufacturing, you receive a full design report showing every candidate neoantigen, its confidence score and what including or excluding it means for the final sequence. Most reviews take under 20 minutes. The report is yours to keep regardless of whether you proceed.</p>
-422|      </div>
-423|    </div>
-424|  </div>
-425|</section>
-426|
-427|<!-- TIMELINE SECTION -->
-428|<section class="wrap" id="timeline">
-429|  <div class="block block-white" style="padding-bottom:64px">
-430|    <div class="eyebrow" style="color:var(--purple);margin-bottom:14px">Timeline</div>
-431|    <h2 style="font-size:40px;font-weight:800;letter-spacing:-.025em;margin-bottom:10px;line-height:1.12">From referral to vaccine, approximately four weeks.</h2>
-432|    <p style="font-size:17px;color:var(--muted);max-width:42em;line-height:1.65;margin-bottom:52px">Indicative timings based on our first case. We share a more precise estimate with each referral once we have reviewed the case.</p>
-433|
-434|    <!-- Horizontal timeline track -->
-435|    <div style="background:#DFF5F2;border-radius:24px;padding:32px 24px">
-436|      <div class="tl-track">
-437|        <!-- Connecting line sits behind nodes -->
-438|        <div class="tl-connector"></div>
-439|
-440|        <div class="tl-stage">
-441|          <div class="tl-node" style="background:var(--purple)">01</div>
-442|          <div class="tl-dur">Days 1-3</div>
-443|          <div class="tl-name">Sample to lab</div>
-444|          <div class="tl-desc">Kit ships to your clinic. Samples collected during your scheduled procedure and returned to our sequencing partner the same day.</div>
-445|        </div>
-446|
-447|        <div class="tl-stage">
-448|          <div class="tl-node" style="background:var(--coral)">02</div>
-449|          <div class="tl-dur">Days 4-14</div>
-450|          <div class="tl-name">Sequencing and analysis</div>
-451|          <div class="tl-desc">Whole-exome sequencing and AI neoantigen ranking. A design report is prepared for your clinical review.</div>
-452|        </div>
-453|
-454|        <div class="tl-stage">
-455|          <div class="tl-node" style="background:var(--cyan);color:#0F2E34">03</div>
-456|          <div class="tl-dur">Days 15-28</div>
-457|          <div class="tl-name">Design review and manufacturing</div>
-458|          <div class="tl-desc">You review and approve the neoantigen design. Our GMP partner manufactures the finalised mRNA sequence.</div>
-459|        </div>
-460|
-461|        <div class="tl-stage">
-462|          <div class="tl-node" style="background:var(--purple-deep)">04</div>
-463|          <div class="tl-dur">Week 4+</div>
-464|          <div class="tl-name">Vaccine in hand</div>
-465|          <div class="tl-desc">Cold-chain delivery direct to your clinic, labeled with a printed dosing schedule. You administer on your timeline.</div>
-466|        </div>
-467|      </div>
-468|    </div>
-469|
-470|    <p style="font-size:12px;color:var(--muted);margin-top:40px;max-width:36em">These are indicative timings from a single case. Sequencing turnaround and manufacturing schedules may vary. We will give you a case-specific estimate before proceeding.</p>
-471|  </div>
-472|</section>
-473|
-474|<!-- SCIENCE SECTION -->
-475|<section class="wrap" id="science">
-476|  <div class="block block-white" style="padding-bottom:32px">
-477|    <div class="eyebrow" style="color:var(--coral)">The Science</div>
-478|    <h2 style="font-size:40px;font-weight:800;letter-spacing:-.025em;margin:12px 0 10px;line-height:1.12">Each vaccine is built from<br>the tumour's own blueprint.</h2>
-479|    <p style="font-size:17px;color:var(--muted);max-width:46em;line-height:1.65;margin-bottom:36px">Every tumour carries mutations that healthy cells do not. These mutations produce surface markers called neoantigens, flags that exist only on cancer cells. We read those flags, encode them into mRNA, and give the immune system a precise target list.</p>
-480|
-481|    <!-- SCIENCE DIAGRAM -->
-482|    <div class="sci-diagram-wrap" style="background:var(--coral);border-color:var(--coral);border-radius:24px">
-483|      <div style="padding:32px 24px">
-484|        <div class="sci-cards" style="margin-bottom:0">
-485|          <div class="sci-card" style="background:#fff;border-radius:18px">
-486|            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">01</div><h4 style="display:inline;vertical-align:middle">Sequence the DNA</h4>
-487|            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
-488|              <img src="../assets/vet/sequence_dna.png" alt="Sequence the DNA" style="width:100%;height:100%;object-fit:contain">
-489|            </div>
-490|            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Tumour DNA is compared to healthy blood sample DNA.<br><strong style="color:var(--ink)">Unique mutations become the targets</strong></p>
-491|          </div>
-492|          <div class="sci-card" style="background:#fff;border-radius:18px">
-493|            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">02</div><h4 style="display:inline;vertical-align:middle">Find the targets</h4>
-494|            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
-495|              <img src="../assets/vet/find_targets.png" alt="Find the targets" style="width:100%;height:100%;object-fit:contain">
-496|            </div>
-497|            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Thousands of somatic mutations ranked by binding affinity and immunogenicity. <strong style="color:var(--ink)">Models trained on canine biology, not human</strong></p>
-498|          </div>
-499|          <div class="sci-card" style="background:#fff;border-radius:18px">
-500|            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">03</div><h4 style="display:inline;vertical-align:middle">Train the immune system</h4>
-501|
+
+</body>
+</html>
