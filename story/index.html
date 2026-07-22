@@ -1,337 +1,344 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAMGEE - Rosie's Story</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iOTgiIHZpZXdCb3g9IjAgMCA5OCA5OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzgzMF81NzYpIj4KPHBhdGggZD0iTTcyLjE0NSA4Ny40NDg5QzcxLjIxNSA4NS4zMTg5IDY5Ljk5NSA4My4zNzg5IDY4LjQ2NSA4MS42Mzg5QzY2LjU4NSA3OS40OTg5IDY1LjAyNSA3Ny4xMzg5IDY0LjAxNSA3NC40Njg5QzYzLjU1NSA3My4yNDg5IDYzLjIxNSA3MS45Nzg5IDYyLjkyNSA3MC43MDg5QzYyLjQ5NSA2OC44MDg5IDYyLjMwNSA2Ni44Nzg5IDYyLjQ4NSA2NC45Mjg5QzYyLjQ4NSA2NC44Njg5IDYyLjQ4NSA2NC43OTg5IDYyLjQ2NSA2NC43Mjg5QzYyLjQ2NSA2NC43MDg5IDYyLjQyNSA2NC42OTg5IDYyLjM0NSA2NC42Mjg5QzYyLjA5NSA2NS4wMDg5IDYxLjgyNSA2NS4zNjg5IDYxLjYwNSA2NS43NTg5QzU5Ljc3NSA2OC45ODg5IDU5LjE5NTEgNzIuNDI4OSA1OS44MDUxIDc2LjA5ODlDNjAuMjA1MSA3OC41Mzg5IDYxLjE2NTEgODAuNzQ4OSA2Mi40MzUxIDgyLjgyODlDNjMuMDI1MSA4My43OTg5IDYzLjc0NSA4NC42Nzg5IDY0LjMxNSA4NS42NDg5QzY2LjI4NSA4OC45NDg5IDY3LjI3NSA5Mi41MDg5IDY3LjA3NSA5Ni4zNjg5QzY3LjA3NSA5Ni41MTg5IDY2LjkwNSA5Ny45MDg5IDY2LjkwNSA5Ny45MDg5QzY2LjkwNSA5Ny45MDg5IDY2Ljg5NSA5OC4wMzg5IDY2Ljg5NSA5OC4wNDg5QzY2Ljg5NSA5OC4wODg5IDcyLjcwNSA5OC4wNDg5IDcyLjcwNSA5OC4wNDg5QzczLjA0NSA5OC4wNDg5IDczLjM3NSA5OC4wMzg5IDczLjcwNSA5OC4wMTg5QzczLjcxNSA5Ny45Njg5IDczLjcyNSA5Ny45MTg5IDczLjczNSA5Ny44Njg5QzczLjczNSA5Ny43NTg5IDczLjc1NSA5Ny42MTg5IDczLjc2NSA5Ny40NDg5QzczLjg0NSA5Ni4yMjg5IDczLjg5NTEgOTQuOTk4OSA3My44MDUxIDkzLjc3ODlDNzMuNjU1MSA5MS41Njg5IDczLjA0NSA4OS40NTg5IDcyLjE2NSA4Ny40Mzg5TDcyLjE0NSA4Ny40NDg5WiIgZmlsbD0iIzNDMDE0RSIvPgo8cGF0aCBkPSJNODAuOTg1MiAzNC4xOTk5QzgwLjY5NTIgMzQuMDk5OSA4MC4zNzUxIDM0LjA3OTkgODAuMDY1MSAzNC4wNzk5Qzc1LjE0NTEgMzQuMDc5OSA3MC4yMjUyIDM0LjA3OTkgNjUuMjk1MiAzNC4wODk5QzY1LjExNTIgMzQuMDg5OSA2NC45NDUxIDM0LjA2OTkgNjQuNzY1MSAzNC4wODk5QzYzLjg0NTEgMzQuMTc5OSA2My4yMTUxIDMzLjc1OTkgNjIuNzA1MSAzMy4wMTk5QzYxLjU1NTEgMzEuMzM5OSA2MC4zNjUyIDI5LjY4OTkgNTkuMTg1MiAyOC4wMzk5QzU4Ljc4NTIgMjcuNDc5OSA1OC4zMDUxIDI3LjA0OTkgNTcuNzc1MSAyNi43MTk5QzU1LjQxNTEgMjQuNzA5OSA0Ny44NTUyIDI0LjcwOTkgNDQuMDU1MiAyNS42ODk5QzQzLjQyNTIgMjUuODQ5OSA0Mi44NzUxIDI1Ljk4OTkgNDIuMzE1MSAyNS41ODk5QzM4LjU5NTEgMjIuOTI5OSAzNC4zNjUxIDIxLjg2OTkgMjkuOTA1MSAyMS4yNDk5QzI1LjgwNTEgMjAuNjY5OSAyMS43NTUxIDE5LjczOTkgMTcuNjc1MSAxOC45Nzk5QzE3LjA5NTEgMTguODY5OSAxNi41MTUxIDE4LjczOTkgMTUuOTM1MSAxOC43NTk5QzE1LjE5NTEgMTguNzc5OSAxNC44MzUxIDE5LjMzOTkgMTUuMTA1MSAyMC4wMzk5QzE1LjI5NTEgMjAuNTE5OSAxNS41ODUxIDIwLjk2OTkgMTUuOTA1MSAyMS4zNzk5QzE2LjgzNTEgMjIuNjE5OSAxNy44NDUxIDIzLjc5OTkgMTguNzQ1MSAyNS4wNTk5QzIwLjE0NTEgMjcuMDE5OSAyMC45NjUxIDI5LjI1OTkgMjEuNjg1MSAzMS41Mjk5QzIyLjY0NTEgMzQuNTc5OSAyNC40MjUxIDM2LjkzOTkgMjcuMjA1MSAzOC41NTk5QzI4LjYxNTEgMzkuMzc5OSAzMC44NzUyIDQwLjA1OTkgMzEuODA1MiA0MC4zMjk5QzMxLjk1NTIgNDAuNDY5OSAzMi4xMDUxIDQwLjU5OTkgMzIuMjU1MSA0MC43Mjk5QzMyLjIzNTEgNDEuNTA5OSAzMS44NjUyIDQzLjU0OTkgMzEuODA1MiA0My43OTk5QzMxLjMwNTIgNDUuNjc5OSAzMS4wNTUyIDQ5LjY0OTkgMzAuNzQ1MiA1MS43NDk5QzMwLjUyNTIgNTMuMjA5OSAzMC4zMDUxIDU0LjY1OTkgMzAuMDc1MSA1Ni4xMTk5QzI5LjY4NTEgNTguNjA5OSAyOS4yNjUyIDYxLjA4OTkgMjguODY1MiA2My41Nzk5QzI4LjMzNTIgNjYuODg5OSAyNy44NDUxIDcwLjIwOTkgMjcuMjc1MSA3My41MTk5QzI2Ljg1NTEgNzUuOTI5OSAyNS43NjUxIDc4LjA0OTkgMjQuMjc1MSA3OS45Nzk5QzIyLjU4NTEgODIuMTc5OSAyMC45MDUxIDg0LjM4OTkgMTkuMjI1MSA4Ni41OTk5QzE4LjIxNTEgODcuOTE5OSAxNy4yMTUxIDg5LjIyOTkgMTYuMjA1MSA5MC41NDk5QzE1LjgyNTEgOTEuMDQ5OSAxMy43MTg0IDkyLjU2NTYgMTMuMTcgOTQuNEMxMi43NjczIDk1Ljc0NzIgMTMuMTQgOTcuOTUgMTMuMTEgOThDMTYuNjEgMTAzLjUgMjUuODM0OCA5OCAyOS41IDk4TDU5LjU3NTEgOTguMDU5OUM1OS41ODUxIDk3LjkzOTkgNTkuNjE1MiA5Ny43MTk5IDU5LjYxNTIgOTcuNzE5OUM1OS43MTUyIDk2Ljg5OTkgNTkuODU1MSA5My45Mjk5IDU5LjY1NTEgOTIuNTk5OUM1OS4zNTUxIDkwLjUxOTkgNTguNzk1MSA4OC41MDk5IDU3LjgxNTEgODYuNjM5OUM1Ny4xNDUxIDg1LjM0OTkgNTYuMzQ1MSA4NC4xMjk5IDU1LjY1NTEgODIuODU5OUM1NC41NzUxIDgwLjg4OTkgNTQuMDM1MSA3OC43NTk5IDUzLjc1NTEgNzYuNTQ5OUM1My40NTUxIDc0LjE3OTkgNTMuNjE1MSA3MS44Mzk5IDU0LjE2NTEgNjkuNTE5OUM1NC44MDUxIDY2Ljg0OTkgNTUuOTU1MSA2NC40MTk5IDU3LjY2NTEgNjIuMjU5OUM2MC4xNTUxIDU5LjExOTkgNjMuMjU1MiA1Ni44MDk5IDY3LjA1NTIgNTUuNTE5OUM2OC4wNzUyIDU1LjE2OTkgNjkuMTc1MSA1NS4wMDk5IDcwLjI1NTEgNTQuODY5OUM3Mi44NDUxIDU0LjUyOTkgNzUuMTg1MiA1My42Mjk5IDc3LjE3NTIgNTEuOTE5OUM3OS4xMTUyIDUwLjI1OTkgODAuMzg1MSA0OC4xNDk5IDgwLjk2NTEgNDUuNjk5OUM4MS42NDUxIDQyLjgyOTkgODIuMTY1MSAzOS45MTk5IDgyLjY5NTEgMzcuMDE5OUM4Mi45MzUxIDM1LjcxOTkgODIuMTk1MiAzNC41ODk5IDgwLjk5NTIgMzQuMTg5OUw4MC45ODUyIDM0LjE5OTlaIiBmaWxsPSIjM0MwMTRFIi8+CjxwYXRoIGQ9Ik03MS41MzUxIDEzLjA2NzlDNzEuMjQ1MSAxMi45MTc5IDcwLjcwNTEgMTMuMDM4IDcwLjM4NTEgMTMuMjE4QzY5Ljg5NTEgMTMuNDg4IDY5LjQ3NTEgMTMuODk3OSA2OS4wNTUxIDE0LjI3NzlDNjcuMjM1MSAxNS45Mjc5IDY1LjMwNTEgMTcuNDI3OSA2My4wNzUxIDE4LjUwNzlDNjAuMzE1MSAxOS44Mzc5IDU3Ljk4NTEgMjEuNjc3OSA1NS45OTUxIDIzLjkyNzlDNTcuMjU1MSAyNC40Njc5IDU4LjQ1NTEgMjUuMTE3OSA1OS41MTUxIDI1Ljk3NzlDNjAuNTQ1MSAyNi44MDc5IDYxLjExNTEgMjcuNzc3OSA2MS44MTUxIDI4Ljg2NzlDNjIuMjE1MSAyOS40ODc5IDYyLjcwNTEgMzAuMjQ4IDYzLjE1NTEgMzAuODI4QzYzLjUzNTEgMzEuMzI4IDYzLjg4NTEgMzEuODY3OSA2NC4yOTUxIDMyLjMzNzlDNjQuNTg1MSAzMi42Njc5IDY0Ljg5NTEgMzIuNjg4IDY1LjM2NTEgMzIuNzM4QzY1LjgwNTEgMzIuNzg4IDY2LjIzNTEgMzIuODE3OSA2Ni42NzUxIDMyLjg0NzlDNjcuMTU1MSAzMi4xMTc5IDY3LjYyNTEgMzEuMzk4IDY4LjAyNTEgMzAuNjU4QzY5LjQyNTEgMjguMDg4IDY5Ljg0NTEgMjUuMjI4IDcwLjEyNTEgMjIuMzc4QzcwLjM4NTEgMTkuNzc4IDcwLjc3NTEgMTcuMjA3OSA3MS42MjUxIDE0LjcyNzlDNzEuNjk1MSAxNC41Mjc5IDcxLjc5NTEgMTQuMzE3OSA3MS43NzUxIDE0LjExNzlDNzEuNzQ1MSAxMy43NDc5IDcxLjc0NTEgMTMuMTY3OSA3MS41MzUxIDEzLjA1NzlWMTMuMDY3OVoiIGZpbGw9IiMzQzAxNEUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF84MzBfNTc2Ij4KPHJlY3Qgd2lkdGg9Ijk4IiBoZWlnaHQ9Ijk4IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=">
-<style>
-  :root{
-    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
-    --purple:#3C014E; --purple-d:#2D0A47; --purple-deep:#1E0230;
-    --coral:#DB4949; --coral-d:#EE3842;
-    --cyan:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
-    --border:rgba(22,22,11,.10);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
-  h1,h2,h3,h4,.logo,.btn{font-family:"Poppins",system-ui,sans-serif}
-
-  /* ── NAV ── */
-  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
-  .logo{font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
-  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
-  .navlinks a:not(.btn){text-decoration:none;color:var(--ink);transition:opacity .14s}
-  .navlinks a:not(.btn):hover{opacity:.65}
-  .navlinks a.active{color:var(--coral)}
-  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:14px;padding:11px 24px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-green{background:var(--purple);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
-  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(219,73,73,.28)}
-  .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none}
-
-  /* ── HAMBURGER ── */
-  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
-  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
-  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .nav-toggle.open span:nth-child(2){opacity:0}
-  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
-  .mobile-menu.open{display:flex}
-  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
-  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
-
-  /* ── PAGE WRAPPER ── */
-  .page-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
-
-  /* ── HERO ── */
-  .story-hero{padding:72px 0 56px}
-  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:14px}
-  .story-hero h1{font-size:64px;font-weight:800;line-height:1.03;letter-spacing:-.03em;margin-bottom:20px}
-  .story-hero h1 .hl{color:var(--coral)}
-  .story-hero .lede{font-size:19px;color:var(--muted);line-height:1.6;max-width:36em}
-
-  /* ── MAIN LAYOUT: prose + sticky timeline ── */
-  .story-body{display:grid;grid-template-columns:1fr 300px;gap:80px;align-items:start;padding:0 0 100px}
-
-  /* ── PROSE ── */
-  .prose{max-width:none}
-  .prose-section{margin-bottom:56px}
-  .prose-section:last-child{margin-bottom:0}
-  .section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:20px;display:block}
-  .prose h2{font-size:32px;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:20px}
-  .prose p{font-size:17px;line-height:1.7;color:#2a2a1e;margin-bottom:18px;max-width:54ch}
-  .prose p:last-child{margin-bottom:0}
-  .prose p b{color:var(--ink);font-weight:600}
-
-  /* Photo with caption */
-  .story-photo{border-radius:20px;overflow:hidden;margin:36px 0;position:relative}
-  .story-photo img{width:100%;height:auto;display:block}
-  .story-photo figcaption{font-size:13px;color:var(--muted);margin-top:10px;padding:0 4px}
-
-  /* Mission card */
-  .mission-card{background:var(--purple);color:#fff;border-radius:24px;padding:40px;margin-top:16px}
-  .mission-card .mc-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(117,209,220,.8);margin-bottom:16px}
-  .mission-card h2{font-size:28px;font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:18px}
-  .mission-card p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.82);margin-bottom:14px}
-  .mission-card p:last-of-type{margin-bottom:24px}
-  .mission-card .btn{font-size:15px;padding:14px 28px}
-
-  /* ── STICKY TIMELINE SIDEBAR ── */
-  .timeline-sidebar{position:sticky;top:100px;align-self:start}
-  .timeline-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:24px}
-
-  .timeline{position:relative;padding-left:28px}
-  .timeline::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;background:var(--border)}
-
-  .tl-item{position:relative;margin-bottom:28px}
-  .tl-item:last-child{margin-bottom:0}
-  .tl-dot{position:absolute;left:-28px;top:5px;width:15px;height:15px;border-radius:50%;border:2px solid var(--border);background:var(--cream);transition:border-color .2s,background .2s}
-  .tl-item.active .tl-dot{border-color:var(--coral);background:var(--coral)}
-  .tl-item.done .tl-dot{border-color:var(--purple);background:var(--purple)}
-  .tl-date{font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .tl-item.active .tl-date{color:var(--coral)}
-  .tl-item.done .tl-date{color:var(--purple)}
-  .tl-title{font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
-  .tl-desc{font-size:13px;color:var(--muted);line-height:1.55}
-
-  /* Sidebar CTA */
-  .sidebar-cta{margin-top:40px;background:#fff;border-radius:18px;padding:24px;border:1px solid var(--border)}
-  .sidebar-cta p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:16px}
-  .sidebar-cta .btn{width:100%;justify-content:center;font-size:14px;padding:13px 20px}
-
-  /* ── FOOTER ── */
-  footer{background:var(--cream);border-top:1px solid var(--border)}
-  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
-  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
-  .foot-flag{display:flex;margin-bottom:-24px}
-  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
-  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
-  .foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
-  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
-  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
-  .foot .footer-links a:hover{color:var(--ink)}
-  .legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
-  .legal a{color:var(--muted);text-decoration:none}
-  .flag-inline{display:none}
-
-  /* ── RESPONSIVE ── */
-  @media(max-width:900px){
-    .nav-toggle{display:flex}
-    .navlinks{display:none}
-    .nav-in{padding:16px 20px}
-    .page-wrap{padding:0 20px}
-
-    .story-hero{padding:40px 0 28px}
-    .story-hero h1{font-size:36px}
-    .story-hero .lede{font-size:16px}
-
-    .story-body{grid-template-columns:1fr;gap:0;padding-bottom:60px}
-    .timeline-sidebar{position:static;margin-bottom:36px;order:-1}
-    .timeline-sidebar .sidebar-cta{display:none}
-
-    /* Timeline vertical on mobile */
-    .timeline{padding-left:28px}
-    .timeline::before{display:block}
-    .tl-item{margin-bottom:20px;padding-left:0}
-    .tl-dot{display:block}
-
-    .prose-section{margin-bottom:40px}
-    .prose h2{font-size:26px;margin-bottom:16px}
-    .prose p{font-size:16px;line-height:1.65;margin-bottom:14px}
-
-    .story-photo{margin:28px 0}
-    .story-photo figcaption{font-size:12px}
-
-    .mission-card{padding:28px 22px;border-radius:20px}
-    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
-    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
-    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
-    .foot .footer-links a{margin-left:0;font-size:15px}
-    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
-    .mission-card h2{font-size:22px;line-height:1.25}
-    .mission-card p{font-size:15px}
-    .mission-card .btn{width:100%;justify-content:center;padding:15px 24px;font-size:15px}
-
-    .foot{flex-direction:column;gap:20px;padding:40px 20px 24px}
-    .foot-right{align-items:flex-start;gap:10px}
-    .foot .footer-links{gap:20px}
-    .legal{flex-direction:column;gap:6px;padding:16px 20px 32px}
-    .foot-flag{display:none}
-    .flag-inline{display:inline-block}
-  }
-
-  @media(max-width:560px){
-    .story-hero{padding:32px 0 22px}
-    .story-hero h1{font-size:28px;margin-bottom:14px}
-    .story-hero .lede{font-size:15px}
-
-    .prose h2{font-size:22px}
-    .prose p{font-size:15px;line-height:1.6}
-
-    .mission-card{padding:22px 18px}
-    .mission-card h2{font-size:20px}
-    .mission-card p{font-size:14px}
-  }
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-in">
-    <a class="logo" href="/">GAMGEE</a>
-    <div class="navlinks">
-      <a href="/story/" class="active">Our story</a>
-      <a href="/about/" hidden style="display:none">About</a>
-      <a href="/vet/">For Vets</a>
-      <a class="btn btn-green" href="/apply/">Apply</a>
-    </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
-      const btn=this, menu=document.getElementById('mobile-menu');
-      const open=btn.classList.toggle('open');
-      menu.classList.toggle('open',open);
-      btn.setAttribute('aria-expanded',open);
-    ">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
-    <a href="/about/" hidden style="display:none" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
-    <a href="/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
-    <a class="btn btn-green" href="/apply/">Apply now</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="page-wrap">
-  <header class="story-hero">
-    <p class="eyebrow">How it's started</p>
-    <h1>Rosie's <span class="hl">story.</span></h1>
-    <p class="lede">How a machine-learning founder used AI to build a cancer treatment for his dog - and what we're doing now.</p>
-  </header>
-</div>
-
-<!-- BODY -->
-<div class="page-wrap">
-  <div class="story-body">
-
-    <!-- ── LEFT: PROSE ── -->
-    <article class="prose">
-
-      <div class="prose-section">
-        <span class="section-label">What I did for Rosie</span>
-        <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live.</p>
-
-        <figure class="story-photo">
-          <img src="../assets/story/Paul+Rosie.webp" alt="Paul and Rosie, Sydney, 2025">
-          <figcaption>Paul and Rosie, Sydney. 2025.</figcaption>
-        </figure>
-
-        <p>I am not a biologist. I have spent 17 years in machine learning. So I did what I know how to do. I started researching, using AI to map the specific mutations driving her cancer, design a personalised mRNA vaccine targeting those mutations, and coordinate its manufacture with researchers at UNSW.</p>
-
-        <p>In December 2025, Rosie received her first injection after a 14-hour drive to Queensland.</p>
-
-        <p>Three months later, the tumours on her legs had significantly reduced, significantly extending the timeline she'd been given.</p>
-      </div>
-
-      <div class="prose-section">
-        <span class="section-label">Why I am building Gamgee</span>
-        <p>The science already exists. Genomic sequencing, protein modelling, mRNA synthesis - the tools are there. What I built for Rosie was not new science. It was new access.</p>
-
-        <p>I should not have been the only person who could do this. A background in machine learning and months of obsessive research should not be the price of admission. Every dog owner facing this diagnosis deserves the same options I had, without having to become a citizen scientist to get them.</p>
-      </div>
-
-      <div class="prose-section">
-        <div class="mission-card">
-          <div class="mc-label">Where we are right now</div>
-          <h2>The first end-to-end personalised cancer treatment protocol for dogs.</h2>
-          <p>Together with our partners at UNSW, the University of Queensland, and the Garvan Institute, we have built and validated it.</p>
-          <p>We are currently running a trial in Australia. Applications are open worldwide - every case matters, and Australia is where we start.</p>
-          <a class="btn btn-coral" href="/apply/">
-            Apply now
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-      </div>
-
-    </article>
-
-    <!-- ── RIGHT: STICKY TIMELINE ── -->
-    <aside class="timeline-sidebar">
-      <p class="timeline-label">Timeline</p>
-
-      <div class="timeline">
-        <div class="tl-item done">
-          <div class="tl-dot"></div>
-          <div class="tl-date">May 2024</div>
-          <div class="tl-title">Diagnosis</div>
-          <div class="tl-desc">Mast cell cancer confirmed. Eleven months after first symptoms.</div>
-        </div>
-
-        <div class="tl-item done">
-          <div class="tl-dot"></div>
-          <div class="tl-date">2024–2025</div>
-          <div class="tl-title">Research</div>
-          <div class="tl-desc">Genomic sequencing, protein modelling, 120 hours of ethics paperwork. AI-designed vaccine construct.</div>
-        </div>
-
-        <div class="tl-item done">
-          <div class="tl-dot"></div>
-          <div class="tl-date">Dec 2025</div>
-          <div class="tl-title">Treatment</div>
-          <div class="tl-desc">First injection at the University of Queensland. Personalised mRNA vaccine plus supporting protocol.</div>
-        </div>
-
-        <div class="tl-item active">
-          <div class="tl-dot"></div>
-          <div class="tl-date">Mar 2026</div>
-          <div class="tl-title">Response</div>
-          <div class="tl-desc">Tumours on her legs significantly reduced, significantly extending the timeline she'd been given.</div>
-        </div>
-      </div>
-
-      <div class="sidebar-cta">
-        <p>If your dog has been diagnosed, we'd like to hear from you.</p>
-        <a class="btn btn-coral" href="/apply/">
-          Apply now
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </aside>
-
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot">
-    <div>
-      <div class="brand">GAMGEE</div>
-      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
-    </div>
-    <div class="foot-right">
-      <div class="footer-links">
-        <h5>PRODUCT</h5>
-        <a href="/vet/">For Vets</a>
-        <a href="/apply/">Apply</a>
-      </div>
-      <div class="foot-flag">
-        <img src="../assets/icons/us-flag.png" width="42" height="28" alt="United States" style="border-radius:2px;object-fit:cover">
-      </div>
-    </div>
-  </div>
-  <div class="legal">
-    <span>© 2026 GAMGEE · San Francisco, United States <img src="../assets/icons/us-flag.png" width="18" height="12" alt="" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"></span>
-    <span><a href="/privacy&terms/#privacy">Privacy</a> · <a href="/privacy&terms/#terms">Terms</a></span>
-  </div>
-</footer>
-
-</body>
-</html>
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|<meta charset="UTF-8">
+5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|<title>GAMGEE - Rosie's Story</title>
+7|<link rel="preconnect" href="https://fonts.googleapis.com">
+8|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+9|<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+10|<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iOTgiIHZpZXdCb3g9IjAgMCA5OCA5OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzgzMF81NzYpIj4KPHBhdGggZD0iTTcyLjE0NSA4Ny40NDg5QzcxLjIxNSA4NS4zMTg5IDY5Ljk5NSA4My4zNzg5IDY4LjQ2NSA4MS42Mzg5QzY2LjU4NSA3OS40OTg5IDY1LjAyNSA3Ny4xMzg5IDY0LjAxNSA3NC40Njg5QzYzLjU1NSA3My4yNDg5IDYzLjIxNSA3MS45Nzg5IDYyLjkyNSA3MC43MDg5QzYyLjQ5NSA2OC44MDg5IDYyLjMwNSA2Ni44Nzg5IDYyLjQ4NSA2NC45Mjg5QzYyLjQ4NSA2NC44Njg5IDYyLjQ4NSA2NC43OTg5IDYyLjQ2NSA2NC43Mjg5QzYyLjQ2NSA2NC43MDg5IDYyLjQyNSA2NC42OTg5IDYyLjM0NSA2NC42Mjg5QzYyLjA5NSA2NS4wMDg5IDYxLjgyNSA2NS4zNjg5IDYxLjYwNSA2NS43NTg5QzU5Ljc3NSA2OC45ODg5IDU5LjE5NTEgNzIuNDI4OSA1OS44MDUxIDc2LjA5ODlDNjAuMjA1MSA3OC41Mzg5IDYxLjE2NTEgODAuNzQ4OSA2Mi40MzUxIDgyLjgyODlDNjMuMDI1MSA4My43OTg5IDYzLjc0NSA4NC42Nzg5IDY0LjMxNSA4NS42NDg5QzY2LjI4NSA4OC45NDg5IDY3LjI3NSA5Mi41MDg5IDY3LjA3NSA5Ni4zNjg5QzY3LjA3NSA5Ni41MTg5IDY2LjkwNSA5Ny45MDg5IDY2LjkwNSA5Ny45MDg5QzY2LjkwNSA5Ny45MDg5IDY2Ljg5NSA5OC4wMzg5IDY2Ljg5NSA5OC4wNDg5QzY2Ljg5NSA5OC4wODg5IDcyLjcwNSA5OC4wNDg5IDcyLjcwNSA5OC4wNDg5QzczLjA0NSA5OC4wNDg5IDczLjM3NSA5OC4wMzg5IDczLjcwNSA5OC4wMTg5QzczLjcxNSA5Ny45Njg5IDczLjcyNSA5Ny45MTg5IDczLjczNSA5Ny44Njg5QzczLjczNSA5Ny43NTg5IDczLjc1NSA5Ny42MTg5IDczLjc2NSA5Ny40NDg5QzczLjg0NSA5Ni4yMjg5IDczLjg5NTEgOTQuOTk4OSA3My44MDUxIDkzLjc3ODlDNzMuNjU1MSA5MS41Njg5IDczLjA0NSA4OS40NTg5IDcyLjE2NSA4Ny40Mzg5TDcyLjE0NSA4Ny40NDg5WiIgZmlsbD0iIzNDMDE0RSIvPgo8cGF0aCBkPSJNODAuOTg1MiAzNC4xOTk5QzgwLjY5NTIgMzQuMDk5OSA4MC4zNzUxIDM0LjA3OTkgODAuMDY1MSAzNC4wNzk5Qzc1LjE0NTEgMzQuMDc5OSA3MC4yMjUyIDM0LjA3OTkgNjUuMjk1MiAzNC4wODk5QzY1LjExNTIgMzQuMDg5OSA2NC45NDUxIDM0LjA2OTkgNjQuNzY1MSAzNC4wODk5QzYzLjg0NTEgMzQuMTc5OSA2My4yMTUxIDMzLjc1OTkgNjIuNzA1MSAzMy4wMTk5QzYxLjU1NTEgMzEuMzM5OSA2MC4zNjUyIDI5LjY4OTkgNTkuMTg1MiAyOC4wMzk5QzU4Ljc4NTIgMjcuNDc5OSA1OC4zMDUxIDI3LjA0OTkgNTcuNzc1MSAyNi43MTk5QzU1LjQxNTEgMjQuNzA5OSA0Ny44NTUyIDI0LjcwOTkgNDQuMDU1MiAyNS42ODk5QzQzLjQyNTIgMjUuODQ5OSA0Mi44NzUxIDI1Ljk4OTkgNDIuMzE1MSAyNS41ODk... [truncated]
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+11|<style>
+12|  :root{
+13|    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
+14|    --purple:#3C014E; --purple-d:#2D0A47; --purple-deep:#1E0230;
+15|    --coral:#DB4949; --coral-d:#EE3842;
+16|    --cyan:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+17|    --border:rgba(22,22,11,.10);
+18|  }
+19|  *{box-sizing:border-box;margin:0;padding:0}
+20|  html{scroll-behavior:smooth}
+21|  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+22|  h1,h2,h3,h4,.logo,.btn{font-family:"Poppins",system-ui,sans-serif}
+23|
+24|  /* ── NAV ── */
+25|  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+26|  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+27|  .logo{font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
+28|  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+29|  .navlinks a:not(.btn){text-decoration:none;color:var(--ink);transition:opacity .14s}
+30|  .navlinks a:not(.btn):hover{opacity:.65}
+31|  .navlinks a.active{color:var(--coral)}
+32|  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:14px;padding:11px 24px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+33|  .btn:hover{transform:translateY(-2px)}
+34|  .btn-green{background:var(--purple);color:#fff;box-shadow:0 8px 20px rgba(60,1,78,.22)}
+35|  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(219,73,73,.28)}
+36|  .btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none}
+37|
+38|  /* ── HAMBURGER ── */
+39|  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
+40|  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
+41|  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+42|  .nav-toggle.open span:nth-child(2){opacity:0}
+43|  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+44|  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
+45|  .mobile-menu.open{display:flex}
+46|  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
+47|  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+48|
+49|  /* ── PAGE WRAPPER ── */
+50|  .page-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+51|
+52|  /* ── HERO ── */
+53|  .story-hero{padding:72px 0 56px}
+54|  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:14px}
+55|  .story-hero h1{font-size:64px;font-weight:800;line-height:1.03;letter-spacing:-.03em;margin-bottom:20px}
+56|  .story-hero h1 .hl{color:var(--coral)}
+57|  .story-hero .lede{font-size:19px;color:var(--muted);line-height:1.6;max-width:36em}
+58|
+59|  /* ── MAIN LAYOUT: prose + sticky timeline ── */
+60|  .story-body{display:grid;grid-template-columns:1fr 300px;gap:80px;align-items:start;padding:0 0 100px}
+61|
+62|  /* ── PROSE ── */
+63|  .prose{max-width:none}
+64|  .prose-section{margin-bottom:56px}
+65|  .prose-section:last-child{margin-bottom:0}
+66|  .section-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:20px;display:block}
+67|  .prose h2{font-size:32px;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:20px}
+68|  .prose p{font-size:17px;line-height:1.7;color:#2a2a1e;margin-bottom:18px;max-width:54ch}
+69|  .prose p:last-child{margin-bottom:0}
+70|  .prose p b{color:var(--ink);font-weight:600}
+71|
+72|  /* Photo with caption */
+73|  .story-photo{border-radius:20px;overflow:hidden;margin:36px 0;position:relative}
+74|  .story-photo img{width:100%;height:auto;display:block}
+75|  .story-photo figcaption{font-size:13px;color:var(--muted);margin-top:10px;padding:0 4px}
+76|
+77|  /* Mission card */
+78|  .mission-card{background:var(--purple);color:#fff;border-radius:24px;padding:40px;margin-top:16px}
+79|  .mission-card .mc-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(117,209,220,.8);margin-bottom:16px}
+80|  .mission-card h2{font-size:28px;font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:18px}
+81|  .mission-card p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.82);margin-bottom:14px}
+82|  .mission-card p:last-of-type{margin-bottom:24px}
+83|  .mission-card .btn{font-size:15px;padding:14px 28px}
+84|
+85|  /* ── STICKY TIMELINE SIDEBAR ── */
+86|  .timeline-sidebar{position:sticky;top:100px;align-self:start}
+87|  .timeline-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:24px}
+88|
+89|  .timeline{position:relative;padding-left:28px}
+90|  .timeline::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:1.5px;background:var(--border)}
+91|
+92|  .tl-item{position:relative;margin-bottom:28px}
+93|  .tl-item:last-child{margin-bottom:0}
+94|  .tl-dot{position:absolute;left:-28px;top:5px;width:15px;height:15px;border-radius:50%;border:2px solid var(--border);background:var(--cream);transition:border-color .2s,background .2s}
+95|  .tl-item.active .tl-dot{border-color:var(--coral);background:var(--coral)}
+96|  .tl-item.done .tl-dot{border-color:var(--purple);background:var(--purple)}
+97|  .tl-date{font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+98|  .tl-item.active .tl-date{color:var(--coral)}
+99|  .tl-item.done .tl-date{color:var(--purple)}
+100|  .tl-title{font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+101|  .tl-desc{font-size:13px;color:var(--muted);line-height:1.55}
+102|
+103|  /* Sidebar CTA */
+104|  .sidebar-cta{margin-top:40px;background:#fff;border-radius:18px;padding:24px;border:1px solid var(--border)}
+105|  .sidebar-cta p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:16px}
+106|  .sidebar-cta .btn{width:100%;justify-content:center;font-size:14px;padding:13px 20px}
+107|
+108|  /* ── FOOTER ── */
+109|  footer{background:var(--cream);border-top:1px solid var(--border)}
+110|  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
+111|  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+112|  .foot-flag{display:flex;margin-bottom:-24px}
+113|  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
+114|  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+115|  .foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
+116|  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+117|  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+118|  .foot .footer-links a:hover{color:var(--ink)}
+119|  .legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+120|  .legal a{color:var(--muted);text-decoration:none}
+121|  .flag-inline{display:none}
+122|
+123|  /* ── RESPONSIVE ── */
+124|  @media(max-width:900px){
+125|    .nav-toggle{display:flex}
+126|    .navlinks{display:none}
+127|    .nav-in{padding:16px 20px}
+128|    .page-wrap{padding:0 20px}
+129|
+130|    .story-hero{padding:40px 0 28px}
+131|    .story-hero h1{font-size:36px}
+132|    .story-hero .lede{font-size:16px}
+133|
+134|    .story-body{grid-template-columns:1fr;gap:0;padding-bottom:60px}
+135|    .timeline-sidebar{position:static;margin-bottom:36px;order:-1}
+136|    .timeline-sidebar .sidebar-cta{display:none}
+137|
+138|    /* Timeline vertical on mobile */
+139|    .timeline{padding-left:28px}
+140|    .timeline::before{display:block}
+141|    .tl-item{margin-bottom:20px;padding-left:0}
+142|    .tl-dot{display:block}
+143|
+144|    .prose-section{margin-bottom:40px}
+145|    .prose h2{font-size:26px;margin-bottom:16px}
+146|    .prose p{font-size:16px;line-height:1.65;margin-bottom:14px}
+147|
+148|    .story-photo{margin:28px 0}
+149|    .story-photo figcaption{font-size:12px}
+150|
+151|    .mission-card{padding:28px 22px;border-radius:20px}
+152|    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
+153|    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
+154|    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+155|    .foot .footer-links a{margin-left:0;font-size:15px}
+156|    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
+157|    .mission-card h2{font-size:22px;line-height:1.25}
+158|    .mission-card p{font-size:15px}
+159|    .mission-card .btn{width:100%;justify-content:center;padding:15px 24px;font-size:15px}
+160|
+161|    .foot{flex-direction:column;gap:20px;padding:40px 20px 24px}
+162|    .foot-right{align-items:flex-start;gap:10px}
+163|    .foot .footer-links{gap:20px}
+164|    .legal{flex-direction:column;gap:6px;padding:16px 20px 32px}
+165|    .foot-flag{display:none}
+166|    .flag-inline{display:inline-block}
+167|  }
+168|
+169|  @media(max-width:560px){
+170|    .story-hero{padding:32px 0 22px}
+171|    .story-hero h1{font-size:28px;margin-bottom:14px}
+172|    .story-hero .lede{font-size:15px}
+173|
+174|    .prose h2{font-size:22px}
+175|    .prose p{font-size:15px;line-height:1.6}
+176|
+177|    .mission-card{padding:22px 18px}
+178|    .mission-card h2{font-size:20px}
+179|    .mission-card p{font-size:14px}
+180|  }
+181|</style>
+182|</head>
+183|<body>
+184|
+185|<!-- NAV -->
+186|<nav>
+187|  <div class="nav-in">
+188|    <a class="logo" href="/">GAMGEE</a>
+189|    <div class="navlinks">
+190|      <a href="/story/" class="active">Our story</a>
+191|      <a href="/about/" hidden style="display:none">About</a>
+192|      <a href="/vet/">For Vets</a>
+193|      <a class="btn btn-green" href="/apply/">Apply</a>
+194|    </div>
+195|    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
+196|      const btn=this, menu=document.getElementById('mobile-menu');
+197|      const open=btn.classList.toggle('open');
+198|      menu.classList.toggle('open',open);
+199|      btn.setAttribute('aria-expanded',open);
+200|    ">
+201|      <span></span><span></span><span></span>
+202|    </button>
+203|  </div>
+204|  <div class="mobile-menu" id="mobile-menu">
+205|    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+206|    <a href="/about/" hidden style="display:none" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
+207|    <a href="/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
+208|    <a class="btn btn-green" href="/apply/">Apply now</a>
+209|  </div>
+210|</nav>
+211|
+212|<!-- HERO -->
+213|<div class="page-wrap">
+214|  <header class="story-hero">
+215|    <p class="eyebrow">How it's started</p>
+216|    <h1>Rosie's <span class="hl">story.</span></h1>
+217|    <p class="lede">How a machine-learning founder used AI to build a cancer treatment for his dog - and what we're doing now.</p>
+218|  </header>
+219|</div>
+220|
+221|<!-- BODY -->
+222|<div class="page-wrap">
+223|  <div class="story-body">
+224|
+225|    <!-- ── LEFT: PROSE ── -->
+226|    <article class="prose">
+227|
+228|      <div class="prose-section">
+229|        <span class="section-label">What I did for Rosie</span>
+230|        <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live.</p>
+231|
+232|        <figure class="story-photo">
+233|          <img src="../assets/story/Paul+Rosie.webp" alt="Paul and Rosie, Sydney, 2025">
+234|          <figcaption>Paul and Rosie, Sydney. 2025.</figcaption>
+235|        </figure>
+236|
+237|        <p>I am not a biologist. I have spent 17 years in machine learning. So I did what I know how to do. I started researching, using AI to map the specific mutations driving her cancer, design a personalised mRNA vaccine targeting those mutations, and coordinate its manufacture with researchers at UNSW.</p>
+238|
+239|        <p>In December 2025, Rosie received her first injection after a 14-hour drive to Queensland.</p>
+240|
+241|        <p>Three months later, the tumours on her legs had significantly reduced, significantly extending the timeline she'd been given.</p>
+242|      </div>
+243|
+244|      <div class="prose-section">
+245|        <span class="section-label">Why I am building Gamgee</span>
+246|        <p>The science already exists. Genomic sequencing, protein modelling, mRNA synthesis - the tools are there. What I built for Rosie was not new science. It was new access.</p>
+247|
+248|        <p>I should not have been the only person who could do this. A background in machine learning and months of obsessive research should not be the price of admission. Every dog owner facing this diagnosis deserves the same options I had, without having to become a citizen scientist to get them.</p>
+249|      </div>
+250|
+251|      <div class="prose-section">
+252|        <div class="mission-card">
+253|          <div class="mc-label">Where we are right now</div>
+254|          <h2>The first end-to-end personalised cancer treatment protocol for dogs.</h2>
+255|          <p>Together with our partners at UNSW, the University of Queensland, and the Garvan Institute, we have built and validated it.</p>
+256|          <p>We are currently running a trial in Australia. Applications are open worldwide - every case matters, and Australia is where we start.</p>
+257|          <a class="btn btn-coral" href="/apply/">
+258|            Apply now
+259|            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+260|          </a>
+261|        </div>
+262|      </div>
+263|
+264|    </article>
+265|
+266|    <!-- ── RIGHT: STICKY TIMELINE ── -->
+267|    <aside class="timeline-sidebar">
+268|      <p class="timeline-label">Timeline</p>
+269|
+270|      <div class="timeline">
+271|        <div class="tl-item done">
+272|          <div class="tl-dot"></div>
+273|          <div class="tl-date">May 2024</div>
+274|          <div class="tl-title">Diagnosis</div>
+275|          <div class="tl-desc">Mast cell cancer confirmed. Eleven months after first symptoms.</div>
+276|        </div>
+277|
+278|        <div class="tl-item done">
+279|          <div class="tl-dot"></div>
+280|          <div class="tl-date">2024–2025</div>
+281|          <div class="tl-title">Research</div>
+282|          <div class="tl-desc">Genomic sequencing, protein modelling, 120 hours of ethics paperwork. AI-designed vaccine construct.</div>
+283|        </div>
+284|
+285|        <div class="tl-item done">
+286|          <div class="tl-dot"></div>
+287|          <div class="tl-date">Dec 2025</div>
+288|          <div class="tl-title">Treatment</div>
+289|          <div class="tl-desc">First injection at the University of Queensland. Personalised mRNA vaccine plus supporting protocol.</div>
+290|        </div>
+291|
+292|        <div class="tl-item active">
+293|          <div class="tl-dot"></div>
+294|          <div class="tl-date">Mar 2026</div>
+295|          <div class="tl-title">Response</div>
+296|          <div class="tl-desc">Tumours on her legs significantly reduced, significantly extending the timeline she'd been given.</div>
+297|        </div>
+298|      </div>
+299|
+300|      <div class="sidebar-cta">
+301|        <p>If your dog has been diagnosed, we'd like to hear from you.</p>
+302|        <a class="btn btn-coral" href="/apply/">
+303|          Apply now
+304|          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+305|        </a>
+306|      </div>
+307|    </aside>
+308|
+309|  </div>
+310|</div>
+311|
+312|<!-- FOOTER -->
+313|<footer>
+314|  <div class="foot">
+315|    <div>
+316|      <div class="brand">GAMGEE</div>
+317|      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+318|    </div>
+319|    <div class="foot-right">
+320|      <div class="footer-links">
+321|        <h5>PRODUCT</h5>
+322|        <a href="/vet/">For Vets</a>
+323|        <a href="/apply/">Apply</a>
+324|      </div>
+325|      <div class="foot-flag">
+326|        <img src="../assets/icons/us-flag.png" width="42" height="28" alt="United States" style="border-radius:2px;object-fit:cover">
+327|      </div>
+328|    </div>
+329|  </div>
+330|  <div class="legal">
+331|    <span>© 2026 GAMGEE · San Francisco, United States <img src="../assets/icons/us-flag.png" width="18" height="12" alt="" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"></span>
+332|    <span><a href="/privacy&terms/#privacy">Privacy</a> · <a href="/privacy&terms/#terms">Terms</a></span>
+333|  </div>
+334|</footer>
+335|
+336|</body>
+337|</html>
+338|

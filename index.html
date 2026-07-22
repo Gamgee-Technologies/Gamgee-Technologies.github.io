@@ -1,1486 +1,507 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAMGEE - Personalized Cancer Treatment for Dogs</title>
-<meta name="description" content="The first personalised cancer treatment protocol for dogs.">
-
-<!-- Open Graph / WhatsApp, Facebook, LinkedIn link previews -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Gamgee">
-<meta property="og:title" content="GAMGEE - Personalised cancer treatment for dogs">
-<meta property="og:description" content="The first personalised cancer treatment protocol for dogs.">
-<meta property="og:image" content="https://gamgee.io/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://gamgee.io/">
-
-<!-- Twitter/X card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="GAMGEE - Personalised cancer treatment for dogs">
-<meta name="twitter:description" content="The first personalised cancer treatment protocol for dogs.">
-<meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
-
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAzIiBoZWlnaHQ9IjEwMyIgdmlld0JveD0iMCAwIDEwMyAxMDMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik03My43NDk5IDIuNzg5MDZIMjguNDA5OUMxMy43ODU0IDIuNzg5MDYgMS45Mjk5MyAxNC42NDQ2IDEuOTI5OTMgMjkuMjY5MVY3NC42MDkxQzEuOTI5OTMgODkuMjMzNiAxMy43ODU0IDEwMS4wODkgMjguNDA5OSAxMDEuMDg5SDczLjc0OTlDODguMzc0NCAxMDEuMDg5IDEwMC4yMyA4OS4yMzM2IDEwMC4yMyA3NC42MDkxVjI5LjI2OTFDMTAwLjIzIDE0LjY0NDYgODguMzc0NCAyLjc4OTA2IDczLjc0OTkgMi43ODkwNloiIGZpbGw9IiNGN0Y2RTIiLz4KPHBhdGggZD0iTTc0LjMxMDEgODkuODMxN0M3My4zODAxIDg3LjcwMTcgNzIuMTYwMSA4NS43NjE3IDcwLjYzMDEgODQuMDIxN0M2OC43NTAxIDgxLjg4MTcgNjcuMTkwMSA3OS41MjE3IDY2LjE4MDEgNzYuODUxN0M2NS43MjAxIDc1LjYzMTcgNjUuMzgwMSA3NC4zNjE3IDY1LjA5MDEgNzMuMDkxN0M2NC42NjAxIDcxLjE5MTcgNjQuNDcwMSA2OS4yNjE3IDY0LjY1MDEgNjcuMzExN0M2NC42NTAxIDY3LjI1MTcgNjQuNjUwMSA2Ny4xODE3IDY0LjYzMDEgNjcuMTExN0M2NC42MzAxIDY3LjA5MTcgNjQuNTkwMSA2Ny4wODE3IDY0LjUxMDEgNjcuMDExN0M2NC4yNjAxIDY3LjM5MTcgNjMuOTkwMSA2Ny43NTE3IDYzLjc3MDEgNjguMTQxN0M2MS45NDAxIDcxLjM3MTcgNjEuMzYwMSA3NC44MTE3IDYxLjk3MDEgNzguNDgxN0M2Mi4zNzAxIDgwLjkyMTcgNjMuMzMwMSA4My4xMzE3IDY0LjYwMDEgODUuMjExN0M2NS4xOTAxIDg2LjE4MTcgNjUuOTEgODcuMDYxNyA2Ni40OCA4OC4wMzE3QzY4LjQ1IDkxLjMzMTcgNjkuNDQgOTQuODkxNyA2OS4yNCA5OC43NTE3QzY5LjI0IDk4LjkwMTcgNjkuMDcwMSAxMDAuMjkyIDY5LjA3MDEgMTAwLjI5MkM2OS4wNzAxIDEwMC4yOTIgNjkuMDYwMSAxMDAuNDIyIDY5LjA2MDEgMTAwLjQzMkM2OS4wNjAxIDEwMC40NzIgNzQuODcwMSAxMDAuNDMyIDc0Ljg3MDEgMTAwLjQzMkM3NS4yMTAxIDEwMC40MzIgNzUuNTQwMSAxMDAuNDIyIDc1Ljg3MDEgMTAwLjQwMkM3NS44ODAxIDEwMC4zNTIgNzUuODkwMSAxMDAuMzAyIDc1LjkwMDEgMTAwLjI1MkM3NS45MDAxIDEwMC4xNDIgNzUuOTIwMSAxMDAuMDAyIDc1LjkzMDEgOTkuODMxN0M3Ni4wMTAxIDk4LjYxMTcgNzYuMDYwMSA5Ny4zODE3IDc1Ljk3MDEgOTYuMTYxN0M3NS44MjAxIDkzLjk1MTcgNzUuMjEwMSA5MS44NDE3IDc0LjMzMDEgODkuODIxN0w3NC4zMTAxIDg5LjgzMTdaIiBmaWxsPSIjM0MwMTRFIi8+CjxwYXRoIGQ9Ik03My43MDAxIDE1LjQ1MDhDNzMuNDEwMSAxNS4zMDA4IDcyLjg3MDEgMTUuNDIwOCA3Mi41NTAxIDE1LjYwMDhDNzIuMDYwMSAxNS44NzA4IDcxLjY0MDIgMTYuMjgwOCA3MS4yMjAyIDE2LjY2MDhDNjkuNDAwMiAxOC4zMTA4IDY3LjQ3MDEgMTkuODEwOCA2NS4yNDAxIDIwLjg5MDhDNjIuNDgwMSAyMi4yMjA4IDYwLjE1MDIgMjQuMDYwOCA1OC4xNjAyIDI2LjMxMDhDNTkuNDIwMiAyNi44NTA4IDYwLjYyMDEgMjcuNTAwOCA2MS42ODAxIDI4LjM2MDhDNjIuNzEwMSAyOS4xOTA4IDYzLjI4MDEgMzAuMTYwOCA2My45ODAxIDMxLjI1MDhDNjQuMzgwMSAzMS44NzA4IDY0Ljg3MDEgMzIuNjMwOCA2NS4zMjAxIDMzLjIxMDhDNjUuNzAwMSAzMy43MTA4IDY2LjA1MDEgMzQuMjUwOCA2Ni40NjAxIDM0LjcyMDhDNjYuNzUwMSAzNS4wNTA4IDY3LjA2MDIgMzUuMDcwOCA2Ny41MzAyIDM1LjEyMDhDNjcuOTcwMiAzNS4xNzA4IDY4LjQwMDEgMzUuMjAwOCA2OC44NDAxIDM1LjIzMDhDNjkuMzIwMSAzNC41MDA4IDY5Ljc5MDEgMzMuNzgwOCA3MC4xOTAxIDMzLjA0MDhDNzEuNTkwMSAzMC40NzA4IDcyLjAxMDIgMjcuNjEwOCA3Mi4yOTAyIDI0Ljc2MDhDNzIuNTUwMiAyMi4xNjA4IDcyLjk0MDIgMTkuNTkwOCA3My43OTAyIDE3LjExMDhDNzMuODYwMiAxNi45MTA4IDczLjk2MDEgMTYuNzAwOCA3My45NDAxIDE2LjUwMDhDNzMuOTEwMSAxNi4xMzA4IDczLjkxMDEgMTUuNTUwOCA3My43MDAxIDE1LjQ0MDhWMTUuNDUwOFoiIGZpbGw9IiMzQzAxNEUiLz4KPHBhdGggZD0iTTgzLjE1MDEgMzYuNTgyN0M4Mi44NjAxIDM2LjQ4MjcgODIuNTQgMzYuNDYyNyA4Mi4yMyAzNi40NjI3Qzc3LjMxIDM2LjQ2MjcgNzIuMzkwMSAzNi40NjI3IDY3LjQ2MDEgMzYuNDcyN0M2Ny4yODAxIDM2LjQ3MjcgNjcuMTEwMSAzNi40NTI3IDY2LjkzMDEgMzYuNDcyN0M2Ni4wMTAxIDM2LjU2MjcgNjUuMzgwMSAzNi4xNDI3IDY0Ljg3MDEgMzUuNDAyN0M2My43MjAxIDMzLjcyMjcgNjIuNTMwMSAzMi4wNzI3IDYxLjM1MDEgMzAuNDIyN0M2MC45NTAxIDI5Ljg2MjcgNjAuNDcwMSAyOS40MzI3IDU5Ljk0MDEgMjkuMTAyN0M1Ny41ODAxIDI3LjA5MjcgNTAuMDIwMSAyNy4wOTI3IDQ2LjIyMDEgMjguMDcyN0M0NS41OTAxIDI4LjIzMjcgNDUuMDQgMjguMzcyNyA0NC40OCAyNy45NzI3QzQwLjc2IDI1LjMxMjcgMzYuNTMwMSAyNC4yNTI3IDMyLjA3MDEgMjMuNjMyN0MyNy45NzAxIDIzLjA1MjcgMjMuOTIwMSAyMi4xMjI3IDE5Ljg0MDEgMjEuMzYyN0MxOS4yNjAxIDIxLjI1MjcgMTguNjgwMSAyMS4xMjI3IDE4LjEwMDEgMjEuMTQyN0MxNy4zNjAxIDIxLjE2MjcgMTcuMDAwMSAyMS43MjI3IDE3LjI3MDEgMjIuNDIyN0MxNy40NjAxIDIyLjkwMjcgMTcuNzUwMSAyMy4zNTI3IDE4LjA3MDEgMjMuNzYyN0MxOS4wMDAxIDI1LjAwMjcgMjAuMDEwMSAyNi4xODI3IDIwLjkxMDEgMjcuNDQyN0MyMi4zMTAxIDI5LjQwMjcgMjMuMTMwMSAzMS42NDI3IDIzLjg1MDEgMzMuOTEyN0MyNC44MTAxIDM2Ljk2MjcgMjYuNTkwMSAzOS4zMjI3IDI5LjM3MDEgNDAuOTQyN0MzMC43ODAxIDQxLjc2MjcgMzMuMDQwMSA0Mi40NDI3IDMzLjk3MDEgNDIuNzEyN0MzNC4xMjAxIDQyLjg1MjcgMzQuMjcgNDIuOTgyNyAzNC40MiA0My4xMTI3QzM0LjQgNDMuODkyNyAzNC4wMzAxIDQ1LjkzMjcgMzMuOTcwMSA0Ni4xODI3QzMzLjQ3MDEgNDguMDYyNyAzMy4yMjAxIDUyLjAzMjcgMzIuOTEwMSA1NC4xMzI3QzMyLjY5MDEgNTUuNTkyNyAzMi40NzAxIDU3LjA0MjcgMzIuMjQwMSA1OC41MDI3QzMxLjg1MDEgNjAuOTkyNyAzMS40MzAxIDYzLjQ3MjcgMzEuMDMwMSA2NS45NjI3QzMwLjUwMDEgNjkuMjcyNyAzMC4wMTAxIDcyLjU5MjcgMjkuNDQwMSA3NS45MDI3QzI5LjAyMDEgNzguMzEyNyAyNy45MzAxIDgwLjQzMjcgMjYuNDQwMSA4Mi4zNjI3QzI0Ljc1MDEgODQuNTYyNyAyMy4wNzAxIDg2Ljc3MjcgMjEuMzkwMSA4OC45ODI3QzIwLjM4MDEgOTAuMzAyNyAxOS4zODAxIDkxLjYxMjcgMTguMzcwMSA5Mi45MzI3QzE3Ljk5MDEgOTMuNDMyNyAxNy42MDAxIDkzLjkyMjcgMTcuMjMwMSA5NC40MjI3QzE3LjIxMDEgOTQuNDAyNyAxNy4xOTAxIDk0LjM4MjcgMTcuMTcwMSA5NC4zNjI3QzE3LjEzMDEgOTQuNDIyNyAxNy4wOTAxIDk0LjQ3MjcgMTcuMDYwMSA5NC41MjI3QzIwLjkxMDEgOTguMTgyNyAyNi4xMTAxIDEwMC40NDMgMzEuODMwMSAxMDAuNDQzSDYxLjc0MDFDNjEuNzUwMSAxMDAuMzIzIDYxLjc4MDEgMTAwLjEwMyA2MS43ODAxIDEwMC4xMDNDNjEuODgwMSA5OS4yODI3IDYyLjAyMDEgOTYuMzEyNyA2MS44MjAxIDk0Ljk4MjdDNjEuNTIwMSA5Mi45MDI3IDYwLjk2IDkwLjg5MjcgNTkuOTggODkuMDIyN0M1OS4zMSA4Ny43MzI3IDU4LjUxMDEgODYuNTEyNyA1Ny44MjAxIDg1LjI0MjdDNTYuNzQwMSA4My4yNzI3IDU2LjIgODEuMTQyNyA1NS45MiA3OC45MzI3QzU1LjYyIDc2LjU2MjcgNTUuNzgwMSA3NC4yMjI3IDU2LjMzMDEgNzEuOTAyN0M1Ni45NzAxIDY5LjIzMjcgNTguMTIwMSA2Ni44MDI3IDU5LjgzMDEgNjQuNjQyN0M2Mi4zMjAxIDYxLjUwMjcgNjUuNDIwMSA1OS4xOTI3IDY5LjIyMDEgNTcuOTAyN0M3MC4yNDAxIDU3LjU1MjcgNzEuMzQgNTcuMzkyNyA3Mi40MiA1Ny4yNTI3Qzc1LjAxIDU2LjkxMjcgNzcuMzUwMSA1Ni4wMTI3IDc5LjM0MDEgNTQuMzAyN0M4MS4yODAxIDUyLjY0MjcgODIuNTUwMSA1MC41MzI3IDgzLjEzMDEgNDguMDgyN0M4My44MTAxIDQ1LjIxMjcgODQuMzMgNDIuMzAyNyA4NC44NiAzOS40MDI3Qzg1LjEgMzguMTAyNyA4NC4zNjAxIDM2Ljk3MjcgODMuMTYwMSAzNi41NzI3TDgzLjE1MDEgMzYuNTgyN1oiIGZpbGw9IiMzQzAxNEUiLz4KPHBhdGggZD0iTTc0LjY0IDEwMi43OUgyOC4xNUMxMi42MyAxMDIuNzkgMCA5MC4xNiAwIDc0LjY0VjI4LjE1QzAgMTIuNjMgMTIuNjMgMCAyOC4xNSAwSDc0LjY0QzkwLjE2IDAgMTAyLjc5IDEyLjYzIDEwMi43OSAyOC4xNVY3NC42NEMxMDIuNzkgOTAuMTYgOTAuMTYgMTAyLjc5IDc0LjY0IDEwMi43OVpNMjguMTUgNUMxNS4zOCA1IDUgMTUuMzkgNSAyOC4xNVY3NC42NEM1IDg3LjQxIDE1LjM5IDk3Ljc5IDI4LjE1IDk3Ljc5SDc0LjY0Qzg3LjQxIDk3Ljc5IDk3Ljc5IDg3LjQgOTcuNzkgNzQuNjRWMjguMTVDOTcuNzkgMTUuMzggODcuNCA1IDc0LjY0IDVIMjguMTVaIiBmaWxsPSIjM0MwMTRFIi8+Cjwvc3ZnPgo=">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<!-- Warm the helix textures before anything else claims the connection. A classic
-     <script> cannot run until every preceding stylesheet has loaded, so this has
-     to sit above the font link to fire at parse time. -->
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|<meta charset="UTF-8">
+5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|<title>GAMGEE - Personalized Cancer Treatment for Dogs</title>
+7|<meta name="description" content="The first personalised cancer treatment protocol for dogs.">
+8|
+9|<!-- Open Graph / WhatsApp, Facebook, LinkedIn link previews -->
+10|<meta property="og:type" content="website">
+11|<meta property="og:site_name" content="Gamgee">
+12|<meta property="og:title" content="GAMGEE - Personalised cancer treatment for dogs">
+13|<meta property="og:description" content="The first personalised cancer treatment protocol for dogs.">
+14|<meta property="og:image" content="https://gamgee.io/assets/og-image.png">
+15|<meta property="og:image:width" content="1200">
+16|<meta property="og:image:height" content="630">
+17|<meta property="og:url" content="https://gamgee.io/">
+18|
+19|<!-- Twitter/X card -->
+20|<meta name="twitter:card" content="summary_large_image">
+21|<meta name="twitter:title" content="GAMGEE - Personalised cancer treatment for dogs">
+22|<meta name="twitter:description" content="The first personalised cancer treatment protocol for dogs.">
+23|<meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
 <script>
-  for (var i = 1; i <= 50; i++) {
-    var img = new Image();
-    // Must match TextureLoader's crossOrigin or the warmed entry is a cache miss.
-    img.crossOrigin = 'anonymous';
-    img.src = './assets/helix/tex/dog_' + String(i).padStart(3, '0') + '.webp';
-  }
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
 </script>
-<!-- Loaded non-render-blocking: the fonts already use display=swap, and a blocking
-     stylesheet here also stalls execution of the three.js tag at the end of body. -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet"></noscript>
-<style>
-  :root{
-    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
-    --purple:#3C014E; --purple-d:#2D0A47; --purple-deep:#1E0230;
-    --coral:#DB4949; --coral-d:#EE3842;
-    --cyan:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
-    --strip:clamp(300px,30vw,460px);   /* DNA ribbon band */
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
-  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
-  h1,h2,h3,h4,.logo,.btn,.num{font-family:"Poppins",system-ui,sans-serif}
-
-  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:700;font-size:16px;
-       padding:16px 30px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn svg{width:16px;height:16px}
-  .card .btn{padding: 6px 28px}
-  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(219,73,73,.30)}
-  .btn-green{background:var(--purple);color:#fff;box-shadow:0 10px 24px rgba(54,6,75,.28)}
-  .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.08)}
-
-
-  /* ── DNA helix ribbon: centered between the hero highlight and header Apply button ── */
-  #helix{
-    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2 + 220px - var(--strip)/2)); width:var(--strip); height:100vh; z-index:0;
-    opacity:1; pointer-events:none;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
-            mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
-  }
-  #helix-loader{
-    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2 + 220px - var(--strip)/2)); width:var(--strip); height:100vh; z-index:0; pointer-events:none;
-    display:flex; align-items:center; justify-content:center; opacity:.55; transition:opacity .6s;
-  }
-  .spinner{width:30px;height:30px;border:2px solid rgba(219,73,73,0.18);border-top-color:var(--coral);border-radius:50%;animation:sp .9s linear infinite;}
-  @keyframes sp{to{transform:rotate(360deg);}}
-  @media (prefers-reduced-motion:reduce){.spinner{animation:none;}}
-
-  /* content layer sits above the helix thread */
-  .page{position:relative; z-index:1}
-  .hero-helix-space{min-height:240px}
-
-  /* MEET PAUL intro card */
-  .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:start;background:#fff;padding:28px}
-  .intro-photo{border-radius:24px;overflow:hidden;aspect-ratio:16/9;min-height:280px;position:relative;background:var(--purple);width:100%;max-width:100%}
-  .intro-photo img,.intro-photo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
-  .video-control{
-    position:absolute;bottom:14px;right:14px;
-    display:inline-flex;align-items:center;justify-content:center;
-    width:36px;height:36px;
-    background:rgba(8,8,8,.72);
-    backdrop-filter:blur(4px);
-    color:#fff;border:none;border-radius:50%;
-    cursor:pointer;
-    transition:background .15s,transform .1s;
-    z-index:2;padding:0;
-  }
-  .video-control:hover{background:rgba(8,8,8,.9);transform:scale(1.06)}
-  .video-control svg{width:18px;height:18px;display:block;fill:#fff;stroke:none}
-  .intro-copy{display:flex;flex-direction:column;justify-content:flex-start}
-  .intro-copy h3{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:0 0 18px;max-width:40em}
-  .intro-copy h3 .g{color:var(--coral)}
-  .h3-split{display:block;white-space:nowrap;margin-top:10px}
-  .intro-copy p{font-size:17px;line-height:1.55;color:var(--muted);max-width:34em;margin:0}
-  .intro-copy p+p{margin-top:10px}
-  .intro-copy__location{display:grid;grid-template-columns:auto 1fr;gap:5px;align-items:flex-start;margin-top:10px;color:var(--muted);font-size:14px;line-height:0.8;max-width:34em}
-  .intro-copy__location svg{width:20px;height:15px;flex-shrink:0;stroke:var(--coral);fill:none;stroke-width:1.8;margin-top:5px}
-  .intro-copy__location p{font-size:14px;line-height:1.4;margin:0}
-
-  /* NAV */
-  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;color:inherit;font-family:"Poppins",system-ui,sans-serif}
-  .dot{width:14px;height:14px;border-radius:50%;background:var(--purple)}
-  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
-  .navlinks a:not(.btn){text-decoration:none;color:var(--ink)}
-  .navlinks .btn{padding:11px 24px;font-size:14px;color:#fff}
-
-  /* HERO */
-  .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;padding:48px 0 52px;min-height:72vh}
-  .hero-note{font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:12px;line-height:100%;letter-spacing:0.12em;color:#000;margin-bottom:28px;text-transform:none}
-  .monospace-pill{font-size:12px;font-weight:500;letter-spacing:0.04em;padding:1px 5px;border:1px solid var(--border);border-radius:7px;margin-left:1px;white-space:nowrap;vertical-align:middle;background:#FDFDF5}
-  .hero h1{font-size:62px;font-weight:800;line-height:1.03;letter-spacing:-.025em}
-  .hero h1 .mark{display:inline-block;background:#75D1DC;border-radius:16px;padding:7px 10px;line-height:1;vertical-align:middle;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-  .hero h1 .g{color:var(--coral)}
-  .hero h1 .mark-desktop-1{border-radius:16px 16px 16px 3px}
-  .hero h1 .mark-desktop-2{border-radius:16px 3px 16px 16px}
-  .hero h1 .mark-mobile-group{display:none}
-  .hero h1 .nowrap{white-space:nowrap;display:inline-block}
-  .hero h1 .hero-lead-mobile{display:none}
-  .hero .sub{margin-top:24px;max-width:25em;font-size:18px;color:var(--muted);line-height:1.6}
-  .hero .act{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
-  .hero .hero-link{font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;background:none;border:none;padding:0;margin:0;display:inline-flex;align-items:center;gap:10px;box-shadow:none}
-  .hero .hero-link:hover{text-decoration:underline}
-  .hero .note{margin-top:40px;font-size:13px;color:var(--muted);max-width:32em}
-  .panel{position:relative;border-radius:32px;background:var(--purple);min-height:560px;overflow:hidden;
-         display:flex;align-items:center;justify-content:center}
-  .panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
-  .panel .paw{font-size:120px;opacity:.18;color:#fff}
-  .tag{position:absolute;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--ink);
-       font-weight:600;font-size:13px;padding:9px 15px;border-radius:999px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
-  .tag .pd{width:9px;height:9px;border-radius:50%;background:var(--purple)}
-  .tag.paul{left:20px;bottom:20px}
-  .tag.rosie{right:20px;bottom:64px}
-
-  /* generic block */
-  .block{border-radius:34px;padding:72px;margin:48px 0}
-  #meet{scroll-margin-top:140px;margin-top:0}
-  .block-green{background:var(--purple);color:#fff}
-  .block-coral{background:var(--coral);color:#fff}
-  .block-mint{background:var(--mint)}
-  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
-
-  /* MISSION */
-  .mission h2{font-size:40px;font-weight:800;line-height:1.14;letter-spacing:-.02em;max-width:none}
-  .mission h2 .hl{color:var(--cyan)}
-  .mission h2 .mission-note{display:block;font-size:40px;line-height:1.14;margin-top:18px}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
-  .card{background:#fff;color:var(--ink);border-radius:22px;padding:26px 22px;text-decoration:none;display:block;transition:transform .14s}
-  .card:hover{transform:translateY(-4px)}
-  .card .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--ink)}
-  .card .ct{margin-top:12px;font-size:17px;font-weight:600;line-height:1.4}
-  .card .ar{margin-top:22px;font-size:20px;color:var(--purple)}
-  .card .card-btn{margin-top:22px}
-  .mission-note{display:block;color:var(--cyan);margin-top:26px;font-size:18px;font-weight:700;}
-  .full-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
-  .full-bleed .block{border-radius:0;padding:84px 0;margin:0}
-  .final p{margin:18px auto 0;font-size:16px;color:#fff;max-width:42em}
-
-  /* ROSIE */
-  .rosie{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:flex-start}
-  .avatar{width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;
-          align-items:center;justify-content:center;font-size:54px;flex-shrink:0;overflow:hidden}
-  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-  .rosie .ey{font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1;opacity:.9}
-  .rosie h3{font-size:40px;font-weight:800;line-height:50px;letter-spacing:0;margin:10px 0 16px;max-width:16em}
-  .rosie h3 .h3-split{margin-top:0px}
-  .rosie p{font-family:"Inter",system-ui,sans-serif;font-size:17px;font-weight:400;line-height:26px;max-width:42em;color:rgba(255,255,255,.92)}
-  .rosie p b{color:#fff}
-  .rosie .more{display:inline-flex;margin-top:22px;font-weight:700;text-decoration:none;color:#fff;
-              border-bottom:2px solid rgba(255,255,255,0);padding-bottom:3px}
-
-  /* PRESS */
-  .press{padding:40px 0;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
-  .press .cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700}
-  .press .lg{font-size:19px;font-weight:800;color:#a6a89c}
-
-  /* PRESS TICKER */
-  .press-ticker{overflow:hidden;width:100%;position:relative;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
-            mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
-  }
-  .press-ticker-track{display:flex;gap:0;width:fit-content;padding:6px 0;
-    animation:ticker-scroll 60s linear infinite}
-  .press-ticker-track:hover{animation-play-state:paused}
-  .press-ticker-track a{display:flex;align-items:center;flex-shrink:0;text-decoration:none;margin-right:24px}
-  .press-ticker-track a img{height:48px;width:auto;max-width:180px;object-fit:contain;
-    filter:grayscale(1) brightness(1.5);opacity:.55;
-    transition:filter .35s ease,opacity .35s ease}
-  .press-ticker-track a:hover img{filter:grayscale(0) brightness(1);opacity:1}
-  @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-  /* PROCESS */
-  .process .eyebrow{color:var(--ink)}
-  .process h2{font-size:44px;font-weight:800;letter-spacing:-.025em;margin:12px 0 6px;color:var(--ink)}
-  .process .lede{font-size:17px;color:var(--muted)}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
-  .step{border-radius:24px;padding:32px 28px 34px;min-height:340px;display:flex;flex-direction:column;gap:18px}
-  .s1{background:#3C014E;color:#fff}
-  .s2{background:#DB4949;color:#fff}
-  .s3{background:#34BBCB;color:#fff}
-  .s4{background:#220032;color:#fff}
-  .num-title{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:130px}
-  .num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-       font-weight:800;font-size:18px;background:rgba(255,255,255,.22)}
-  .s3 .num{background:rgba(0,0,0,.12)}
-  .step h4{font-size:20px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em}
-  .step p{margin:0;font-size:14px;line-height:1.6;opacity:.95}
-
-  /* DOUBLE COLORED CARDS */
-  .card-split{display:flex;flex-direction:column;border-radius:28px;overflow:hidden;margin:48px 0}
-  .card-split-top{border-radius:28px 28px 0 0;padding:56px}
-  .process .card-split-top{background:#DFF5F2}
-  .card-split-bottom{background:#fff;padding:40px 60px;border-radius:0 0 28px 28px;color:var(--ink)}
-  .card-split-bottom .cap{display:block;font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:12px;line-height:100%;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;text-align:center}
-  .card-split-bottom .partners{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:0;margin:0;justify-content:center}
-  .card-split-bottom .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
-  .card-split-bottom .partners img{height:48px;width:auto;max-width:180px;opacity:1;object-fit:contain}
-  .card-split-bottom .partners img[alt="Founders Fund"]{max-width:320px}
-  .card-split-bottom .partners img[alt]{display:inline-block}
-  .full-bleed .wrap{padding-left:16px;padding-right:16px}
-  .dog-row{display:flex;gap:24px;flex-wrap:nowrap;justify-content:center;align-items:stretch;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin:18px -50vw 0;padding:0 16px;max-width:none;overflow:hidden}
-  .dog-row picture{height:400px;width:calc((100% - 72px)/4);min-width:220px;aspect-ratio:3/4;flex:0 0 auto}
-  .dog-row img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:18px;background:#fff}
-
-  /* PARTNERS */
-  .partners{padding:26px 0 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
-  .partners .cap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-right:10px}
-  .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
-
-  /* FINAL CTA */
-  .final{text-align:center;padding:84px 72px}
-  .final h2{font-size:48px;font-weight:800;letter-spacing:-.03em;line-height:1.08;max-width:14em;margin:0 auto}
-  .final h2 .hl{color:var(--cyan)}
-  .final p{margin:22px auto 0;font-size:18px;color:rgba(255,255,255,.92);max-width:34em}
-  .final .btn{margin-top:32px;padding:22px 60px;font-size:20px}
-
-  /* BACKED */
-  .backed{text-align:center;padding:48px 0 18px}
-  .backed .cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
-  .backed .row{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:50px;flex-wrap:wrap}
-  .backed .lg{font-size:17px;font-weight:700;color:#abad9f}
-
-  /* FOOTER */
-  footer{background:var(--purple-deep);color:#fff;border-radius:34px 34px 0 0;margin-top:14px}
-  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
-  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
-  .foot-flag{display:flex;margin-bottom:-24px}
-  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
-  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
-  .foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
-  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
-  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
-  .foot .footer-links a:hover{color:var(--ink)}
-  .email-hint{display:block;font-size:11px;color:rgba(0,0,0,.35);margin-top:2px;margin-left:0}
-  .legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;
-         font-size:12px;color:rgba(0,0,0,.6);border-top:1px solid rgba(0,0,0,.08)}
-  .legal a{color:rgba(0,0,0,.6);text-decoration:none}
-  .flag-inline{display:none}
-  footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
-
-  /* ── Hamburger menu ── */
-  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;
-              background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
-  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;
-                   transition:transform .25s,opacity .25s}
-  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .nav-toggle.open span:nth-child(2){opacity:0}
-  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);
-               backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
-  .mobile-menu.open{display:flex}
-  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;
-                            color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
-  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
-
-  @media(max-width:900px){
-    body{padding-right:0}
-    #helix,#helix-loader{width:100vw;left:0;right:auto}
-    #helix{
-      opacity:.62;
-      -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.38) 56%,rgba(0,0,0,.72) 64%,#000 72%,#000 100%);
-              mask-image:linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.38) 56%,rgba(0,0,0,.72) 64%,#000 72%,#000 100%);
-    }
-    .hero-helix-space{display:block;min-height:clamp(145px,calc(41vh - 119px),270px)}
-
-    /* Nav */
-    .nav-toggle{display:flex}
-    .navlinks{display:none}
-    .nav-in{padding:16px 20px}
-    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
-
-    /* Hero */
-    .hero{grid-template-columns:1fr;padding:0 0 28px;min-height:60vh;gap:24px;align-items:center}
-    .hero h1{font-size:42px;line-height:1.2;letter-spacing:0;font-family:"Poppins",system-ui,sans-serif}
-    .hero h1 .nowrap{white-space:normal}
-    .hero .sub{font-size:16px;max-width:none}
-    .hero .act{flex-direction:column;align-items:stretch;gap:12px;margin-top:28px}
-    .hero .act .btn{width:100%;justify-content:center;padding:16px 24px;font-size:16px}
-    .hero .hero-link{justify-content:center;font-size:16px}
-    .panel{min-height:250px;max-height:300px;order:-1}
-    .panel img{object-position:center top}
-
-    /* Intro / Meet */
-    .intro{grid-template-columns:1fr;gap:24px;padding:8px 20px}
-    .intro-photo{min-height:0;aspect-ratio:16/9}
-    .intro-copy h3{font-size:26px}
-
-    /* Generic block */
-    .block{padding:24px 22px;border-radius:24px;margin:48px 0}
-    .block.intro{padding:24px 22px;border-radius:24px;margin-top:40px}
-    #meet{margin-top:40px}
-
-    /* card-split */
-    .card-split{margin:48px 0}
-    .card-split-top{padding:24px 22px}
-    .card-split-bottom{padding:28px 12px}
-
-    /* Mission */
-    .mission h2{font-size:28px}
-    .mission h2 .mission-note{font-size:26px}
-    .mission-note{font-size:16px}
-    .cards{grid-template-columns:1fr;gap:14px}
-
-    /* Rosie */
-    .rosie{grid-template-columns:1fr;gap:18px;text-align:left;align-items:flex-start}
-    .avatar{width:80px;height:80px;font-size:38px}
-    .rosie h3{font-size:28px;line-height:36px}
-    .rosie p{font-size:16px;line-height:24px}
-    .h3-split{white-space:normal;margin-top:6px}
-
-    /* Process */
-    .process h2{font-size:30px}
-    .steps{grid-template-columns:1fr 1fr;gap:14px}
-    .step{padding:24px 20px 26px;min-height:0;gap:10px}
-    .step .num-title{display:flex;align-items:center;gap:10px}
-    .step h4{margin:0}
-
-    /* Hide connection card on mobile */
-    #connection{display:none}
-
-    /* Dog row — 2×2 grid on mobile */
-    .dog-row{flex-wrap:wrap;gap:10px;padding:0 12px;width:100%;left:auto;right:auto;margin-left:0;margin-right:0;margin-top:18px}
-    .dog-row picture{height:200px;min-width:0;width:calc(50% - 5px);flex:0 0 calc(50% - 5px)}
-
-    /* Final CTA */
-    .final{padding:48px 22px;text-align:center}
-    .final h2{font-size:28px}
-    .final p{font-size:16px}
-    .final .btn{padding:16px 36px;font-size:17px}
-
-    /* Footer */
-    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
-    .foot-right{align-items:flex-start;gap:10px}
-    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
-    .foot .footer-links a{margin-left:0;font-size:15px}
-    .email-hint{font-size:11px}
-    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
-    .foot-flag{display:none}
-    .flag-inline{display:inline-block}
-
-    /* Press logos */
-    .card-split-bottom .partners img{height:20px;max-width:60px}
-    .press-ticker-track a{margin-right:18px}
-    .press-ticker-track{animation-duration:40s}
-    .press-ticker-track a img{height:34px;max-width:120px}
-
-    /* Partners chips */
-    .partners .chip{padding:7px 14px;font-size:12px}
-  }
-
-  @media(max-width:560px){
-    .hero .act{flex-direction:row;align-items:center;flex-wrap:nowrap;gap:18px}
-    .hero .act .btn{width:auto;padding:16px 24px;flex-shrink:0}
-    .hero .hero-link{justify-content:flex-start;white-space:nowrap}
-    .steps{grid-template-columns:1fr}
-    .step .num-title{flex-direction:row;min-height:0}
-    .step .num{width:36px;height:36px;font-size:14px}
-    .step h4{font-size:17px;margin:0;line-height:1.15}
-    .process h2{font-size:28px;margin:6px 0 4px;line-height:34px}
-    .hero h1{font-size:34px;line-height:1.05}
-    .hero h1 .mark{display:inline;padding:1px 6px;line-height:1.05;border-radius:16px}
-    .hero h1 .hero-lead-desktop{display:none}
-    .hero h1 .hero-lead-mobile{display:inline}
-    .hero h1 .mark-mobile-group{display:inline}
-    .hero h1 .mark-mobile-group .mark{display:inline-block;position:relative}
-    .hero h1 .mark-mobile-group .mark:first-child{z-index:2;border-radius:14px 14px 0 0}
-    .hero h1 .mark-mobile-group .mark:last-child{z-index:1;margin-top:-3px;border-radius:0 14px 14px 14px}
-    .intro-copy h3{font-size:22px}
-    .intro-copy__location p{font-size:12px}
-    .dog-row picture{height:160px}
-    .card-split-bottom .partners img{height:22px;max-width:70px}
-    .press-ticker-track a{margin-right:12px}
-    .press-ticker-track{animation-duration:35s}
-    .press-ticker-track a img{height:26px;max-width:80px}
-  }
-
-  /* ── MODALS ── */
-  .modal-overlay{
-    display:none;position:fixed;inset:0;z-index:200;
-    background:rgba(22,22,11,.52);backdrop-filter:blur(6px);
-    align-items:center;justify-content:center;padding:20px;
-  }
-  .modal-overlay.open{display:flex}
-
-  .modal{
-    background:var(--cream);border-radius:28px;width:100%;max-width:520px;
-    max-height:90vh;overflow-y:auto;position:relative;
-    box-shadow:0 32px 80px rgba(22,22,11,.28);
-    animation:modalIn .22s cubic-bezier(.22,.9,.36,1) both;
-  }
-  @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
-
-  .modal-head{
-    background:var(--purple);color:#fff;border-radius:28px 28px 0 0;
-    padding:32px 36px 28px;
-  }
-  .modal-head .modal-eyebrow{
-    font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;
-    letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:8px;
-  }
-  .modal-head h3{
-    font-family:"Poppins",system-ui,sans-serif;font-size:24px;font-weight:800;
-    letter-spacing:-.02em;line-height:1.15;margin:0;
-  }
-  .modal-head p{margin:10px 0 0;font-size:14px;line-height:1.55;opacity:.82}
-
-  .modal-body{padding:32px 36px 36px}
-
-  .modal-close{
-    position:absolute;top:18px;right:18px;width:36px;height:36px;
-    background:rgba(255,255,255,.15);border:none;border-radius:50%;
-    cursor:pointer;display:flex;align-items:center;justify-content:center;
-    color:#fff;transition:background .14s;
-  }
-  .modal-close:hover{background:rgba(255,255,255,.28)}
-  .modal-close svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
-
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-  .form-group:last-of-type{margin-bottom:0}
-  .form-group label{
-    font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea{
-    font-family:"Inter",system-ui,sans-serif;font-size:15px;
-    padding:12px 16px;border-radius:12px;
-    border:1.5px solid rgba(22,22,11,.14);background:#fff;
-    color:var(--ink);transition:border-color .14s,box-shadow .14s;
-    outline:none;width:100%;
-  }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder{color:#a0a498}
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus{
-    border-color:var(--purple);box-shadow:0 0 0 3px rgba(60,1,78,.12);
-  }
-  .form-group textarea{resize:vertical;min-height:96px;line-height:1.5}
-  .form-group select{
-    appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b5f55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;
-  }
-
-  .modal-divider{height:1px;background:rgba(22,22,11,.08);margin:20px 0}
-
-  .modal-submit{
-    width:100%;margin-top:20px;
-    font-family:"Poppins",system-ui,sans-serif;font-size:16px;font-weight:700;
-    padding:16px 24px;border-radius:999px;border:none;cursor:pointer;
-    background:var(--coral);color:#fff;
-    box-shadow:0 10px 24px rgba(219,73,73,.30);
-    transition:transform .12s,box-shadow .12s;
-    display:flex;align-items:center;justify-content:center;gap:10px;
-  }
-  .modal-submit:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(219,73,73,.36)}
-  .modal-submit:disabled{transform:none;cursor:not-allowed;opacity:.6}
-  .modal-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
-
-  .modal-success{
-    display:none;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:52px 36px;gap:16px;
-  }
-  .modal-success.show{display:flex}
-  .modal-success-icon{
-    width:64px;height:64px;border-radius:50%;background:var(--purple);
-    display:flex;align-items:center;justify-content:center;margin-bottom:8px;
-  }
-  .modal-success-icon svg{width:28px;height:28px;stroke:#fff;stroke-width:2.4;fill:none}
-  .modal-success h4{
-    font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800;
-    letter-spacing:-.02em;margin:0;
-  }
-  .modal-success p{font-size:15px;color:var(--muted);margin:0;max-width:28em;line-height:1.6}
-
-  /* File upload */
-  .drop-hint{background:#DFF5F2;border:1px solid var(--mint-d);border-radius:12px;padding:14px 16px 14px 20px;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;position:relative}
-  .drop-hint::before{content:'';position:absolute;left:10px;top:14px;bottom:14px;width:2px;background:var(--coral-d);border-radius:1px}
-  .drop-zone{border:2px dashed var(--border);border-radius:14px;padding:32px 20px;text-align:center;cursor:pointer;transition:border-color .14s,background .14s;background:#fff}
-  .drop-zone:hover,.drop-zone.dragover{border-color:var(--purple);background:rgba(60,1,78,.03)}
-  .drop-zone svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.6;margin-bottom:10px}
-  .drop-zone p{font-size:14px;color:var(--muted);margin-bottom:4px}
-  .drop-zone .formats{font-size:12px;color:#a0a498;margin-bottom:14px}
-  .drop-zone .formats span{background:rgba(219,73,73,.1);color:var(--coral);border-radius:4px;padding:1px 6px;font-weight:600;margin:0 2px}
-  .btn-upload{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--coral);color:#fff;border:none;border-radius:999px;font-family:"Poppins",system-ui,sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:transform .12s}
-  .btn-upload:hover{transform:translateY(-1px)}
-  .file-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
-  .file-chip{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--ink)}
-  .file-chip svg{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:1.6;flex-shrink:0}
-  .file-chip .fname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .file-chip .rm{background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center}
-  .file-chip .rm svg{width:14px;height:14px;stroke:var(--coral);fill:none;stroke-width:2}
-
-  @media(max-width:760px){
-    .modal-head{padding:24px 22px 20px}
-    .modal-body{padding:24px 22px 28px}
-    .form-row{grid-template-columns:1fr}
-  }
-</style>
-</head>
-<body>
-
-<div id="helix-loader"><div class="spinner"></div></div>
-<div id="helix"></div>
-
-<div class="page">
-<nav>
-  <div class="nav-in">
-    <div class="logo">GAMGEE</div>
-    <div class="navlinks">
-      <a href="/story/">Our story</a>
-      <a href="/about/" hidden style="display:none">About</a>
-      <a href="/vet/">For Vets</a>
-      <a class="btn btn-green" href="/apply/">Apply</a>
-    </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
-      const btn=this, menu=document.getElementById('mobile-menu');
-      const open=btn.classList.toggle('open');
-      menu.classList.toggle('open',open);
-      btn.setAttribute('aria-expanded',open);
-    ">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
-    <a href="/about/" hidden style="display:none" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
-    <a href="/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For Vets</a>
-    <a class="btn btn-green" href="/apply/">Apply now</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="wrap">
-  <div class="hero">
-    <div>
-      <p class="hero-note">Introducing our first product <span class="monospace-pill">ze-ets-001</span></p>
-      <h1><span class="hero-lead-desktop"><span class="nowrap">The first <span class="mark mark-desktop mark-desktop-1">personalized</span></span> <span class="mark mark-desktop mark-desktop-2">cancer treatment</span></span><span class="hero-lead-mobile">The first </span><span class="mark-mobile-group"><span class="mark">personalized</span> <span class="mark">cancer treatment</span></span> protocol <span style="color:var(--coral)">for dogs.</span></h1>
-      <div class="act">
-        <a class="btn btn-coral" href="/apply/">Apply now
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="hero-link" href="#process">How it Works →</a>
-      </div>
-    </div>
-    <div class="hero-helix-space" aria-hidden="true"></div>
-  </div>
-</header>
-
-<!-- MEET PAUL -->
-<section class="wrap">
-  <div class="block intro" id="meet">
-    <div class="intro-photo">
-      <video autoplay muted loop playsinline src="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4" poster="./assets/GAMGEE images/rose-poster.jpg"></video>
-      <button class="video-control" type="button" aria-live="polite" aria-label="Unmute video">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 7.5c1.5 1.5 1.5 4 0 5.5"/><path d="M19.5 4.5c3 3 3 7.5 0 10.5"/></svg>
-      </button>
-    </div>
-    <div class="intro-copy">
-      <h3>Hi, I'm Rosie and this is my dog dad Paul.<span class="h3-split">Welcome to <span class="g">GAMGEE.</span></span></h3>
-      <p>We are building personalised mRNA vaccines, built from your dog's own tumour, designed to help their immune system fight back.</p>
-      <div class="intro-copy__location">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        <p>Currently running clinical trials in Australia - and accepting applications globally.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="wrap process" id="process">
-  <div class="card-split">
-    <div class="card-split-top block-mint">
-      <div class="eyebrow">The Process</div>
-      <h2>From application to treatment.</h2>
-      <p class="lede">If selected, GAMGEE manages the entire process end to end.</p>
-      <div class="steps">
-        <div class="step s1">
-          <div class="num-title"><div class="num">01</div><h4>Review &amp; intake</h4></div>
-          <p>We review your application and reach out to discuss your dog's case. If there's a fit, we move forward together.</p>
-        </div>
-        <div class="step s2">
-          <div class="num-title"><div class="num">02</div><h4>Vet outreach &amp; collection</h4></div>
-          <p>We work with your vet to confirm the diagnosis, collect a tissue sample, and send it to our genomics lab.</p>
-        </div>
-        <div class="step s3">
-          <div class="num-title"><div class="num">03</div><h4>Vaccine creation</h4></div>
-          <p>We analyse the data, identify the mutations driving the cancer, and design a personalised protocol.</p>
-        </div>
-        <div class="step s4">
-          <div class="num-title"><div class="num">04</div><h4>Treatment</h4></div>
-          <p>Your dog receives their personalised treatment from a veterinary oncologist. We monitor response.</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-split-bottom">
-      <div class="cap">In collaboration with</div>
-      <div class="partners">
-        <img src="assets/Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics">
-        <img src="assets/Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute">
-        <img src="assets/Logos/University of Queensland.png" alt="University of Queensland">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ROSIE -->
-<section class="wrap" id="rosie">
-  <div class="card-split">
-    <div class="card-split-top block-coral">
-      <div class="rosie">
-        <div class="avatar"><img src="./assets/GAMGEE images/Rosie in circle.png" alt="Rosie"></div>
-        <div>
-          <div class="ey">Rosie's Story</div>
-          <h3><span class="h3-split">One breakthrough treatment later,</span><span class="h3-split">two more years were added to Rosie's life.</span></h3>
-          <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live. <b>One breakthrough treatment later, two more years were added to Rosie's life.</b></p>
-          <a class="more" href="/story/">Read the full story →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card-split-bottom">
-      <div class="cap">As covered in</div>
-      <div class="press-ticker">
-        <div class="press-ticker-track">
-          <a href="https://www.theaustralian.com.au/business/technology/tech-boss-uses-ai-and-chatgpt-to-create-cancer-vaccine-for-his-dying-dog/news-story/292a21bcbe93efa17810bfcfcdfadbf7" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-australian.png" alt="The Australian"></a>
-          <a href="https://www.abc.net.au/news/2026-06-22/australian-dog-cancer-treated-via-mrna-vaccine-and-ai/106692668" target="_blank" rel="noopener"><img src="assets/LogosMedia/abc-news-australia.png" alt="ABC News Australia"></a>
-          <a href="https://news.unsw.edu.au/en/meet-the-man-who-designed-a-cancer-vaccine-for-his-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/unsw-sydney.png" alt="UNSW Sydney"></a>
-          <a href="https://fortune.com/2026/03/15/australian-tech-entrepreneur-ai-cancer-vaccine-dog-rosie-unsw-mrna/" target="_blank" rel="noopener"><img src="assets/LogosMedia/fortune.png" alt="Fortune"></a>
-          <a href="https://www.the-scientist.com/chatgpt-and-alphafold-help-design-personalized-vaccine-for-dog-with-cancer-74227" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-scientist.png" alt="The Scientist"></a>
-          <a href="https://www.ibtimes.co.uk/sydney-data-engineer-mrna-cancer-vaccine-dog-1785607" target="_blank" rel="noopener"><img src="assets/LogosMedia/ibtimes-uk.png" alt="IBTimes UK"></a>
-          <a href="https://finance.yahoo.com/news/mans-dog-riddled-tumors-dying-210500037.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo-finance.png" alt="Yahoo Finance"></a>
-          <a href="https://www.youtube.com/watch?v=14SgyUhSIGQ" target="_blank" rel="noopener"><img src="assets/LogosMedia/nbc-news.png" alt="NBC News"></a>
-          <a href="https://economictimes.indiatimes.com/magazines/panache/watching-his-dog-slowly-die-techie-refused-to-give-up-then-he-used-ai-and-created-a-custom-cancer-vaccine-for-his-pet-friend/articleshow/129594086.cms" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-economic-times.png" alt="The Economic Times"></a>
-          <a href="https://theconversation.com/a-man-used-ai-to-help-make-a-cancer-vaccine-for-his-dog-an-oncologist-urges-caution-278735" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-conversation.png" alt="The Conversation"></a>
-          <a href="https://reason.com/2026/03/19/man-successfully-designs-mrna-vaccine-to-treat-his-dogs-cancer/" target="_blank" rel="noopener"><img src="assets/LogosMedia/reason.png" alt="Reason"></a>
-          <a href="https://www.dawn.com/news/1982334" target="_blank" rel="noopener"><img src="assets/LogosMedia/dawn.png" alt="Dawn"></a>
-          <a href="https://www.cancerhealth.com/article/man-cures-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/cancer-health.png" alt="Cancer Health"></a>
-          <a href="https://ia.acs.org.au/article/2026/australian-uses-ai-to-design-cancer-vaccine-for-his-dog.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/acs-information-age.png" alt="ACS Information Age"></a>
-          <a href="https://www.geo.tv/latest/657755-one-man-his-dog-and-chatgpt-australias-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/geo-tv.png" alt="Geo TV"></a>
-          <a href="https://www.tbpndigest.com/story/2026-03-16/ai-assisted-dog-cancer-vaccine-goes-viral-what-actually-happened-with-paul-conyngham-and-rosie" target="_blank" rel="noopener"><img src="assets/LogosMedia/tbpn-digest.png" alt="TBPN Digest"></a>
-          <a href="https://www.thestar.com.my/tech/tech-news/2026/03/30/one-man-his-dog-and-chatgpt-australia039s-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-star-malaysia.png" alt="The Star Malaysia"></a>
-          <a href="https://uk.news.yahoo.com/solved-dog-cancer-three-ai-101000928.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo.png" alt="Yahoo News UK"></a>
-          <a href="https://www.cnbctv18.com/technology/australian-man-uses-chatgpt-to-fight-dogs-cancer-sam-altman-calls-it-amazing-story-ws-l-19876339.htm" target="_blank" rel="noopener"><img src="assets/LogosMedia/cnbc.svg" alt="CNBC-TV18"></a>
-          <a href="https://www.youtube.com/watch?v=MUqI_su1Cus" target="_blank" rel="noopener"><img src="assets/LogosMedia/hank-green.svg" alt="Hank Green"></a>
-          <a href="https://www.youtube.com/watch?v=E0V8NAtLNRg" target="_blank" rel="noopener"><img src="assets/LogosMedia/core-memory-podcast.png" alt="Core Memory Podcast"></a>
-          <a href="https://www.youtube.com/watch?v=USEhHrY5ZEU" target="_blank" rel="noopener"><img src="assets/LogosMedia/cbs-news.png" alt="CBS News"></a>
-          <a href="https://www.infzm.com/contents/317926" target="_blank" rel="noopener"><img src="assets/LogosMedia/infzm.png" alt="INFZM"></a>
-          <a href="https://www.dailymail.com/news/article-15644819/paul-conyngham-dog-vaccine-cancer.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/daily-mail.png" alt="Daily Mail"></a>
-          <a href="https://nypost.com/2026/03/16/health/tech-pro-saves-his-dying-dog-by-using-chatgpt-to-code-a-custom-cancer-vaccine/" target="_blank" rel="noopener"><img src="assets/LogosMedia/new-york-post.png" alt="New York Post"></a>
-          <a href="https://www.youtube.com/watch?v=COYSRbF1F-Y" target="_blank" rel="noopener"><img src="assets/LogosMedia/today-show.png" alt="TODAY Show"></a>
-          <a href="https://youtu.be/-VrzRGXVZ6s?si=V9KcAntKt4DnMlqT&amp;t=739" target="_blank" rel="noopener"><img src="assets/LogosMedia/KBS.svg" alt="KBS"></a>
-          <a href="https://www.techradar.com/ai-platforms-assistants/a-guy-who-was-not-an-expert-used-chatgpt-to-make-a-custom-mrna-vaccine-for-his-dogs-cancer-and-other-incredible-tales-from-sam-altman" target="_blank" rel="noopener"><img src="assets/LogosMedia/techradar.svg" alt="TechRadar"></a>
-          <a href="https://www.ndtv.com/feature/australian-entrepreneur-uses-chatgpt-to-create-customised-vaccine-to-cure-dogs-cancer-11219043" target="_blank" rel="noopener"><img src="assets/LogosMedia/NDTV.png" alt="NDTV"></a>
-          <a href="https://www.indiatoday.in/technology/news/story/man-uses-chatgpt-and-alphafold-to-build-diy-mrna-cancer-vaccine-saves-dog-2882198-2026-03-15" target="_blank" rel="noopener"><img src="assets/LogosMedia/india-today.png" alt="India Today"></a>
-          <a href="https://www.hindustantimes.com/world-news/us-news/who-is-paul-conyngham-australian-tech-expert-creates-first-personalized-cancer-vaccine-for-his-dog-using-chatgpt-101773578023974.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/hindustan-times.svg" alt="Hindustan Times"></a>
-          <a href="https://www.newsweek.com/owner-no-medical-background-invents-cure-dogs-terminal-cancer-11684882" target="_blank" rel="noopener"><img src="assets/LogosMedia/newsweek.png" alt="Newsweek"></a>
-          <!-- duplicate set for seamless loop -->
-          <a href="https://www.theaustralian.com.au/business/technology/tech-boss-uses-ai-and-chatgpt-to-create-cancer-vaccine-for-his-dying-dog/news-story/292a21bcbe93efa17810bfcfcdfadbf7" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-australian.png" alt="The Australian"></a>
-          <a href="https://www.abc.net.au/news/2026-06-22/australian-dog-cancer-treated-via-mrna-vaccine-and-ai/106692668" target="_blank" rel="noopener"><img src="assets/LogosMedia/abc-news-australia.png" alt="ABC News Australia"></a>
-          <a href="https://news.unsw.edu.au/en/meet-the-man-who-designed-a-cancer-vaccine-for-his-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/unsw-sydney.png" alt="UNSW Sydney"></a>
-          <a href="https://fortune.com/2026/03/15/australian-tech-entrepreneur-ai-cancer-vaccine-dog-rosie-unsw-mrna/" target="_blank" rel="noopener"><img src="assets/LogosMedia/fortune.png" alt="Fortune"></a>
-          <a href="https://www.the-scientist.com/chatgpt-and-alphafold-help-design-personalized-vaccine-for-dog-with-cancer-74227" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-scientist.png" alt="The Scientist"></a>
-          <a href="https://www.ibtimes.co.uk/sydney-data-engineer-mrna-cancer-vaccine-dog-1785607" target="_blank" rel="noopener"><img src="assets/LogosMedia/ibtimes-uk.png" alt="IBTimes UK"></a>
-          <a href="https://finance.yahoo.com/news/mans-dog-riddled-tumors-dying-210500037.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo-finance.png" alt="Yahoo Finance"></a>
-          <a href="https://www.youtube.com/watch?v=14SgyUhSIGQ" target="_blank" rel="noopener"><img src="assets/LogosMedia/nbc-news.png" alt="NBC News"></a>
-          <a href="https://economictimes.indiatimes.com/magazines/panache/watching-his-dog-slowly-die-techie-refused-to-give-up-then-he-used-ai-and-created-a-custom-cancer-vaccine-for-his-pet-friend/articleshow/129594086.cms" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-economic-times.png" alt="The Economic Times"></a>
-          <a href="https://theconversation.com/a-man-used-ai-to-help-make-a-cancer-vaccine-for-his-dog-an-oncologist-urges-caution-278735" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-conversation.png" alt="The Conversation"></a>
-          <a href="https://reason.com/2026/03/19/man-successfully-designs-mrna-vaccine-to-treat-his-dogs-cancer/" target="_blank" rel="noopener"><img src="assets/LogosMedia/reason.png" alt="Reason"></a>
-          <a href="https://www.dawn.com/news/1982334" target="_blank" rel="noopener"><img src="assets/LogosMedia/dawn.png" alt="Dawn"></a>
-          <a href="https://www.cancerhealth.com/article/man-cures-dog" target="_blank" rel="noopener"><img src="assets/LogosMedia/cancer-health.png" alt="Cancer Health"></a>
-          <a href="https://ia.acs.org.au/article/2026/australian-uses-ai-to-design-cancer-vaccine-for-his-dog.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/acs-information-age.png" alt="ACS Information Age"></a>
-          <a href="https://www.geo.tv/latest/657755-one-man-his-dog-and-chatgpt-australias-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/geo-tv.png" alt="Geo TV"></a>
-          <a href="https://www.tbpndigest.com/story/2026-03-16/ai-assisted-dog-cancer-vaccine-goes-viral-what-actually-happened-with-paul-conyngham-and-rosie" target="_blank" rel="noopener"><img src="assets/LogosMedia/tbpn-digest.png" alt="TBPN Digest"></a>
-          <a href="https://www.thestar.com.my/tech/tech-news/2026/03/30/one-man-his-dog-and-chatgpt-australia039s-ai-vaccine-saga" target="_blank" rel="noopener"><img src="assets/LogosMedia/the-star-malaysia.png" alt="The Star Malaysia"></a>
-          <a href="https://uk.news.yahoo.com/solved-dog-cancer-three-ai-101000928.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/yahoo.png" alt="Yahoo News UK"></a>
-          <a href="https://www.cnbctv18.com/technology/australian-man-uses-chatgpt-to-fight-dogs-cancer-sam-altman-calls-it-amazing-story-ws-l-19876339.htm" target="_blank" rel="noopener"><img src="assets/LogosMedia/cnbc.svg" alt="CNBC-TV18"></a>
-          <a href="https://www.youtube.com/watch?v=MUqI_su1Cus" target="_blank" rel="noopener"><img src="assets/LogosMedia/hank-green.svg" alt="Hank Green"></a>
-          <a href="https://www.youtube.com/watch?v=E0V8NAtLNRg" target="_blank" rel="noopener"><img src="assets/LogosMedia/core-memory-podcast.png" alt="Core Memory Podcast"></a>
-          <a href="https://www.youtube.com/watch?v=USEhHrY5ZEU" target="_blank" rel="noopener"><img src="assets/LogosMedia/cbs-news.png" alt="CBS News"></a>
-          <a href="https://www.infzm.com/contents/317926" target="_blank" rel="noopener"><img src="assets/LogosMedia/infzm.png" alt="INFZM"></a>
-          <a href="https://www.dailymail.com/news/article-15644819/paul-conyngham-dog-vaccine-cancer.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/daily-mail.png" alt="Daily Mail"></a>
-          <a href="https://nypost.com/2026/03/16/health/tech-pro-saves-his-dying-dog-by-using-chatgpt-to-code-a-custom-cancer-vaccine/" target="_blank" rel="noopener"><img src="assets/LogosMedia/new-york-post.png" alt="New York Post"></a>
-          <a href="https://www.youtube.com/watch?v=COYSRbF1F-Y" target="_blank" rel="noopener"><img src="assets/LogosMedia/today-show.png" alt="TODAY Show"></a>
-          <a href="https://youtu.be/-VrzRGXVZ6s?si=V9KcAntKt4DnMlqT&amp;t=739" target="_blank" rel="noopener"><img src="assets/LogosMedia/KBS.svg" alt="KBS"></a>
-          <a href="https://www.techradar.com/ai-platforms-assistants/a-guy-who-was-not-an-expert-used-chatgpt-to-make-a-custom-mrna-vaccine-for-his-dogs-cancer-and-other-incredible-tales-from-sam-altman" target="_blank" rel="noopener"><img src="assets/LogosMedia/techradar.svg" alt="TechRadar"></a>
-          <a href="https://www.ndtv.com/feature/australian-entrepreneur-uses-chatgpt-to-create-customised-vaccine-to-cure-dogs-cancer-11219043" target="_blank" rel="noopener"><img src="assets/LogosMedia/NDTV.png" alt="NDTV"></a>
-          <a href="https://www.indiatoday.in/technology/news/story/man-uses-chatgpt-and-alphafold-to-build-diy-mrna-cancer-vaccine-saves-dog-2882198-2026-03-15" target="_blank" rel="noopener"><img src="assets/LogosMedia/india-today.png" alt="India Today"></a>
-          <a href="https://www.hindustantimes.com/world-news/us-news/who-is-paul-conyngham-australian-tech-expert-creates-first-personalized-cancer-vaccine-for-his-dog-using-chatgpt-101773578023974.html" target="_blank" rel="noopener"><img src="assets/LogosMedia/hindustan-times.svg" alt="Hindustan Times"></a>
-          <a href="https://www.newsweek.com/owner-no-medical-background-invents-cure-dogs-terminal-cancer-11684882" target="_blank" rel="noopener"><img src="assets/LogosMedia/newsweek.png" alt="Newsweek"></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONNECTION -->
-<section class="wrap" id="connection">
-  <div class="card-split">
-    <div class="card-split-top block-green mission">
-      <h2>
-        Every dog deserves a fighting chance.<br>
-        The breakthrough already exists.<br>
-        <span class="mission-note">Our Mission: make it available to all.</span>
-      </h2>
-      <div class="cards">
-        <div class="card">
-          <div class="lbl">Media</div>
-          <div class="ct">Help us reach the dog owners who don't know this exists yet.</div>
-          <button class="btn btn-coral card-btn" onclick="openModal('modal-media')">Get in Touch →</button>
-        </div>
-        <div class="card">
-          <div class="lbl">Oncologists, Vets, Labs</div>
-          <div class="ct">Australia is our base. Help us get to every dog.</div>
-          <button class="btn btn-coral card-btn" onclick="openModal('modal-partner')">Partner With Us →</button>
-        </div>
-        <div class="card">
-          <div class="lbl">Donate Data</div>
-          <div class="ct">Every case in our dataset makes the science stronger.</div>
-          <button class="btn btn-coral card-btn" onclick="openModal('modal-data')">Contribute Data →</button>
-        </div>
-      </div>
-    </div>
-    <div class="card-split-bottom" style="display:none">
-      <div class="cap">Backed by</div>
-      <div class="partners">
-        <img src="assets/Logos/founders-fund.svg" alt="Founders Fund">
-        <img src="assets/Logos/y-combinator.svg" alt="Y Combinator">
-        <img src="assets/Logos/golden-gate-ventures.png" alt="Golden Gate Ventures">
-        <img src="assets/Logos/atypical-ventures.png" alt="Atypical Ventures">
-        <img src="assets/Logos/doogood-foundation.svg" alt="Doogood Foundation Inc">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="full-bleed" id="apply">
-  <div class="block block-green final">
-    <div class="wrap">
-      <h2>If your dog has been diagnosed, <span class="hl">we'd like to hear from you.</span></h2>
-      <div class="dog-row">
-        <picture>
-          <source type="image/webp" srcset="./assets/GAMGEE%20images/webp/dog-1-320.webp 320w, ./assets/GAMGEE%20images/webp/dog-1-480.webp 480w, ./assets/GAMGEE%20images/webp/dog-1-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
-          <img src="./assets/GAMGEE images/Dog 1.png" width="657" height="754" alt="Dog 1">
-        </picture>
-        <picture>
-          <source type="image/webp" srcset="./assets/GAMGEE%20images/webp/dog-2-320.webp 320w, ./assets/GAMGEE%20images/webp/dog-2-480.webp 480w, ./assets/GAMGEE%20images/webp/dog-2-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
-          <img src="./assets/GAMGEE images/Dog 2.png" width="657" height="754" alt="Dog 2">
-        </picture>
-        <picture>
-          <source type="image/webp" srcset="./assets/GAMGEE%20images/webp/dog-3-320.webp 320w, ./assets/GAMGEE%20images/webp/dog-3-480.webp 480w, ./assets/GAMGEE%20images/webp/dog-3-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
-          <img src="./assets/GAMGEE images/Dog 3.png" width="657" height="754" alt="Dog 3">
-        </picture>
-        <picture>
-          <source type="image/webp" srcset="./assets/GAMGEE%20images/webp/dog-4-320.webp 320w, ./assets/GAMGEE%20images/webp/dog-4-480.webp 480w, ./assets/GAMGEE%20images/webp/dog-4-657.webp 657w" sizes="(max-width: 640px) 50vw, 25vw">
-          <img src="./assets/GAMGEE images/Dog 4.png" width="657" height="754" alt="Dog 4">
-        </picture>
-      </div>
-      <p>We'll help you determine whether GAMGEE is right for your dog and, if it is, get you connected with the right team.</p>
-      <a class="btn btn-coral" href="/apply/">Apply now
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-  <div class="foot">
-    <div>
-      <div class="brand">GAMGEE</div>
-      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
-    </div>
-    <div class="foot-right">
-      <div class="footer-links">
-        <h5>PRODUCT</h5>
-        <a href="/vet/">For Vets</a>
-        <a href="/apply/">Apply</a>
-      </div>
-      <div class="foot-flag">
-        <img src="assets/icons/us-flag.png" width="42" height="28" alt="United States" style="border-radius:2px;object-fit:cover">
-      </div>
-    </div>
-  </div>
-  <div class="legal">
-    <span>&copy; 2026 GAMGEE &middot; San Francisco, United States <img src="assets/icons/us-flag.png" width="18" height="12" alt="" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"></span>
-    <span><a href="/privacy&terms/#privacy">Privacy</a> &middot; <a href="/privacy&terms/#terms">Terms</a></span>
-  </div>
-</footer>
-</div><!-- /.page -->
-
-<!-- ═══ MODAL: MEDIA ═══ -->
-<div class="modal-overlay" id="modal-media" role="dialog" aria-modal="true" aria-labelledby="modal-media-title">
-  <div class="modal">
-    <div class="modal-head">
-      <button class="modal-close" onclick="closeModal('modal-media')" aria-label="Close">
-        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-eyebrow">Media Enquiries</div>
-      <h3 id="modal-media-title">Let's tell this story together.</h3>
-      <p>Get in touch and we'll connect you with the right person on our team.</p>
-    </div>
-    <div class="modal-body">
-      <div id="modal-media-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="media-first">First name</label>
-            <input type="text" id="media-first" placeholder="Jane">
-          </div>
-          <div class="form-group">
-            <label for="media-last">Last name</label>
-            <input type="text" id="media-last" placeholder="Smith">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="media-pub">Publication / outlet</label>
-          <input type="text" id="media-pub" placeholder="e.g. The Guardian, ABC News">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="media-email">Email address</label>
-            <input type="email" id="media-email" placeholder="jane@outlet.com">
-          </div>
-          <div class="form-group">
-            <label for="media-phone">Phone (optional)</label>
-            <input type="tel" id="media-phone" placeholder="+1 555 000 0000">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="media-msg">Message</label>
-          <textarea id="media-msg" placeholder="So excited to hear from you! Tell us about the story you're working on - and your deadline if you have one."></textarea>
-        </div>
-        <button class="modal-submit" onclick="submitModal('modal-media')">
-          Send enquiry
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-      <div class="modal-success" id="modal-media-success">
-        <div class="modal-success-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
-        </div>
-        <h4>Message sent!</h4>
-        <p>Thanks for reaching out. Someone from our team will be in touch within one business day.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ MODAL: PARTNER ═══ -->
-<div class="modal-overlay" id="modal-partner" role="dialog" aria-modal="true" aria-labelledby="modal-partner-title">
-  <div class="modal">
-    <div class="modal-head">
-      <button class="modal-close" onclick="closeModal('modal-partner')" aria-label="Close">
-        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-eyebrow">Research &amp; Clinical Partners</div>
-      <h3 id="modal-partner-title">Help us reach every dog that needs this.</h3>
-      <p>Whether you're a vet, oncologist, lab, or researcher - we'd love to connect.</p>
-    </div>
-    <div class="modal-body">
-      <div id="modal-partner-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="partner-first">First name</label>
-            <input type="text" id="partner-first" placeholder="Dr. Alex">
-          </div>
-          <div class="form-group">
-            <label for="partner-last">Last name</label>
-            <input type="text" id="partner-last" placeholder="Chen">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="partner-org">Organisation / institution</label>
-          <input type="text" id="partner-org" placeholder="e.g. University of Sydney, VCA Animal Hospital">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="partner-email">Email address</label>
-            <input type="email" id="partner-email" placeholder="alex@institution.edu">
-          </div>
-          <div class="form-group">
-            <label for="partner-phone">Phone (optional)</label>
-            <input type="tel" id="partner-phone" placeholder="+1 555 000 0000">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="partner-role">Role / speciality</label>
-          <select id="partner-role">
-            <option value="" disabled selected>Select one…</option>
-            <option>Veterinary oncologist</option>
-            <option>General veterinarian</option>
-            <option>Genomics / pathology lab</option>
-            <option>Research institution</option>
-            <option>Animal hospital / clinic</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="partner-location">Location (city &amp; country)</label>
-          <input type="text" id="partner-location" placeholder="e.g. Melbourne, Australia">
-        </div>
-        <div class="form-group">
-          <label for="partner-msg">Tell us about yourself</label>
-          <textarea id="partner-msg" placeholder="Tell us about your practice, your patients, or how we can help - we'd love to hear from you!"></textarea>
-        </div>
-        <button class="modal-submit" onclick="submitModal('modal-partner')">
-          Submit partnership enquiry
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-      <div class="modal-success" id="modal-partner-success">
-        <div class="modal-success-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
-        </div>
-        <h4>Enquiry received!</h4>
-        <p>Our partnerships team will review your message and follow up within two business days.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ MODAL: DATA DONOR ═══ -->
-<div class="modal-overlay" id="modal-data" role="dialog" aria-modal="true" aria-labelledby="modal-data-title">
-  <div class="modal">
-    <div class="modal-head">
-      <button class="modal-close" onclick="closeModal('modal-data')" aria-label="Close">
-        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="modal-eyebrow">Donate Data</div>
-      <h3 id="modal-data-title">Your dog's case could help thousands more.</h3>
-      <p>Anonymised clinical data from canine cancer cases strengthens our models and accelerates the science.</p>
-    </div>
-    <div class="modal-body">
-      <div id="modal-data-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="data-first">Your first name</label>
-            <input type="text" id="data-first" placeholder="Sam">
-          </div>
-          <div class="form-group">
-            <label for="data-last">Last name</label>
-            <input type="text" id="data-last" placeholder="Taylor">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="data-email">Email address</label>
-            <input type="email" id="data-email" placeholder="sam@email.com">
-          </div>
-          <div class="form-group">
-            <label for="data-phone">Phone (optional)</label>
-            <input type="tel" id="data-phone" placeholder="+1 555 000 0000">
-          </div>
-        </div>
-        <div class="modal-divider"></div>
-        <div class="form-group">
-          <label for="data-dog">Dog's name</label>
-          <input type="text" id="data-dog" placeholder="e.g. Rosie">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="data-breed">Breed</label>
-            <input type="text" id="data-breed" placeholder="e.g. Golden Retriever">
-          </div>
-          <div class="form-group">
-            <label for="data-cancer">Cancer type (if known)</label>
-            <input type="text" id="data-cancer" placeholder="e.g. Mast cell tumour">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="data-records">What records do you have?</label>
-          <select id="data-records">
-            <option value="" disabled selected>Select one…</option>
-            <option>Biopsy / pathology reports</option>
-            <option>Genomic / sequencing data</option>
-            <option>Imaging (X-ray, MRI, CT)</option>
-            <option>Treatment history</option>
-            <option>Multiple of the above</option>
-            <option>Unsure - happy to discuss</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="data-msg">Anything else you'd like to share?</label>
-          <textarea id="data-msg" placeholder="Tell us about your dog's diagnosis, timeline, or anything else that might be helpful…"></textarea>
-        </div>
-        <div class="modal-divider"></div>
-        <div class="form-group">
-          <label>Upload files (optional)</label>
-          <div class="drop-hint">Any documentation you can share - pathology reports, blood work, imaging - can help us expedite our review.</div>
-          <div class="drop-zone" id="data-drop-zone" onclick="document.getElementById('data-file-input').click()" ondragover="handleDataDragOver(event)" ondragleave="handleDataDragLeave(event)" ondrop="handleDataDrop(event)">
-            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <p>Upload or drop your files here</p>
-            <p class="formats">Supported formats: <span>.pdf</span><span>.png</span><span>.jpg</span><span>.docx</span></p>
-            <button class="btn-upload" type="button">Select file</button>
-          </div>
-          <input type="file" id="data-file-input" multiple accept=".pdf,.png,.jpg,.jpeg,.docx" onchange="handleDataFileSelect(event)" style="display:none">
-          <div class="file-list" id="data-file-list"></div>
-        </div>
-        <button class="modal-submit" onclick="submitModal('modal-data')">
-          Submit contribution
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-      <div class="modal-success" id="modal-data-success">
-        <div class="modal-success-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
-        </div>
-        <h4>Thank you - truly.</h4>
-        <p>Every case makes the science stronger. Our data team will reach out within a few days to walk you through the next steps.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-!async function(){
-  const el = document.getElementById('helix');
-  if (!window.THREE || !el) return;
-  const loaderEl = document.getElementById('helix-loader');
-  const introEl = document.getElementById('meet');
-
-  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-
-  function applyMobileHelixVisibility(){
-    if (window.innerWidth > 900) {
-      el.style.opacity = '1';
-      el.style.top = '';
-      el.style.height = '';
-      if (loaderEl) {
-        loaderEl.style.top = '';
-        loaderEl.style.height = '';
-        loaderEl.style.opacity = '';
-      }
-      return;
-    }
-
-    el.style.right = '';
-    el.style.top = '';
-    el.style.height = '';
-    if (loaderEl) {
-      loaderEl.style.right = '';
-      loaderEl.style.top = '';
-      loaderEl.style.height = '';
-    }
-
-    const introTop = introEl ? introEl.getBoundingClientRect().top : window.innerHeight * 2;
-    const reveal = clamp((introTop - 60) / (window.innerHeight * 0.38), 0, 1);
-    const mobileOpacity = 0.58 + reveal * 0.42;
-    el.style.opacity = `${mobileOpacity.toFixed(3)}`;
-    if (loaderEl) loaderEl.style.opacity = `${(0.28 + reveal * 0.36).toFixed(3)}`;
-  }
-
-  function alignHelix(){
-    if (window.innerWidth <= 900){
-      el.style.right = '';
-      applyMobileHelixVisibility();
-      return;
-    }
-    const mark = document.querySelector('.hero h1 .mark');
-    const apply = document.querySelector('.navlinks .btn[href="/apply/"]');
-    if (!mark || !apply) return;
-    const strip = el.getBoundingClientRect().width || el.clientWidth;
-    const leftRef = mark.getBoundingClientRect().right;
-    const rightRef = apply.getBoundingClientRect().right;
-    const center = (leftRef + rightRef) / 2;
-    const right = Math.max(0, window.innerWidth - center - strip / 2);
-    el.style.right = `${right}px`;
-    if (loaderEl) loaderEl.style.right = `${right}px`;
-  }
-
-  alignHelix();
-  applyMobileHelixVisibility();
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W = el.clientWidth, H = el.clientHeight;
-
-  const TEX_COUNT = 50;
-  const TEX_URLS = Array.from(
-    {length:TEX_COUNT},
-    (_,i)=>`./assets/helix/tex/dog_${String(i+1).padStart(3,'0')}.webp`
-  );
-
-  const PAPER = 0xF7F6E4;
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(PAPER, 0.02);
-  const cam = new THREE.PerspectiveCamera(54, W/H, 0.1, 100);
-  cam.position.z = 12;
-
-  const ren = new THREE.WebGLRenderer({ antialias:true, alpha:true });
-  ren.setClearColor(0x000000, 0);
-  ren.setSize(W, H);
-  ren.setPixelRatio(Math.min(devicePixelRatio, 2));
-  el.appendChild(ren.domElement);
-
-  scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-  const dl = new THREE.DirectionalLight(0xffffff, 0.55);
-  dl.position.set(4,6,8); scene.add(dl);
-
-  // One material per photo, shared by every plane that shows it. They start
-  // untextured so the ribbon renders on the first frame; each map is swapped in
-  // as its file arrives rather than waiting for all 50.
-  const photoMaterials = Array.from({length:TEX_COUNT}, () => new THREE.MeshBasicMaterial({
-    color: PAPER, side: THREE.DoubleSide
-  }));
-
-  const loader = document.getElementById('helix-loader');
-  let loaderHidden = false;
-  function hideLoader(){
-    if (loaderHidden || !loader) return;
-    loaderHidden = true;
-    loader.style.opacity = '0';
-    setTimeout(() => loader.remove(), 600);
-  }
-
-  const ldr = new THREE.TextureLoader();
-  ldr.crossOrigin = 'anonymous';
-  const maxAniso = ren.capabilities.getMaxAnisotropy();
-  TEX_URLS.forEach((url, i) => {
-    ldr.load(url, tex => {
-      // The planes sit ~3x minified and swing to near edge-on as the ribbon
-      // turns, so they need both a mip chain and anisotropy. Without mipmaps
-      // the baked white frame aliases into a ragged, uneven border.
-      tex.generateMipmaps = true;
-      tex.minFilter = THREE.LinearMipmapLinearFilter;
-      tex.magFilter = THREE.LinearFilter;
-      tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
-      tex.anisotropy = Math.min(8, maxAniso);
-      photoMaterials[i].map = tex;
-      photoMaterials[i].color.setHex(0xffffff);
-      photoMaterials[i].needsUpdate = true;
-      hideLoader();
-    }, undefined, hideLoader);
-  });
-
-  // Straight vertical ribbon, sized to sit comfortably in the narrow strip
-  const R = 1.32, NPT = 12, TURNS = 9, HEIGHT = 34;
-  const N = NPT*TURNS, dY = HEIGHT/N, dA = 2*Math.PI/NPT;
-  const ds = Math.sqrt(R*dA*R*dA + dY*dY);
-  // Plane width runs along the tangent T, but neighbours are separated along the
-  // chord C, and the two sit 13.6° apart. Sizing by arc length + 12% (the old
-  // ds*1.12) overlapped neighbours by 11.6%, burying the 4.7% side border and
-  // making the 30°-rotated planes interpenetrate, so the depth test cut ragged
-  // notches through the frames. Sizing by the bare chord undershoots instead and
-  // leaves a 2.8% cream seam. Dividing by cos(T,C) is the width that actually
-  // meets edge-to-edge; SEAM nudges it just past that so antialiasing can't open
-  // a hairline — the overlap is white border on white border, so it is invisible.
-  const SEAM = 1.02;
-  const tangent = new THREE.Vector3(0, dY/dA, R).normalize();
-  const chordV = new THREE.Vector3(R*Math.cos(dA) - R, dY, R*Math.sin(dA));
-  const PHOTO_W = SEAM * chordV.length() / tangent.dot(chordV.clone().normalize());
-  const PHOTO_H = ds*0.83;
-  const PAN = HEIGHT*0.30;
-
-  const group = new THREE.Group();
-  scene.add(group);
-  const inner = new THREE.Group();
-  group.add(inner);
-
-  const photoG = new THREE.PlaneGeometry(PHOTO_W, PHOTO_H);
-  let tileIndex = 0;
-  const _m = new THREE.Matrix4();
-
-  function placeStrand(phase){
-    for (let i=0;i<N;i++){
-      const a=i*dA+phase, y=i*dY-HEIGHT/2;
-      const pos=new THREE.Vector3(R*Math.cos(a), y, R*Math.sin(a));
-      const T=new THREE.Vector3(-R*Math.sin(a), dY/dA, R*Math.cos(a)).normalize();
-      const Nr=new THREE.Vector3(Math.cos(a),0,Math.sin(a));
-      const B=new THREE.Vector3().crossVectors(Nr,T).normalize();
-      const plane=new THREE.Mesh(photoG, photoMaterials[tileIndex++ % TEX_COUNT]);
-      _m.makeBasis(T.clone().negate(), B.clone().negate(), Nr);
-      plane.quaternion.setFromRotationMatrix(_m);
-      plane.position.copy(pos);
-      inner.add(plane);
-    }
-  }
-  placeStrand(0);
-  placeStrand(Math.PI);
-
-  const TWO_PI=Math.PI*2;
-  let targetY=0, curY=0;
-  function onScroll(){
-    const maxS=document.documentElement.scrollHeight-window.innerHeight;
-    const p=maxS>0 ? Math.min(Math.max(window.scrollY/maxS,0),1) : 0;
-    targetY=(p-0.5)*PAN;
-    applyMobileHelixVisibility();
-  }
-  window.addEventListener('scroll', onScroll, { passive:true });
-  onScroll();
-
-  (function loop(){
-    requestAnimationFrame(loop);
-    if(!reduce){
-      inner.rotation.y += 0.0035;
-      if(inner.rotation.y>TWO_PI) inner.rotation.y -= TWO_PI;
-    }
-    curY += (targetY-curY)*0.08;
-    group.position.y = curY;
-    ren.render(scene,cam);
-  })();
-
-  window.addEventListener('resize', ()=>{
-    alignHelix();
-    W=el.clientWidth; H=el.clientHeight;
-    cam.aspect=W/H; cam.updateProjectionMatrix(); ren.setSize(W,H);
-    onScroll();
-  });
-}();
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const video = document.querySelector('.intro-photo video');
-  const control = document.querySelector('.intro-photo .video-control');
-  if (!video || !control) return;
-
-  function refreshButton() {
-    const isMuted = video.muted;
-    // YouTube-style filled speaker icons
-    control.innerHTML = isMuted
-      ? `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-           <path d="M3.63 3.63a.996.996 0 000 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .72.73 1.18 1.39.91.8-.33 1.55-.77 2.22-1.31l1.34 1.34a.996.996 0 101.41-1.41L5.05 3.63c-.39-.39-1.02-.39-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.23-1.22.86v.19c0 .38.25.71.61.85C17.18 6.54 19 9.06 19 12zm-8.71-6.29l-.17.17L12 7.76V6.41c0-.89-1.08-1.34-1.71-.71zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v1.79l2.48 2.48c.01-.08.02-.16.02-.24z"/>
-         </svg>`
-      : `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-         </svg>`;
-    control.setAttribute('aria-label', isMuted ? 'Unmute video' : 'Mute video');
-  }
-
-  refreshButton();
-  control.addEventListener('click', function() {
-    video.muted = !video.muted;
-    refreshButton();
-    video.play().catch(() => {});
-  });
-});
-</script>
-
-<script>
-function openModal(id) {
-  const overlay = document.getElementById(id);
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  const form = document.getElementById(id + '-form');
-  const success = document.getElementById(id + '-success');
-  if (form) form.style.display = '';
-  if (success) success.classList.remove('show');
-  overlay.querySelector('.modal-close').focus();
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-  document.body.style.overflow = '';
-}
-function setLoading(modalId, loading) {
-  const btn = document.querySelector('#' + modalId + '-form .modal-submit');
-  if (!btn) return;
-  if (loading) {
-    btn.dataset.origText = btn.innerHTML;
-    btn.innerHTML = 'Sending...';
-    btn.disabled = true;
-    btn.style.opacity = '0.6';
-  } else {
-    btn.innerHTML = btn.dataset.origText || btn.innerHTML;
-    btn.disabled = false;
-    btn.style.opacity = '';
-  }
-}
-function showError(modalId, msg) {
-  let el = document.getElementById(modalId + '-error');
-  if (!el) {
-    el = document.createElement('div');
-    el.id = modalId + '-error';
-    el.style.cssText = 'color:#DB4949;font-size:14px;margin-top:12px;padding:10px 14px;background:rgba(219,73,73,.08);border-radius:10px;';
-    document.getElementById(modalId + '-form').appendChild(el);
-  }
-  el.textContent = msg;
-}
-function clearError(modalId) {
-  const el = document.getElementById(modalId + '-error');
-  if (el) el.remove();
-}
-// ── REPLACE THIS URL with your Google Apps Script deployment URL ──
-var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzbH_xCsbTZPU1uOAYQxtywn_MbEd1EUDhqlNKRc0gmRiSFa2syYiKZxJv0WzlNZ-cv/exec';
-
-function submitModal(id) {
-  clearError(id);
-  var body = {};
-  if (id === 'modal-media') {
-    body = {
-      _sheet: 'Media',
-      firstName: val('media-first'),
-      lastName: val('media-last'),
-      publication: val('media-pub'),
-      email: val('media-email'),
-      phone: val('media-phone'),
-      message: val('media-msg')
-    };
-    if (!body.email) return showError(id, 'Please enter your email address.');
-  } else if (id === 'modal-partner') {
-    body = {
-      _sheet: 'Partners',
-      firstName: val('partner-first'),
-      lastName: val('partner-last'),
-      organisation: val('partner-org'),
-      email: val('partner-email'),
-      phone: val('partner-phone'),
-      role: val('partner-role'),
-      location: val('partner-location'),
-      message: val('partner-msg')
-    };
-    if (!body.email) return showError(id, 'Please enter your email address.');
-  } else if (id === 'modal-data') {
-    body = {
-      _sheet: 'Donors',
-      firstName: val('data-first'),
-      lastName: val('data-last'),
-      email: val('data-email'),
-      phone: val('data-phone'),
-      dogName: val('data-dog'),
-      breed: val('data-breed'),
-      cancerType: val('data-cancer'),
-      recordsType: val('data-records'),
-      message: val('data-msg')
-    };
-    if (!body.email) return showError(id, 'Please enter your email address.');
-  }
-  setLoading(id, true);
-
-  // Handle file uploads for data modal
-  if (id === 'modal-data' && dataUploadedFiles.length > 0) {
-    var promises = dataUploadedFiles.map(function(f) { return dataFileToBase64(f); });
-    Promise.all(promises).then(function(files) {
-      body.files = files;
-      return sendModal(id, body);
-    }).catch(function() {
-      setLoading(id, false);
-      showError(id, 'Something went wrong. Please try again.');
-    });
-  } else {
-    sendModal(id, body);
-  }
-}
-function sendModal(id, body) {
-  return fetch(FORM_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify(body)
-  }).then(function(r) { return r.json(); })
-    .then(function(data) {
-      setLoading(id, false);
-      if (data.error) return showError(id, data.error);
-      document.getElementById(id + '-form').style.display = 'none';
-      document.getElementById(id + '-success').classList.add('show');
-    }).catch(function() {
-      setLoading(id, false);
-      showError(id, 'Something went wrong. Please try again.');
-    });
-}
-function val(id) { return (document.getElementById(id) || {}).value || ''; }
-
-// ── FILE UPLOAD FOR DATA MODAL ──
-var dataUploadedFiles = [];
-var DATA_MAX_FILES = 3;
-var DATA_MAX_FILE_SIZE = 10 * 1024 * 1024;
-
-function handleDataFileSelect(e) {
-  addDataFiles(Array.from(e.target.files));
-  e.target.value = '';
-}
-function handleDataDragOver(e) {
-  e.preventDefault();
-  document.getElementById('data-drop-zone').classList.add('dragover');
-}
-function handleDataDragLeave() {
-  document.getElementById('data-drop-zone').classList.remove('dragover');
-}
-function handleDataDrop(e) {
-  e.preventDefault();
-  document.getElementById('data-drop-zone').classList.remove('dragover');
-  addDataFiles(Array.from(e.dataTransfer.files));
-}
-function addDataFiles(files) {
-  var errEl = document.getElementById('data-drop-zone-error');
-  if (errEl) errEl.remove();
-  files.forEach(function(f) {
-    if (dataUploadedFiles.length >= DATA_MAX_FILES) {
-      showDataDropError('Maximum ' + DATA_MAX_FILES + ' files allowed.');
-      return;
-    }
-    if (f.size > DATA_MAX_FILE_SIZE) {
-      showDataDropError('"' + f.name + '" is too large (max 10MB).');
-      return;
-    }
-    if (!dataUploadedFiles.find(function(u) { return u.name === f.name && u.size === f.size; })) {
-      dataUploadedFiles.push(f);
-    }
-  });
-  renderDataFileList();
-}
-function showDataDropError(msg) {
-  var el = document.createElement('div');
-  el.id = 'data-drop-zone-error';
-  el.style.cssText = 'color:#DB4949;font-size:13px;margin-top:8px;';
-  el.textContent = msg;
-  document.getElementById('data-drop-zone').parentNode.appendChild(el);
-}
-function removeDataFile(idx) {
-  dataUploadedFiles.splice(idx, 1);
-  renderDataFileList();
-}
-function renderDataFileList() {
-  document.getElementById('data-file-list').innerHTML = dataUploadedFiles.map(function(f, i) {
-    return '<div class="file-chip">' +
-      '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
-      '<span class="fname">' + f.name + '</span>' +
-      '<button class="rm" onclick="removeDataFile(' + i + ')" aria-label="Remove file">' +
-      '<svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
-      '</button></div>';
-  }).join('');
-}
-function dataFileToBase64(file) {
-  return new Promise(function(resolve, reject) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var base64 = reader.result.split(',')[1];
-      resolve({ name: file.name, type: file.type, size: file.size, data: base64 });
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
-document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) closeModal(overlay.id);
-  });
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(function(o) {
-      closeModal(o.id);
-    });
-  }
-});
-</script>
-</body>
-</html>
+24|
+25|<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAzIiBoZWlnaHQ9IjEwMyIgdmlld0JveD0iMCAwIDEwMyAxMDMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik03My43NDk5IDIuNzg5MDZIMjguNDA5OUMxMy43ODU0IDIuNzg5MDYgMS45Mjk5MyAxNC42NDQ2IDEuOTI5OTMgMjkuMjY5MVY3NC42MDkxQzEuOTI5OTMgODkuMjMzNiAxMy43ODU0IDEwMS4wODkgMjguNDA5OSAxMDEuMDg5SDczLjc0OTlDODguMzc0NCAxMDEuMDg5IDEwMC4yMyA4OS4yMzM2IDEwMC4yMyA3NC42MDkxVjI5LjI2OTFDMTAwLjIzIDE0LjY0NDYgODguMzc0NCAyLjc4OTA2IDczLjc0OTkgMi43ODkwNloiIGZpbGw9IiNGN0Y2RTIiLz4KPHBhdGggZD0iTTc0LjMxMDEgODkuODMxN0M3My4zODAxIDg3LjcwMTcgNzIuMTYwMSA4NS43NjE3IDcwLjYzMDEgODQuMDIxN0M2OC43NTAxIDgxLjg4MTcgNjcuMTkwMSA3OS41MjE3IDY2LjE4MDEgNzYuODUxN0M2NS43MjAxIDc1LjYzMTcgNjUuMzgwMSA3NC4zNjE3IDY1LjA5MDEgNzMuMDkxN0M2NC42NjAxIDcxLjE5MTcgNjQuNDcwMSA2OS4yNjE3IDY0LjY1MDEgNjcuMzExN0M2NC42NTAxIDY3LjI1MTcgNjQuNjUwMSA2Ny4xODE3IDY0LjYzMDEgNjcuMTExN0M2NC42MzAxIDY3LjA5MTcgNjQuNTkwMSA2Ny4wODE3IDY0LjUxMDEgNjcuMDExN0M2NC4yNjAxIDY3LjM5MTcgNjMuOTkwMSA2Ny43NTE3IDYzLjc3MDEgNjguMTQxN0M2MS45NDAxIDcxLjM3MTcgNjEuMzYwMSA3NC44MTE3IDYxLjk3MDEgNzguNDgxN0M2Mi4zNzAxIDgwLjkyMTcgNjMuMzMwMSA4My4xMzE3IDY0LjYwMDEgODUuMjExN0M2NS4xOTAxIDg2LjE4MTcgNjUuOTEgODcuMDYxNyA2Ni40OCA4OC4wMzE3QzY4LjQ1IDkxLjMzMTcgNjkuNDQgOTQuODkxNyA2OS4yNCA5OC43NTE3QzY5LjI0IDk4LjkwMTcgNjkuMDcwMSAxMDAuMjkyIDY5LjA3MDEgMTAwLjI5MkM2OS4wNzAxIDEwMC4yOTIgNjkuMDYwMSAxMDAuNDIyIDY5LjA2MDEgMTAwLjQzMkM2OS4wNjAxIDEwMC40NzIgNzQuODcwMSAxMDAuNDMyIDc0Ljg3MDEgMTAwLjQzMkM3NS4yMTAxIDEwMC40MzIgNzUuNTQwMSAxMDAuNDIyIDc1Ljg3MDEgMTAwLjQwMkM3NS44ODAxIDEwMC4zNTIgNzUuODkwMSAxMDAuMzAyIDc1LjkwMDEgMTAwLjI1MkM3NS45MDAxIDEwMC4xNDIgNzUuOTIwMSAxMDAuMDAyIDc1LjkzMDEgOTkuODMxN0M3Ni4wMTAxIDk4LjYxMTcgNzYuMDYwMSA5Ny4zODE3IDc1Ljk3MDEgOTYuMTYxN0M3NS44MjAxIDkzLjk1MTcgNzUuMjEwMSA5MS44NDE3IDc0LjMzMDEgODkuODIxN0w3NC4zMTAxIDg5LjgzMTdaIiBmaWxsPSIjM0MwMTRFIi8+CjxwYXRoIGQ9Ik03My43MDAxIDE1LjQ1MDhDNzMuNDEwMSAxNS4zMDA4IDcyLjg3MDEgMTUuNDIwOCA3Mi41NTAxIDE1LjYwMDhDNzIuMDYwMSAxNS44NzA4IDcxLjY0MDIgMTYuMjgwOCA3MS4yMjAyIDE2LjY2MDhDNjkuNDAwMiAxOC4zMTA... [truncated]
+26|<link rel="preconnect" href="https://fonts.googleapis.com">
+27|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+28|<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+29|<!-- Warm the helix textures before anything else claims the connection. A classic
+30|     <script> cannot run until every preceding stylesheet has loaded, so this has
+31|     to sit above the font link to fire at parse time. -->
+32|<script>
+33|  for (var i = 1; i <= 50; i++) {
+34|    var img = new Image();
+35|    // Must match TextureLoader's crossOrigin or the warmed entry is a cache miss.
+36|    img.crossOrigin = 'anonymous';
+37|    img.src = './assets/helix/tex/dog_' + String(i).padStart(3, '0') + '.webp';
+38|  }
+39|</script>
+40|<!-- Loaded non-render-blocking: the fonts already use display=swap, and a blocking
+41|     stylesheet here also stalls execution of the three.js tag at the end of body. -->
+42|<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null">
+43|<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet"></noscript>
+44|<style>
+45|  :root{
+46|    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55;
+47|    --purple:#3C014E; --purple-d:#2D0A47; --purple-deep:#1E0230;
+48|    --coral:#DB4949; --coral-d:#EE3842;
+49|    --cyan:#75D1DC; --mint:#D4F0EC; --mint-d:#CDE9E6;
+50|    --strip:clamp(300px,30vw,460px);   /* DNA ribbon band */
+51|  }
+52|  *{box-sizing:border-box;margin:0;padding:0}
+53|  html{scroll-behavior:smooth}
+54|  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+55|  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+56|  h1,h2,h3,h4,.logo,.btn,.num{font-family:"Poppins",system-ui,sans-serif}
+57|
+58|  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:700;font-size:16px;
+59|       padding:16px 30px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+60|  .btn:hover{transform:translateY(-2px)}
+61|  .btn svg{width:16px;height:16px}
+62|  .card .btn{padding: 6px 28px}
+63|  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(219,73,73,.30)}
+64|  .btn-green{background:var(--purple);color:#fff;box-shadow:0 10px 24px rgba(54,6,75,.28)}
+65|  .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+66|
+67|
+68|  /* ── DNA helix ribbon: centered between the hero highlight and header Apply button ── */
+69|  #helix{
+70|    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2 + 220px - var(--strip)/2)); width:var(--strip); height:100vh; z-index:0;
+71|    opacity:1; pointer-events:none;
+72|    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
+73|            mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
+74|  }
+75|  #helix-loader{
+76|    position:fixed; top:0; right:max(0px,calc((100vw - 1256px)/2 + 220px - var(--strip)/2)); width:var(--strip); height:100vh; z-index:0; pointer-events:none;
+77|    display:flex; align-items:center; justify-content:center; opacity:.55; transition:opacity .6s;
+78|  }
+79|  .spinner{width:30px;height:30px;border:2px solid rgba(219,73,73,0.18);border-top-color:var(--coral);border-radius:50%;animation:sp .9s linear infinite;}
+80|  @keyframes sp{to{transform:rotate(360deg);}}
+81|  @media (prefers-reduced-motion:reduce){.spinner{animation:none;}}
+82|
+83|  /* content layer sits above the helix thread */
+84|  .page{position:relative; z-index:1}
+85|  .hero-helix-space{min-height:240px}
+86|
+87|  /* MEET PAUL intro card */
+88|  .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:start;background:#fff;padding:28px}
+89|  .intro-photo{border-radius:24px;overflow:hidden;aspect-ratio:16/9;min-height:280px;position:relative;background:var(--purple);width:100%;max-width:100%}
+90|  .intro-photo img,.intro-photo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+91|  .video-control{
+92|    position:absolute;bottom:14px;right:14px;
+93|    display:inline-flex;align-items:center;justify-content:center;
+94|    width:36px;height:36px;
+95|    background:rgba(8,8,8,.72);
+96|    backdrop-filter:blur(4px);
+97|    color:#fff;border:none;border-radius:50%;
+98|    cursor:pointer;
+99|    transition:background .15s,transform .1s;
+100|    z-index:2;padding:0;
+101|  }
+102|  .video-control:hover{background:rgba(8,8,8,.9);transform:scale(1.06)}
+103|  .video-control svg{width:18px;height:18px;display:block;fill:#fff;stroke:none}
+104|  .intro-copy{display:flex;flex-direction:column;justify-content:flex-start}
+105|  .intro-copy h3{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:0 0 18px;max-width:40em}
+106|  .intro-copy h3 .g{color:var(--coral)}
+107|  .h3-split{display:block;white-space:nowrap;margin-top:10px}
+108|  .intro-copy p{font-size:17px;line-height:1.55;color:var(--muted);max-width:34em;margin:0}
+109|  .intro-copy p+p{margin-top:10px}
+110|  .intro-copy__location{display:grid;grid-template-columns:auto 1fr;gap:5px;align-items:flex-start;margin-top:10px;color:var(--muted);font-size:14px;line-height:0.8;max-width:34em}
+111|  .intro-copy__location svg{width:20px;height:15px;flex-shrink:0;stroke:var(--coral);fill:none;stroke-width:1.8;margin-top:5px}
+112|  .intro-copy__location p{font-size:14px;line-height:1.4;margin:0}
+113|
+114|  /* NAV */
+115|  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+116|  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+117|  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;color:inherit;font-family:"Poppins",system-ui,sans-serif}
+118|  .dot{width:14px;height:14px;border-radius:50%;background:var(--purple)}
+119|  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+120|  .navlinks a:not(.btn){text-decoration:none;color:var(--ink)}
+121|  .navlinks .btn{padding:11px 24px;font-size:14px;color:#fff}
+122|
+123|  /* HERO */
+124|  .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;padding:48px 0 52px;min-height:72vh}
+125|  .hero-note{font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:12px;line-height:100%;letter-spacing:0.12em;color:#000;margin-bottom:28px;text-transform:none}
+126|  .monospace-pill{font-size:12px;font-weight:500;letter-spacing:0.04em;padding:1px 5px;border:1px solid var(--border);border-radius:7px;margin-left:1px;white-space:nowrap;vertical-align:middle;background:#FDFDF5}
+127|  .hero h1{font-size:62px;font-weight:800;line-height:1.03;letter-spacing:-.025em}
+128|  .hero h1 .mark{display:inline-block;background:#75D1DC;border-radius:16px;padding:7px 10px;line-height:1;vertical-align:middle;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+129|  .hero h1 .g{color:var(--coral)}
+130|  .hero h1 .mark-desktop-1{border-radius:16px 16px 16px 3px}
+131|  .hero h1 .mark-desktop-2{border-radius:16px 3px 16px 16px}
+132|  .hero h1 .mark-mobile-group{display:none}
+133|  .hero h1 .nowrap{white-space:nowrap;display:inline-block}
+134|  .hero h1 .hero-lead-mobile{display:none}
+135|  .hero .sub{margin-top:24px;max-width:25em;font-size:18px;color:var(--muted);line-height:1.6}
+136|  .hero .act{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
+137|  .hero .hero-link{font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;background:none;border:none;padding:0;margin:0;display:inline-flex;align-items:center;gap:10px;box-shadow:none}
+138|  .hero .hero-link:hover{text-decoration:underline}
+139|  .hero .note{margin-top:40px;font-size:13px;color:var(--muted);max-width:32em}
+140|  .panel{position:relative;border-radius:32px;background:var(--purple);min-height:560px;overflow:hidden;
+141|         display:flex;align-items:center;justify-content:center}
+142|  .panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
+143|  .panel .paw{font-size:120px;opacity:.18;color:#fff}
+144|  .tag{position:absolute;display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--ink);
+145|       font-weight:600;font-size:13px;padding:9px 15px;border-radius:999px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+146|  .tag .pd{width:9px;height:9px;border-radius:50%;background:var(--purple)}
+147|  .tag.paul{left:20px;bottom:20px}
+148|  .tag.rosie{right:20px;bottom:64px}
+149|
+150|  /* generic block */
+151|  .block{border-radius:34px;padding:72px;margin:48px 0}
+152|  #meet{scroll-margin-top:140px;margin-top:0}
+153|  .block-green{background:var(--purple);color:#fff}
+154|  .block-coral{background:var(--coral);color:#fff}
+155|  .block-mint{background:var(--mint)}
+156|  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+157|
+158|  /* MISSION */
+159|  .mission h2{font-size:40px;font-weight:800;line-height:1.14;letter-spacing:-.02em;max-width:none}
+160|  .mission h2 .hl{color:var(--cyan)}
+161|  .mission h2 .mission-note{display:block;font-size:40px;line-height:1.14;margin-top:18px}
+162|  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+163|  .card{background:#fff;color:var(--ink);border-radius:22px;padding:26px 22px;text-decoration:none;display:block;transition:transform .14s}
+164|  .card:hover{transform:translateY(-4px)}
+165|  .card .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--ink)}
+166|  .card .ct{margin-top:12px;font-size:17px;font-weight:600;line-height:1.4}
+167|  .card .ar{margin-top:22px;font-size:20px;color:var(--purple)}
+168|  .card .card-btn{margin-top:22px}
+169|  .mission-note{display:block;color:var(--cyan);margin-top:26px;font-size:18px;font-weight:700;}
+170|  .full-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
+171|  .full-bleed .block{border-radius:0;padding:84px 0;margin:0}
+172|  .final p{margin:18px auto 0;font-size:16px;color:#fff;max-width:42em}
+173|
+174|  /* ROSIE */
+175|  .rosie{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:flex-start}
+176|  .avatar{width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;
+177|          align-items:center;justify-content:center;font-size:54px;flex-shrink:0;overflow:hidden}
+178|  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+179|  .rosie .ey{font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1;opacity:.9}
+180|  .rosie h3{font-size:40px;font-weight:800;line-height:50px;letter-spacing:0;margin:10px 0 16px;max-width:16em}
+181|  .rosie h3 .h3-split{margin-top:0px}
+182|  .rosie p{font-family:"Inter",system-ui,sans-serif;font-size:17px;font-weight:400;line-height:26px;max-width:42em;color:rgba(255,255,255,.92)}
+183|  .rosie p b{color:#fff}
+184|  .rosie .more{display:inline-flex;margin-top:22px;font-weight:700;text-decoration:none;color:#fff;
+185|              border-bottom:2px solid rgba(255,255,255,0);padding-bottom:3px}
+186|
+187|  /* PRESS */
+188|  .press{padding:40px 0;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
+189|  .press .cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-weight:700}
+190|  .press .lg{font-size:19px;font-weight:800;color:#a6a89c}
+191|
+192|  /* PRESS TICKER */
+193|  .press-ticker{overflow:hidden;width:100%;position:relative;
+194|    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
+195|            mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
+196|  }
+197|  .press-ticker-track{display:flex;gap:0;width:fit-content;padding:6px 0;
+198|    animation:ticker-scroll 60s linear infinite}
+199|  .press-ticker-track:hover{animation-play-state:paused}
+200|  .press-ticker-track a{display:flex;align-items:center;flex-shrink:0;text-decoration:none;margin-right:24px}
+201|  .press-ticker-track a img{height:48px;width:auto;max-width:180px;object-fit:contain;
+202|    filter:grayscale(1) brightness(1.5);opacity:.55;
+203|    transition:filter .35s ease,opacity .35s ease}
+204|  .press-ticker-track a:hover img{filter:grayscale(0) brightness(1);opacity:1}
+205|  @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+206|
+207|  /* PROCESS */
+208|  .process .eyebrow{color:var(--ink)}
+209|  .process h2{font-size:44px;font-weight:800;letter-spacing:-.025em;margin:12px 0 6px;color:var(--ink)}
+210|  .process .lede{font-size:17px;color:var(--muted)}
+211|  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+212|  .step{border-radius:24px;padding:32px 28px 34px;min-height:340px;display:flex;flex-direction:column;gap:18px}
+213|  .s1{background:#3C014E;color:#fff}
+214|  .s2{background:#DB4949;color:#fff}
+215|  .s3{background:#34BBCB;color:#fff}
+216|  .s4{background:#220032;color:#fff}
+217|  .num-title{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:130px}
+218|  .num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+219|       font-weight:800;font-size:18px;background:rgba(255,255,255,.22)}
+220|  .s3 .num{background:rgba(0,0,0,.12)}
+221|  .step h4{font-size:20px;font-weight:700;margin:0 0 10px;letter-spacing:-.01em}
+222|  .step p{margin:0;font-size:14px;line-height:1.6;opacity:.95}
+223|
+224|  /* DOUBLE COLORED CARDS */
+225|  .card-split{display:flex;flex-direction:column;border-radius:28px;overflow:hidden;margin:48px 0}
+226|  .card-split-top{border-radius:28px 28px 0 0;padding:56px}
+227|  .process .card-split-top{background:#DFF5F2}
+228|  .card-split-bottom{background:#fff;padding:40px 60px;border-radius:0 0 28px 28px;color:var(--ink)}
+229|  .card-split-bottom .cap{display:block;font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:12px;line-height:100%;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;text-align:center}
+230|  .card-split-bottom .partners{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:0;margin:0;justify-content:center}
+231|  .card-split-bottom .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
+232|  .card-split-bottom .partners img{height:48px;width:auto;max-width:180px;opacity:1;object-fit:contain}
+233|  .card-split-bottom .partners img[alt="Founders Fund"]{max-width:320px}
+234|  .card-split-bottom .partners img[alt]{display:inline-block}
+235|  .full-bleed .wrap{padding-left:16px;padding-right:16px}
+236|  .dog-row{display:flex;gap:24px;flex-wrap:nowrap;justify-content:center;align-items:stretch;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin:18px -50vw 0;padding:0 16px;max-width:none;overflow:hidden}
+237|  .dog-row picture{height:400px;width:calc((100% - 72px)/4);min-width:220px;aspect-ratio:3/4;flex:0 0 auto}
+238|  .dog-row img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:18px;background:#fff}
+239|
+240|  /* PARTNERS */
+241|  .partners{padding:26px 0 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+242|  .partners .cap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-right:10px}
+243|  .partners .chip{border:1.5px solid var(--mint-d);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:#4c594f;background:#fff}
+244|
+245|  /* FINAL CTA */
+246|  .final{text-align:center;padding:84px 72px}
+247|  .final h2{font-size:48px;font-weight:800;letter-spacing:-.03em;line-height:1.08;max-width:14em;margin:0 auto}
+248|  .final h2 .hl{color:var(--cyan)}
+249|  .final p{margin:22px auto 0;font-size:18px;color:rgba(255,255,255,.92);max-width:34em}
+250|  .final .btn{margin-top:32px;padding:22px 60px;font-size:20px}
+251|
+252|  /* BACKED */
+253|  .backed{text-align:center;padding:48px 0 18px}
+254|  .backed .cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+255|  .backed .row{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:50px;flex-wrap:wrap}
+256|  .backed .lg{font-size:17px;font-weight:700;color:#abad9f}
+257|
+258|  /* FOOTER */
+259|  footer{background:var(--purple-deep);color:#fff;border-radius:34px 34px 0 0;margin-top:14px}
+260|  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
+261|  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+262|  .foot-flag{display:flex;margin-bottom:-24px}
+263|  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
+264|  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+265|  .foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
+266|  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+267|  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+268|  .foot .footer-links a:hover{color:var(--ink)}
+269|  .email-hint{display:block;font-size:11px;color:rgba(0,0,0,.35);margin-top:2px;margin-left:0}
+270|  .legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;
+271|         font-size:12px;color:rgba(0,0,0,.6);border-top:1px solid rgba(0,0,0,.08)}
+272|  .legal a{color:rgba(0,0,0,.6);text-decoration:none}
+273|  .flag-inline{display:none}
+274|  footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
+275|
+276|  /* ── Hamburger menu ── */
+277|  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;
+278|              background:none;border:none;cursor:pointer;padding:4px;border-radius:8px;flex-shrink:0}
+279|  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;
+280|                   transition:transform .25s,opacity .25s}
+281|  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+282|  .nav-toggle.open span:nth-child(2){opacity:0}
+283|  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+284|
+285|  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);
+286|               backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
+287|  .mobile-menu.open{display:flex}
+288|  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;
+289|                            color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
+290|  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+291|
+292|  @media(max-width:900px){
+293|    body{padding-right:0}
+294|    #helix,#helix-loader{width:100vw;left:0;right:auto}
+295|    #helix{
+296|      opacity:.62;
+297|      -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.38) 56%,rgba(0,0,0,.72) 64%,#000 72%,#000 100%);
+298|              mask-image:linear-gradient(to bottom,rgba(0,0,0,.38) 0%,rgba(0,0,0,.38) 56%,rgba(0,0,0,.72) 64%,#000 72%,#000 100%);
+299|    }
+300|    .hero-helix-space{display:block;min-height:clamp(145px,calc(41vh - 119px),270px)}
+301|
+302|    /* Nav */
+303|    .nav-toggle{display:flex}
+304|    .navlinks{display:none}
+305|    .nav-in{padding:16px 20px}
+306|    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
+307|
+308|    /* Hero */
+309|    .hero{grid-template-columns:1fr;padding:0 0 28px;min-height:60vh;gap:24px;align-items:center}
+310|    .hero h1{font-size:42px;line-height:1.2;letter-spacing:0;font-family:"Poppins",system-ui,sans-serif}
+311|    .hero h1 .nowrap{white-space:normal}
+312|    .hero .sub{font-size:16px;max-width:none}
+313|    .hero .act{flex-direction:column;align-items:stretch;gap:12px;margin-top:28px}
+314|    .hero .act .btn{width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+315|    .hero .hero-link{justify-content:center;font-size:16px}
+316|    .panel{min-height:250px;max-height:300px;order:-1}
+317|    .panel img{object-position:center top}
+318|
+319|    /* Intro / Meet */
+320|    .intro{grid-template-columns:1fr;gap:24px;padding:8px 20px}
+321|    .intro-photo{min-height:0;aspect-ratio:16/9}
+322|    .intro-copy h3{font-size:26px}
+323|
+324|    /* Generic block */
+325|    .block{padding:24px 22px;border-radius:24px;margin:48px 0}
+326|    .block.intro{padding:24px 22px;border-radius:24px;margin-top:40px}
+327|    #meet{margin-top:40px}
+328|
+329|    /* card-split */
+330|    .card-split{margin:48px 0}
+331|    .card-split-top{padding:24px 22px}
+332|    .card-split-bottom{padding:28px 12px}
+333|
+334|    /* Mission */
+335|    .mission h2{font-size:28px}
+336|    .mission h2 .mission-note{font-size:26px}
+337|    .mission-note{font-size:16px}
+338|    .cards{grid-template-columns:1fr;gap:14px}
+339|
+340|    /* Rosie */
+341|    .rosie{grid-template-columns:1fr;gap:18px;text-align:left;align-items:flex-start}
+342|    .avatar{width:80px;height:80px;font-size:38px}
+343|    .rosie h3{font-size:28px;line-height:36px}
+344|    .rosie p{font-size:16px;line-height:24px}
+345|    .h3-split{white-space:normal;margin-top:6px}
+346|
+347|    /* Process */
+348|    .process h2{font-size:30px}
+349|    .steps{grid-template-columns:1fr 1fr;gap:14px}
+350|    .step{padding:24px 20px 26px;min-height:0;gap:10px}
+351|    .step .num-title{display:flex;align-items:center;gap:10px}
+352|    .step h4{margin:0}
+353|
+354|    /* Hide connection card on mobile */
+355|    #connection{display:none}
+356|
+357|    /* Dog row — 2×2 grid on mobile */
+358|    .dog-row{flex-wrap:wrap;gap:10px;padding:0 12px;width:100%;left:auto;right:auto;margin-left:0;margin-right:0;margin-top:18px}
+359|    .dog-row picture{height:200px;min-width:0;width:calc(50% - 5px);flex:0 0 calc(50% - 5px)}
+360|
+361|    /* Final CTA */
+362|    .final{padding:48px 22px;text-align:center}
+363|    .final h2{font-size:28px}
+364|    .final p{font-size:16px}
+365|    .final .btn{padding:16px 36px;font-size:17px}
+366|
+367|    /* Footer */
+368|    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
+369|    .foot-right{align-items:flex-start;gap:10px}
+370|    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+371|    .foot .footer-links a{margin-left:0;font-size:15px}
+372|    .email-hint{font-size:11px}
+373|    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
+374|    .foot-flag{display:none}
+375|    .flag-inline{display:inline-block}
+376|
+377|    /* Press logos */
+378|    .card-split-bottom .partners img{height:20px;max-width:60px}
+379|    .press-ticker-track a{margin-right:18px}
+380|    .press-ticker-track{animation-duration:40s}
+381|    .press-ticker-track a img{height:34px;max-width:120px}
+382|
+383|    /* Partners chips */
+384|    .partners .chip{padding:7px 14px;font-size:12px}
+385|  }
+386|
+387|  @media(max-width:560px){
+388|    .hero .act{flex-direction:row;align-items:center;flex-wrap:nowrap;gap:18px}
+389|    .hero .act .btn{width:auto;padding:16px 24px;flex-shrink:0}
+390|    .hero .hero-link{justify-content:flex-start;white-space:nowrap}
+391|    .steps{grid-template-columns:1fr}
+392|    .step .num-title{flex-direction:row;min-height:0}
+393|    .step .num{width:36px;height:36px;font-size:14px}
+394|    .step h4{font-size:17px;margin:0;line-height:1.15}
+395|    .process h2{font-size:28px;margin:6px 0 4px;line-height:34px}
+396|    .hero h1{font-size:34px;line-height:1.05}
+397|    .hero h1 .mark{display:inline;padding:1px 6px;line-height:1.05;border-radius:16px}
+398|    .hero h1 .hero-lead-desktop{display:none}
+399|    .hero h1 .hero-lead-mobile{display:inline}
+400|    .hero h1 .mark-mobile-group{display:inline}
+401|    .hero h1 .mark-mobile-group .mark{display:inline-block;position:relative}
+402|    .hero h1 .mark-mobile-group .mark:first-child{z-index:2;border-radius:14px 14px 0 0}
+403|    .hero h1 .mark-mobile-group .mark:last-child{z-index:1;margin-top:-3px;border-radius:0 14px 14px 14px}
+404|    .intro-copy h3{font-size:22px}
+405|    .intro-copy__location p{font-size:12px}
+406|    .dog-row picture{height:160px}
+407|    .card-split-bottom .partners img{height:22px;max-width:70px}
+408|    .press-ticker-track a{margin-right:12px}
+409|    .press-ticker-track{animation-duration:35s}
+410|    .press-ticker-track a img{height:26px;max-width:80px}
+411|  }
+412|
+413|  /* ── MODALS ── */
+414|  .modal-overlay{
+415|    display:none;position:fixed;inset:0;z-index:200;
+416|    background:rgba(22,22,11,.52);backdrop-filter:blur(6px);
+417|    align-items:center;justify-content:center;padding:20px;
+418|  }
+419|  .modal-overlay.open{display:flex}
+420|
+421|  .modal{
+422|    background:var(--cream);border-radius:28px;width:100%;max-width:520px;
+423|    max-height:90vh;overflow-y:auto;position:relative;
+424|    box-shadow:0 32px 80px rgba(22,22,11,.28);
+425|    animation:modalIn .22s cubic-bezier(.22,.9,.36,1) both;
+426|  }
+427|  @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+428|
+429|  .modal-head{
+430|    background:var(--purple);color:#fff;border-radius:28px 28px 0 0;
+431|    padding:32px 36px 28px;
+432|  }
+433|  .modal-head .modal-eyebrow{
+434|    font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;
+435|    letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:8px;
+436|  }
+437|  .modal-head h3{
+438|    font-family:"Poppins",system-ui,sans-serif;font-size:24px;font-weight:800;
+439|    letter-spacing:-.02em;line-height:1.15;margin:0;
+440|  }
+441|  .modal-head p{margin:10px 0 0;font-size:14px;line-height:1.55;opacity:.82}
+442|
+443|  .modal-body{padding:32px 36px 36px}
+444|
+445|  .modal-close{
+446|    position:absolute;top:18px;right:18px;width:36px;height:36px;
+447|    background:rgba(255,255,255,.15);border:none;border-radius:50%;
+448|    cursor:pointer;display:flex;align-items:center;justify-content:center;
+449|    color:#fff;transition:background .14s;
+450|  }
+451|  .modal-close:hover{background:rgba(255,255,255,.28)}
+452|  .modal-close svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
+453|
+454|  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+455|  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+456|  .form-group:last-of-type{margin-bottom:0}
+457|  .form-group label{
+458|    font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;
+459|    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+460|  }
+461|  .form-group input,
+462|  .form-group select,
+463|  .form-group textarea{
+464|    font-family:"Inter",system-ui,sans-serif;font-size:15px;
+465|    padding:12px 16px;border-radius:12px;
+466|    border:1.5px solid rgba(22,22,11,.14);background:#fff;
+467|    color:var(--ink);transition:border-color .14s,box-shadow .14s;
+468|    outline:none;width:100%;
+469|  }
+470|  .form-group input::placeholder,
+471|  .form-group textarea::placeholder{color:#a0a498}
+472|  .form-group input:focus,
+473|  .form-group select:focus,
+474|  .form-group textarea:focus{
+475|    border-color:var(--purple);box-shadow:0 0 0 3px rgba(60,1,78,.12);
+476|  }
+477|  .form-group textarea{resize:vertical;min-height:96px;line-height:1.5}
+478|  .form-group select{
+479|    appearance:none;
+480|    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b5f55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+481|    background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;
+482|  }
+483|
+484|  .modal-divider{height:1px;background:rgba(22,22,11,.08);margin:20px 0}
+485|
+486|  .modal-submit{
+487|    width:100%;margin-top:20px;
+488|    font-family:"Poppins",system-ui,sans-serif;font-size:16px;font-weight:700;
+489|    padding:16px 24px;border-radius:999px;border:none;cursor:pointer;
+490|    background:var(--coral);color:#fff;
+491|    box-shadow:0 10px 24px rgba(219,73,73,.30);
+492|    transition:transform .12s,box-shadow .12s;
+493|    display:flex;align-items:center;justify-content:center;gap:10px;
+494|  }
+495|  .modal-submit:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(219,73,73,.36)}
+496|  .modal-submit:disabled{transform:none;cursor:not-allowed;opacity:.6}
+497|  .modal-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
+498|
+499|  .modal-success{
+500|    display:none;flex-direction:column;align-items:center;justify-content:center;
+501|
