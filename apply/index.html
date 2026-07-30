@@ -727,7 +727,7 @@
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Back
     </button>
-    <button class="btn btn-primary" onclick="captureFormData(); submitApplication(); goToStep(4);">
+    <button class="btn btn-primary" onclick="finishAustraliaApplication()">
       Finish
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
@@ -791,6 +791,7 @@
   let currentStep = 1;
   let selectedLocation = '';
   let uploadedFiles = [];
+  const trackedFunnelEvents = new Set();
 
   // Captured form data — stored when user hits Finish so hidden DOM is never queried
   let formData = {};
@@ -832,6 +833,14 @@
   function val(id) {
     var el = document.getElementById(id);
     return el ? (el.value || '').trim() : '';
+  }
+
+  // Track funnel progress without sending applicant or medical information.
+  function trackApplicationEvent(name, onceKey) {
+    if (onceKey && trackedFunnelEvents.has(onceKey)) return;
+    if (onceKey) trackedFunnelEvents.add(onceKey);
+    if (typeof window.plausible !== 'function') return;
+    window.plausible(name);
   }
 
   // ── REPLACE THIS URL with your Google Apps Script deployment URL ──
@@ -884,6 +893,7 @@
           console.error('[APPLY] Error:', data.error);
         } else {
           console.log('[APPLY] Submitted');
+          trackApplicationEvent('Application Posted', 'application-posted');
         }
       }).catch(function(err) {
         console.error('[APPLY] Failed:', err);
@@ -912,6 +922,9 @@
       document.getElementById(screen).classList.add('active');
     } else {
       document.getElementById('screen-' + n).classList.add('active');
+      if (n === 3) {
+        trackApplicationEvent('Application Medical Reached', 'application-medical-reached');
+      }
     }
 
     if (n === 4) { buildReview(); personaliseSuccess(); loadDogPhotos(); }
@@ -923,6 +936,7 @@
   // ── LOCATION SELECTION ──
   function selectLocation(loc) {
     selectedLocation = loc;
+    trackApplicationEvent('Application Location Selected', 'application-location-selected');
     document.querySelectorAll('.loc-card').forEach(c => c.classList.remove('selected'));
     document.getElementById('loc-' + loc).classList.add('selected');
     setTimeout(() => { updateStepperForLocation(loc); goToStep(2); }, 240);
@@ -1018,13 +1032,23 @@
       return;
     }
 
+    trackApplicationEvent('Application Details Completed', 'application-details-completed');
+
     if (flow === 'elsewhere') {
       captureFormData();
+      trackApplicationEvent('Application Finished', 'application-finished');
       submitApplication();
       goToStep(4);
     } else {
       goToStep(3);
     }
+  }
+
+  function finishAustraliaApplication() {
+    captureFormData();
+    trackApplicationEvent('Application Finished', 'application-finished');
+    submitApplication();
+    goToStep(4);
   }
 
   // ── FILE HANDLING ──
@@ -1215,7 +1239,6 @@
         .catch(function(){ if (wrap) wrap.style.display = 'none'; });
     }
   }
-
 
 </script>
 </body>
