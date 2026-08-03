@@ -12,6 +12,8 @@
 <meta name="robots" content="noindex">
 <title>GAMGEE - Apply</title>
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<script src="/assets/config.js"></script>
+<script src="/assets/forms.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet">
@@ -844,9 +846,6 @@
     window.plausible(name);
   }
 
-  // ── REPLACE THIS URL with your Google Apps Script deployment URL ──
-  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzbH_xCsbTZPU1uOAYQxtywn_MbEd1EUDhqlNKRc0gmRiSFa2syYiKZxJv0WzlNZ-cv/exec';
-
   // ── SUBMIT TO GOOGLE SHEETS ──
   function submitApplication() {
     var d = formData;
@@ -879,25 +878,24 @@
       return fileToBase64(f);
     });
 
-    Promise.all(promises).then(function(files) {
+    return Promise.all(promises).then(function(files) {
       body.files = files;
       console.log('[APPLY] Sending', files.length, 'files, payload size:', JSON.stringify(body).length, 'bytes');
-      return fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(body)
-      });
-    }).then(function(r) { return r.json(); })
+      return GamgeeForms.submit(body, { captchaRoot: document.querySelector('.step-screen.active') });
+    })
       .then(function(data) {
         console.log('[APPLY] Response:', JSON.stringify(data));
         if (data.error) {
           console.error('[APPLY] Error:', data.error);
+          return false;
         } else {
           console.log('[APPLY] Submitted');
           trackApplicationEvent('Application Posted', 'application-posted');
+          return true;
         }
       }).catch(function(err) {
         console.error('[APPLY] Failed:', err);
+        return false;
       });
   }
 
@@ -1038,8 +1036,9 @@
     if (flow === 'elsewhere') {
       captureFormData();
       trackApplicationEvent('Application Finished', 'application-finished');
-      submitApplication();
-      goToStep(4);
+      submitApplication().then(function(submitted) {
+        if (submitted) goToStep(4);
+      });
     } else {
       goToStep(3);
     }
@@ -1048,8 +1047,9 @@
   function finishAustraliaApplication() {
     captureFormData();
     trackApplicationEvent('Application Finished', 'application-finished');
-    submitApplication();
-    goToStep(4);
+    submitApplication().then(function(submitted) {
+      if (submitted) goToStep(4);
+    });
   }
 
   // ── FILE HANDLING ──
