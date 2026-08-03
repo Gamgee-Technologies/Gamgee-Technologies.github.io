@@ -75,10 +75,19 @@
 
   /* ---------- beat scaffolding ---------- */
   .beat{position:relative}
-  .beat .wrap{padding:96px 40px}
+  /* Match the landing page's 1200px container and 28px side gutters so
+     every Mission card lands at the same desktop width and spacing. */
+  .beat .wrap{padding:96px 28px}
   .beat.dark{background:var(--plum);color:var(--paper)}
   .beat.tint{background:var(--paper)}
   .beat.no-btm .wrap{padding-bottom:54px}
+  /* Keep the first two cards on the same 48px rhythm: hero to card, then
+     card to card. */
+  .hero + .beat .wrap{padding-top:48px;padding-bottom:48px}
+  .hero + .beat + .beat .wrap{padding-top:0;padding-bottom:48px}
+  /* The patient rail already ends with 96px of breathing room; do not add a
+     second 96px before the Horizon card. */
+  .patients + .beat.dark .wrap{padding-top:0}
 
   .num{
     font-size:12px;font-weight:600;letter-spacing:0.28em;
@@ -102,22 +111,28 @@
 
   /* ---------- hero ---------- */
   .hero{background:var(--plum);color:var(--paper);position:relative;overflow:hidden}
-  .hero .wrap{max-width:1100px;padding:78px 52px 75px;position:relative;z-index:2}
+  .hero .wrap{max-width:1200px;padding:78px 28px 75px;position:relative;z-index:2}
   .hero .lede{font-size:39px;max-width:none;line-height:1.1}
   .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-  .hero-art{aspect-ratio:5/4;border-radius:18px;background:var(--plum);overflow:hidden;position:relative}
+  .hero-art{order:2;aspect-ratio:16/9;border-radius:18px;background:var(--plum);overflow:hidden;position:relative}
   .hero-art iframe{display:block;width:100%;height:100%;border:0;background:var(--plum)}
+  .hero-copy{order:1}
   .hero .num{color:var(--paper)}
   .hero .num::after{display:none}
-  .hero-copy .num{margin-bottom:12px;font-size:10px;letter-spacing:.32em}.hero-copy .say{margin-top:18px;max-width:none;color:rgba(255,255,255,.74);font-size:.87rem;line-height:1.55}.hero .lede .hl{background:var(--coral);color:#fff;border-radius:.16em;padding:0 .07em;white-space:nowrap}
+  .hero-copy .num{margin-bottom:12px;font-size:10px;letter-spacing:.32em}.hero-copy .say{margin-top:18px;max-width:none;color:rgba(255,255,255,.74);font-size:.87rem;line-height:1.55}.hero .lede .hl{display:inline-block;background:var(--coral);color:#fff;border-radius:16px;padding:9px 10px;line-height:1;vertical-align:middle;white-space:nowrap}
 
   /* Let the hero use the available desktop canvas without changing the
      reference-sized layout at narrower viewports. */
   @media(min-width:1200px){
-    .hero .wrap{max-width:1500px;padding:96px 52px}
-    .hero-grid{gap:72px}
-    .hero .lede{font-size:56px}
-    .hero-copy .say{font-size:1rem;line-height:1.6}
+    .hero .wrap{max-width:1200px;padding:72px 28px 88px}
+    .hero-grid{gap:0}
+    .hero .lede{font-size:74px;line-height:1.04}
+    .hero-copy .num{font-size:12px}
+    .hero-copy .say{font-size:1.1rem;line-height:1.6}
+    .hero-copy{position:relative;z-index:1}
+    /* Enlarge the animation as a 16:9 unit. Its purple canvas can extend
+       under the copy, while the visible dog retains its native proportions. */
+    .hero-art{width:680px;justify-self:end;margin-left:-80px;z-index:0}
   }
 
   /* ---------- figures ---------- */
@@ -140,12 +155,14 @@
   .stat-src{margin-top:26px;font-size:0.76rem;line-height:1.5;color:var(--muted)}
   .stat-src a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .stat-src a:hover{color:var(--coral)}
-  .editorial-card{max-width:980px;margin:0 auto;background:#fff;border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
-  .editorial-card figure{margin:0;order:2;aspect-ratio:1492 / 1054;border-radius:12px;overflow:hidden}
+  .editorial-card{max-width:none;margin:0 auto;background:#fff;border-radius:22px;padding:38px 48px;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:stretch}
+  .editorial-card figure{margin:0;order:2;height:100%;border-radius:12px;overflow:hidden}
   .editorial-card figure img{width:100%;height:100%;object-fit:cover}
   .editorial-card .lede{font-size:clamp(2rem,4vw,3.05rem)}
   .editorial-card .say{font-size:.97rem;margin-top:18px}
-  .why-card{max-width:980px;margin:0 auto;background:var(--coral);color:#fff;border-radius:22px;padding:38px 48px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .why-card{max-width:none;margin:0 auto;background:var(--coral);color:#fff;border-radius:22px;padding:38px 48px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .editorial-card .num::after,.why-card .num::after,.horizon-card .num::after{display:none}
+  .why-card .num{margin-bottom:14px}
   .why-card .num,.why-card .lede .hl{color:#fff}.why-card .say{color:rgba(255,255,255,.85);font-size:.97rem;margin-top:15px}.why-card .btn{background:#fff;color:var(--coral);margin-top:22px;padding:10px 20px}
   .why-card .stat{background:#fff;border:0;border-radius:12px;padding:17px 20px;margin:0}.why-card .stat + .stat{margin-top:12px;padding-top:17px}.why-card .stat-fig{font-size:2.25rem}.why-card .stat-lab{color:var(--ink);font-size:.82rem}.why-card .stat-src{color:rgba(255,255,255,.84);font-size:.72rem;margin-top:14px}.why-card .stat-src a{color:#fff}
 
@@ -170,7 +187,7 @@
   .patients-title{font-size:clamp(2.25rem,5vw,4rem);font-weight:700;letter-spacing:-.04em;line-height:1.05;text-align:center;max-width:12ch;margin:0 auto 28px}.patients-title span{color:var(--cyan)}
   .patients .p-eyebrow{display:none}
 
-  .horizon-card{max-width:980px;background:#fff;color:var(--plum);margin:0 auto;border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+  .horizon-card{max-width:none;background:#fff;color:var(--plum);margin:0 auto;border-radius:22px;padding:38px 48px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
   .horizon-card figure{margin:0;aspect-ratio:1124 / 843;border-radius:10px;overflow:hidden}.horizon-card figure img{width:100%;height:100%;object-fit:cover}
   .horizon-card .num{color:var(--plum);margin-bottom:15px}.horizon-card .lede{font-size:clamp(1.8rem,3.4vw,2.7rem)}.horizon-card .say{color:#4e4353;font-size:.92rem;margin-top:14px}.horizon-card .say b{color:var(--plum)}.horizon-card .btn{margin-top:18px}
 
@@ -224,13 +241,14 @@
     .navlinks{display:none}
     .nav-in{padding:16px 20px}
     .beat .wrap{padding:70px 22px}
-    .hero .wrap{padding:72px 22px 76px}.hero-grid,.editorial-card,.why-card,.horizon-card{grid-template-columns:1fr;gap:26px}.hero-art{order:2}.hero-copy{order:1}.hero .lede{font-size:clamp(2.15rem,10vw,2.5rem);max-width:12ch}
+    .beat.no-btm .wrap{padding-bottom:96px}
+    .hero .wrap{padding:72px 22px 0}.hero-grid,.editorial-card,.why-card,.horizon-card{grid-template-columns:1fr;gap:26px}.hero-art{order:2;height:270px;aspect-ratio:auto;display:flex;align-items:center;justify-content:center}.hero-art iframe{width:480px;height:270px;aspect-ratio:16 / 9;flex:0 0 auto}.hero-copy{order:1}.hero .lede{font-size:clamp(2rem,9.4vw,2.375rem);max-width:none}.hero .lede .hl{padding:9px 8px}
     .m-grid{grid-template-columns:1fr;gap:44px}
     .patients .wrap{padding:0 22px 26px}
-    .patients{padding-bottom:70px}
+    .patients{padding:32px 0 70px}
     .pcard{width:176px;flex:0 0 176px}
     .pshot{height:142px}
-    .editorial-card,.why-card,.horizon-card{padding:26px 22px;border-radius:18px}.editorial-card figure{order:0}.patients-title{font-size:2.35rem}
+    .editorial-card,.why-card,.horizon-card{padding:26px 22px;border-radius:18px}.editorial-card figure{order:0;height:auto;aspect-ratio:1492 / 1054}.patients-title{font-size:2.35rem}
     .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
     .foot-right{align-items:flex-start;gap:10px}
     .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
@@ -276,7 +294,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-grid">
-      <div class="hero-art rv" aria-label="Microscope illustration">
+      <div class="hero-art rv" aria-label="Rosie animated ASCII portrait">
         <iframe src="../assets/rosie-ascii-direct.html" title="Rosie rendered as animated ASCII" loading="eager"></iframe>
       </div>
       <div class="hero-copy">
@@ -293,7 +311,6 @@
   <div class="wrap">
     <div class="editorial-card rv">
       <div>
-        <div class="num">We believe</div>
         <h2 class="lede"><span class="hl">N of 1</span> medicine is the future.</h2>
         <p class="say">We can read biology like never before. We can sequence a tumour and see the exact mutations driving it. So why do dogs with cancer still get the same few options?</p>
         <p class="say">Same diagnosis. Different biology. <b>The treatment should know the difference.</b> That means moving from treatments designed for populations to a treatment designed for one patient.</p>
