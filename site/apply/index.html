@@ -206,6 +206,11 @@
   .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--border);box-shadow:none}
   .btn-ghost:hover{border-color:rgba(22,22,11,.3);background:rgba(22,22,11,.03)}
 
+  .apply-captcha-slot{margin-top:24px;min-height:108px}
+  .apply-captcha-label{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+  .application-feedback{margin-top:10px;color:#DB4949;font-size:14px;padding:10px 14px;background:rgba(219,73,73,.08);border-radius:10px}
+  .application-feedback:empty{display:none}
+
   /* ── PRIVACY NOTE ── */
   .privacy-note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:20px}
 
@@ -625,6 +630,12 @@
     </div>
   </div>
 
+  <div class="apply-captcha-slot">
+    <p class="apply-captcha-label">Quick security check</p>
+    <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+    <div class="application-feedback" aria-live="polite"></div>
+  </div>
+
   <div class="btn-row">
     <button class="btn btn-ghost" onclick="goToStep(1)">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -723,6 +734,12 @@
       <label for="extra-notes">Notes for our team</label>
       <textarea id="extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation — anything that might help us…"></textarea>
     </div>
+  </div>
+
+  <div class="apply-captcha-slot">
+    <p class="apply-captcha-label">Quick security check</p>
+    <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+    <div class="application-feedback" aria-live="polite"></div>
   </div>
 
   <div class="btn-row">
@@ -846,6 +863,20 @@
     window.plausible(name);
   }
 
+  function showApplicationError(root, message) {
+    var feedback = root && root.querySelector('.application-feedback');
+    if (feedback) feedback.textContent = message;
+  }
+
+  function prepareApplicationCaptcha(root) {
+    if (!root || !window.GamgeeForms) return;
+    var feedback = root.querySelector('.application-feedback');
+    if (feedback) feedback.textContent = '';
+    GamgeeForms.prepareCaptcha(root).catch(function() {
+      showApplicationError(root, 'The security check could not load. Please refresh and try again.');
+    });
+  }
+
   // ── SUBMIT TO GOOGLE SHEETS ──
   function submitApplication() {
     var d = formData;
@@ -895,6 +926,12 @@
         }
       }).catch(function(err) {
         console.error('[APPLY] Failed:', err);
+        var activeScreen = document.querySelector('.step-screen.active');
+        if (err && err.code === 'captcha_required') {
+          showApplicationError(activeScreen, 'Please complete the security check to send your application.');
+        } else {
+          showApplicationError(activeScreen, 'Something went wrong. Please try again.');
+        }
         return false;
       });
   }
@@ -919,10 +956,14 @@
       // show the right sub-screen
       const screen = selectedLocation === 'elsewhere' ? 'screen-2-elsewhere' : 'screen-2-sydney';
       document.getElementById(screen).classList.add('active');
+      if (selectedLocation === 'elsewhere') {
+        prepareApplicationCaptcha(document.getElementById(screen));
+      }
     } else {
       document.getElementById('screen-' + n).classList.add('active');
       if (n === 3) {
         trackApplicationEvent('Application Medical Reached', 'application-medical-reached');
+        prepareApplicationCaptcha(document.getElementById('screen-3'));
       }
     }
 

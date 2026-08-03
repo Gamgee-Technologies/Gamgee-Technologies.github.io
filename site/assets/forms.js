@@ -21,7 +21,7 @@
     return captchaApiPromise;
   }
 
-  function getCaptchaToken(root) {
+  function prepareCaptcha(root) {
     if (!root) return Promise.reject(new Error('CAPTCHA placement is unavailable.'));
     var container = root.querySelector('.gamgee-recaptcha');
     if (!container) {
@@ -37,7 +37,13 @@
           sitekey: global.GAMGEE_CONFIG.recaptchaSiteKey
         }));
       }
-      var token = captcha.getResponse(Number(container.dataset.widgetId));
+      return { captcha: captcha, widgetId: Number(container.dataset.widgetId) };
+    });
+  }
+
+  function getCaptchaToken(root) {
+    return prepareCaptcha(root).then(function(widget) {
+      var token = widget.captcha.getResponse(widget.widgetId);
       if (token) return token;
       var error = new Error('Please complete the CAPTCHA before submitting.');
       error.code = 'captcha_required';
@@ -67,5 +73,9 @@
       });
   }
 
-  global.GamgeeForms = Object.freeze({ submit: submit, loadCaptchaApi: loadCaptchaApi });
+  global.GamgeeForms = Object.freeze({
+    submit: submit,
+    prepareCaptcha: prepareCaptcha,
+    loadCaptchaApi: loadCaptchaApi
+  });
 })(window);
