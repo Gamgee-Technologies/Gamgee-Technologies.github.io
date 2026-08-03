@@ -507,6 +507,11 @@
   .modal-submit:disabled{transform:none;cursor:not-allowed;opacity:.6}
   .modal-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
 
+  .captcha-slot{margin-top:20px;min-height:108px}
+  .captcha-label{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+  .form-feedback{margin-top:10px;color:#DB4949;font-size:14px;padding:10px 14px;background:rgba(219,73,73,.08);border-radius:10px}
+  .form-feedback:empty{display:none}
+
   .modal-success{
     display:none;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;padding:52px 36px;gap:16px;
@@ -886,6 +891,11 @@
           <label for="media-msg">Message</label>
           <textarea id="media-msg" placeholder="So excited to hear from you! Tell us about the story you're working on - and your deadline if you have one."></textarea>
         </div>
+        <div class="captcha-slot">
+          <p class="captcha-label">Quick security check</p>
+          <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+          <div class="form-feedback" aria-live="polite"></div>
+        </div>
         <button class="modal-submit" onclick="submitModal('modal-media')">
           Send enquiry
           <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -958,6 +968,11 @@
         <div class="form-group">
           <label for="partner-msg">Tell us about yourself</label>
           <textarea id="partner-msg" placeholder="Tell us about your practice, your patients, or how we can help - we'd love to hear from you!"></textarea>
+        </div>
+        <div class="captcha-slot">
+          <p class="captcha-label">Quick security check</p>
+          <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+          <div class="form-feedback" aria-live="polite"></div>
         </div>
         <button class="modal-submit" onclick="submitModal('modal-partner')">
           Submit partnership enquiry
@@ -1051,6 +1066,11 @@
           </div>
           <input type="file" id="data-file-input" multiple accept=".pdf,.png,.jpg,.jpeg,.docx" onchange="handleDataFileSelect(event)" style="display:none">
           <div class="file-list" id="data-file-list"></div>
+        </div>
+        <div class="captcha-slot">
+          <p class="captcha-label">Quick security check</p>
+          <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+          <div class="form-feedback" aria-live="polite"></div>
         </div>
         <button class="modal-submit" onclick="submitModal('modal-data')">
           Submit contribution
@@ -1300,6 +1320,13 @@ function openModal(id) {
   const success = document.getElementById(id + '-success');
   if (form) form.style.display = '';
   if (success) success.classList.remove('show');
+  const feedback = form && form.querySelector('.form-feedback');
+  if (feedback) feedback.textContent = '';
+  if (form && window.GamgeeForms) {
+    GamgeeForms.prepareCaptcha(form).catch(function() {
+      showError(id, 'The security check could not load. Please refresh and try again.');
+    });
+  }
   overlay.querySelector('.modal-close').focus();
 }
 function closeModal(id) {
@@ -1321,18 +1348,20 @@ function setLoading(modalId, loading) {
   }
 }
 function showError(modalId, msg) {
-  let el = document.getElementById(modalId + '-error');
+  const form = document.getElementById(modalId + '-form');
+  let el = form.querySelector('.form-feedback');
   if (!el) {
     el = document.createElement('div');
-    el.id = modalId + '-error';
-    el.style.cssText = 'color:#DB4949;font-size:14px;margin-top:12px;padding:10px 14px;background:rgba(219,73,73,.08);border-radius:10px;';
-    document.getElementById(modalId + '-form').appendChild(el);
+    el.className = 'form-feedback';
+    el.setAttribute('aria-live', 'polite');
+    form.appendChild(el);
   }
   el.textContent = msg;
 }
 function clearError(modalId) {
-  const el = document.getElementById(modalId + '-error');
-  if (el) el.remove();
+  const form = document.getElementById(modalId + '-form');
+  const el = form && form.querySelector('.form-feedback');
+  if (el) el.textContent = '';
 }
 function submitModal(id) {
   clearError(id);
@@ -1399,8 +1428,11 @@ function sendModal(id, body) {
       if (data.error) return showError(id, data.error);
       document.getElementById(id + '-form').style.display = 'none';
       document.getElementById(id + '-success').classList.add('show');
-    }).catch(function() {
+    }).catch(function(error) {
       setLoading(id, false);
+      if (error && error.code === 'captcha_required') {
+        return showError(id, 'Please complete the security check to send your enquiry.');
+      }
       showError(id, 'Something went wrong. Please try again.');
     });
 }
