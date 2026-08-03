@@ -31,7 +31,7 @@
 <style>
   :root{
     color-scheme:only light;
-    --paper:#F5F7F5;
+    --paper:#F7F6E4;
     --paper-2:#EAEEEB;
     --ink:#141317;
     --plum:#29033A;
@@ -77,7 +77,7 @@
   .beat{position:relative}
   .beat .wrap{padding:96px 40px}
   .beat.dark{background:var(--plum);color:var(--paper)}
-  .beat.tint{background:var(--paper-2)}
+  .beat.tint{background:var(--paper)}
   .beat.no-btm .wrap{padding-bottom:54px}
 
   .num{
@@ -102,8 +102,23 @@
 
   /* ---------- hero ---------- */
   .hero{background:var(--plum);color:var(--paper);position:relative;overflow:hidden}
-  .hero .wrap{padding:132px 40px 124px;position:relative;z-index:2}
-  .hero .lede{font-size:clamp(2.5rem,7vw,5rem);max-width:22ch}
+  .hero .wrap{max-width:1100px;padding:78px 52px 75px;position:relative;z-index:2}
+  .hero .lede{font-size:39px;max-width:none;line-height:1.1}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .hero-art{aspect-ratio:5/4;border-radius:18px;background:var(--plum);overflow:hidden;position:relative}
+  .hero-art iframe{display:block;width:100%;height:100%;border:0;background:var(--plum)}
+  .hero .num{color:var(--paper)}
+  .hero .num::after{display:none}
+  .hero-copy .num{margin-bottom:12px;font-size:10px;letter-spacing:.32em}.hero-copy .say{margin-top:18px;max-width:none;color:rgba(255,255,255,.74);font-size:.87rem;line-height:1.55}.hero .lede .hl{background:var(--coral);color:#fff;border-radius:.16em;padding:0 .07em;white-space:nowrap}
+
+  /* Let the hero use the available desktop canvas without changing the
+     reference-sized layout at narrower viewports. */
+  @media(min-width:1200px){
+    .hero .wrap{max-width:1500px;padding:96px 52px}
+    .hero-grid{gap:72px}
+    .hero .lede{font-size:56px}
+    .hero-copy .say{font-size:1rem;line-height:1.6}
+  }
 
   /* ---------- figures ---------- */
   figure{margin-top:56px}
@@ -125,9 +140,17 @@
   .stat-src{margin-top:26px;font-size:0.76rem;line-height:1.5;color:var(--muted)}
   .stat-src a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
   .stat-src a:hover{color:var(--coral)}
+  .editorial-card{max-width:980px;margin:0 auto;background:#fff;border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .editorial-card figure{margin:0;order:2;aspect-ratio:1492 / 1054;border-radius:12px;overflow:hidden}
+  .editorial-card figure img{width:100%;height:100%;object-fit:cover}
+  .editorial-card .lede{font-size:clamp(2rem,4vw,3.05rem)}
+  .editorial-card .say{font-size:.97rem;margin-top:18px}
+  .why-card{max-width:980px;margin:0 auto;background:var(--coral);color:#fff;border-radius:22px;padding:38px 48px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .why-card .num,.why-card .lede .hl{color:#fff}.why-card .say{color:rgba(255,255,255,.85);font-size:.97rem;margin-top:15px}.why-card .btn{background:#fff;color:var(--coral);margin-top:22px;padding:10px 20px}
+  .why-card .stat{background:#fff;border:0;border-radius:12px;padding:17px 20px;margin:0}.why-card .stat + .stat{margin-top:12px;padding-top:17px}.why-card .stat-fig{font-size:2.25rem}.why-card .stat-lab{color:var(--ink);font-size:.82rem}.why-card .stat-src{color:rgba(255,255,255,.84);font-size:.72rem;margin-top:14px}.why-card .stat-src a{color:#fff}
 
   /* ---------- patient scroll ---------- */
-  .patients{background:var(--paper-2);padding-bottom:96px;overflow:hidden}
+  .patients{background:var(--plum);color:#fff;padding:76px 0 96px;overflow:hidden}
   .patients .wrap{padding:0 40px 30px}
   .p-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted)}
   .p-strip{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
@@ -135,15 +158,21 @@
   .p-track{display:flex;gap:14px;width:max-content;animation:pslide 72s linear infinite}
   .p-strip:hover .p-track{animation-play-state:paused}
   @keyframes pslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .pcard{width:212px;flex:0 0 212px;background:var(--paper);border:1px solid var(--line);overflow:hidden}
+  .pcard{width:212px;flex:0 0 212px;background:transparent;border:0;overflow:hidden}
   .pshot{position:relative;height:168px;background:var(--plum);overflow:hidden}
   .pshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
   .pshot .ph{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
-  .pmeta{padding:13px 14px 15px}
+  .pmeta{padding:13px 3px 15px}
   .pname{font-size:1rem;font-weight:700;letter-spacing:-0.01em;display:flex;align-items:baseline;gap:7px}
   .pname i{font-style:normal;font-size:0.78rem;font-weight:500;color:var(--muted)}
-  .ploc{font-size:0.78rem;color:var(--muted);margin-top:3px}
-  .pdx{font-size:0.78rem;font-weight:600;color:var(--coral);margin-top:9px;letter-spacing:0.01em}
+  .ploc{font-size:0.78rem;color:rgba(255,255,255,.72);margin-top:3px}
+  .pdx{font-size:0.78rem;font-weight:600;color:var(--cyan);margin-top:9px;letter-spacing:0.01em}
+  .patients-title{font-size:clamp(2.25rem,5vw,4rem);font-weight:700;letter-spacing:-.04em;line-height:1.05;text-align:center;max-width:12ch;margin:0 auto 28px}.patients-title span{color:var(--cyan)}
+  .patients .p-eyebrow{display:none}
+
+  .horizon-card{max-width:980px;background:#fff;color:var(--plum);margin:0 auto;border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+  .horizon-card figure{margin:0;aspect-ratio:1124 / 843;border-radius:10px;overflow:hidden}.horizon-card figure img{width:100%;height:100%;object-fit:cover}
+  .horizon-card .num{color:var(--plum);margin-bottom:15px}.horizon-card .lede{font-size:clamp(1.8rem,3.4vw,2.7rem)}.horizon-card .say{color:#4e4353;font-size:.92rem;margin-top:14px}.horizon-card .say b{color:var(--plum)}.horizon-card .btn{margin-top:18px}
 
   /* ---------- slot machine line ---------- */
   .slot{margin-top:58px;border-top:1px solid rgba(255,255,255,0.16);padding-top:44px}
@@ -195,12 +224,13 @@
     .navlinks{display:none}
     .nav-in{padding:16px 20px}
     .beat .wrap{padding:70px 22px}
-    .hero .wrap{padding:92px 22px 86px}
+    .hero .wrap{padding:72px 22px 76px}.hero-grid,.editorial-card,.why-card,.horizon-card{grid-template-columns:1fr;gap:26px}.hero-art{order:2}.hero-copy{order:1}.hero .lede{font-size:clamp(2.15rem,10vw,2.5rem);max-width:12ch}
     .m-grid{grid-template-columns:1fr;gap:44px}
     .patients .wrap{padding:0 22px 26px}
     .patients{padding-bottom:70px}
     .pcard{width:176px;flex:0 0 176px}
     .pshot{height:142px}
+    .editorial-card,.why-card,.horizon-card{padding:26px 22px;border-radius:18px}.editorial-card figure{order:0}.patients-title{font-size:2.35rem}
     .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
     .foot-right{align-items:flex-start;gap:10px}
     .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
@@ -245,35 +275,48 @@
 <!-- 01 WE ARE -->
 <section class="hero">
   <div class="wrap">
-    <div class="num rv">01 / We are</div>
-    <h1 class="lede rv d1">The <span class="hl">AI-first</span> genomics company.</h1>
-    <p class="say rv d2">We are starting with the first personalised mRNA cancer vaccines for dogs, built from each dog's own tumour.</p>
+    <div class="hero-grid">
+      <div class="hero-art rv" aria-label="Microscope illustration">
+        <iframe src="../assets/rosie-ascii-direct.html" title="Rosie rendered as animated ASCII" loading="eager"></iframe>
+      </div>
+      <div class="hero-copy">
+        <div class="num rv">WE ARE</div>
+        <h1 class="lede rv d1">The <span class="hl">AI-first genomics</span> company.</h1>
+        <p class="say rv d2">We are starting with the first personalised mRNA cancer vaccines for dogs, built from each dog's own tumour.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 02 WE BELIEVE -->
+<!-- WE BELIEVE -->
 <section class="beat">
   <div class="wrap">
-    <div class="num rv">02 / We believe</div>
-    <h2 class="lede rv d1"><span class="hl">N of 1</span> medicine is the future.</h2>
-    <p class="say rv d2">We can read biology like never before. We can sequence a tumour and see the exact mutations driving it. So why do dogs with cancer still get the same few options?</p>
-    <p class="say rv d3">Same diagnosis. Different biology. <b>The treatment should know the difference.</b> That means moving from treatments designed for populations to a treatment designed for one patient.</p>
-    <p class="say rv d3">The idea is not new. Doing it at scale is. <b>AI is what changed that:</b> one pipeline reads the tumour, finds the mutations that matter, and designs the vaccine to match.</p>
+    <div class="editorial-card rv">
+      <div>
+        <div class="num">We believe</div>
+        <h2 class="lede"><span class="hl">N of 1</span> medicine is the future.</h2>
+        <p class="say">We can read biology like never before. We can sequence a tumour and see the exact mutations driving it. So why do dogs with cancer still get the same few options?</p>
+        <p class="say">Same diagnosis. Different biology. <b>The treatment should know the difference.</b> That means moving from treatments designed for populations to a treatment designed for one patient.</p>
+        <p class="say">The idea is not new. Doing it at scale is. <b>AI is what changed that:</b> one pipeline reads the tumour, finds the mutations that matter, and designs the vaccine to match.</p>
+      </div>
+      <figure><img src="../assets/dogpic/Nof1.png" alt="A dog receiving care"></figure>
+    </div>
   </div>
 </section>
 
-<!-- 03 OUR MISSION -->
+<!-- WHERE WE'RE STARTING -->
 <section class="beat tint no-btm">
   <div class="wrap">
-    <div class="num rv">03 / Where we're starting</div>
-    <h2 class="lede rv d1">Why <span class="hl">dogs</span> first.</h2>
-    <div class="m-grid">
+    <div class="why-card rv">
       <div class="m-copy">
-        <p class="say rv d2">We started with dog cancer because of Rosie. But it is also one of the hardest problems in medicine to solve.</p>
-        <p class="say rv d3">Dogs get the same cancers we get, arising on their own inside working immune systems. Their disease moves fast, so the science answers in years instead of decades. And they are handed the bluntest treatments in medicine.</p>
+        <div class="num">Where we're starting</div>
+        <h2 class="lede">Why <span class="hl">dogs</span> first.</h2>
+        <p class="say">We started with dog cancer because of Rosie. But it is also one of the hardest problems in medicine to solve.</p>
+        <p class="say">Dogs get the same cancers we get, arising on their own inside working immune systems. Their disease moves fast, so the science answers in years instead of decades. And they are handed the bluntest treatments in medicine.</p>
+        <a class="btn" href="/story/">Read the full report &rarr;</a>
       </div>
 
-      <div class="stats rv d3">
+      <div class="stats">
         <div class="stat first">
           <div class="stat-fig">1 in 4</div>
           <div class="stat-lab">will face cancer in their lifetime</div>
@@ -292,25 +335,30 @@
 
 <!-- PATIENT SCROLL -->
 <section class="patients">
-  <div class="wrap"><div class="p-eyebrow rv">Who we're building this for</div></div>
+  <div class="wrap"><h2 class="patients-title rv">Who we&rsquo;re building <span>this for</span></h2><div class="p-eyebrow">Who we're building this for</div></div>
   <div class="p-strip"><div class="p-track" id="ptrack"></div></div>
 </section>
 
-<!-- 04 OUR HORIZON -->
+<!-- OUR HORIZON -->
 <section class="beat dark">
   <div class="wrap">
-    <div class="num rv">04 / Our horizon</div>
-    <h2 class="lede rv d1">Dog cancer is <span class="hl">the beginning</span>.</h2>
-    <p class="say rv d2">We are not only proving that a personalised vaccine works. <b>We are using AI to build autonomous systems that read biological failure, discover how to control it, and design precise repairs.</b></p>
-    <p class="say rv d3">Get that right and cancer stops looking like one disease. It starts looking like one instance of a much larger problem.</p>
-
-    <div class="slot rv">
-      <p class="slot-line">
-        <span>Pioneering N of 1 treatment for</span>
-        <span class="reel dx" data-reel="dx"><span class="reel-track"></span></span>
-        <span>in every</span>
-        <span class="reel sp" data-reel="sp"><span class="reel-track"></span></span>
-      </p>
+    <div class="horizon-card rv">
+      <figure><img src="../assets/dogpic/OurHorizon.png" alt="A dog outdoors"></figure>
+      <div>
+        <div class="num">Our horizon</div>
+        <h2 class="lede">Dog cancer is <span class="hl">the beginning</span>.</h2>
+        <p class="say">We are not only proving that a personalised vaccine works. <b>We are using AI to build autonomous systems that read biological failure, discover how to control it, and design precise repairs.</b></p>
+        <p class="say">Get that right and cancer stops looking like one disease. It starts looking like one instance of a much larger problem.</p>
+        <a class="btn" href="/apply/">Apply now &rarr;</a>
+      </div>
+      <div class="slot" style="grid-column:1 / -1;margin-top:0;padding-top:26px;border-top:1px solid rgba(41,3,58,.15)">
+        <p class="slot-line" style="color:var(--plum)">
+          <span>Pioneering N of 1 treatment for</span>
+          <span class="reel dx" data-reel="dx"><span class="reel-track"></span></span>
+          <span>in every</span>
+          <span class="reel sp" data-reel="sp"><span class="reel-track"></span></span>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -380,11 +428,13 @@
   }
 
   function card(p,i){
-    const slug = p.name.toLowerCase();
+    // Original placedog.net placeholders, downloaded locally for a stable preview.
+    // These images are not mapped to the illustrative names or diagnoses above.
+    const photo = `../assets/dogpic/dog-${20 + (i % 14)}.jpg`;
     return `<article class="pcard">
       <div class="pshot">
         ${placeholder(i)}
-        <img src="https://placedog.net/420/340?id=${20 + (i % 14)}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
+        <img src="${photo}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="pmeta">
         <div class="pname">${p.name} <i>${p.age} yrs</i></div>
