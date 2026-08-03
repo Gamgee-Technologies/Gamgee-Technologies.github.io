@@ -16,6 +16,11 @@ function doGet(e) {
 }
 
 function doPost(e) {
+  var captcha = verifyRecaptcha_(e);
+  if (captcha.enforced && !captcha.ok) {
+    return captchaJsonOutput_({ error: captcha.message });
+  }
+
   try {
     var data = JSON.parse(e.postData.contents);
     var ss = SpreadsheetApp.openById(SHEET_ID);
@@ -43,6 +48,46 @@ function doPost(e) {
   } catch (err) {
     return ContentService.createTextOutput(JSON.stringify({ error: err.message })).setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+function verifyRecaptcha_(e) {
+  var properties = PropertiesService.getScriptProperties();
+  var enforced = properties.getProperty('RECAPTCHA_ENFORCED') === 'true';
+  var secret = properties.getProperty('RECAPTCHA_SECRET');
+  var payload = {};
+
+  try {
+    payload = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+  } catch (err) {
+    return { ok: false, enforced: enforced, message: 'CAPTCHA verification failed.' };
+  }
+
+  if (!payload.recaptchaToken) {
+    return { ok: false, enforced: enforced, message: 'Please complete the CAPTCHA before submitting.' };
+  }
+
+  if (!secret) {
+    return { ok: false, enforced: enforced, message: 'CAPTCHA is not configured.' };
+  }
+
+  try {
+    var response = UrlFetchApp.fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'post',
+      payload: { secret: secret, response: payload.recaptchaToken },
+      muteHttpExceptions: true
+    });
+    var result = JSON.parse(response.getContentText());
+    return result.success === true
+      ? { ok: true, enforced: enforced }
+      : { ok: false, enforced: enforced, message: 'CAPTCHA verification failed.' };
+  } catch (err) {
+    return { ok: false, enforced: enforced, message: 'CAPTCHA verification failed.' };
+  }
+}
+
+function captchaJsonOutput_(body) {
+  return ContentService.createTextOutput(JSON.stringify(body))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 function sendNotification(sheetName, data, fileUrls) {

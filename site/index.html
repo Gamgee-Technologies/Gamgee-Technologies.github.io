@@ -1393,7 +1393,7 @@ function submitModal(id) {
   }
 }
 function sendModal(id, body) {
-  return GamgeeForms.submit(body)
+  return GamgeeForms.submit(body, { captchaRoot: document.getElementById(id + '-form') })
     .then(function(data) {
       setLoading(id, false);
       if (data.error) return showError(id, data.error);

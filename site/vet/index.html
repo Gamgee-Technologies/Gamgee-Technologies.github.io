@@ -733,11 +733,14 @@
     data._sheet = 'Referral';
 
     try {
-      await GamgeeForms.submit(data, { opaque: true });
-    } catch(err) {}
-
-    formView.style.display = 'none';
-    successCard.style.display = 'block';
+      await GamgeeForms.submit(data, { opaque: true, captchaRoot: form });
+      formView.style.display = 'none';
+      successCard.style.display = 'block';
+    } catch(err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit referral';
+      if (err && err.message) alert(err.message);
+    }
   });
 </script>
 

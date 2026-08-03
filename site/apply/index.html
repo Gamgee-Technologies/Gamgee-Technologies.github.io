@@ -878,21 +878,24 @@
       return fileToBase64(f);
     });
 
-    Promise.all(promises).then(function(files) {
+    return Promise.all(promises).then(function(files) {
       body.files = files;
       console.log('[APPLY] Sending', files.length, 'files, payload size:', JSON.stringify(body).length, 'bytes');
-      return GamgeeForms.submit(body);
+      return GamgeeForms.submit(body, { captchaRoot: document.querySelector('.step-screen.active') });
     })
       .then(function(data) {
         console.log('[APPLY] Response:', JSON.stringify(data));
         if (data.error) {
           console.error('[APPLY] Error:', data.error);
+          return false;
         } else {
           console.log('[APPLY] Submitted');
           trackApplicationEvent('Application Posted', 'application-posted');
+          return true;
         }
       }).catch(function(err) {
         console.error('[APPLY] Failed:', err);
+        return false;
       });
   }
 
@@ -1033,8 +1036,9 @@
     if (flow === 'elsewhere') {
       captureFormData();
       trackApplicationEvent('Application Finished', 'application-finished');
-      submitApplication();
-      goToStep(4);
+      submitApplication().then(function(submitted) {
+        if (submitted) goToStep(4);
+      });
     } else {
       goToStep(3);
     }
@@ -1043,8 +1047,9 @@
   function finishAustraliaApplication() {
     captureFormData();
     trackApplicationEvent('Application Finished', 'application-finished');
-    submitApplication();
-    goToStep(4);
+    submitApplication().then(function(submitted) {
+      if (submitted) goToStep(4);
+    });
   }
 
   // ── FILE HANDLING ──
