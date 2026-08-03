@@ -210,6 +210,10 @@
   .consent-warning.show{display:block}
 
   .form-submit-row{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:24px}
+  .vet-captcha-slot{margin-top:20px;min-height:108px}
+  .vet-captcha-label{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+  .vet-form-feedback{margin-top:10px;color:var(--coral);font-size:14px;padding:10px 14px;background:rgba(219,73,73,.08);border-radius:10px}
+  .vet-form-feedback:empty{display:none}
   .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .form-note{font-size:12px;color:var(--muted)}
@@ -656,6 +660,12 @@
         </div>
         <div class="consent-warning" id="consent-warning">Please gain consent from the owner before applying for referral.</div>
 
+        <div class="vet-captcha-slot">
+          <p class="vet-captcha-label">Quick security check</p>
+          <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+          <div class="vet-form-feedback" aria-live="polite"></div>
+        </div>
+
         <div class="form-submit-row">
           <button type="submit" class="btn btn-coral">Submit referral
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -684,10 +694,22 @@
   const successCard = document.getElementById('successCard');
   const form = document.getElementById('referralForm');
 
+  function showReferralError(message){
+    form.querySelector('.vet-form-feedback').textContent = message;
+  }
+
+  function prepareReferralCaptcha(){
+    form.querySelector('.vet-form-feedback').textContent = '';
+    GamgeeForms.prepareCaptcha(form).catch(function(){
+      showReferralError('The security check could not load. Please refresh and try again.');
+    });
+  }
+
   function openModal(e){
     if(e) e.preventDefault();
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    prepareReferralCaptcha();
   }
   function closeModal(){
     overlay.classList.remove('open');
@@ -697,6 +719,11 @@
     formView.style.display = 'block';
     successCard.style.display = 'none';
     form.reset();
+    form.querySelector('.vet-form-feedback').textContent = '';
+    var captcha = form.querySelector('.gamgee-recaptcha');
+    if(captcha && captcha.dataset.widgetId && window.grecaptcha){
+      window.grecaptcha.reset(Number(captcha.dataset.widgetId));
+    }
   }
 
   openTriggers.forEach(el => el.addEventListener('click', openModal));
@@ -739,7 +766,11 @@
     } catch(err) {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit referral';
-      if (err && err.message) alert(err.message);
+      if(err && err.code === 'captcha_required'){
+        showReferralError('Please complete the security check to submit this referral.');
+      } else {
+        showReferralError('Something went wrong. Please try again.');
+      }
     }
   });
 </script>
