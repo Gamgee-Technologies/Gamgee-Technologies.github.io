@@ -24,6 +24,8 @@
 
 <!-- Search crawlers need a stable, fetchable favicon URL. -->
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<script src="/assets/config.js"></script>
+<script src="/assets/forms.js"></script>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
 <script>
@@ -1332,9 +1334,6 @@ function clearError(modalId) {
   const el = document.getElementById(modalId + '-error');
   if (el) el.remove();
 }
-// ── REPLACE THIS URL with your Google Apps Script deployment URL ──
-var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzbH_xCsbTZPU1uOAYQxtywn_MbEd1EUDhqlNKRc0gmRiSFa2syYiKZxJv0WzlNZ-cv/exec';
-
 function submitModal(id) {
   clearError(id);
   var body = {};
@@ -1394,11 +1393,7 @@ function submitModal(id) {
   }
 }
 function sendModal(id, body) {
-  return fetch(FORM_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify(body)
-  }).then(function(r) { return r.json(); })
+  return GamgeeForms.submit(body)
     .then(function(data) {
       setLoading(id, false);
       if (data.error) return showError(id, data.error);
