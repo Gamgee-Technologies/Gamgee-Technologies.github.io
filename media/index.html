@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMGEE - In the Media</title>
+<meta name="description" content="Press, broadcast and research coverage of GAMGEE and the first personalised mRNA cancer vaccine designed for a dog.">
+<meta property="og:title" content="GAMGEE - In the Media">
+<meta property="og:description" content="Press, broadcast and research coverage of GAMGEE and the first personalised mRNA cancer vaccine designed for a dog.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gamgee">
+<meta property="og:image" content="https://gamgee.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Gamgee - personalised cancer treatment for pets">
+<meta property="og:url" content="https://gamgee.io/media/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GAMGEE - In the Media">
+<meta name="twitter:description" content="Press, broadcast and research coverage of GAMGEE and the first personalised mRNA cancer vaccine designed for a dog.">
+<meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
+<meta name="twitter:image:alt" content="Gamgee - personalised cancer treatment for pets">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   GAMGEE — In the Media
+
+   LOGO PATHS: absolute (https://www.gamgee.io/assets/...) so this
+   previews anywhere. On deploy, find/replace
+   "https://www.gamgee.io/assets/" -> "/assets/" to go relative.
+
+   THUMBNAILS: every card loads hqdefault (always exists), then
+   upgrades to maxresdefault only if that file is really there.
+   No broken images, ever.
+   ============================================================ */
+:root{
+  color-scheme:only light;
+  --plum:#3C014E;
+  --plum-soft:#2D0A47;
+  --plum-deep:#1E0230;
+  --coral:#DB4949;
+  --cyan:#75D1DC;
+  --mint:#D4F0EC;
+  --paper:#F7F6E4;
+  --surface:#FFFFFF;
+  --ink:#16160B;
+  --muted:#5B5F55;
+  --ink-60:#5B5F55;
+  --ink-40:#7A7A70;
+  --rule:rgba(22,22,11,.10);
+  --font-sans:'Inter',sans-serif;
+  --font-display:'Poppins',sans-serif;
+  --max:1200px;
+  --pad:clamp(20px,4vw,28px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.wordmark,.btn-apply{font-family:var(--font-display)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(247,246,228,.88);backdrop-filter:saturate(180%) blur(12px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;min-height:80px}
+.wordmark{font-weight:800;font-size:22px;min-height:44px;display:inline-flex;align-items:center}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:15px;font-weight:600}
+.nav-links a:not(.btn-apply){min-height:44px;display:inline-flex;align-items:center;transition:opacity .14s ease,color .14s ease}
+.nav-links a:not(.btn-apply):hover{opacity:.65}
+.nav-links a.on{color:var(--coral)}
+.btn-apply{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;background:var(--plum);color:#fff;padding:11px 24px;border-radius:999px;font-size:14px;font-weight:700;box-shadow:0 8px 20px rgba(60,1,78,.22);transition:transform .12s ease,background .18s ease}
+.btn-apply:hover{background:var(--plum-soft);transform:translateY(-2px)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:0;cursor:pointer;padding:6px;border-radius:8px}
+.nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:rgba(247,246,228,.98);padding:0 20px 20px;border-bottom:1px solid var(--rule)}
+.mobile-menu.open{display:flex}
+.mobile-menu a:not(.btn-apply){display:block;padding:14px 0;font-size:17px;font-weight:600;border-bottom:1px solid var(--rule)}
+.mobile-menu .btn-apply{margin-top:14px;width:100%;padding:16px 24px;font-size:16px}
+
+/* ---------- jump bar ---------- */
+.jump{position:sticky;top:80px;z-index:50;background:rgba(247,246,228,.96);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.jump-in{display:flex;gap:26px;overflow-x:auto;scrollbar-width:none}
+.jump-in::-webkit-scrollbar{display:none}
+.jump a{white-space:nowrap;padding:14px 0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-60);font-weight:700;transition:color .18s ease}
+.jump a:hover{color:var(--ink)}
+
+/* ---------- hero ---------- */
+.media-hero{padding:clamp(64px,9vw,124px) 0 clamp(56px,8vw,96px)}
+.media-hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);gap:clamp(36px,7vw,96px);align-items:end}
+.media-hero .eyebrow{display:block;margin-bottom:18px;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.media-hero h1{font-size:clamp(44px,7vw,82px);line-height:.98;letter-spacing:-.055em;max-width:10ch;font-weight:800}
+.media-hero h1 em{display:block;color:var(--coral);font-style:normal}
+.media-hero-copy{padding-bottom:6px}
+.media-hero-copy p{font-size:clamp(17px,1.8vw,21px);line-height:1.55;color:var(--ink-60);max-width:34ch}
+.media-hero-proof{display:flex;gap:12px;align-items:center;margin-top:26px;font-size:13px;font-weight:600}
+.media-hero-proof::before{content:"";width:40px;height:3px;background:var(--cyan);border-radius:999px}
+
+/* ---------- section shell ---------- */
+.sec{padding:clamp(64px,8vw,104px) 0}
+.sec + .sec{border-top:1px solid var(--rule)}
+.sec-title{display:flex;align-items:center;gap:14px;margin-bottom:clamp(30px,4vw,48px);font-size:clamp(30px,4vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1.05}
+.sec-title::before{content:"";flex:none;width:10px;height:10px;background:var(--coral);border-radius:50%}
+.jump + #news{padding-top:clamp(38px,4vw,54px)}
+
+/* ---------- shared card grid ---------- */
+.grid{display:grid;width:100%;min-width:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:clamp(20px,2.4vw,30px)}
+.grid.lead > :first-child{grid-column:1/-1}
+@media(min-width:900px){.grid.lead > :first-child .thumb{aspect-ratio:21/9}}
+
+/* card anatomy, shared by video + logo cards */
+.card{display:block;-webkit-tap-highlight-color:transparent;min-width:0}
+.vcard{cursor:pointer}
+.thumb,.lockup{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:22px}
+
+/* video visual */
+.thumb{background:var(--plum)}
+.thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .4s ease;filter:saturate(.92)}
+.vcard:hover .thumb img{transform:scale(1.04);filter:saturate(1)}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(41,3,58,0) 40%,rgba(41,3,58,.74) 100%);pointer-events:none}
+.play{position:absolute;left:20px;bottom:20px;z-index:2;width:52px;height:52px;border-radius:999px;background:var(--coral);display:grid;place-items:center;box-shadow:0 8px 28px rgba(41,3,58,.35);transition:transform .25s cubic-bezier(.2,.7,.2,1),background .25s ease}
+.vcard:hover .play{transform:scale(1.09);background:#e85757}
+.play svg{margin-left:3px}
+.vcard iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:22px;z-index:3}
+.youtube-fallback{position:absolute;right:14px;bottom:14px;z-index:4;display:inline-flex;align-items:center;min-height:40px;padding:9px 14px;border-radius:999px;background:rgba(22,22,11,.82);color:#fff;font-size:12px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.2);backdrop-filter:blur(8px)}
+.youtube-fallback:hover{background:var(--coral)}
+
+/* logo visual, same footprint as a video still */
+.lockup{background:var(--surface);border:1px solid var(--rule);display:grid;place-items:center;padding:0 12%;transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}
+.lcard:hover .lockup{border-color:rgba(41,3,58,.2)}
+.lockup img{max-height:42%;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.78;transition:filter .3s ease,opacity .3s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.lcard:hover .lockup img{filter:none;opacity:1;transform:scale(1.03)}
+.lockup img[alt="ACS Information Age"]{position:absolute;top:58%;left:50%;height:48%;max-height:none;transform:translate(-50%,-50%)}
+.lcard:hover .lockup img[alt="ACS Information Age"]{transform:translate(-50%,-50%) scale(1.03)}
+.lockup img[alt="TBPN Digest"]{position:absolute;top:50%;left:50%;width:32%;max-width:none;max-height:none;transform:translate(-50%,-50%)}
+.lcard:hover .lockup img[alt="TBPN Digest"]{transform:translate(-50%,-50%) scale(1.03)}
+.lockup img[alt="Geo TV"],
+.lockup img[alt="New York Post"]{transform:translateY(-25px)}
+.lockup img[alt="Yahoo Finance"]{transform:translateY(-23px)}
+.lcard:hover .lockup img[alt="Geo TV"],
+.lcard:hover .lockup img[alt="New York Post"]{transform:translateY(-25px) scale(1.03)}
+.lcard:hover .lockup img[alt="Yahoo Finance"]{transform:translateY(-23px) scale(1.03)}
+.lockup .wordfall{font-size:clamp(18px,2.2vw,24px);font-weight:600;letter-spacing:-.02em;color:var(--ink-60);text-align:center}
+
+/* meta bar + subhead, identical across card types */
+.vbar{display:flex;align-items:center;gap:14px;margin-top:16px}
+.vbar .lg{height:22px;width:auto;max-width:124px;object-fit:contain;filter:grayscale(1);opacity:.72;transition:filter .25s ease,opacity .25s ease}
+.card:hover .vbar .lg{filter:none;opacity:1}
+.vbar .name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--coral)}
+.vbar .date{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-40);margin-left:auto}
+.vtitle{margin-top:8px;font-family:var(--font-display);font-size:clamp(17px,1.8vw,21px);font-weight:600;letter-spacing:-.025em;line-height:1.28;max-width:38ch}
+.grid.lead > :first-child .vtitle{font-size:clamp(24px,3vw,34px);max-width:36ch;text-wrap:balance}
+
+/* ---------- altman post ---------- */
+.post{background:var(--surface);border:1px solid var(--rule);border-radius:24px;padding:clamp(24px,3.4vw,42px);margin-bottom:clamp(20px,2.4vw,30px);display:block;transition:border-color .25s ease,box-shadow .25s ease}
+.post:hover{border-color:rgba(41,3,58,.22);box-shadow:0 14px 34px rgba(41,3,58,.09)}
+.post-top{display:flex;align-items:center;gap:14px}
+.avatar{width:46px;height:46px;border-radius:999px;flex:none;background:var(--plum);color:var(--paper);display:grid;place-items:center;font-size:15px;font-weight:600}
+.post-top .who b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.post-top .who span{display:block;font-size:13px;color:var(--ink-40)}
+.post-top .x{margin-left:auto;color:var(--ink)}
+.post blockquote{margin-top:22px;font-size:clamp(21px,3vw,36px);font-weight:400;letter-spacing:-.03em;line-height:1.22;max-width:24ch;text-wrap:balance}
+.post blockquote em{font-style:normal;color:var(--coral)}
+.post-foot{margin-top:24px;padding-top:18px;border-top:1px solid var(--rule);display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-40)}
+.post-foot .arrow{margin-left:auto;color:var(--coral);letter-spacing:0;font-size:14px}
+
+/* ---------- other coverage rail ---------- */
+.rail-head{display:flex;align-items:center;gap:16px}
+.rail-nav{margin-left:auto;display:flex;gap:8px}
+.rail-btn{width:44px;height:44px;border-radius:999px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .2s ease,border-color .2s ease,opacity .2s ease;font-family:inherit;font-size:15px}
+.rail-btn:hover{background:#fff;border-color:rgba(41,3,58,.24)}
+.rail-btn:disabled{opacity:.3;cursor:default}
+.rail-mask{position:relative;margin-top:clamp(24px,3vw,36px)}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px calc(50vw - var(--max)/2 + var(--pad)) 24px;margin-left:calc(-1 * (50vw - var(--max)/2 + var(--pad)));margin-right:calc(-1 * (50vw - var(--max)/2 + var(--pad)))}
+@media(max-width:1292px){.rail{padding-left:var(--pad);padding-right:var(--pad);margin-left:calc(-1 * var(--pad));margin-right:calc(-1 * var(--pad))}}
+.rail::-webkit-scrollbar{display:none}
+.rail .lcard{flex:0 0 236px;scroll-snap-align:start}
+.rail .vbar{margin-top:12px}
+.rail .vbar .name{font-size:10.5px}
+
+/* ---------- cta ---------- */
+.cta{background:var(--plum);color:#fff;border-radius:28px;padding:clamp(44px,6vw,76px);text-align:left;margin-bottom:clamp(64px,8vw,104px);display:grid;grid-template-columns:1fr auto;gap:24px 48px;align-items:end}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600}
+.cta .eyebrow{color:var(--cyan);display:block;margin-bottom:16px;grid-column:1/-1}
+.cta h2{font-size:clamp(30px,4.2vw,48px);font-weight:700;letter-spacing:-.04em;line-height:1.08;max-width:18ch}
+.cta a{background:var(--coral);color:#fff;padding:14px 30px;border-radius:999px;font-family:var(--font-display);font-size:14px;font-weight:700;display:inline-block;white-space:nowrap;transition:background .2s ease,transform .2s ease;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.cta a:hover{background:#e85757;transform:translateY(-1px)}
+
+/* ---------- footer ---------- */
+footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
+.foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
+.foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+.foot-flag{display:flex;align-items:center;gap:6px;margin-bottom:-24px}
+.foot .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:22px;color:inherit}
+.foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+.foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
+.foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+.foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+.foot .footer-links a:hover{color:var(--ink)}
+.legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;font-size:12px;color:rgba(0,0,0,.6);border-top:1px solid rgba(0,0,0,.08)}
+.legal a{color:rgba(0,0,0,.6);text-decoration:none}
+.flag-inline{display:none}
+
+/* ---------- motion ---------- */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}.rail{scroll-behavior:auto}}
+
+@media(max-width:900px){
+  .nav-in{min-height:72px}
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .jump{top:72px}
+  .media-hero-grid{grid-template-columns:1fr;gap:24px}
+  .media-hero h1{max-width:12ch}
+  .grid.lead > :first-child{grid-column:auto}
+  .cta{grid-template-columns:1fr;align-items:start}
+  .cta .eyebrow{grid-column:auto}
+  .cta a{justify-self:start}
+  .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
+  .foot-right{align-items:flex-start;gap:10px}
+  .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+  .foot .footer-links a{margin-left:0;font-size:15px}
+  .foot-flag{display:none}
+  .flag-inline{display:inline-block}
+  .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
+}
+
+@media(max-width:560px){
+  .nav-in{min-height:68px}
+  .jump{position:relative;top:auto}
+  .jump-in{gap:20px}
+  .media-hero{padding-top:48px;padding-bottom:54px}
+  .media-hero h1{font-size:42px}
+  .media-hero-copy p{font-size:17px}
+  .sec{padding:54px 0}
+  .sec-title{font-size:30px;margin-bottom:28px}
+  .grid{grid-template-columns:1fr;gap:28px}
+  .thumb,.lockup,.vcard iframe{border-radius:18px}
+  .play{left:14px;bottom:14px;width:46px;height:46px}
+  .vbar{margin-top:13px}
+  .vbar .date{font-size:10px}
+  .grid.lead > :first-child .vtitle{font-size:22px}
+  .post blockquote{font-size:23px}
+  .rail-head{align-items:flex-end}
+  .rail-nav{display:none}
+  .rail .lcard{flex-basis:min(78vw,286px)}
+  .cta{border-radius:24px;padding:38px 26px}
+  .cta h2{font-size:31px}
+  .cta a{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="/" class="wordmark">GAMGEE</a>
+    <div class="nav-links">
+      <a href="/mission/">Our mission</a>
+      <a href="/story/">Our story</a>
+      <a href="/media/" class="on">In the media</a>
+      <a href="/vet/">For vets</a>
+      <a href="/apply/" class="btn-apply">Apply</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/mission/">Our mission</a>
+    <a href="/story/">Our story</a>
+    <a href="/media/" class="on">In the media</a>
+    <a href="/vet/">For vets</a>
+    <a href="/apply/" class="btn-apply">Apply now</a>
+  </div>
+</nav>
+
+<div class="jump">
+  <div class="wrap jump-in">
+    <a href="#news">News coverage</a>
+    <a href="#science">Research &amp; science</a>
+    <a href="#conversation">In the conversation</a>
+    <a href="#other">Other coverage</a>
+    <a href="#enquiries">Media enquiries</a>
+  </div>
+</div>
+
+<!-- ============ NEWS COVERAGE ============ -->
+<section class="sec" id="news">
+  <div class="wrap">
+    <h1 class="sec-title reveal">News coverage</h1>
+
+    <div class="grid lead">
+
+      <div class="card vcard reveal" data-yt="14SgyUhSIGQ">
+        <div class="thumb">
+          <img data-yt="14SgyUhSIGQ" alt="NBC News segment on the AI-designed cancer vaccine for Rosie">
+          <div class="play" aria-hidden="true"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M17 8.27a2 2 0 0 1 0 3.46L3 19.8A2 2 0 0 1 0 18.06V1.94A2 2 0 0 1 3 .2l14 8.07Z" fill="#F5F7F5"/></svg></div>
+        </div>
+        <div class="vbar">
+          <img class="lg" src="https://www.gamgee.io/assets/LogosMedia/nbc-news.png" alt="NBC News" onerror="this.outerHTML='&lt;span class=&quot;name&quot;&gt;NBC News&lt;/span&gt;'">
+          <span class="date">March 2026</span>
+        </div>
+        <div class="vtitle">The man who used AI to design a cancer vaccine for his dying dog</div>
+      </div>
+
+      <div class="card vcard reveal" data-yt="COYSRbF1F-Y">
+        <div class="thumb">
+          <img data-yt="COYSRbF1F-Y" alt="TODAY Show segment with Paul Conyngham and Rosie">
+          <div class="play" aria-hidden="true"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M17 8.27a2 2 0 0 1 0 3.46L3 19.8A2 2 0 0 1 0 18.06V1.94A2 2 0 0 1 3 .2l14 8.07Z" fill="#F5F7F5"/></svg></div>
+        </div>
+        <div class="vbar">
+          <img class="lg" src="https://www.gamgee.io/assets/LogosMedia/today-show.png" alt="TODAY Show" onerror="this.outerHTML='&lt;span class=&quot;name&quot;&gt;TODAY Show&lt;/span&gt;'">
+          <span class="date">March 2026</span>
+        </div>
+        <div class="vtitle">Paul and Rosie on the morning show sofa</div>
+      </div>
+
+      <div class="card vcard reveal" data-yt="USEhHrY5ZEU">
+        <div class="thumb">
+          <img data-yt="USEhHrY5ZEU" alt="CBS News interview with Paul Conyngham and Professor Pall Thordarson">
+          <div class="play" aria-hidden="true"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M17 8.27a2 2 0 0 1 0 3.46L3 19.8A2 2 0 0 1 0 18.06V1.94A2 2 0 0 1 3 .2l14 8.07Z" fill="#F5F7F5"/></svg></div>
+        </div>
+        <div class="vbar">
+          <img class="lg" src="https://www.gamgee.io/assets/LogosMedia/cbs-news.png" alt="CBS News" onerror="this.outerHTML='&lt;span class=&quot;name&quot;&gt;CBS News&lt;/span&gt;'">
+          <span class="date">18 March 2026</span>
+        </div>
+        <div class="vtitle">Paul and Professor Thordarson on how the vaccine was made</div>
+      </div>
+
+      <div class="card vcard reveal" data-yt="oBV1BZJalos">
+        <div class="thumb">
+          <img data-yt="oBV1BZJalos" alt="The Australian's report on the AI-designed cancer vaccine">
+          <div class="play" aria-hidden="true"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M17 8.27a2 2 0 0 1 0 3.46L3 19.8A2 2 0 0 1 0 18.06V1.94A2 2 0 0 1 3 .2l14 8.07Z" fill="#F5F7F5"/></svg></div>
+        </div>
+        <div class="vbar">
+          <img class="lg" src="https://www.gamgee.io/assets/LogosMedia/the-australian.png" alt="The Australian" onerror="this.outerHTML='&lt;span class=&quot;name&quot;&gt;The Australian&lt;/span&gt;'">
+          <span class="date">March 2026</span>
+        </div>
+        <div class="vtitle">The report that started it all</div>
+      </div>
+
+      <div class="card vcard reveal" data-yt="-VrzRGXVZ6s" data-start="739">
+        <div class="thumb">
+          <img data-yt="-VrzRGXVZ6s" data-custom-thumbnail="../assets/vid/kbs-paul-rosie-thumbnail.png" src="../assets/vid/kbs-paul-rosie-thumbnail.png" alt="Paul Conyngham with Rosie, featured in the KBS documentary">
+          <div class="play" aria-hidden="true"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M17 8.27a2 2 0 0 1 0 3.46L3 19.8A2 2 0 0 1 0 18.06V1.94A2 2 0 0 1 3 .2l14 8.07Z" fill="#F5F7F5"/></svg></div>
+        </div>
+        <div class="vbar">
+          <img class="lg" src="https://www.gamgee.io/assets/LogosMedia/KBS.svg" alt="KBS" onerror="this.outerHTML='&lt;span class=&quot;name&quot;&gt;KBS&lt;/span&gt;'">
+          <span class="date">2026</span>
+        </div>
+        <div class="vtitle">The story reaches Korean national television</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH & SCIENCE ============ -->
+<section class="sec" id="science">
+  <div class="wrap">
+    <h2 class="sec-title reveal">Research &amp; science</h2>
+
+    <div class="grid">
+
+      <a class="card lcard reveal" href="https://news.unsw.edu.au/en/meet-the-man-who-designed-a-cancer-vaccine-for-his-dog" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/unsw-sydney.png" alt="UNSW Sydney" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;UNSW Sydney&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">UNSW Sydney</span><span class="date">March 2026</span></div>
+        <div class="vtitle">Meet the man who designed a cancer vaccine for his dog</div>
+      </a>
+
+      <a class="card lcard reveal" href="https://www.the-scientist.com/chatgpt-and-alphafold-help-design-personalized-vaccine-for-dog-with-cancer-74227" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/the-scientist.png" alt="The Scientist" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;The Scientist&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">The Scientist</span><span class="date">March 2026</span></div>
+        <div class="vtitle">Inside the pipeline, from tumour sequencing to mRNA construct</div>
+      </a>
+
+      <a class="card lcard reveal" href="https://theconversation.com/a-man-used-ai-to-help-make-a-cancer-vaccine-for-his-dog-an-oncologist-urges-caution-278735" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/the-conversation.png" alt="The Conversation" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;The Conversation&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">The Conversation</span><span class="date">March 2026</span></div>
+        <div class="vtitle">An oncologist on what a single case can and cannot prove</div>
+      </a>
+
+      <a class="card lcard reveal" href="https://www.cancerhealth.com/article/man-cures-dog" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/cancer-health.png" alt="Cancer Health" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Cancer Health&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Cancer Health</span><span class="date">April 2026</span></div>
+        <div class="vtitle">Where Rosie's case sits in a decade of vaccine research</div>
+      </a>
+
+      <a class="card lcard reveal" href="https://ia.acs.org.au/article/2026/australian-uses-ai-to-design-cancer-vaccine-for-his-dog.html" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/acs-information-age.png" alt="ACS Information Age" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Information Age&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">ACS Information Age</span><span class="date">March 2026</span></div>
+        <div class="vtitle">The computational method, and a second vaccine in design</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ IN THE CONVERSATION ============ -->
+<section class="sec" id="conversation">
+  <div class="wrap">
+    <h2 class="sec-title reveal">In the conversation</h2>
+
+    <a class="post reveal" href="https://x.com/sama/status/2037396826060673188" target="_blank" rel="noopener">
+      <div class="post-top">
+        <div class="avatar" aria-hidden="true">SA</div>
+        <div class="who"><b>Sam Altman</b><span>@sama</span></div>
+        <span class="x" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.22-6.82-5.96 6.82H1.68l7.73-8.84L1.25 2.25h6.82l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.11l11.97 15.64Z"/></svg></span>
+      </div>
+      <blockquote>On Paul and Rosie: <em>it immediately got me thinking, this should be a company.</em></blockquote>
+      <div class="post-foot"><span>X · March 2026</span><span class="arrow">→</span></div>
+    </a>
+
+    <div class="grid">
+
+      <div class="card vcard reveal" data-yt="MUqI_su1Cus">
+        <div class="thumb">
+          <img data-yt="MUqI_su1Cus" alt="Hank Green explains the AI-designed dog cancer vaccine">
+          <div class="play" aria-hidden="true"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M17 8.27a2 2 0 0 1 0 3.46L3 19.8A2 2 0 0 1 0 18.06V1.94A2 2 0 0 1 3 .2l14 8.07Z" fill="#F5F7F5"/></svg></div>
+        </div>
+        <div class="vbar">
+          <img class="lg" src="https://www.gamgee.io/assets/LogosMedia/hank-green.svg" alt="Hank Green" onerror="this.outerHTML='&lt;span class=&quot;name&quot;&gt;Hank Green&lt;/span&gt;'">
+          <span class="date">2026</span>
+        </div>
+        <div class="vtitle">A science communicator separates the signal from the hype</div>
+      </div>
+
+      <div class="card vcard reveal" data-yt="E0V8NAtLNRg">
+        <div class="thumb">
+          <img data-yt="E0V8NAtLNRg" alt="Core Memory Podcast interview with Paul Conyngham">
+          <div class="play" aria-hidden="true"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M17 8.27a2 2 0 0 1 0 3.46L3 19.8A2 2 0 0 1 0 18.06V1.94A2 2 0 0 1 3 .2l14 8.07Z" fill="#F5F7F5"/></svg></div>
+        </div>
+        <div class="vbar">
+          <img class="lg" src="https://www.gamgee.io/assets/LogosMedia/core-memory-podcast.png" alt="Core Memory Podcast" onerror="this.outerHTML='&lt;span class=&quot;name&quot;&gt;Core Memory&lt;/span&gt;'">
+          <span class="date">2026</span>
+        </div>
+        <div class="vtitle">The whole protocol, told without a broadcast clock</div>
+      </div>
+
+      <a class="card lcard reveal" href="https://www.cnbctv18.com/technology/australian-man-uses-chatgpt-to-fight-dogs-cancer-sam-altman-calls-it-amazing-story-ws-l-19876339.htm" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/cnbc.svg" alt="CNBC-TV18" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;CNBC-TV18&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">CNBC-TV18</span><span class="date">March 2026</span></div>
+        <div class="vtitle">How Altman's post carried the story into Indian business media</div>
+      </a>
+
+      <a class="card lcard reveal" href="https://www.techradar.com/ai-platforms-assistants/a-guy-who-was-not-an-expert-used-chatgpt-to-make-a-custom-mrna-vaccine-for-his-dogs-cancer-and-other-incredible-tales-from-sam-altman" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/techradar.svg" alt="TechRadar" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;TechRadar&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">TechRadar</span><span class="date">March 2026</span></div>
+        <div class="vtitle">Tracking down the unnamed man in Altman's story</div>
+      </a>
+
+      <a class="card lcard reveal" href="https://www.tbpndigest.com/story/2026-03-16/ai-assisted-dog-cancer-vaccine-goes-viral-what-actually-happened-with-paul-conyngham-and-rosie" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/tbpn-digest.png" alt="TBPN Digest" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;TBPN&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">TBPN Digest</span><span class="date">March 2026</span></div>
+        <div class="vtitle">A fact-check of the version that went viral</div>
+      </a>
+
+      <a class="card lcard reveal" href="https://www.ycombinator.com/companies/gamgee" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/Logos/y-combinator.svg" alt="Y Combinator" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Y Combinator&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Y Combinator</span><span class="date">2026</span></div>
+        <div class="vtitle">From one dog to a repeatable clinical system</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER COVERAGE ============ -->
+<section class="sec" id="other">
+  <div class="wrap">
+    <div class="rail-head reveal">
+      <h2 class="sec-title" style="margin-bottom:0">Other coverage</h2>
+      <div class="rail-nav">
+        <button class="rail-btn" id="railPrev" aria-label="Scroll coverage left">←</button>
+        <button class="rail-btn" id="railNext" aria-label="Scroll coverage right">→</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap rail-mask">
+    <div class="rail" id="rail" tabindex="0" aria-label="Other coverage, horizontally scrollable">
+
+      <a class="card lcard" href="https://www.abc.net.au/news/2026-06-22/australian-dog-cancer-treated-via-mrna-vaccine-and-ai/106692668" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/abc-news-australia.png" alt="ABC News Australia" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;ABC News&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">ABC News AU</span><span class="date">Jun 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.thestar.com.my/tech/tech-news/2026/03/30/one-man-his-dog-and-chatgpt-australia039s-ai-vaccine-saga" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/the-star-malaysia.png" alt="The Star Malaysia" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;The Star&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">The Star</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.geo.tv/latest/657755-one-man-his-dog-and-chatgpt-australias-ai-vaccine-saga" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/geo-tv.png" alt="Geo TV" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Geo TV&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Geo TV</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.dawn.com/news/1982334" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/dawn.png" alt="Dawn" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Dawn&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Dawn</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://reason.com/2026/03/19/man-successfully-designs-mrna-vaccine-to-treat-his-dogs-cancer/" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/reason.png" alt="Reason" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Reason&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Reason</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://nypost.com/2026/03/16/health/tech-pro-saves-his-dying-dog-by-using-chatgpt-to-code-a-custom-cancer-vaccine/" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/new-york-post.png" alt="New York Post" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;New York Post&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">New York Post</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.newsweek.com/owner-no-medical-background-invents-cure-dogs-terminal-cancer-11684882" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/newsweek.png" alt="Newsweek" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Newsweek&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Newsweek</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.dailymail.com/news/article-15644819/paul-conyngham-dog-vaccine-cancer.html" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/daily-mail.png" alt="Daily Mail" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Daily Mail&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Daily Mail</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://fortune.com/2026/03/15/australian-tech-entrepreneur-ai-cancer-vaccine-dog-rosie-unsw-mrna/" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/fortune.png" alt="Fortune" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Fortune&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Fortune</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.ibtimes.co.uk/sydney-data-engineer-mrna-cancer-vaccine-dog-1785607" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/ibtimes-uk.png" alt="IBTimes UK" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;IBTimes UK&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">IBTimes UK</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://finance.yahoo.com/news/mans-dog-riddled-tumors-dying-210500037.html" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/yahoo-finance.png" alt="Yahoo Finance" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Yahoo Finance&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Yahoo Finance</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://uk.news.yahoo.com/solved-dog-cancer-three-ai-101000928.html" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/yahoo.png" alt="Yahoo News UK" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Yahoo News UK&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Yahoo News UK</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.indiatoday.in/technology/news/story/man-uses-chatgpt-and-alphafold-to-build-diy-mrna-cancer-vaccine-saves-dog-2882198-2026-03-15" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/india-today.png" alt="India Today" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;India Today&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">India Today</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.ndtv.com/feature/australian-entrepreneur-uses-chatgpt-to-create-customised-vaccine-to-cure-dogs-cancer-11219043" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/NDTV.png" alt="NDTV" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;NDTV&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">NDTV</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.hindustantimes.com/world-news/us-news/who-is-paul-conyngham-australian-tech-expert-creates-first-personalized-cancer-vaccine-for-his-dog-using-chatgpt-101773578023974.html" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/hindustan-times.svg" alt="Hindustan Times" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Hindustan Times&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Hindustan Times</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://economictimes.indiatimes.com/magazines/panache/watching-his-dog-slowly-die-techie-refused-to-give-up-then-he-used-ai-and-created-a-custom-cancer-vaccine-for-his-pet-friend/articleshow/129594086.cms" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/the-economic-times.png" alt="The Economic Times" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;Economic Times&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">Economic Times</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.infzm.com/contents/317926" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/infzm.png" alt="INFZM" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;南方周末&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">INFZM</span><span class="date">Mar 2026</span></div>
+      </a>
+
+      <a class="card lcard" href="https://www.theaustralian.com.au/business/technology/tech-boss-uses-ai-and-chatgpt-to-create-cancer-vaccine-for-his-dying-dog/news-story/292a21bcbe93efa17810bfcfcdfadbf7" target="_blank" rel="noopener">
+        <div class="lockup"><img src="https://www.gamgee.io/assets/LogosMedia/the-australian.png" alt="The Australian" onerror="this.outerHTML='&lt;span class=&quot;wordfall&quot;&gt;The Australian&lt;/span&gt;'"></div>
+        <div class="vbar"><span class="name">The Australian</span><span class="date">Mar 2026</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="wrap" id="enquiries">
+  <div class="cta reveal">
+    <span class="eyebrow">Media enquiries</span>
+    <h2>Let's tell this story together.</h2>
+    <a href="/#media-enquiries">Get in touch →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+    </div>
+    <div class="foot-right">
+      <div class="footer-links">
+        <h5>PRODUCT</h5>
+        <a href="/vet/">For Vets</a>
+        <a href="/apply/">Apply</a>
+      </div>
+<div class="foot-flag">
+<img src="../assets/icons/us-flag-3x2.png" width="42" height="28" alt="United States" style="border-radius:2px;object-fit:cover">
+<img src="../assets/icons/au_flag.svg" width="42" height="28" alt="Australia" style="border-radius:2px;object-fit:cover">
+      </div>
+    </div>
+  </div>
+  <div class="legal">
+<span>&copy; 2026 GAMGEE &middot; San Francisco, United States <img src="../assets/icons/us-flag-3x2.png" width="18" height="12" alt="United States" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"><img src="../assets/icons/au_flag.svg" width="18" height="12" alt="Australia" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"></span>
+    <span><a href="/privacy&amp;terms/#privacy">Privacy</a> &middot; <a href="/privacy&amp;terms/#terms">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+// Mobile navigation
+(function(){
+  var button = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('mobile-menu');
+  if(!button || !menu) return;
+  button.addEventListener('click', function(){
+    var open = button.classList.toggle('open');
+    menu.classList.toggle('open', open);
+    button.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      button.classList.remove('open');
+      menu.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// Thumbnails: hqdefault always exists, so load it first and never show
+// a broken image. Upgrade to maxresdefault only when that file is real.
+document.querySelectorAll('.thumb img[data-yt]').forEach(function(img){
+  if(img.dataset.customThumbnail){
+    img.src = img.dataset.customThumbnail;
+    return;
+  }
+  var id = img.dataset.yt;
+  img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+  var probe = new Image();
+  probe.onload = function(){ if(probe.naturalWidth > 320) img.src = probe.src; };
+  probe.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+});
+
+// Click-to-load YouTube. No iframes until asked for.
+document.querySelectorAll('.vcard').forEach(function(card){
+  card.setAttribute('role','button');
+  card.setAttribute('tabindex','0');
+  var label = card.querySelector('.vtitle');
+  if(label) card.setAttribute('aria-label','Watch video: ' + label.textContent);
+  function load(){
+    if(card.dataset.loaded) return;
+    var watchUrl = 'https://www.youtube.com/watch?v=' + card.dataset.yt;
+    if(card.dataset.start) watchUrl += '&t=' + card.dataset.start + 's';
+
+    // Local file previews have no HTTP Referer, so YouTube rejects embeds
+    // with Error 153. Open the canonical watch page in that context.
+    if(location.protocol !== 'http:' && location.protocol !== 'https:'){
+      var directLink = document.createElement('a');
+      directLink.href = watchUrl;
+      directLink.target = '_blank';
+      directLink.rel = 'noopener';
+      directLink.click();
+      return;
+    }
+
+    card.dataset.loaded = '1';
+    var start = card.dataset.start ? '&start=' + card.dataset.start : '';
+    var origin = '&origin=' + encodeURIComponent(location.origin);
+    var frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube.com/embed/' + card.dataset.yt + '?autoplay=1&rel=0&modestbranding=1&playsinline=1' + start + origin;
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.title = label ? label.textContent : 'Video';
+    card.querySelector('.thumb').appendChild(frame);
+
+    var fallback = document.createElement('a');
+    fallback.className = 'youtube-fallback';
+    fallback.href = watchUrl;
+    fallback.target = '_blank';
+    fallback.rel = 'noopener';
+    fallback.textContent = 'Watch on YouTube ↗';
+    fallback.addEventListener('click', function(e){ e.stopPropagation(); });
+    card.querySelector('.thumb').appendChild(fallback);
+  }
+  card.addEventListener('click', load);
+  card.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); load(); }
+  });
+});
+
+// Other coverage rail
+(function(){
+  var rail = document.getElementById('rail');
+  var prev = document.getElementById('railPrev');
+  var next = document.getElementById('railNext');
+  if(!rail) return;
+
+  var originals = Array.prototype.slice.call(rail.children);
+  var before = originals.map(function(item){
+    var clone = item.cloneNode(true);
+    clone.dataset.loopClone = 'before';
+    clone.setAttribute('aria-hidden', 'true');
+    clone.setAttribute('tabindex', '-1');
+    return clone;
+  });
+  var after = originals.map(function(item){
+    var clone = item.cloneNode(true);
+    clone.dataset.loopClone = 'after';
+    clone.setAttribute('aria-hidden', 'true');
+    clone.setAttribute('tabindex', '-1');
+    return clone;
+  });
+
+  before.slice().reverse().forEach(function(item){ rail.prepend(item); });
+  after.forEach(function(item){ rail.append(item); });
+
+  var setWidth = 0;
+  var middleStart = 0;
+  var scrollTimer;
+  var jumping = false;
+  var motionFrame;
+  var lastMotionTime = 0;
+  var motionRemainder = 0;
+  var railVisible = false;
+  var pointerOverRail = false;
+  var pauseUntil = 0;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function measure(){
+    var firstOriginal = originals[0];
+    var firstAfter = after[0];
+    middleStart = firstOriginal.offsetLeft;
+    setWidth = firstAfter.offsetLeft - firstOriginal.offsetLeft;
+  }
+
+  function step(){
+    var card = originals[0];
+    var gap = parseFloat(getComputedStyle(rail).columnGap) || 14;
+    return card ? card.offsetWidth + gap : 250;
+  }
+
+  function normalize(){
+    if(!setWidth || jumping) return;
+    var position = rail.scrollLeft;
+    var lowerBoundary = middleStart - (setWidth * .5);
+    var upperBoundary = middleStart + (setWidth * .5);
+    if(position < lowerBoundary){
+      jumping = true;
+      rail.scrollLeft = position + setWidth;
+      jumping = false;
+    } else if(position > upperBoundary){
+      jumping = true;
+      rail.scrollLeft = position - setWidth;
+      jumping = false;
+    }
+  }
+
+  function scheduleNormalize(){
+    window.clearTimeout(scrollTimer);
+    scrollTimer = window.setTimeout(normalize, 90);
+  }
+
+  function pauseAutoDrift(delay){
+    pauseUntil = performance.now() + delay;
+    lastMotionTime = 0;
+  }
+
+  function autoDrift(now){
+    if(
+      railVisible &&
+      !pointerOverRail &&
+      !document.hidden &&
+      !reducedMotion.matches &&
+      now >= pauseUntil
+    ){
+      if(lastMotionTime){
+        // Ambient, but still slow enough that manual scrolling remains primary.
+        motionRemainder += Math.min(now - lastMotionTime, 100) * .032;
+        var wholePixels = Math.floor(motionRemainder);
+        if(wholePixels){
+          rail.scrollLeft += wholePixels;
+          motionRemainder -= wholePixels;
+        }
+      }
+      lastMotionTime = now;
+    } else {
+      lastMotionTime = 0;
+      motionRemainder = 0;
+    }
+    motionFrame = window.requestAnimationFrame(autoDrift);
+  }
+
+  measure();
+  rail.scrollLeft = middleStart;
+  // A continuously moving rail cannot use mandatory snap points without visible jumps.
+  rail.style.scrollSnapType = 'none';
+
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      railVisible = entries[0].isIntersecting;
+    }, {threshold:.15}).observe(rail);
+  } else {
+    railVisible = true;
+  }
+  motionFrame = window.requestAnimationFrame(autoDrift);
+
+  prev.addEventListener('click', function(){
+    pauseAutoDrift(5000);
+    rail.scrollBy({left:-step()*2, behavior:'smooth'});
+  });
+  next.addEventListener('click', function(){
+    pauseAutoDrift(5000);
+    rail.scrollBy({left:step()*2, behavior:'smooth'});
+  });
+  rail.addEventListener('pointerenter', function(){ pointerOverRail = true; });
+  rail.addEventListener('pointerleave', function(){
+    pointerOverRail = false;
+    pauseAutoDrift(800);
+  });
+  rail.addEventListener('pointerdown', function(){ pauseAutoDrift(5000); }, {passive:true});
+  rail.addEventListener('touchstart', function(){ pauseAutoDrift(5000); }, {passive:true});
+  rail.addEventListener('wheel', function(){ pauseAutoDrift(5000); }, {passive:true});
+  rail.addEventListener('keydown', function(){ pauseAutoDrift(5000); });
+  rail.addEventListener('scroll', scheduleNormalize, {passive:true});
+  document.addEventListener('visibilitychange', function(){ lastMotionTime = 0; });
+  window.addEventListener('resize', function(){
+    window.clearTimeout(scrollTimer);
+    var progress = setWidth ? (rail.scrollLeft - middleStart) / setWidth : 0;
+    measure();
+    rail.scrollLeft = middleStart + (progress * setWidth);
+    scheduleNormalize();
+  });
+})();
+
+// Scroll reveal
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+</script>
+</body>
+</html>

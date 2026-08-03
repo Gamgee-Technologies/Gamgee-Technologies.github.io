@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMGEE - For Veterinary Oncologists</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<script src="/assets/config.js"></script>
+<script src="/assets/forms.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:only light;
+    --cream:#F7F6E4; --ink:#16160B; --muted:#5b5f55; --border:rgba(22,22,11,.10);
+    --purple:#36064B; --purple-d:#29033A; --purple-deep:#1E0230;
+    --coral:#DB4949; --coral-d:#C53D3D;
+    --cyan:#75D1DC; --mint:#E3F4F2; --mint-d:#CDE9E6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,h4,.logo,.btn,.num{font-family:"Poppins",system-ui,sans-serif}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:700;font-size:16px;padding:16px 30px;text-decoration:none;border:none;cursor:pointer;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px;flex-shrink:0}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px rgba(219,73,73,.30)}
+  .btn-green{background:var(--purple);color:#fff;box-shadow:0 10px 24px rgba(54,6,75,.28)}
+  .btn-white{background:#fff;color:var(--ink);box-shadow:0 10px 24px rgba(0,0,0,.10)}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;color:inherit;font-family:"Poppins",system-ui,sans-serif}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--purple)}
+  .navlinks{display:flex;align-items:center;gap:24px;font-weight:600;font-size:15px}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink)}
+  .navlinks .btn{padding:11px 24px;font-size:14px;color:#fff}
+  .navlinks a.active{color:var(--coral)}
+  
+  /* Mobile nav */
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:all .2s}
+  .nav-toggle span+span{margin-top:5px}
+  .mobile-menu{display:none}
+
+  /* Eyebrow */
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+
+  /* Blocks */
+  .block{border-radius:34px;padding:72px;margin:14px 0}
+  .block-green{background:var(--purple);color:#fff}
+  .block-mint{background:var(--mint)}
+  .block-white{background:#fff}
+
+  /* Enrollment status pill */
+  .enroll-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(34,197,94,.1);border:1.5px solid rgba(34,197,94,.25);border-radius:999px;padding:8px 18px;font-size:13px;font-weight:600;color:#166534;margin-bottom:22px}
+  .pulse{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulsebeat 2.2s ease-in-out infinite}
+  @keyframes pulsebeat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.25)}}
+
+  /* Hero */
+  .vet-hero{padding:52px 0 20px;text-align:center}
+  .vet-hero .eyebrow{color:var(--purple);margin-bottom:12px}
+  .vet-hero h1{font-size:62px;font-weight:800;letter-spacing:-.025em;line-height:1.06;margin:0 auto 20px;color:#3C014E}
+  .vet-hero h1 .mark{display:inline-block;line-height:1;background:var(--cyan);border-radius:16px;padding:5px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .vet-hero h1 .hero-break{display:block;margin-top:0.1em}
+  .vet-hero .lede{font-size:18px;color:var(--muted);max-width:36em;margin:0 auto;line-height:1.65}
+
+  /* Stats strip */
+  .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:22px;overflow:hidden;margin:28px 0 32px}
+  .stat-item{padding:28px 18px;text-align:center;border-right:1px solid var(--mint-d)}
+  .stat-item:last-child{border-right:none}
+  .stat-num{font-family:Poppins;font-size:38px;font-weight:800;color:var(--purple);letter-spacing:-.02em;line-height:1}
+  .stat-unit{font-size:20px;font-weight:700;margin-left:2px}
+  .stat-label{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+  /* Refer block */
+  .refer-block{padding:64px 72px}
+  .refer-block .eyebrow{color:rgba(255,255,255,.65);margin-bottom:14px}
+  .refer-block h2{font-size:44px;font-weight:800;letter-spacing:-.025em;line-height:1.08;color:#fff;margin-bottom:14px}
+  .refer-block h2 .hl{color:var(--cyan)}
+  .refer-block .sub{font-size:17px;color:rgba(255,255,255,.82);max-width:44em;line-height:1.65;margin-bottom:36px}
+  .refer-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:34px}
+  .refer-card{background:rgba(255,255,255,.1);border-radius:22px;padding:26px 28px}
+  .refer-card h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:-.01em}
+  .refer-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .refer-card li{font-size:14px;color:rgba(255,255,255,.78);padding-left:20px;position:relative;line-height:1.5}
+  .refer-card li::before{content:'';position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+  .refer-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .brief-link{font-size:14px;font-weight:600;color:rgba(255,255,255,.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;transition:color .12s}
+  .brief-link:hover{color:#fff}
+
+  /* Tabs */
+  .tabs-outer{padding:50px 0 28px;display:flex;justify-content:center}
+  .tabs{display:inline-flex;gap:6px;background:#fff;padding:8px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+  .tab{padding:14px 56px;border-radius:999px;font-size:17px;font-weight:600;text-decoration:none;color:var(--ink);transition:all .18s}
+  .tab.active{background:var(--coral);color:#fff;box-shadow:0 4px 12px rgba(219,73,73,.25)}
+  .tab:hover:not(.active){color:var(--ink)}
+
+  /* Process steps */
+  .section-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--purple);margin-bottom:14px}
+  .section-h2{font-size:40px;font-weight:800;letter-spacing:-.025em;margin-bottom:8px;line-height:1.12}
+  .section-lede{font-size:17px;color:var(--muted);max-width:38em;margin-bottom:36px;line-height:1.65}
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;min-height:230px}
+  .s1{background:var(--purple);color:#fff}
+  .s2{background:var(--coral);color:#fff}
+  .s3{background:var(--cyan);color:#0F2E34}
+  .step-badge{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.2);margin-bottom:18px;align-self:flex-start}
+  .s3 .step-badge{background:rgba(0,0,0,.1)}
+  .step h4{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
+  .step p{font-size:14px;line-height:1.65;opacity:.95}
+  .step .step-time{margin-top:auto;padding-top:16px;font-size:12px;font-weight:600;opacity:.65}
+
+  /* We handle bar */
+  .we-handle{background:var(--purple-deep);border-radius:22px;padding:24px 28px;color:#fff;margin-top:18px}
+  .we-handle-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-bottom:14px}
+  .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{background:rgba(255,255,255,.12);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600}
+
+  /* Callout card */
+  .callout{background:#fff;border-radius:22px;padding:28px 32px;display:grid;grid-template-columns:60px 1fr;gap:22px;align-items:start;margin-top:18px}
+  .callout-icon{width:52px;height:52px;border-radius:16px;background:#3C014E;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .callout h4{font-size:15px;font-weight:700;margin-bottom:7px}
+  .callout p{font-size:14px;line-height:1.65;color:var(--muted)}
+
+  /* Science */
+  .sci-diagram-wrap{margin:0 0 36px;border-radius:20px;overflow:hidden;border:1.5px solid var(--mint-d);background:#fff}
+  .sci-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .sci-card{background:var(--mint);border-radius:22px;padding:28px}
+  .sci-card-icon{width:46px;height:46px;border-radius:14px;background:#75D1DC4D;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .sci-card h4{font-size:15px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+  .sci-card p{font-size:14px;line-height:1.65;color:var(--muted)}
+
+  /* Partners */
+  .partners{padding:24px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;isolation:isolate}
+  .partners .cap{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);font-weight:700;margin-right:8px}
+  .partners .pchip{padding:9px 18px}
+
+  /* Footer */
+  footer{background:var(--cream);border-top:1px solid var(--border)}
+  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 0 34px 72px;max-width:1200px;margin:0 auto;gap:40px}
+  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+.foot-flag{display:flex;align-items:center;gap:6px;margin-bottom:-24px}
+  .foot .brand{display:flex;align-items:center;gap:10px;font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;color:inherit}
+  .foot .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+  .foot .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
+  .foot .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+  .foot .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+  .foot .footer-links a:hover{color:var(--ink)}
+  .legal{max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+  .legal a{color:var(--muted);text-decoration:none}
+  .flag-inline{display:none}
+
+  /* Timeline */
+  .tl-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;padding-top:8px;align-items:start}
+  .tl-connector{position:absolute;top:34px;left:26px;right:calc(25% - 26px);height:2px;background:var(--mint-d);z-index:0}
+  .tl-stage{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:0 20px;position:relative;z-index:1}
+  .tl-node{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Poppins;font-weight:800;font-size:15px;color:#fff;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.15);flex-shrink:0}
+  .tl-dur{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .tl-name{font-family:Poppins;font-size:15px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em;line-height:1.25;min-height:38px}
+  .tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+  /* Referral modal */
+  .modal-overlay{position:fixed;inset:0;background:rgba(22,22,11,.6);backdrop-filter:blur(4px);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:48px 20px;overflow-y:auto}
+  .modal-overlay.open{display:flex}
+  .modal-box{background:#fff;border-radius:30px;max-width:680px;width:100%;position:relative;padding:48px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .modal-close{position:absolute;top:22px;right:22px;width:36px;height:36px;border-radius:50%;background:var(--mint);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--ink);line-height:1;transition:background .12s}
+  .modal-close:hover{background:var(--mint-d)}
+  .modal-head{margin-bottom:30px;padding-right:30px}
+  .modal-head .eyebrow{color:var(--purple);margin-bottom:10px}
+  .modal-head h2{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+  .modal-head p{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+  .f-section{margin-bottom:30px}
+  .f-section:last-of-type{margin-bottom:0}
+  .f-section-head{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1.5px solid var(--mint)}
+  .f-num{font-family:Poppins;font-size:12px;font-weight:800;color:var(--purple);background:var(--mint);width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+  .f-section-head h3{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .f-section-sub{font-size:12.5px;color:var(--muted);margin:-8px 0 16px 34px}
+
+  .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .f-field{display:flex;flex-direction:column;gap:6px}
+  .f-field.full{grid-column:1 / -1}
+  .f-field label{font-size:12px;font-weight:600;color:var(--ink)}
+  .f-field .opt{font-weight:400;color:var(--muted);font-style:italic}
+  .f-field input,.f-field select,.f-field textarea{
+    font-family:"Inter",sans-serif;font-size:14px;color:var(--ink);
+    background:var(--cream);border:1.5px solid var(--mint-d);border-radius:13px;
+    padding:12px 15px;outline:none;transition:border-color .14s,background .14s;width:100%;
+  }
+  .f-field input:focus,.f-field select:focus,.f-field textarea:focus{border-color:var(--purple);background:#fff}
+  .f-field textarea{resize:vertical;min-height:74px;font-family:"Inter",sans-serif;line-height:1.5}
+  .f-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b5f55' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:36px}
+
+  .consent-row{display:flex;align-items:flex-start;gap:11px;background:var(--mint);border-radius:15px;padding:16px 18px;margin-top:24px}
+  .consent-row input[type=checkbox]{margin-top:3px;width:16px;height:16px;accent-color:var(--purple);flex-shrink:0;cursor:pointer}
+  .consent-row label{font-size:12.5px;color:var(--ink);line-height:1.5;cursor:pointer}
+  .consent-warning{display:none;font-size:13px;color:var(--coral);font-weight:600;margin-top:8px}
+  .consent-warning.show{display:block}
+
+  .form-submit-row{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:24px}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .form-note{font-size:12px;color:var(--muted)}
+  .form-note a{color:var(--purple);font-weight:600;text-decoration:none}
+  .form-note a:hover{text-decoration:underline}
+
+  .success-card{text-align:center;padding:20px 0 4px;display:none}
+  .success-icon{width:58px;height:58px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:26px;color:var(--purple)}
+  .success-card h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+  .success-card p{font-size:14.5px;color:var(--muted);max-width:30em;margin:0 auto 26px;line-height:1.6}
+
+  /* Responsive */
+  @media(max-width:960px){
+    .vet-hero h1{font-size:38px}
+    .block,.refer-block{padding:40px 26px;border-radius:26px}
+    .steps-grid{grid-template-columns:1fr 1fr}
+    .sci-cards{grid-template-columns:1fr 1fr}
+    .stats-strip{grid-template-columns:1fr 1fr}
+    .stat-item:nth-child(2){border-right:none}
+    .stat-item:nth-child(3){border-right:1px solid var(--mint-d)}
+    .stat-item:nth-child(1),.stat-item:nth-child(2){border-bottom:1px solid var(--mint-d)}
+    .refer-cards{grid-template-columns:1fr}
+    .callout{grid-template-columns:1fr;gap:14px}
+    .tl-track{grid-template-columns:1fr 1fr;gap:32px 0;padding-top:0}
+    .tl-connector{display:none}
+    .modal-box{padding:32px 22px;border-radius:24px}
+    .modal-head{padding-right:36px}
+    .modal-head h2{font-size:24px}
+    .f-grid{grid-template-columns:1fr}
+    .f-section-sub{margin-left:0}
+    .wrap,.nav-in,.foot,.legal{padding-left:20px;padding-right:20px}
+    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
+    .foot-right{align-items:flex-start;gap:10px}
+    .foot .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+    .foot .footer-links a{margin-left:0;font-size:15px}
+    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
+    .foot-flag{display:none}
+    .flag-inline{display:inline-block}
+    .navlinks{display:none}
+    .nav-toggle{display:block}
+    .mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:20px 28px;flex-direction:column;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:100}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{text-decoration:none;color:var(--ink);font-weight:600;font-size:16px;padding:8px 0}
+    .mobile-menu .btn{display:inline-block;text-align:center}
+  }
+  @media(max-width:600px){
+    .tabs-outer{display:none}
+    .steps-grid{grid-template-columns:1fr}
+    .sci-cards{grid-template-columns:1fr}
+    .tl-track{grid-template-columns:1fr}
+    .stats-strip{grid-template-columns:1fr 1fr}
+    .wrap{padding:0 16px}
+    .vet-hero h1{font-size:30px}
+    .refer-block h2{font-size:32px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/">GAMGEE</a>
+    <div class="navlinks">
+      <a href="/mission/">Our mission</a>
+      <a href="/story/">Our story</a>
+      <a href="/about/" hidden style="display:none">About</a>
+      <a href="/media/">In the media</a>
+      <a href="/vet/" class="active">For vets</a>
+      <a class="btn btn-green" href="/apply/">Apply
+      </a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
+      const btn=this, menu=document.getElementById('mobile-menu');
+      const open=btn.classList.toggle('open');
+      menu.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open);
+    ">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/mission/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our mission</a>
+    <a href="/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
+    <a href="/about/" hidden style="display:none" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">About</a>
+    <a href="/media/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">In the media</a>
+    <a href="/vet/" class="active" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For vets</a>
+    <a class="btn btn-green" href="/apply/">Apply now</a>
+  </div>
+</nav>
+
+<div style="position:relative;z-index:1">
+
+<!-- HERO -->
+<header class="wrap">
+  <div class="vet-hero">
+    <div class="eyebrow">For Veterinary Oncologists</div>
+    <h1>Your patients have unique cancers.<br><span class="hero-break">Now we treat them <span class="mark">that way.</span></span></h1>
+    <p class="lede">GAMGEE designs a personalised mRNA cancer vaccine from each patient's own tumour DNA. You stay in the clinical driver's seat. We handle the science, from sequencing to delivery.</p>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="wrap">
+  <div style="text-align:center;padding:0 0 4px;margin-top:-8px">
+    <div class="enroll-pill" style="display:inline-flex">
+      <span class="pulse"></span>
+      Currently enrolling &middot; Australian clinical trial &middot; 2026
+    </div>
+    <div style="margin-top:14px">
+      <a href="#" class="btn btn-coral js-open-referral" style="padding:16px 34px;font-size:16px">Submit a Referral</a>
+    </div>
+  </div>
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num">~75<span class="stat-unit">%</span></div>
+      <div class="stat-label">Tumour reduction in<br>first documented case</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">~4<span class="stat-unit">wk</span></div>
+      <div class="stat-label">Biopsy to finished<br>vaccine in hand</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">&lt;20<span class="stat-unit">m</span></div>
+      <div class="stat-label">Your time needed for<br>vaccine design review</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">New clinical workflows<br>required from your team</div>
+    </div>
+  </div>
+</section>
+
+<!-- REFER A PATIENT (the giant badge, sits above the educational content) -->
+<section class="wrap" id="refer">
+  <div class="block-green refer-block" style="border-radius:34px;margin:14px 0">
+    <div class="eyebrow">Currently accepting referrals</div>
+    <h2>Ready to refer <span class="hl">a patient?</span></h2>
+    <p class="sub">Share your patient's contact details and a brief case summary. We reach out to the owner directly. You do not need to manage the conversation from there.</p>
+
+    <div class="refer-cards">
+      <div class="refer-card">
+        <h4>What to include</h4>
+        <ul>
+          <li>Your name, clinic name and direct contact</li>
+          <li>Dog's name, breed and age</li>
+          <li>Diagnosis, stage and prior treatments attempted</li>
+          <li>Owner's name and contact information</li>
+        </ul>
+      </div>
+      <div class="refer-card">
+        <h4>What happens next</h4>
+        <ul>
+          <li>We review the case and confirm eligibility</li>
+          <li>We contact the owner directly to walk them through the process</li>
+          <li>If accepted, a biopsy kit ships to your clinic</li>
+          <li>You receive updates at each stage</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="refer-actions">
+      <a class="btn btn-white js-open-referral" href="#">Submit a referral        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TABS: anchor links to the educational sections below -->
+<div class="wrap tabs-outer">
+  <div class="tabs">
+    <a class="tab active" href="#process">How it works</a>
+    <a class="tab" href="#timeline">Timeline</a>
+    <a class="tab" href="#science">The science</a>
+  </div>
+</div>
+
+<!-- PROCESS SECTION -->
+<section class="wrap" id="process">
+  <div class="block block-mint">
+    <div class="section-eyebrow">The Process</div>
+    <h2 class="section-h2">Three things we need from you.</h2>
+    <p class="section-lede">Most of your involvement happens in steps you are already performing. We are built to fit inside your clinical workflow, not change it.</p>
+
+    <div class="steps-grid">
+      <div class="step s1">
+        <div class="step-badge">Step 01 &middot; You</div>
+        <h4>Refer the case</h4>
+        <p>Submit a brief case summary: diagnosis, stage and prior treatments. We review the case and confirm eligibility before anything else moves.</p>
+        <div class="step-time">5 minutes &middot; No commitment required</div>
+      </div>
+      <div class="step s2">
+        <div class="step-badge">Step 02 &middot; You</div>
+        <h4>Collect biopsy samples</h4>
+        <p>A prepaid kit ships to your clinic. During the procedure you were already planning, drop in a tumour sample and a matched blood draw. Ship it back the same day.</p>
+        <div class="step-time">No new clinical workflow</div>
+      </div>
+      <div class="step s3">
+        <div class="step-badge">Step 03 &middot; You</div>
+        <h4>Administer the vaccine</h4>
+        <p>The finished vaccine arrives cold-chain labeled with a printed dosing schedule, including dog name, dose number and date window. You administer under your existing clinical judgment.</p>
+        <div class="step-time">Approx. 4 weeks after kit return</div>
+      </div>
+    </div>
+
+    <div class="we-handle">
+      <div class="we-handle-label">We handle everything in between</div>
+      <div class="chips">
+        <span class="chip"><img src="../assets/icons/DNA.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Whole-exome sequencing</span>
+        <span class="chip"><img src="../assets/icons/Robot.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> AI neoantigen analysis</span>
+        <span class="chip"><img src="../assets/icons/Flask.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> mRNA vaccine design</span>
+        <span class="chip"><img src="../assets/icons/Factory.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> GMP manufacturing</span>
+        <span class="chip"><img src="../assets/icons/Snowflake.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Cold-chain delivery</span>
+        <span class="chip"><img src="../assets/icons/Bar Chart.svg" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"> Outcome monitoring</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-icon"><img src="../assets/icons/Microscope.svg" alt="" style="width:26px;height:26px;filter:brightness(0) invert(1)"></div>
+      <div>
+        <h4>You make the final call on every vaccine design.</h4>
+        <p>Before we proceed to manufacturing, you receive a full design report showing every candidate neoantigen, its confidence score and what including or excluding it means for the final sequence. Most reviews take under 20 minutes. The report is yours to keep regardless of whether you proceed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section class="wrap" id="timeline">
+  <div class="block block-white" style="padding-bottom:64px">
+    <div class="eyebrow" style="color:var(--purple);margin-bottom:14px">Timeline</div>
+    <h2 style="font-size:40px;font-weight:800;letter-spacing:-.025em;margin-bottom:10px;line-height:1.12">From referral to vaccine, approximately four weeks.</h2>
+    <p style="font-size:17px;color:var(--muted);max-width:42em;line-height:1.65;margin-bottom:52px">Indicative timings based on our first case. We share a more precise estimate with each referral once we have reviewed the case.</p>
+
+    <!-- Horizontal timeline track -->
+    <div style="background:#DFF5F2;border-radius:24px;padding:32px 24px">
+      <div class="tl-track">
+        <!-- Connecting line sits behind nodes -->
+        <div class="tl-connector"></div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--purple)">01</div>
+          <div class="tl-dur">Days 1-3</div>
+          <div class="tl-name">Sample to lab</div>
+          <div class="tl-desc">Kit ships to your clinic. Samples collected during your scheduled procedure and returned to our sequencing partner the same day.</div>
+        </div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--coral)">02</div>
+          <div class="tl-dur">Days 4-14</div>
+          <div class="tl-name">Sequencing and analysis</div>
+          <div class="tl-desc">Whole-exome sequencing and AI neoantigen ranking. A design report is prepared for your clinical review.</div>
+        </div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--cyan);color:#0F2E34">03</div>
+          <div class="tl-dur">Days 15-28</div>
+          <div class="tl-name">Design review and manufacturing</div>
+          <div class="tl-desc">You review and approve the neoantigen design. Our GMP partner manufactures the finalised mRNA sequence.</div>
+        </div>
+
+        <div class="tl-stage">
+          <div class="tl-node" style="background:var(--purple-deep)">04</div>
+          <div class="tl-dur">Week 4+</div>
+          <div class="tl-name">Vaccine in hand</div>
+          <div class="tl-desc">Cold-chain delivery direct to your clinic, labeled with a printed dosing schedule. You administer on your timeline.</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:var(--muted);margin-top:40px;max-width:36em">These are indicative timings from a single case. Sequencing turnaround and manufacturing schedules may vary. We will give you a case-specific estimate before proceeding.</p>
+  </div>
+</section>
+
+<!-- SCIENCE SECTION -->
+<section class="wrap" id="science">
+  <div class="block block-white" style="padding-bottom:32px">
+    <div class="eyebrow" style="color:var(--coral)">The Science</div>
+    <h2 style="font-size:40px;font-weight:800;letter-spacing:-.025em;margin:12px 0 10px;line-height:1.12">Each vaccine is built from<br>the tumour's own blueprint.</h2>
+    <p style="font-size:17px;color:var(--muted);max-width:46em;line-height:1.65;margin-bottom:36px">Every tumour carries mutations that healthy cells do not. These mutations produce surface markers called neoantigens, flags that exist only on cancer cells. We read those flags, encode them into mRNA, and give the immune system a precise target list.</p>
+
+    <!-- SCIENCE DIAGRAM -->
+    <div class="sci-diagram-wrap" style="background:var(--coral);border-color:var(--coral);border-radius:24px">
+      <div style="padding:32px 24px">
+        <div class="sci-cards" style="margin-bottom:0">
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">01</div><h4 style="display:inline;vertical-align:middle">Sequence the DNA</h4>
+            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
+              <img src="../assets/vet/sequence_dna.png" alt="Sequence the DNA" style="width:100%;height:100%;object-fit:contain">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Tumour DNA is compared to healthy blood sample DNA.<br><strong style="color:var(--ink)">Unique mutations become the targets</strong></p>
+          </div>
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">02</div><h4 style="display:inline;vertical-align:middle">Find the targets</h4>
+            <div style="text-align:center;height:160px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:14px">
+              <img src="../assets/vet/find_targets.png" alt="Find the targets" style="width:100%;height:100%;object-fit:contain">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">Thousands of somatic mutations ranked by binding affinity and immunogenicity. <strong style="color:var(--ink)">Models trained on canine biology, not human</strong></p>
+          </div>
+          <div class="sci-card" style="background:#fff;border-radius:18px">
+            <div style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;font-family:Poppins;font-size:12px;font-weight:800;color:#fff;background:var(--coral);margin-right:10px;vertical-align:middle">03</div><h4 style="display:inline;vertical-align:middle">Train the immune system</h4>
+            <div style="text-align:left;height:160px;overflow:hidden;margin-top:14px">
+              <img src="../assets/vet/train_immune.png" alt="Train the immune system" style="width:100%;height:100%;object-fit:contain;object-position:left center">
+            </div>
+            <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px">mRNA instructs the dog's own cells to display the neoantigen flags briefly. <strong style="color:var(--ink)">Immune system learns the target and attacks</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sci-cards" style="margin-top:18px">
+      <div class="sci-card">
+        <div class="sci-card-icon"><img src="../assets/icons/DNA.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
+        <h4>Whole-exome sequencing</h4>
+        <p>We compare DNA from the tumour biopsy against a matched blood sample. Only mutations present in the tumour, absent from healthy tissue, are candidate targets. Everything else is filtered out from the start.</p>
+      </div>
+      <div class="sci-card">
+        <div class="sci-card-icon"><img src="../assets/icons/Target.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
+        <h4>Neoantigen prioritisation</h4>
+        <p>Our pipeline runs binding affinity predictions and immunogenicity scoring across all somatic mutations, using models trained on canine biology. The highest-confidence candidates are ranked and surfaced for your review before any manufacturing begins.</p>
+      </div>
+      <div class="sci-card">
+        <div class="sci-card-icon"><img src="../assets/icons/Syringe.svg" alt="" style="width:22px;height:22px;filter:brightness(0) invert(7%) sepia(99%) saturate(7462%) hue-rotate(284deg) brightness(60%) contrast(110%)"></div>
+        <h4>mRNA delivery</h4>
+        <p>Selected neoantigens are encoded into a codon-optimised mRNA sequence built for canine cells. When administered, the patient's cells briefly display cancer-specific markers, activating a targeted T-cell response directed only at tumour cells.</p>
+      </div>
+    </div>
+
+    <!-- Partner logos inside the white block -->
+    <div style="text-align:center;padding:0 0 2px;margin-top:36px">
+      <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--ink);margin-bottom:18px">In collaboration with</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap">
+        <img src="../assets/Logos/University of Queensland.png" alt="University of Queensland" style="height:44px">
+        <img src="../assets/Logos/UNSW Ramaciotti-logo.png" alt="UNSW Ramaciotti Centre for Genomics" style="height:44px">
+        <img src="../assets/Logos/UNSW RNA Institute.png" alt="UNSW RNA Institute" style="height:44px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spacer before footer -->
+<div style="height:24px"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+    </div>
+    <div class="foot-right">
+      <div class="footer-links">
+        <h5>PRODUCT</h5>
+        <a href="/vet/">For Vets</a>
+        <a href="/apply/">Apply</a>
+      </div>
+<div class="foot-flag">
+<img src="../assets/icons/us-flag-3x2.png" width="42" height="28" alt="United States" style="border-radius:2px;object-fit:cover">
+<img src="../assets/icons/au_flag.svg" width="42" height="28" alt="Australia" style="border-radius:2px;object-fit:cover">
+      </div>
+    </div>
+  </div>
+  <div class="legal">
+<span>&copy; 2026 GAMGEE &middot; San Francisco, United States <img src="../assets/icons/us-flag-3x2.png" width="18" height="12" alt="United States" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"><img src="../assets/icons/au_flag.svg" width="18" height="12" alt="Australia" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"></span>
+    <span><a href="/privacy&terms/#privacy">Privacy</a> &middot; <a href="/privacy&terms/#terms">Terms</a></span>
+  </div>
+</footer>
+
+</div>
+
+<!-- REFERRAL MODAL -->
+<div class="modal-overlay" id="referralOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+
+    <div id="formView">
+      <div class="modal-head">
+        <div class="eyebrow">Patient Referral</div>
+        <h2 id="modalTitle">Refer a patient to GAMGEE.</h2>
+        <p>Tell us about the case and the owner. We review the details, then reach out to the owner directly. You stay in the loop throughout.</p>
+      </div>
+
+      <form id="referralForm" novalidate>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">1</span><h3>Your details</h3></div>
+          <div class="f-section-sub">As the referring clinician</div>
+          <div class="f-grid">
+            <div class="f-field"><label for="vetFirst">First name</label><input id="vetFirst" name="vetFirst" type="text" required></div>
+            <div class="f-field"><label for="vetLast">Last name</label><input id="vetLast" name="vetLast" type="text" required></div>
+            <div class="f-field full"><label for="clinicName">Clinic name</label><input id="clinicName" name="clinicName" type="text" required></div>
+            <div class="f-field full"><label for="vetEmail">Direct email</label><input id="vetEmail" name="vetEmail" type="email" required></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">2</span><h3>Patient details</h3></div>
+          <div class="f-grid">
+            <div class="f-field full"><label for="dogName">Dog's name</label><input id="dogName" name="dogName" type="text" required></div>
+            <div class="f-field"><label for="breed">Breed</label><input id="breed" name="breed" type="text" required></div>
+            <div class="f-field"><label for="age">Age <span class="opt">(years)</span></label><input id="age" name="age" type="number" min="0" step="0.5" required></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">3</span><h3>Diagnosis &amp; treatment history</h3></div>
+          <div class="f-grid">
+            <div class="f-field full"><label for="diagnosis">Diagnosis</label><input id="diagnosis" name="diagnosis" type="text" placeholder="e.g. Mast cell tumour, grade II" required></div>
+            <div class="f-field full">
+              <label for="stage">Stage</label>
+              <select id="stage" name="stage" required>
+                <option value="" disabled selected>Select one&hellip;</option>
+                <option>Stage 1</option>
+                <option>Stage 2</option>
+                <option>Stage 3</option>
+                <option>Stage 4</option>
+                <option>Not yet staged</option>
+              </select>
+            </div>
+            <div class="f-field full"><label for="priorTx">Prior treatments attempted</label><textarea id="priorTx" name="priorTx" placeholder="Surgery, chemotherapy, radiation, immunotherapy, dates and outcomes if known" required></textarea></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">4</span><h3>Owner's details</h3></div>
+          <div class="f-grid">
+            <div class="f-field"><label for="ownerFirst">Owner first name</label><input id="ownerFirst" name="ownerFirst" type="text" required></div>
+            <div class="f-field"><label for="ownerLast">Owner last name</label><input id="ownerLast" name="ownerLast" type="text" required></div>
+            <div class="f-field"><label for="ownerEmail">Owner email</label><input id="ownerEmail" name="ownerEmail" type="email" required></div>
+            <div class="f-field"><label for="ownerPhone">Owner phone</label><input id="ownerPhone" name="ownerPhone" type="tel" required></div>
+          </div>
+        </div>
+
+        <div class="f-section">
+          <div class="f-section-head"><span class="f-num">5</span><h3>Anything else <span class="opt" style="font-weight:400">(optional)</span></h3></div>
+          <div class="f-grid">
+            <div class="f-field full"><textarea id="notes" name="notes" placeholder="Any other context that would help us assess the case"></textarea></div>
+          </div>
+        </div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I confirm the owner is aware this referral is being made and has consented to GAMGEE contacting them directly with their details provided above.</label>
+        </div>
+        <div class="consent-warning" id="consent-warning">Please gain consent from the owner before applying for referral.</div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn btn-coral">Submit referral
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <span class="form-note">We typically respond within a few business days. Prefer to talk first? Email <a href="mailto:partners@gamgee.io">partners@gamgee.io</a></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="success-card" id="successCard">
+      <div class="success-icon">&#10003;</div>
+      <h2>Referral received.</h2>
+      <p>Thank you for thinking of GAMGEE for this case. We'll review the details and reach out to the owner directly. You'll be copied on next steps as the case progresses.</p>
+      <button class="btn btn-coral" id="successClose" style="display:inline-flex">Close</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('referralOverlay');
+  const openTriggers = document.querySelectorAll('.js-open-referral');
+  const closeBtn = document.getElementById('modalClose');
+  const successCloseBtn = document.getElementById('successClose');
+  const formView = document.getElementById('formView');
+  const successCard = document.getElementById('successCard');
+  const form = document.getElementById('referralForm');
+
+  function openModal(e){
+    if(e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function resetModal(){
+    formView.style.display = 'block';
+    successCard.style.display = 'none';
+    form.reset();
+  }
+
+  openTriggers.forEach(el => el.addEventListener('click', openModal));
+  closeBtn.addEventListener('click', () => { closeModal(); setTimeout(resetModal, 300); });
+  successCloseBtn.addEventListener('click', () => { closeModal(); setTimeout(resetModal, 300); });
+  overlay.addEventListener('click', (e) => { if(e.target === overlay){ closeModal(); setTimeout(resetModal, 300); } });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && overlay.classList.contains('open')){ closeModal(); setTimeout(resetModal, 300); } });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    
+    var consent = document.getElementById('consent');
+    var consentWarning = document.getElementById('consent-warning');
+    if(!consent.checked){
+      consentWarning.classList.add('show');
+      consent.focus();
+      consent.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    consentWarning.classList.remove('show');
+    
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    var submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+
+    var fd = new FormData(form);
+    var data = {};
+    fd.forEach(function(v, k){ data[k] = v; });
+    data._sheet = 'Referral';
+
+    try {
+      await GamgeeForms.submit(data, { opaque: true, captchaRoot: form });
+      formView.style.display = 'none';
+      successCard.style.display = 'block';
+    } catch(err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit referral';
+      if (err && err.message) alert(err.message);
+    }
+  });
+</script>
+
+</body>
+</html>

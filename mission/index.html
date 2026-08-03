@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMGEE - Our Mission</title>
+<meta name="description" content="Gamgee is building AI-first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
+
+<!-- Open Graph / WhatsApp, Facebook, LinkedIn link previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gamgee">
+<meta property="og:title" content="GAMGEE - Our Mission">
+<meta property="og:description" content="AI-first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
+<meta property="og:image" content="https://gamgee.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://gamgee.io/mission/">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GAMGEE - Our Mission">
+<meta name="twitter:description" content="AI-first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
+<meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
+
+<!-- Search crawlers need a stable, fetchable favicon URL. -->
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:only light;
+    --paper:#F5F7F5;
+    --paper-2:#EAEEEB;
+    --ink:#141317;
+    --plum:#29033A;
+    --plum-2:#3B1550;
+    --coral:#DB4949;
+    --cyan:#75D1DC;
+    --muted:#5F6561;
+    --paper-muted:#C6B6CE;
+    --line:#D9DDDA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    font-size:17px;line-height:1.6;font-weight:400;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* ---------- shared Gamgee navigation ---------- */
+  nav.site-nav{position:sticky;top:0;z-index:60;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1200px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;letter-spacing:0;text-decoration:none;color:var(--ink)}
+  .navlinks{display:flex;align-items:center;gap:24px;font-size:15px;font-weight:600}
+  .navlinks a:not(.btn){text-decoration:none;color:var(--ink)}
+  .navlinks a.active{color:var(--coral)}
+  .btn{display:inline-flex;align-items:center;border-radius:999px;background:var(--plum);color:#fff;padding:11px 24px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:0;cursor:pointer;padding:4px;border-radius:8px}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(247,246,228,.97);backdrop-filter:blur(12px);padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a:not(.btn){display:block;padding:14px 0;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,.07)}
+  .mobile-menu a.active{color:var(--coral)}
+  .mobile-menu .btn{margin-top:14px;width:100%;justify-content:center;padding:16px 24px;font-size:16px}
+  h1,h2,h3,h4,.logo,.btn,.brand{font-family:"Poppins",system-ui,sans-serif}
+
+  /* ---------- beat scaffolding ---------- */
+  .beat{position:relative}
+  .beat .wrap{padding:96px 40px}
+  .beat.dark{background:var(--plum);color:var(--paper)}
+  .beat.tint{background:var(--paper-2)}
+  .beat.no-btm .wrap{padding-bottom:54px}
+
+  .num{
+    font-size:12px;font-weight:600;letter-spacing:0.28em;
+    color:var(--coral);display:flex;align-items:center;gap:14px;margin-bottom:26px;
+  }
+  .num::after{content:"";height:1px;flex:1;max-width:120px;background:currentColor;opacity:0.35}
+  .dark .num{color:var(--cyan)}
+
+  .lede{
+    font-weight:700;letter-spacing:-0.035em;line-height:1.03;
+    font-size:clamp(2.1rem,5.6vw,4rem);max-width:17ch;
+  }
+  .lede .hl{color:var(--coral)}
+  .dark .lede .hl{color:var(--cyan)}
+
+  .say{margin-top:26px;max-width:56ch;font-size:1.06rem;line-height:1.62;color:var(--muted);font-weight:400}
+  .dark .say{color:var(--paper-muted)}
+  .say + .say{margin-top:14px}
+  .say b{font-weight:600;color:var(--ink)}
+  .dark .say b{color:var(--paper)}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--plum);color:var(--paper);position:relative;overflow:hidden}
+  .hero .wrap{padding:132px 40px 124px;position:relative;z-index:2}
+  .hero .lede{font-size:clamp(2.5rem,7vw,5rem);max-width:22ch}
+
+  /* ---------- figures ---------- */
+  figure{margin-top:56px}
+  figure svg{width:100%;height:auto;display:block;overflow:visible}
+
+  /* ---------- mission split + stats ---------- */
+  .beat.no-btm .lede{max-width:none}
+  .m-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:72px;align-items:start;margin-top:44px}
+  .m-copy .say{margin-top:0}
+  .m-copy .say + .say{margin-top:18px}
+
+  .stats{padding-top:6px}
+  .stat + .stat{margin-top:30px;padding-top:26px;border-top:1px solid var(--line)}
+  .stat-fig{font-size:clamp(2.1rem,5vw,3rem);font-weight:700;letter-spacing:-0.04em;line-height:1;color:var(--coral)}
+  .stat-lab{font-size:0.95rem;color:var(--muted);margin-top:7px;line-height:1.45}
+  .glyphs{display:flex;gap:8px;margin-top:16px}
+  .glyphs svg{width:26px;height:26px;flex:0 0 26px}
+  .glyphs .off{opacity:0.22}
+  .stat-src{margin-top:26px;font-size:0.76rem;line-height:1.5;color:var(--muted)}
+  .stat-src a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+  .stat-src a:hover{color:var(--coral)}
+
+  /* ---------- patient scroll ---------- */
+  .patients{background:var(--paper-2);padding-bottom:96px;overflow:hidden}
+  .patients .wrap{padding:0 40px 30px}
+  .p-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted)}
+  .p-strip{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .p-track{display:flex;gap:14px;width:max-content;animation:pslide 72s linear infinite}
+  .p-strip:hover .p-track{animation-play-state:paused}
+  @keyframes pslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .pcard{width:212px;flex:0 0 212px;background:var(--paper);border:1px solid var(--line);overflow:hidden}
+  .pshot{position:relative;height:168px;background:var(--plum);overflow:hidden}
+  .pshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+  .pshot .ph{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
+  .pmeta{padding:13px 14px 15px}
+  .pname{font-size:1rem;font-weight:700;letter-spacing:-0.01em;display:flex;align-items:baseline;gap:7px}
+  .pname i{font-style:normal;font-size:0.78rem;font-weight:500;color:var(--muted)}
+  .ploc{font-size:0.78rem;color:var(--muted);margin-top:3px}
+  .pdx{font-size:0.78rem;font-weight:600;color:var(--coral);margin-top:9px;letter-spacing:0.01em}
+
+  /* ---------- slot machine line ---------- */
+  .slot{margin-top:58px;border-top:1px solid rgba(255,255,255,0.16);padding-top:44px}
+  .slot-line{
+    font-size:clamp(1.5rem,3.9vw,2.7rem);font-weight:700;letter-spacing:-0.032em;
+    line-height:1.45;color:var(--paper);
+  }
+  .slot-line > span{display:inline-block;vertical-align:top}
+  .reel{
+    position:relative;overflow:hidden;height:1.45em;
+  }
+  .reel-track{display:block;will-change:transform;
+    transition:transform 2.1s cubic-bezier(.18,.86,.28,1)}
+  .reel-item{display:block;height:1.45em;line-height:1.45em;white-space:nowrap;padding-right:2px}
+  .reel.dx .reel-item{color:var(--cyan)}
+  .reel.sp .reel-item{color:var(--coral)}
+
+
+  footer{background:var(--paper);color:var(--ink);border-top:1px solid rgba(20,19,23,.10)}
+  .foot{display:flex;align-items:stretch;justify-content:space-between;padding:64px 28px 34px;max-width:1200px;margin:0 auto;gap:40px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:inherit}
+  .tag2{margin-top:14px;font-size:13px;color:var(--muted);max-width:20em;line-height:1.6}
+  .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+  .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
+  .footer-links h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:0}
+  .footer-links a{font-size:14px;text-decoration:none;color:#7a7a7a;margin-left:10px;display:block}
+  .footer-links a:hover{color:var(--ink)}
+  .foot-flag{display:flex;align-items:center;gap:6px;margin-bottom:-24px}
+  .legal{max-width:1200px;margin:0 auto;padding:18px 28px 38px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+  .legal a{color:var(--muted);text-decoration:none}
+  .flag-inline{display:none}
+
+  /* ---------- motion ---------- */
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.2,.7,.3,1), transform .75s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+  .draw{stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1s ease}
+  .in .draw{stroke-dashoffset:0}
+  .pop{opacity:0;transform:scale(.5);transform-origin:center;transition:opacity .5s ease, transform .5s cubic-bezier(.2,.9,.3,1.5)}
+  .in .pop{opacity:1;transform:scale(1)}
+  .fade{opacity:0;transition:opacity .8s ease}
+  .in .fade{opacity:1}
+
+  @media(max-width:880px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .nav-toggle{display:flex}
+    .navlinks{display:none}
+    .nav-in{padding:16px 20px}
+    .beat .wrap{padding:70px 22px}
+    .hero .wrap{padding:92px 22px 86px}
+    .m-grid{grid-template-columns:1fr;gap:44px}
+    .patients .wrap{padding:0 22px 26px}
+    .patients{padding-bottom:70px}
+    .pcard{width:176px;flex:0 0 176px}
+    .pshot{height:142px}
+    .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
+    .foot-right{align-items:flex-start;gap:10px}
+    .footer-links{flex-direction:column;align-items:flex-start;gap:10px}
+    .footer-links a{margin-left:0;font-size:15px}
+    .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}
+    .foot-flag{display:none}
+    .flag-inline{display:inline-block}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    .rv{opacity:1;transform:none}.draw{stroke-dashoffset:0}.pop{opacity:1;transform:none}.fade{opacity:1}
+    .patients{display:none}
+    .reel-track{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-in">
+    <a class="logo" href="/" aria-label="Gamgee home">GAMGEE</a>
+    <div class="navlinks">
+      <a class="active" href="/mission/">Our mission</a>
+      <a href="/story/">Our story</a>
+      <a href="/media/">In the media</a>
+      <a href="/vet/">For vets</a>
+      <a class="btn" href="/apply/">Apply</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="const btn=this, menu=document.getElementById('mobile-menu'); const open=btn.classList.toggle('open'); menu.classList.toggle('open',open); btn.setAttribute('aria-expanded',open);">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a class="active" href="/mission/">Our mission</a>
+    <a href="/story/">Our story</a>
+    <a href="/media/">In the media</a>
+    <a href="/vet/">For vets</a>
+    <a class="btn" href="/apply/">Apply now</a>
+  </div>
+</nav>
+
+<!-- 01 WE ARE -->
+<section class="hero">
+  <div class="wrap">
+    <div class="num rv">01 / We are</div>
+    <h1 class="lede rv d1">The <span class="hl">AI-first</span> genomics company.</h1>
+    <p class="say rv d2">We are starting with the first personalised mRNA cancer vaccines for dogs, built from each dog's own tumour.</p>
+  </div>
+</section>
+
+<!-- 02 WE BELIEVE -->
+<section class="beat">
+  <div class="wrap">
+    <div class="num rv">02 / We believe</div>
+    <h2 class="lede rv d1"><span class="hl">N of 1</span> medicine is the future.</h2>
+    <p class="say rv d2">We can read biology like never before. We can sequence a tumour and see the exact mutations driving it. So why do dogs with cancer still get the same few options?</p>
+    <p class="say rv d3">Same diagnosis. Different biology. <b>The treatment should know the difference.</b> That means moving from treatments designed for populations to a treatment designed for one patient.</p>
+    <p class="say rv d3">The idea is not new. Doing it at scale is. <b>AI is what changed that:</b> one pipeline reads the tumour, finds the mutations that matter, and designs the vaccine to match.</p>
+  </div>
+</section>
+
+<!-- 03 OUR MISSION -->
+<section class="beat tint no-btm">
+  <div class="wrap">
+    <div class="num rv">03 / Where we're starting</div>
+    <h2 class="lede rv d1">Why <span class="hl">dogs</span> first.</h2>
+    <div class="m-grid">
+      <div class="m-copy">
+        <p class="say rv d2">We started with dog cancer because of Rosie. But it is also one of the hardest problems in medicine to solve.</p>
+        <p class="say rv d3">Dogs get the same cancers we get, arising on their own inside working immune systems. Their disease moves fast, so the science answers in years instead of decades. And they are handed the bluntest treatments in medicine.</p>
+      </div>
+
+      <div class="stats rv d3">
+        <div class="stat first">
+          <div class="stat-fig">1 in 4</div>
+          <div class="stat-lab">will face cancer in their lifetime</div>
+          <div class="glyphs" data-glyphs="4" data-on="1"></div>
+        </div>
+        <div class="stat">
+          <div class="stat-fig">1 in 2</div>
+          <div class="stat-lab">once they pass the age of ten</div>
+          <div class="glyphs" data-glyphs="2" data-on="1"></div>
+        </div>
+        <p class="stat-src">Veterinary Cancer Society, cited by the <a href="https://www.avma.org/resources/pet-owners/petcare/cancer-pets" target="_blank" rel="noopener">American Veterinary Medical Association</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATIENT SCROLL -->
+<section class="patients">
+  <div class="wrap"><div class="p-eyebrow rv">Who we're building this for</div></div>
+  <div class="p-strip"><div class="p-track" id="ptrack"></div></div>
+</section>
+
+<!-- 04 OUR HORIZON -->
+<section class="beat dark">
+  <div class="wrap">
+    <div class="num rv">04 / Our horizon</div>
+    <h2 class="lede rv d1">Dog cancer is <span class="hl">the beginning</span>.</h2>
+    <p class="say rv d2">We are not only proving that a personalised vaccine works. <b>We are using AI to build autonomous systems that read biological failure, discover how to control it, and design precise repairs.</b></p>
+    <p class="say rv d3">Get that right and cancer stops looking like one disease. It starts looking like one instance of a much larger problem.</p>
+
+    <div class="slot rv">
+      <p class="slot-line">
+        <span>Pioneering N of 1 treatment for</span>
+        <span class="reel dx" data-reel="dx"><span class="reel-track"></span></span>
+        <span>in every</span>
+        <span class="reel sp" data-reel="sp"><span class="reel-track"></span></span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand">GAMGEE</div>
+      <p class="tag2">Personalised cancer treatment for pets. Built one patient at a time.</p>
+    </div>
+    <div class="foot-right">
+      <div class="footer-links">
+        <h5>PRODUCT</h5>
+        <a href="/vet/">For Vets</a>
+        <a href="/apply/">Apply</a>
+      </div>
+      <div class="foot-flag">
+        <img src="../assets/icons/us-flag-3x2.png" width="42" height="28" alt="United States" style="border-radius:2px;object-fit:cover">
+        <img src="../assets/icons/au_flag.svg" width="42" height="28" alt="Australia" style="border-radius:2px;object-fit:cover">
+      </div>
+    </div>
+  </div>
+  <div class="legal">
+    <span>&copy; 2026 GAMGEE &middot; San Francisco, United States <img src="../assets/icons/us-flag-3x2.png" width="18" height="12" alt="United States" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"><img src="../assets/icons/au_flag.svg" width="18" height="12" alt="Australia" class="flag-inline" style="border-radius:2px;object-fit:cover;vertical-align:middle;margin-left:4px"></span>
+    <span><a href="/privacy&terms/#privacy">Privacy</a> &middot; <a href="/privacy&terms/#terms">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.18});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  /* ---- patient strip. PLACEHOLDER DATA: replace with real consented patients ---- */
+  const PATIENTS = [
+    {name:"Milo",   age:6, loc:"Newcastle, NSW",      dx:"Mast cell tumour"},
+    {name:"Luna",   age:5, loc:"Brisbane, QLD",       dx:"Mast cell tumour"},
+    {name:"Archie", age:7, loc:"Sydney, NSW",         dx:"Lymphoma"},
+    {name:"Ruby",   age:4, loc:"Gold Coast, QLD",     dx:"Mast cell tumour"},
+    {name:"Ollie",  age:6, loc:"Wollongong, NSW",     dx:"Mast cell tumour"},
+    {name:"Poppy",  age:8, loc:"Sunshine Coast, QLD", dx:"Soft tissue sarcoma"},
+    {name:"Max",    age:5, loc:"Melbourne, VIC",      dx:"Mast cell tumour"},
+    {name:"Frankie",age:7, loc:"Byron Bay, NSW",      dx:"Mast cell tumour"},
+    {name:"Willow", age:3, loc:"Toowoomba, QLD",      dx:"Mast cell tumour"},
+    {name:"Charlie",age:6, loc:"Coffs Harbour, NSW",  dx:"Osteosarcoma"},
+    {name:"Daisy",  age:5, loc:"Cairns, QLD",         dx:"Mast cell tumour"},
+    {name:"Hugo",   age:7, loc:"Geelong, VIC",        dx:"Haemangiosarcoma"},
+    {name:"Nala",   age:4, loc:"Townsville, QLD",     dx:"Mast cell tumour"},
+    {name:"Bear",   age:6, loc:"Bendigo, VIC",        dx:"Melanoma"}
+  ];
+  const DOG_SIL = '<path d="M24 30 L19 11 L39 22 Z"/><path d="M76 30 L81 11 L61 22 Z"/><ellipse cx="50" cy="46" rx="26" ry="24"/><ellipse cx="50" cy="66" rx="14.5" ry="12.5"/>';
+  const PH_SETS = [
+    ['#4A1A5E','#29033A'],['#33124A','#1E0430'],['#552573','#310A44'],
+    ['#3B1550','#240333'],['#492066','#2C063D'],['#3A1247','#22052F']
+  ];
+  function placeholder(i){
+    const c = PH_SETS[i % PH_SETS.length];
+    return `<svg class="ph" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id="pg${i}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/>
+      </linearGradient></defs>
+      <rect width="100" height="100" fill="url(#pg${i})"/>
+      <g fill="rgba(198,182,206,0.30)" transform="translate(0,8) scale(0.86) translate(8,4)">${DOG_SIL}</g>
+    </svg>`;
+  }
+
+  function card(p,i){
+    const slug = p.name.toLowerCase();
+    return `<article class="pcard">
+      <div class="pshot">
+        ${placeholder(i)}
+        <img src="https://placedog.net/420/340?id=${20 + (i % 14)}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="pmeta">
+        <div class="pname">${p.name} <i>${p.age} yrs</i></div>
+        <div class="ploc">${p.loc}</div>
+        <div class="pdx">${p.dx}</div>
+      </div>
+    </article>`;
+  }
+  const track = document.getElementById('ptrack');
+  if(track){ track.innerHTML = (PATIENTS.concat(PATIENTS)).map(card).join(''); }
+
+  /* ---- stat glyphs ---- */
+  const PAW_G = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="8" r="2.3"/><circle cx="11.6" cy="6" r="2.3"/><circle cx="16.8" cy="8" r="2.3"/><circle cx="20" cy="12.6" r="2.1"/><path d="M12 11.2c-3.1 0-5.7 2.5-5.7 5.2 0 1.8 1.4 2.7 3.1 2.7 1 0 1.7-.4 2.6-.4s1.6.4 2.6.4c1.7 0 3.1-.9 3.1-2.7 0-2.7-2.6-5.2-5.7-5.2z"/></svg>';
+  document.querySelectorAll('.glyphs').forEach(g=>{
+    const total = +g.dataset.glyphs, on = +g.dataset.on;
+    let html = '';
+    for(let i=0;i<total;i++){
+      html += `<span class="${i<on?'on':'off'}" style="display:inline-flex;fill:${i<on?'var(--coral)':'var(--ink)'}">${PAW_G}</span>`;
+    }
+    g.innerHTML = html;
+  });
+
+  /* ---- horizon slot machine ---- */
+  const DX = ["cancer","autoimmune disease","inherited disorders","infection"];
+  const SP = ["dog","cat","herd","human"];
+  const reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function makeReel(sel, words){
+    const el = document.querySelector(sel);
+    if(!el) return null;
+    const track = el.querySelector('.reel-track');
+    const LOOPS = 14;
+    let list = [];
+    for(let i=0;i<LOOPS;i++) list = list.concat(words);
+    track.innerHTML = list.map(w=>`<span class="reel-item">${w}</span>`).join('');
+    const r = {el, track, words, list, items: track.querySelectorAll('.reel-item'), pos:0};
+    sizeReel(r);
+    return r;
+  }
+
+  function sizeReel(r){
+    let w = 0;
+    r.items.forEach(s=>{ w = Math.max(w, s.getBoundingClientRect().width); });
+    r.el.style.width = (Math.ceil(w) + 12) + 'px';
+  }
+
+  function spin(r, dur){
+    if(!r) return;
+    const h = r.items[0].getBoundingClientRect().height;
+    const n = r.words.length;
+    if(r.pos > r.list.length - n*3){
+      r.track.style.transition = 'none';
+      r.pos = r.pos % n;
+      r.track.style.transform = `translateY(${-r.pos * h}px)`;
+      void r.track.offsetHeight;
+    }
+    r.pos += n + Math.floor(Math.random() * n);
+    r.track.style.transition = `transform ${dur}ms cubic-bezier(.18,.86,.28,1)`;
+    r.track.style.transform = `translateY(${-r.pos * h}px)`;
+  }
+
+  function initSlots(){
+    const rDx = makeReel('.reel.dx', DX);
+    const rSp = makeReel('.reel.sp', SP);
+    if(!rDx || !rSp) return;
+
+    let t;
+    window.addEventListener('resize', ()=>{
+      clearTimeout(t);
+      t = setTimeout(()=>{ sizeReel(rDx); sizeReel(rSp); }, 150);
+    });
+
+    if(reduceMo) return;
+    const cycle = ()=>{ spin(rDx, 2100); setTimeout(()=>spin(rSp, 2300), 500); };
+    let started = false;
+    const sio = new IntersectionObserver((es)=>{
+      es.forEach(e=>{
+        if(e.isIntersecting && !started){
+          started = true;
+          setTimeout(cycle, 600);
+          setInterval(cycle, 6200);
+        }
+      });
+    },{threshold:0.4});
+    sio.observe(document.querySelector('.slot'));
+  }
+
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(initSlots); }
+  else { window.addEventListener('load', initSlots); }
+</script>
+</body>
+</html>
