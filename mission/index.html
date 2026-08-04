@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GAMGEE - Our Mission</title>
-<meta name="description" content="Gamgee is building AI-first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
+<meta name="description" content="Gamgee is building AI first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
 
 <!-- Open Graph / WhatsApp, Facebook, LinkedIn link previews -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Gamgee">
 <meta property="og:title" content="GAMGEE - Our Mission">
-<meta property="og:description" content="AI-first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
+<meta property="og:description" content="AI first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
 <meta property="og:image" content="https://gamgee.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
 <!-- Twitter/X card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="GAMGEE - Our Mission">
-<meta name="twitter:description" content="AI-first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
+<meta name="twitter:description" content="AI first, personalised mRNA cancer vaccines for dogs — one patient at a time.">
 <meta name="twitter:image" content="https://gamgee.io/assets/og-image.png">
 
 <!-- Search crawlers need a stable, fetchable favicon URL. -->
@@ -110,16 +110,17 @@
   .dark .say b{color:var(--paper)}
 
   /* ---------- hero ---------- */
-  .hero{background:var(--plum);color:var(--paper);position:relative;overflow:hidden}
+  .hero{background:var(--paper);color:var(--ink);position:relative;overflow:hidden}
   .hero .wrap{max-width:1200px;padding:78px 28px 75px;position:relative;z-index:2}
   .hero .lede{font-size:39px;max-width:none;line-height:1.1}
+  .hero .lede .hero-line{display:block;white-space:nowrap}
   .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-  .hero-art{order:2;aspect-ratio:16/9;border-radius:18px;background:var(--plum);overflow:hidden;position:relative}
-  .hero-art iframe{display:block;width:100%;height:100%;border:0;background:var(--plum)}
+  .hero-art{order:2;aspect-ratio:16/9;border-radius:18px;background:var(--paper);overflow:hidden;position:relative}
+  .hero-art iframe{display:block;width:100%;height:100%;border:0;background:var(--paper)}
   .hero-copy{order:1}
-  .hero .num{color:var(--paper)}
+  .hero .num{color:var(--ink)}
   .hero .num::after{display:none}
-  .hero-copy .num{margin-bottom:12px;font-size:10px;letter-spacing:.32em}.hero-copy .say{margin-top:18px;max-width:none;color:rgba(255,255,255,.74);font-size:.87rem;line-height:1.55}.hero .lede .hl{display:inline-block;background:var(--coral);color:#fff;border-radius:16px;padding:9px 10px;line-height:1;vertical-align:middle;white-space:nowrap}
+  .hero-copy .num{margin-bottom:12px;font-size:10px;letter-spacing:.32em}.hero-copy .say{margin-top:18px;max-width:none;color:var(--muted);font-size:.87rem;line-height:1.55}.hero .lede .hl{display:inline-block;background:var(--cyan);color:var(--ink);border-radius:16px;padding:9px 10px;line-height:1;vertical-align:middle;white-space:nowrap}.hero .lede .hl-genomics{border-radius:16px 16px 16px 6px}.hero .lede .hl-company{border-radius:16px 6px 16px 16px}
 
   /* Let the hero use the available desktop canvas without changing the
      reference-sized layout at narrower viewports. */
@@ -242,7 +243,7 @@
     .nav-in{padding:16px 20px}
     .beat .wrap{padding:70px 22px}
     .beat.no-btm .wrap{padding-bottom:96px}
-    .hero .wrap{padding:72px 22px 0}.hero-grid,.editorial-card,.why-card,.horizon-card{grid-template-columns:1fr;gap:26px}.hero-art{order:2;height:270px;aspect-ratio:auto;display:flex;align-items:center;justify-content:center}.hero-art iframe{width:480px;height:270px;aspect-ratio:16 / 9;flex:0 0 auto}.hero-copy{order:1}.hero .lede{font-size:clamp(2rem,9.4vw,2.375rem);max-width:none}.hero .lede .hl{padding:9px 8px}
+    .hero .wrap{padding:72px 22px 0}.hero-grid,.editorial-card,.why-card,.horizon-card{grid-template-columns:1fr;gap:26px}.hero-art{order:2;height:270px;aspect-ratio:auto;display:flex;align-items:center;justify-content:center}.hero-art iframe{width:480px;height:270px;aspect-ratio:16 / 9;flex:0 0 auto}.hero-copy{order:1}.hero .lede{font-size:clamp(2rem,9.4vw,2.375rem);max-width:none}.hero .lede .hero-line{white-space:normal}
     .m-grid{grid-template-columns:1fr;gap:44px}
     .patients .wrap{padding:0 22px 26px}
     .patients{padding:32px 0 70px}
@@ -295,11 +296,11 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-art rv" aria-label="Rosie animated ASCII portrait">
-        <iframe src="../assets/rosie-ascii-direct.html" title="Rosie rendered as animated ASCII" loading="eager"></iframe>
+        <iframe src="../assets/rosie-ascii-direct.html?v=cream" title="Rosie rendered as animated ASCII" loading="eager"></iframe>
       </div>
       <div class="hero-copy">
         <div class="num rv">WE ARE</div>
-        <h1 class="lede rv d1">The <span class="hl">AI-first genomics</span> company.</h1>
+        <h1 class="lede rv d1"><span class="hero-line">The</span><span class="hero-line">AI first <span class="hl hl-genomics">genomics</span></span><span class="hero-line"><span class="hl hl-company">company.</span></span></h1>
         <p class="say rv d2">We are starting with the first personalised mRNA cancer vaccines for dogs, built from each dog's own tumour.</p>
       </div>
     </div>
@@ -309,7 +310,7 @@
 <!-- WE BELIEVE -->
 <section class="beat">
   <div class="wrap">
-    <div class="editorial-card rv">
+    <div class="editorial-card">
       <div>
         <h2 class="lede"><span class="hl">N of 1</span> medicine is the future.</h2>
         <p class="say">We can read biology like never before. We can sequence a tumour and see the exact mutations driving it. So why do dogs with cancer still get the same few options?</p>
@@ -413,18 +414,18 @@
 
   /* ---- patient strip. PLACEHOLDER DATA: replace with real consented patients ---- */
   const PATIENTS = [
-    {name:"Milo",   age:6, loc:"Newcastle, NSW",      dx:"Mast cell tumour"},
-    {name:"Luna",   age:5, loc:"Brisbane, QLD",       dx:"Mast cell tumour"},
+    {name:"Buddy",  age:6, loc:"Newcastle, NSW",      dx:"Mast cell tumour"},
+    {name:"Luna",   age:7, loc:"Brisbane, QLD",       dx:"Mast cell tumour"},
     {name:"Archie", age:7, loc:"Sydney, NSW",         dx:"Lymphoma"},
     {name:"Ruby",   age:4, loc:"Gold Coast, QLD",     dx:"Mast cell tumour"},
-    {name:"Ollie",  age:6, loc:"Wollongong, NSW",     dx:"Mast cell tumour"},
+    {name:"Ollie",  age:5, ageUnit:"mths", loc:"Wollongong, NSW",     dx:"Mast cell tumour"},
     {name:"Poppy",  age:8, loc:"Sunshine Coast, QLD", dx:"Soft tissue sarcoma"},
     {name:"Max",    age:5, loc:"Melbourne, VIC",      dx:"Mast cell tumour"},
-    {name:"Frankie",age:7, loc:"Byron Bay, NSW",      dx:"Mast cell tumour"},
-    {name:"Willow", age:3, loc:"Toowoomba, QLD",      dx:"Mast cell tumour"},
+    {name:"Frankie",age:4, loc:"Byron Bay, NSW",      dx:"Mast cell tumour"},
+    {name:"Willow", age:3, ageUnit:"mths", loc:"Toowoomba, QLD",      dx:"Mast cell tumour"},
     {name:"Charlie",age:6, loc:"Coffs Harbour, NSW",  dx:"Osteosarcoma"},
     {name:"Daisy",  age:5, loc:"Cairns, QLD",         dx:"Mast cell tumour"},
-    {name:"Hugo",   age:7, loc:"Geelong, VIC",        dx:"Haemangiosarcoma"},
+    {name:"Hugo", age:4, ageUnit:"mths", loc:"Geelong, VIC", dx:"Haemangiosarcoma"},
     {name:"Nala",   age:4, loc:"Townsville, QLD",     dx:"Mast cell tumour"},
     {name:"Bear",   age:6, loc:"Bendigo, VIC",        dx:"Melanoma"}
   ];
@@ -448,13 +449,14 @@
     // Original placedog.net placeholders, downloaded locally for a stable preview.
     // These images are not mapped to the illustrative names or diagnoses above.
     const photo = `../assets/dogpic/dog-${20 + (i % 14)}.jpg`;
+    const ageUnit = p.ageUnit === "mths" ? "mths" : "yrs";
     return `<article class="pcard">
       <div class="pshot">
         ${placeholder(i)}
         <img src="${photo}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="pmeta">
-        <div class="pname">${p.name} <i>${p.age} yrs</i></div>
+        <div class="pname">${p.name} <i>${p.age} ${ageUnit}</i></div>
         <div class="ploc">${p.loc}</div>
         <div class="pdx">${p.dx}</div>
       </div>
