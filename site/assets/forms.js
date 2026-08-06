@@ -3,21 +3,49 @@
 
   var captchaApiPromise;
 
+  function captchaIsReady() {
+    return global.grecaptcha && typeof global.grecaptcha.render === 'function';
+  }
+
   function loadCaptchaApi() {
-    if (global.grecaptcha && typeof global.grecaptcha.render === 'function') {
-      return Promise.resolve(global.grecaptcha);
-    }
+    if (captchaIsReady()) return Promise.resolve(global.grecaptcha);
     if (captchaApiPromise) return captchaApiPromise;
 
     captchaApiPromise = new Promise(function(resolve, reject) {
-      var script = document.createElement('script');
-      script.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
-      script.async = true;
-      script.defer = true;
-      script.onload = function() { resolve(global.grecaptcha); };
-      script.onerror = function() { reject(new Error('CAPTCHA could not be loaded.')); };
-      document.head.appendChild(script);
+      var attemptsRemaining = 100;
+      var script = document.querySelector('script[data-gamgee-recaptcha-api]');
+
+      function waitForCaptcha() {
+        if (captchaIsReady()) {
+          resolve(global.grecaptcha);
+          return;
+        }
+
+        attemptsRemaining -= 1;
+        if (attemptsRemaining <= 0) {
+          reject(new Error('CAPTCHA could not be loaded.'));
+          return;
+        }
+
+        global.setTimeout(waitForCaptcha, 50);
+      }
+
+      if (!script) {
+        script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
+        script.async = true;
+        script.defer = true;
+        script.dataset.gamgeeRecaptchaApi = 'true';
+        script.onerror = function() { reject(new Error('CAPTCHA could not be loaded.')); };
+        document.head.appendChild(script);
+      }
+
+      waitForCaptcha();
+    }).catch(function(error) {
+      captchaApiPromise = null;
+      throw error;
     });
+
     return captchaApiPromise;
   }
 
@@ -78,4 +106,8 @@
     prepareCaptcha: prepareCaptcha,
     loadCaptchaApi: loadCaptchaApi
   });
+
+  // Start Google reCAPTCHA as soon as the shared form helper loads. Widgets are
+  // still rendered only when their visible form opens, but the API is ready then.
+  loadCaptchaApi().catch(function() {});
 })(window);
