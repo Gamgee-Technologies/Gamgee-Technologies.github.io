@@ -1,6 +1,6 @@
 # Gamgee
 
-> Gamgee is developing investigational personalised mRNA cancer treatment protocols for dogs, built from each dog’s tumour and delivered through licensed veterinary professionals.
+> Founded by Paul Conyngham following his work on Rosie’s personalised mRNA cancer vaccine, Gamgee is developing investigational, tumour-specific cancer treatment protocols for dogs through licensed veterinary professionals.
 
 This site provides general information, not veterinary advice. Rosie’s story describes one dog’s experience and should not be treated as proof of efficacy or a promise of outcomes. Availability, selection, and regulatory status vary by country.
 
