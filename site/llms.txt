@@ -1,0 +1,16 @@
+# Gamgee
+
+> Gamgee is developing investigational personalised mRNA cancer treatment protocols for dogs, built from each dog’s tumour and delivered through licensed veterinary professionals.
+
+This site provides general information, not veterinary advice. Rosie’s story describes one dog’s experience and should not be treated as proof of efficacy or a promise of outcomes. Availability, selection, and regulatory status vary by country.
+
+## Core pages
+
+- [Gamgee](https://www.gamgee.io/): Overview of Gamgee’s personalised mRNA cancer treatment program for dogs, the application-to-treatment process, and current trial access.
+- [Rosie’s story](https://www.gamgee.io/story/): Paul Conyngham’s account of Rosie’s mast cell cancer, the AI-assisted personalised mRNA vaccine process, the treatment timeline, collaborators, and the limits of a single case.
+- [Our mission](https://www.gamgee.io/mission/): Gamgee’s approach to AI-first genomics and N-of-1 medicine, beginning with personalised mRNA cancer vaccines for dogs.
+- [For veterinarians](https://www.gamgee.io/vet/): Program information for veterinary professionals, including referral pathways, sample requirements, the process timeline, and the technical approach.
+
+## Optional
+
+- [News, research, and media](https://www.gamgee.io/media/): Reporting, scientific commentary, interviews, and other coverage of Rosie’s case and Gamgee.
