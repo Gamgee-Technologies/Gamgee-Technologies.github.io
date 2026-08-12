@@ -69,7 +69,11 @@
 
 <!-- Search crawlers need a stable, fetchable favicon URL. -->
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<!-- The visible video can become the LCP element, so fetch its poster early.
+     Keep this URL in sync with the video poster below. -->
 <link rel="preload" as="image" href="/assets/vid/paul-rosie-video-poster.webp" type="image/webp" fetchpriority="high">
+<!-- forms.js reads GAMGEE_CONFIG. `defer` preserves this order without blocking
+     HTML parsing or the first content paint. -->
 <script defer src="/assets/config.js"></script>
 <script defer src="/assets/forms.js"></script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -641,6 +645,8 @@
 <section class="wrap">
   <div class="block intro" id="meet">
     <div class="intro-photo">
+      <!-- No src by design: JavaScript selects the appropriate encode and waits
+           for the poster to paint before requesting the MP4. -->
       <video
         autoplay
         muted
@@ -1132,6 +1138,7 @@
 let helixInitialized = false;
 
 function initHelix(){
+  // Both the cached-runtime and script.onload paths can call this initializer.
   if (helixInitialized) return;
   helixInitialized = true;
 
@@ -1191,6 +1198,7 @@ function initHelix(){
 
   alignHelix();
   applyMobileHelixVisibility();
+  // Font swaps change the heading and nav geometry used to position the ribbon.
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function(){
       alignHelix();
@@ -1349,6 +1357,8 @@ function loadHelixRuntime(){
   document.head.appendChild(script);
 }
 
+// Give the potential LCP poster a paint opportunity before downloading Three.js
+// and the 50 helix textures; the idle timeout still guarantees initialization.
 function scheduleHelix(){
   const video = document.querySelector('.intro-photo video');
   const poster = new Image();
@@ -1390,6 +1400,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let hasLoadedVideo = false;
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Reduced-motion and Save-Data users load video only through its control.
   const shouldWaitForInteraction = prefersReducedMotion || Boolean(connection && connection.saveData);
   let hasScheduledVideo = false;
 
@@ -1406,6 +1417,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shouldPlay) video.play().catch(() => {});
   }
 
+  // Decode the potential LCP poster and yield two frames before the competing
+  // MP4 request starts.
   function loadAfterPosterPaint() {
     if (hasScheduledVideo || hasLoadedVideo) return;
     hasScheduledVideo = true;
@@ -1438,6 +1451,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+    // A zero root margin avoids fetching the MP4 while it remains off screen.
     const observer = new IntersectionObserver(function(entries) {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();

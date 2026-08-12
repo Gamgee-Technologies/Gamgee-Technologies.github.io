@@ -107,4 +107,6 @@
     loadCaptchaApi: loadCaptchaApi
   });
 
+  // reCAPTCHA is intentionally loaded by prepareCaptcha when a form opens,
+  // keeping third-party work off the initial rendering path.
 })(window);
