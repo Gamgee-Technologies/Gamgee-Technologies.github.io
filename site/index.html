@@ -80,20 +80,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<!-- Warm the helix textures before anything else claims the connection. A classic
-     <script> cannot run until every preceding stylesheet has loaded, so this has
-     to sit above the font link to fire at parse time. -->
-<script>
-  for (var i = 1; i <= 50; i++) {
-    var img = new Image();
-    // Must match TextureLoader's crossOrigin or the warmed entry is a cache miss.
-    img.crossOrigin = 'anonymous';
-    img.src = './assets/helix/tex/dog_' + String(i).padStart(3, '0') + '.webp';
-  }
-</script>
-<!-- Loaded non-render-blocking: the fonts already use display=swap, and a blocking
-     stylesheet here also stalls execution of the three.js tag at the end of body. -->
+<!-- Loaded non-render-blocking; the fonts also use display=swap. -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -1131,9 +1118,14 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-!async function(){
+let helixInitialized = false;
+
+function initHelix(){
+  // Both the cached-runtime and script.onload paths can call this initializer.
+  if (helixInitialized) return;
+  helixInitialized = true;
+
   const el = document.getElementById('helix');
   if (!window.THREE || !el) return;
   const loaderEl = document.getElementById('helix-loader');
@@ -1190,6 +1182,13 @@
 
   alignHelix();
   applyMobileHelixVisibility();
+  // Font swaps change the heading and nav geometry used to position the ribbon.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function(){
+      alignHelix();
+      applyMobileHelixVisibility();
+    });
+  }
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W = el.clientWidth, H = el.clientHeight;
 
@@ -1324,7 +1323,43 @@
     cam.aspect=W/H; cam.updateProjectionMatrix(); ren.setSize(W,H);
     onScroll();
   });
-}();
+}
+
+function loadHelixRuntime(){
+  if (window.THREE) {
+    initHelix();
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  script.onload = initHelix;
+  script.onerror = function(){
+    const loader = document.getElementById('helix-loader');
+    if (loader) loader.remove();
+  };
+  document.head.appendChild(script);
+}
+
+// Give critical content a paint opportunity before downloading Three.js and
+// the 50 helix textures; the idle timeout still guarantees initialization.
+function scheduleHelix(){
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadHelixRuntime, { timeout: 1500 });
+      } else {
+        setTimeout(loadHelixRuntime, 0);
+      }
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', scheduleHelix, { once: true });
+} else {
+  scheduleHelix();
+}
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
