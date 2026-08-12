@@ -664,8 +664,8 @@
         playsinline
         preload="none"
         poster="./assets/vid/paul-rosie-video-poster.webp"
-        data-src-desktop="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4"
-        data-src-mobile="./assets/vid/paul-rosie-mobile-480p.mp4"
+        data-src-full="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4"
+        data-src-lightweight="./assets/vid/paul-rosie-low-bandwidth-480p.mp4"
       ></video>
       <button class="video-control" type="button" aria-live="polite" aria-label="Unmute video">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 7.5c1.5 1.5 1.5 4 0 5.5"/><path d="M19.5 4.5c3 3 3 7.5 0 10.5"/></svg>
@@ -1353,14 +1353,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const shouldWaitForInteraction = prefersReducedMotion || Boolean(connection && connection.saveData);
   let hasScheduledVideo = false;
 
+  // Treat 3G-or-worse or ≤1.6 Mbps as slow; Save-Data also opts in. Browsers
+  // without network information fall back to the full encode.
+  function shouldUseLightweightSource() {
+    if (!connection) return false;
+
+    const slowEffectiveType = ['slow-2g', '2g', '3g'].includes(connection.effectiveType);
+    const slowDownlink = Number.isFinite(connection.downlink) && connection.downlink <= 1.6;
+    return Boolean(connection.saveData) || slowEffectiveType || slowDownlink;
+  }
+
   function loadVideo(shouldPlay) {
     if (!hasLoadedVideo) {
       hasLoadedVideo = true;
 
-      // Use the smaller encode for narrow, touch-first, or Save-Data devices.
-      const useMobileSource = window.matchMedia('(max-width: 1024px), (pointer: coarse)').matches ||
-        Boolean(connection && connection.saveData);
-      video.src = useMobileSource ? video.dataset.srcMobile : video.dataset.srcDesktop;
+      video.src = shouldUseLightweightSource()
+        ? video.dataset.srcLightweight
+        : video.dataset.srcFull;
       video.load();
     }
 
