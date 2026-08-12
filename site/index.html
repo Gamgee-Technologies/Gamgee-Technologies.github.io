@@ -69,6 +69,9 @@
 
 <!-- Search crawlers need a stable, fetchable favicon URL. -->
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<!-- The visible video can become the LCP element, so fetch its static poster
+     early. Keep this URL in sync with the video poster below. -->
+<link rel="preload" as="image" href="/assets/vid/paul-rosie-video-poster.webp" type="image/webp" fetchpriority="high">
 <script src="/assets/config.js"></script>
 <script src="/assets/forms.js"></script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -653,7 +656,18 @@
 <section class="wrap">
   <div class="block intro" id="meet">
     <div class="intro-photo">
-      <video autoplay muted loop playsinline src="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4" poster="./assets/GAMGEE images/rose-poster.jpg"></video>
+      <!-- Static poster extracted from the video. The MP4 src is deferred until
+           this poster has decoded and had an opportunity to paint. -->
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        poster="./assets/vid/paul-rosie-video-poster.webp"
+        data-src-desktop="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4"
+        data-src-mobile="./assets/vid/paul-rosie-mobile-480p.mp4"
+      ></video>
       <button class="video-control" type="button" aria-live="polite" aria-label="Unmute video">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 7.5c1.5 1.5 1.5 4 0 5.5"/><path d="M19.5 4.5c3 3 3 7.5 0 10.5"/></svg>
       </button>
@@ -1332,6 +1346,72 @@ document.addEventListener('DOMContentLoaded', function() {
   const control = document.querySelector('.intro-photo .video-control');
   if (!video || !control) return;
 
+  let hasLoadedVideo = false;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Reduced-motion and Save-Data users load video only through its control.
+  const shouldWaitForInteraction = prefersReducedMotion || Boolean(connection && connection.saveData);
+  let hasScheduledVideo = false;
+
+  function loadVideo(shouldPlay) {
+    if (!hasLoadedVideo) {
+      hasLoadedVideo = true;
+
+      const useMobileSource = window.matchMedia('(max-width: 1024px), (pointer: coarse)').matches ||
+        Boolean(connection && connection.saveData);
+      video.src = useMobileSource ? video.dataset.srcMobile : video.dataset.srcDesktop;
+      video.load();
+    }
+
+    if (shouldPlay) video.play().catch(() => {});
+  }
+
+  // Decode the potential LCP poster and yield two frames before the competing
+  // MP4 request starts.
+  function loadAfterPosterPaint() {
+    if (hasScheduledVideo || hasLoadedVideo) return;
+    hasScheduledVideo = true;
+
+    const poster = new Image();
+    poster.src = video.poster;
+    const posterReady = typeof poster.decode === 'function'
+      ? poster.decode().catch(() => {})
+      : poster.complete
+        ? Promise.resolve()
+        : new Promise(resolve => {
+            poster.onload = resolve;
+            poster.onerror = resolve;
+          });
+
+    posterReady.then(function() {
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          loadVideo(true);
+        });
+      });
+    });
+  }
+
+  function observeVideo() {
+    if (shouldWaitForInteraction) return;
+
+    if (!('IntersectionObserver' in window)) {
+      loadAfterPosterPaint();
+      return;
+    }
+
+    // A zero root margin avoids fetching the MP4 while it remains off screen.
+    const observer = new IntersectionObserver(function(entries) {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadAfterPosterPaint();
+    }, { rootMargin: '0px', threshold: 0 });
+
+    observer.observe(video);
+  }
+
+  observeVideo();
+
   function refreshButton() {
     const isMuted = video.muted;
     // YouTube-style filled speaker icons
@@ -1349,7 +1429,7 @@ document.addEventListener('DOMContentLoaded', function() {
   control.addEventListener('click', function() {
     video.muted = !video.muted;
     refreshButton();
-    video.play().catch(() => {});
+    loadVideo(true);
   });
 });
 </script>
