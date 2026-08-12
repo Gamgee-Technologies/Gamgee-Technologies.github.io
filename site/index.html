@@ -656,8 +656,7 @@
 <section class="wrap">
   <div class="block intro" id="meet">
     <div class="intro-photo">
-      <!-- Static poster extracted from the video. The MP4 src is deferred until
-           this poster has decoded and had an opportunity to paint. -->
+      <!-- Static poster extracted from the source video. -->
       <video
         autoplay
         muted
@@ -1349,7 +1348,8 @@ document.addEventListener('DOMContentLoaded', function() {
   let hasLoadedVideo = false;
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Reduced-motion and Save-Data users load video only through its control.
+  // Save-Data or reduced-motion disables automatic loading until the control
+  // is used.
   const shouldWaitForInteraction = prefersReducedMotion || Boolean(connection && connection.saveData);
   let hasScheduledVideo = false;
 
@@ -1357,6 +1357,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!hasLoadedVideo) {
       hasLoadedVideo = true;
 
+      // Use the smaller encode for narrow, touch-first, or Save-Data devices.
       const useMobileSource = window.matchMedia('(max-width: 1024px), (pointer: coarse)').matches ||
         Boolean(connection && connection.saveData);
       video.src = useMobileSource ? video.dataset.srcMobile : video.dataset.srcDesktop;
@@ -1366,14 +1367,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shouldPlay) video.play().catch(() => {});
   }
 
-  // Decode the potential LCP poster and yield two frames before the competing
-  // MP4 request starts.
+  // Decode the poster and yield two frames before requesting the MP4, keeping
+  // the heavy transfer from competing with the poster's potential LCP paint.
   function loadAfterPosterPaint() {
     if (hasScheduledVideo || hasLoadedVideo) return;
     hasScheduledVideo = true;
 
     const poster = new Image();
     poster.src = video.poster;
+    // Continue after decode failures; older browsers fall back to load/error
+    // events.
     const posterReady = typeof poster.decode === 'function'
       ? poster.decode().catch(() => {})
       : poster.complete
@@ -1395,12 +1398,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function observeVideo() {
     if (shouldWaitForInteraction) return;
 
+    // Supported browsers wait for visibility; older browsers load immediately
+    // rather than blocking playback.
     if (!('IntersectionObserver' in window)) {
       loadAfterPosterPaint();
       return;
     }
 
-    // A zero root margin avoids fetching the MP4 while it remains off screen.
     const observer = new IntersectionObserver(function(entries) {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();
