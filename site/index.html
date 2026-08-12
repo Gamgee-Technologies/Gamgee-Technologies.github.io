@@ -69,8 +69,9 @@
 
 <!-- Search crawlers need a stable, fetchable favicon URL. -->
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<script src="/assets/config.js"></script>
-<script src="/assets/forms.js"></script>
+<link rel="preload" as="image" href="/assets/vid/paul-rosie-video-poster.webp" type="image/webp" fetchpriority="high">
+<script defer src="/assets/config.js"></script>
+<script defer src="/assets/forms.js"></script>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
 <script>
@@ -80,20 +81,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<!-- Warm the helix textures before anything else claims the connection. A classic
-     <script> cannot run until every preceding stylesheet has loaded, so this has
-     to sit above the font link to fire at parse time. -->
-<script>
-  for (var i = 1; i <= 50; i++) {
-    var img = new Image();
-    // Must match TextureLoader's crossOrigin or the warmed entry is a cache miss.
-    img.crossOrigin = 'anonymous';
-    img.src = './assets/helix/tex/dog_' + String(i).padStart(3, '0') + '.webp';
-  }
-</script>
-<!-- Loaded non-render-blocking: the fonts already use display=swap, and a blocking
-     stylesheet here also stalls execution of the three.js tag at the end of body. -->
+<!-- Loaded non-render-blocking; the fonts also use display=swap. -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@600&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -659,7 +647,7 @@
         loop
         playsinline
         preload="none"
-        poster="./assets/GAMGEE images/rose-poster.jpg"
+        poster="./assets/vid/paul-rosie-video-poster.webp"
         data-src-desktop="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4"
         data-src-mobile="./assets/vid/paul-rosie-mobile-480p.mp4"
       ></video>
@@ -1140,9 +1128,13 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-!async function(){
+let helixInitialized = false;
+
+function initHelix(){
+  if (helixInitialized) return;
+  helixInitialized = true;
+
   const el = document.getElementById('helix');
   if (!window.THREE || !el) return;
   const loaderEl = document.getElementById('helix-loader');
@@ -1199,6 +1191,12 @@
 
   alignHelix();
   applyMobileHelixVisibility();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function(){
+      alignHelix();
+      applyMobileHelixVisibility();
+    });
+  }
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W = el.clientWidth, H = el.clientHeight;
 
@@ -1333,7 +1331,55 @@
     cam.aspect=W/H; cam.updateProjectionMatrix(); ren.setSize(W,H);
     onScroll();
   });
-}();
+}
+
+function loadHelixRuntime(){
+  if (window.THREE) {
+    initHelix();
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  script.onload = initHelix;
+  script.onerror = function(){
+    const loader = document.getElementById('helix-loader');
+    if (loader) loader.remove();
+  };
+  document.head.appendChild(script);
+}
+
+function scheduleHelix(){
+  const video = document.querySelector('.intro-photo video');
+  const poster = new Image();
+  poster.src = video ? video.poster : '/assets/vid/paul-rosie-video-poster.webp';
+  const posterReady = typeof poster.decode === 'function'
+    ? poster.decode().catch(() => {})
+    : poster.complete
+      ? Promise.resolve()
+      : new Promise(resolve => {
+          poster.onload = resolve;
+          poster.onerror = resolve;
+        });
+
+  posterReady.then(function(){
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadHelixRuntime, { timeout: 1500 });
+        } else {
+          setTimeout(loadHelixRuntime, 0);
+        }
+      });
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', scheduleHelix, { once: true });
+} else {
+  scheduleHelix();
+}
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1345,6 +1391,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const shouldWaitForInteraction = prefersReducedMotion || Boolean(connection && connection.saveData);
+  let hasScheduledVideo = false;
 
   function loadVideo(shouldPlay) {
     if (!hasLoadedVideo) {
@@ -1359,28 +1406,48 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shouldPlay) video.play().catch(() => {});
   }
 
+  function loadAfterPosterPaint() {
+    if (hasScheduledVideo || hasLoadedVideo) return;
+    hasScheduledVideo = true;
+
+    const poster = new Image();
+    poster.src = video.poster;
+    const posterReady = typeof poster.decode === 'function'
+      ? poster.decode().catch(() => {})
+      : poster.complete
+        ? Promise.resolve()
+        : new Promise(resolve => {
+            poster.onload = resolve;
+            poster.onerror = resolve;
+          });
+
+    posterReady.then(function() {
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          loadVideo(true);
+        });
+      });
+    });
+  }
+
   function observeVideo() {
     if (shouldWaitForInteraction) return;
 
     if (!('IntersectionObserver' in window)) {
-      loadVideo(true);
+      loadAfterPosterPaint();
       return;
     }
 
     const observer = new IntersectionObserver(function(entries) {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();
-      loadVideo(true);
-    }, { rootMargin: '200px 0px', threshold: 0 });
+      loadAfterPosterPaint();
+    }, { rootMargin: '0px', threshold: 0 });
 
     observer.observe(video);
   }
 
-  if (document.readyState === 'complete') {
-    observeVideo();
-  } else {
-    window.addEventListener('load', observeVideo, { once: true });
-  }
+  observeVideo();
 
   function refreshButton() {
     const isMuted = video.muted;

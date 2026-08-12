@@ -107,7 +107,4 @@
     loadCaptchaApi: loadCaptchaApi
   });
 
-  // Start Google reCAPTCHA as soon as the shared form helper loads. Widgets are
-  // still rendered only when their visible form opens, but the API is ready then.
-  loadCaptchaApi().catch(function() {});
 })(window);
