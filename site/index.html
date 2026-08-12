@@ -653,7 +653,16 @@
 <section class="wrap">
   <div class="block intro" id="meet">
     <div class="intro-photo">
-      <video autoplay muted loop playsinline src="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4" poster="./assets/GAMGEE images/rose-poster.jpg"></video>
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        poster="./assets/GAMGEE images/rose-poster.jpg"
+        data-src-desktop="./assets/vid/YTDown_YouTube_Tech-boss-uses-ChatGPT-to-create-cancer-_Media_oBV1BZJalos_001_1080p.mp4"
+        data-src-mobile="./assets/vid/paul-rosie-mobile-480p.mp4"
+      ></video>
       <button class="video-control" type="button" aria-live="polite" aria-label="Unmute video">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9v6h4l5 5V4L9 9H5z"/><path d="M16.5 7.5c1.5 1.5 1.5 4 0 5.5"/><path d="M19.5 4.5c3 3 3 7.5 0 10.5"/></svg>
       </button>
@@ -1332,6 +1341,47 @@ document.addEventListener('DOMContentLoaded', function() {
   const control = document.querySelector('.intro-photo .video-control');
   if (!video || !control) return;
 
+  let hasLoadedVideo = false;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const shouldWaitForInteraction = prefersReducedMotion || Boolean(connection && connection.saveData);
+
+  function loadVideo(shouldPlay) {
+    if (!hasLoadedVideo) {
+      hasLoadedVideo = true;
+
+      const useMobileSource = window.matchMedia('(max-width: 1024px), (pointer: coarse)').matches ||
+        Boolean(connection && connection.saveData);
+      video.src = useMobileSource ? video.dataset.srcMobile : video.dataset.srcDesktop;
+      video.load();
+    }
+
+    if (shouldPlay) video.play().catch(() => {});
+  }
+
+  function observeVideo() {
+    if (shouldWaitForInteraction) return;
+
+    if (!('IntersectionObserver' in window)) {
+      loadVideo(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(function(entries) {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      loadVideo(true);
+    }, { rootMargin: '200px 0px', threshold: 0 });
+
+    observer.observe(video);
+  }
+
+  if (document.readyState === 'complete') {
+    observeVideo();
+  } else {
+    window.addEventListener('load', observeVideo, { once: true });
+  }
+
   function refreshButton() {
     const isMuted = video.muted;
     // YouTube-style filled speaker icons
@@ -1349,7 +1399,7 @@ document.addEventListener('DOMContentLoaded', function() {
   control.addEventListener('click', function() {
     video.muted = !video.muted;
     refreshButton();
-    video.play().catch(() => {});
+    loadVideo(true);
   });
 });
 </script>
