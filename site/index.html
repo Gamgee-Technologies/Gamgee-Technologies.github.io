@@ -599,6 +599,42 @@
     .modal-body{padding:24px 22px 28px}
     .form-row{grid-template-columns:1fr}
   }
+  /* TABLET-ONLY OVERRIDES
+     Keep tablet adjustments in this final block so the accepted phone
+     (<600px) and desktop (>=1200px) layouts remain isolated. Its position at
+     the end of the stylesheet also lets tablet declarations override the
+     shared <=900px compact foundation when the ranges overlap. */
+  @media (min-width:600px) and (max-width:1199px){
+    /* Tablets have enough room for the full navigation. */
+    .nav-toggle{display:none}
+    .navlinks{display:flex}
+
+    /* Lower and narrow the hero copy so its lines finish before the helix. */
+    .hero{padding-top:266px}
+    .hero-helix-space{min-height:174px}
+    .hero > div:first-child{
+      position:relative;
+      z-index:1;
+      max-width:clamp(360px,62.25vw,510px);
+    }
+    .hero .act{max-width:480px}
+
+    /* Keep both lower-row portraits balanced within their wide tablet cards. */
+    .dog-row picture:nth-child(3) img,
+    .dog-row picture:nth-child(4) img{object-position:center 25%}
+
+    /* Show the complete dog-photo helix as a contained vertical ribbon. */
+    #helix,#helix-loader{
+      width:var(--strip);
+      left:auto;
+      right:clamp(0px,4vw,48px);
+    }
+    #helix{
+      opacity:1;
+      -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
+              mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
+    }
+  }
 </style>
 </head>
 <body>
@@ -1155,6 +1191,20 @@
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
   function applyMobileHelixVisibility(){
+    if (window.innerWidth >= 600 && window.innerWidth < 1200) {
+      el.style.opacity = '1';
+      el.style.top = '';
+      el.style.height = '';
+      el.style.right = '';
+      if (loaderEl) {
+        loaderEl.style.top = '';
+        loaderEl.style.height = '';
+        loaderEl.style.right = '';
+        loaderEl.style.opacity = '';
+      }
+      return;
+    }
+
     if (window.innerWidth > 900) {
       el.style.opacity = '1';
       el.style.top = '';
@@ -1184,6 +1234,13 @@
   }
 
   function alignHelix(){
+    if (window.innerWidth >= 600 && window.innerWidth < 1200) {
+      el.style.right = '';
+      if (loaderEl) loaderEl.style.right = '';
+      applyMobileHelixVisibility();
+      return;
+    }
+
     if (window.innerWidth <= 900){
       el.style.right = '';
       applyMobileHelixVisibility();

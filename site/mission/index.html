@@ -281,6 +281,52 @@
     .foot-flag{display:none}
     .flag-inline{display:inline-block}
   }
+  @media(min-width:600px) and (max-width:1199px){
+    /* Keep the accepted full tablet navigation consistent across pages. */
+    .nav-toggle{display:none}
+    .navlinks{display:flex}
+
+    /* Place Rosie beside the mission statement instead of below it. */
+    .hero .wrap{padding:266px 22px 218px}
+    .hero-grid{
+      grid-template-columns:1.15fr .85fr;
+      gap:0;
+      align-items:center;
+    }
+    .hero .lede{font-size:52px;line-height:1.03}
+    .hero .lede .hero-line{white-space:nowrap}
+    .hero-copy{order:1;min-width:0;position:relative;z-index:1}
+    .hero-copy .say{font-size:1.1rem;line-height:1.58}
+    .hero-art{
+      order:2;
+      width:620px;
+      height:auto;
+      aspect-ratio:16 / 9;
+      display:block;
+      justify-self:end;
+      margin-left:-290px;
+      transform:translateX(20px);
+      z-index:0;
+    }
+    .hero-art iframe{
+      width:100%;height:100%;aspect-ratio:auto;
+      transform:translateX(112px);
+    }
+
+    /* Shorter, subject-aware crops for the two large tablet card images. */
+    .editorial-card figure,
+    .horizon-card figure{height:auto;aspect-ratio:16 / 9}
+    .editorial-card figure img{object-position:center 48%}
+    .horizon-card figure img{object-position:center 42%}
+
+    /* Let card copy use the complete tablet card width before wrapping. */
+    .editorial-card .lede,
+    .editorial-card .say,
+    .why-card .lede,
+    .why-card .say,
+    .horizon-card .lede,
+    .horizon-card .say{max-width:none}
+  }
   @media(prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important}
     .rv{opacity:1;transform:none}.draw{stroke-dashoffset:0}.pop{opacity:1;transform:none}.fade{opacity:1}
