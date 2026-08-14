@@ -635,6 +635,20 @@
               mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);
     }
   }
+  @media (min-width:900px) and (max-width:1199px) and (orientation:landscape){
+    /* Landscape tablets follow the desktop composition at a gentler scale. */
+    .hero{padding:40px 0 48px;min-height:72vh}
+    .hero-helix-space{min-height:240px}
+    .hero > div:first-child{max-width:none}
+    .hero h1{font-size:50px;line-height:1.04}
+    .hero .act{max-width:none;margin-top:30px}
+    #helix,#helix-loader{
+      width:var(--strip);
+      left:auto;
+      right:max(0px,calc((100vw - 1256px)/2 + 220px - var(--strip)/2));
+    }
+    .foot,.legal{padding-right:72px}
+  }
 </style>
 </head>
 <body>

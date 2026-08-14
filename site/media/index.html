@@ -355,6 +355,15 @@ footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
   .post blockquote{max-width:none;text-wrap:initial}
   .cta h2{max-width:none}
 }
+@media(min-width:900px) and (max-width:1199px) and (orientation:landscape){
+  /* Retain the desktop editorial hierarchy with slightly smaller type. */
+  .grid.lead > :first-child .vtitle{font-size:26px;max-width:36ch;text-wrap:balance}
+  .vtitle{font-size:19px;max-width:38ch}
+  .vbar .lg{width:auto;height:22px;max-width:124px;object-position:center}
+  .post blockquote{max-width:24ch;text-wrap:balance}
+  .cta h2{max-width:18ch}
+  .foot,.legal{padding-right:72px}
+}
 </style>
 </head>
 <body>

@@ -327,6 +327,27 @@
     .horizon-card .lede,
     .horizon-card .say{max-width:none}
   }
+  @media(min-width:900px) and (max-width:1199px) and (orientation:landscape){
+    /* Use the desktop mission composition at a landscape-tablet scale. */
+    .hero .wrap{padding:64px 28px 72px}
+    .hero-grid{grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+    .hero .lede{font-size:56px;line-height:1.04}
+    .hero-copy .say{font-size:1rem;line-height:1.58}
+    .hero-art{
+      width:560px;height:auto;aspect-ratio:16 / 9;
+      justify-self:end;margin-left:-40px;transform:none;
+    }
+    .hero-art iframe{transform:none}
+    .editorial-card figure{height:100%;aspect-ratio:auto}
+    .horizon-card figure{aspect-ratio:1124 / 843}
+    .editorial-card .lede,
+    .why-card .lede,
+    .horizon-card .lede{max-width:17ch}
+    .editorial-card .say,
+    .why-card .say,
+    .horizon-card .say{max-width:56ch}
+    .foot,.legal{padding-right:72px}
+  }
   @media(prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important}
     .rv{opacity:1;transform:none}.draw{stroke-dashoffset:0}.pop{opacity:1;transform:none}.fade{opacity:1}
