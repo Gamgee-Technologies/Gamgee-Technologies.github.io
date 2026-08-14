@@ -303,6 +303,7 @@
   }
   @media(min-width:900px) and (max-width:1199px) and (orientation:landscape){
     /* Restore the desktop narrative/timeline structure at a gentler scale. */
+    .page-wrap,.nav-in{width:83.333333%;max-width:1000px}
     .story-hero h1{font-size:54px}
     .story-body{
       grid-template-columns:minmax(0,1fr) 280px;
@@ -317,7 +318,11 @@
       position:sticky;top:100px;
       grid-column:auto;grid-row:auto;
     }
-    .foot,.legal{padding-right:72px}
+    .foot,.legal{
+      width:83.333333%;max-width:1000px;
+      padding-left:clamp(48px,5vw,60px);
+      padding-right:clamp(48px,5vw,60px);
+    }
   }
 </style>
 </head>

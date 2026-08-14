@@ -357,12 +357,17 @@ footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
 }
 @media(min-width:900px) and (max-width:1199px) and (orientation:landscape){
   /* Retain the desktop editorial hierarchy with slightly smaller type. */
+  .wrap,.nav-in{width:83.333333%;max-width:1000px}
   .grid.lead > :first-child .vtitle{font-size:26px;max-width:36ch;text-wrap:balance}
   .vtitle{font-size:19px;max-width:38ch}
   .vbar .lg{width:auto;height:22px;max-width:124px;object-position:center}
   .post blockquote{max-width:24ch;text-wrap:balance}
   .cta h2{max-width:18ch}
-  .foot,.legal{padding-right:72px}
+  .foot,.legal{
+    width:83.333333%;max-width:1000px;
+    padding-left:clamp(48px,5vw,60px);
+    padding-right:clamp(48px,5vw,60px);
+  }
 }
 </style>
 </head>

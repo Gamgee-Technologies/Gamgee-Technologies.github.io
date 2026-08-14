@@ -329,7 +329,8 @@
   }
   @media(min-width:900px) and (max-width:1199px) and (orientation:landscape){
     /* Use the desktop mission composition at a landscape-tablet scale. */
-    .hero .wrap{padding:64px 28px 72px}
+    .wrap,.nav-in{width:83.333333%;max-width:1000px}
+    .hero .wrap{width:83.333333%;max-width:1000px;padding:64px 28px 72px}
     .hero-grid{grid-template-columns:1fr 1fr;gap:20px;align-items:center}
     .hero .lede{font-size:56px;line-height:1.04}
     .hero-copy .say{font-size:1rem;line-height:1.58}
@@ -346,7 +347,11 @@
     .editorial-card .say,
     .why-card .say,
     .horizon-card .say{max-width:56ch}
-    .foot,.legal{padding-right:72px}
+    .foot,.legal{
+      width:83.333333%;max-width:1000px;
+      padding-left:clamp(48px,5vw,60px);
+      padding-right:clamp(48px,5vw,60px);
+    }
   }
   @media(prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important}
