@@ -11,18 +11,18 @@
 <meta property="og:site_name" content="Gamgee">
 <meta property="og:title" content="Apply for Our Dog Cancer Trial | Gamgee">
 <meta property="og:description" content="Gamgee is inviting owners of dogs with cancer in eastern Australia to apply for a personalised mRNA cancer vaccine trial.">
-<meta property="og:image" content="https://www.gamgee.io/assets/social/story.png">
+<meta property="og:image" content="https://www.gamgee.io/assets/social/trial.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Paul Conyngham sitting with Rosie">
+<meta property="og:image:alt" content="Gamgee — Apply for our dog cancer trial">
 <meta property="og:url" content="https://www.gamgee.io/trial/">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Apply for Our Dog Cancer Trial | Gamgee">
 <meta name="twitter:description" content="Gamgee is inviting owners of dogs with cancer in eastern Australia to apply for a personalised mRNA cancer vaccine trial.">
-<meta name="twitter:image" content="https://www.gamgee.io/assets/social/story.png">
-<meta name="twitter:image:alt" content="Paul Conyngham sitting with Rosie">
+<meta name="twitter:image" content="https://www.gamgee.io/assets/social/trial.png">
+<meta name="twitter:image:alt" content="Gamgee — Apply for our dog cancer trial">
 
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="preload" as="image" href="/assets/story/Paul+Rosie.webp" type="image/webp" fetchpriority="high">
@@ -204,21 +204,25 @@
   }
   .hero-status img{width:16px;height:16px;filter:invert(11%) sepia(58%) saturate(4371%) hue-rotate(283deg) brightness(64%)}
   .trial-hero h1{
+    display:flex;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:5px;
     max-width:10em;
     margin-top:20px;
     font-size:56px;
     font-weight:800;
-    line-height:1.06;
+    line-height:1;
     letter-spacing:-.035em;
   }
+  .hero-title-line{display:block;line-height:1.08}
   .hero-highlight{
-    display:inline-block;
-    margin-top:5px;
-    padding:1px 9px 5px;
+    display:block;
+    padding:0 9px 7px;
     border-radius:8px;
     background:var(--coral);
     color:#fff;
-    line-height:1;
+    line-height:1.06;
   }
   .hero-lede{
     max-width:590px;
@@ -501,10 +505,13 @@
   .legal a{color:var(--muted);text-decoration:none}
   .flag-inline{display:none}
 
-  @media(max-width:1000px){
+  @media(max-width:1180px){
     .trial-hero-inner{grid-template-columns:420px minmax(0,1fr);gap:48px;min-height:620px;padding:60px 28px}
     .trial-hero-image{width:420px;height:460px}
     .trial-hero h1{font-size:48px}
+  }
+
+  @media(max-width:1000px){
     .trial-content{padding-top:72px}
     .story-card{grid-template-columns:1fr;gap:36px;min-height:0;padding:48px}
     .story-copy{max-width:46em}
@@ -614,7 +621,7 @@
     </figure>
     <div class="trial-hero-copy">
       <p class="hero-status"><img src="/assets/icons/Target.svg" width="20" height="20" alt="" aria-hidden="true">Trial now recruiting · Eastern Australia</p>
-      <h1 id="page-title">Apply for our<br> <span class="hero-highlight">dog cancer trial</span></h1>
+      <h1 id="page-title"><span class="hero-title-line">Apply for our</span><span class="hero-highlight">dog cancer trial</span></h1>
       <p class="hero-lede">We are recruiting dogs with mast cell cancer in eastern Australia for an investigational trial of personalised mRNA cancer vaccines. Submit a short application and our team will contact you to help with further screening.</p>
       <div class="hero-actions">
         <a class="btn hero-primary" href="/apply/">Apply for the trial&nbsp; →</a>
