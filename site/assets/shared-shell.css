@@ -1,0 +1,29 @@
+/* Canonical shell shared by Landing, Mission, Story, Media, Vets, and Trial. */
+nav,nav.site-nav,nav.nav{position:sticky;top:0;z-index:60;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
+nav .nav-in{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:20px 28px}
+nav .logo{display:flex;align-items:center;gap:10px;color:#16160B;font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800;line-height:1.5;text-decoration:none}
+nav .navlinks{display:flex;align-items:center;gap:24px;font-size:15px;font-weight:600}
+nav .navlinks a:not(.btn){color:#16160B;text-decoration:none}
+nav .navlinks a.active,nav .navlinks a[aria-current="page"]{color:#DB4949}
+nav .navlinks .btn{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:11px 24px;border:0;border-radius:999px;background:#3C014E;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;line-height:1.5;text-decoration:none}
+nav .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:4px;border:0;border-radius:8px;background:none;cursor:pointer}
+nav .nav-toggle span{display:block;width:100%;height:2px;border-radius:2px;background:#16160B}
+nav .mobile-menu{display:none;flex-direction:column;padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06);background:rgba(247,246,228,.97);backdrop-filter:blur(12px)}
+nav .mobile-menu.open{display:flex}
+nav .mobile-menu a:not(.btn){display:block;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.07);color:#16160B;font-size:17px;font-weight:600;text-decoration:none}
+nav .mobile-menu a.active,nav .mobile-menu a[aria-current="page"]{color:#DB4949}
+nav .mobile-menu .btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:14px;padding:16px 24px;border:0;border-radius:999px;background:#3C014E;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:16px;font-weight:700;text-decoration:none}
+footer{margin-top:0;border-top:1px solid rgba(22,22,11,.11);border-radius:0;background:#F7F6E4;color:#16160B}
+footer .foot{display:flex;align-items:stretch;justify-content:space-between;max-width:1200px;margin:0 auto;padding:64px 0 34px 72px;gap:40px}
+footer .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+footer .foot-flag{display:flex;align-items:center;gap:6px;margin-bottom:-24px}
+footer .brand{display:flex;align-items:center;gap:10px;color:#16160B;font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800}
+footer .tag2{max-width:20em;margin-top:14px;color:#5B5F55;font-size:13px;line-height:1.6}
+footer .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
+footer .footer-links h5{margin:0;color:#16160B;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+footer .footer-links a{display:block;margin-left:10px;color:#7a7a7a;font-size:14px;text-decoration:none}
+footer .legal{display:flex;justify-content:space-between;max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;border-top:1px solid rgba(0,0,0,.08);color:rgba(0,0,0,.6);font-size:12px}
+footer .legal a{color:rgba(0,0,0,.6);text-decoration:none}
+footer .flag-inline{display:none}
+@media(max-width:599px){nav .navlinks{display:none}nav .nav-toggle{display:flex}nav .nav-in{padding:16px 20px}footer .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}footer .foot-right{align-items:flex-start;gap:10px}footer .footer-links{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px}footer .footer-links a{margin-left:0;font-size:15px}footer .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}footer .foot-flag{display:none}footer .flag-inline{display:inline-block}}
+@media(min-width:600px){nav .navlinks{display:flex}nav .nav-toggle{display:none}nav .mobile-menu{display:none!important}}

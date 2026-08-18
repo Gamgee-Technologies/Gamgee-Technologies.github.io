@@ -370,18 +370,20 @@ footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
   }
 }
 </style>
+<link rel="stylesheet" href="/assets/shared-shell.css">
 </head>
 <body>
 
-<nav class="nav">
-  <div class="wrap nav-in">
-    <a href="/" class="wordmark">GAMGEE</a>
-    <div class="nav-links">
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/" aria-label="Gamgee home">GAMGEE</a>
+    <div class="navlinks">
       <a href="/mission/">Our mission</a>
       <a href="/story/">Our story</a>
-      <a href="/media/" class="on">In the media</a>
+      <a href="/media/" class="active" aria-current="page">In the media</a>
       <a href="/vet/">For vets</a>
-      <a href="/apply/" class="btn-apply">Apply</a>
+      <a href="/trial/">Trial</a>
+      <a class="btn" href="/apply/">Apply</a>
     </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -390,9 +392,10 @@ footer{background:#F7F6E4;color:var(--ink);border-radius:0;margin-top:0}
   <div class="mobile-menu" id="mobile-menu">
     <a href="/mission/">Our mission</a>
     <a href="/story/">Our story</a>
-    <a href="/media/" class="on">In the media</a>
+    <a href="/media/" class="active" aria-current="page">In the media</a>
     <a href="/vet/">For vets</a>
-    <a href="/apply/" class="btn-apply">Apply now</a>
+    <a href="/trial/">Trial</a>
+    <a class="btn" href="/apply/">Apply now</a>
   </div>
 </nav>
 
