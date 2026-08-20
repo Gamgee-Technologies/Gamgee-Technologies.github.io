@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>GAMGEE - Apply</title>
+<title>GAMGEE - Three-option Apply Form</title>
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <script src="/assets/config.js"></script>
 <script src="/assets/forms.js"></script>
@@ -1018,6 +1018,8 @@
 
   function configureInternationalFlow(loc) {
     var country = document.getElementById('e-country');
+    var lede = document.getElementById('elsewhere-lede');
+
     if (loc !== 'australia' && country) {
       country.value = loc === 'usa' ? 'United States' : '';
       country.readOnly = loc === 'usa';
@@ -1025,6 +1027,9 @@
       country.style.color = loc === 'usa' ? '#5b5f55' : 'var(--ink)';
       country.style.cursor = loc === 'usa' ? 'not-allowed' : '';
     }
+    if (lede) lede.textContent = loc === 'usa'
+      ? "Although we can't currently provide the vaccine in the United States, we may still be able to help you understand the available options for your dog through a consultation."
+      : "We may not be able to help in your country just yet, but you're still welcome to complete this form. If that changes, our team may reach out to discuss how we could support you and your dog.";
     updateCountrySpecificFlow();
   }
 
@@ -1037,12 +1042,18 @@
     var country = val('e-country');
     var isUsa = isUnitedStatesCountry(country);
     var usaConsultation = document.getElementById('usa-consultation');
+    var lede = document.getElementById('elsewhere-lede');
 
     if (usaConsultation) usaConsultation.hidden = !isUsa;
+    if (lede) {
+      lede.textContent = isUsa
+        ? "Although we can't currently provide the vaccine in the United States, we may still be able to help you understand the available options for your dog through a consultation."
+        : "We may not be able to help in your country just yet, but you're still welcome to complete this form. If that changes, our team may reach out to discuss how we could support you and your dog.";
+    }
   }
 
   function applyLocationLayoutVariant() {
-    var useThreeCards = new URLSearchParams(window.location.search).get('location-layout') === 'three';
+    var useThreeCards = true;
     var usaCard = document.getElementById('loc-usa');
     var australiaCopy = document.getElementById('australia-card-copy');
     var elsewhereCopy = document.getElementById('elsewhere-card-copy');
