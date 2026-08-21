@@ -10,6 +10,13 @@ This site provides general information, not veterinary advice. Rosie’s story d
 - [Rosie’s story](https://www.gamgee.io/story/): Paul Conyngham’s account of Rosie’s mast cell cancer, the AI-assisted personalised mRNA vaccine process, the treatment timeline, collaborators, and the limits of a single case.
 - [Our mission](https://www.gamgee.io/mission/): Gamgee’s approach to AI-first genomics and N-of-1 medicine, beginning with personalised mRNA cancer vaccines for dogs.
 - [For veterinarians](https://www.gamgee.io/vet/): Program information for veterinary professionals, including referral pathways, sample requirements, the process timeline, and the technical approach.
+- [Articles](https://www.gamgee.io/articles/): Original writing from Gamgee about its origins, veterinary medicine, AI-assisted genomics, and personalised cancer treatment for dogs.
+
+## Articles
+
+- [From Decoding Biology to Designing It](https://www.gamgee.io/articles/from-decoding-biology-to-designing/): How generative AI is beginning to move biology from interpretation toward intentional design.
+- [The Science Is Arriving Before the System Is Ready](https://www.gamgee.io/articles/the-science-is-arriving-before-the/): Reflections from AVMA Convention 2026 on the gap between fast-moving science and veterinary delivery systems.
+- [Our Origin Story: Rosie's Journey](https://www.gamgee.io/articles/our-origin-story-rosies-journey/): Paul Conyngham's account of Rosie's cancer journey and the work that led to Gamgee.
 
 ## Optional
 

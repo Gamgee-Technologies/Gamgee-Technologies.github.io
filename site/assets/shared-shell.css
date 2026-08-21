@@ -1,29 +1,39 @@
-/* Canonical shell shared by Landing, Mission, Story, Media, Vets, and Trial. */
-nav,nav.site-nav,nav.nav{position:sticky;top:0;z-index:60;background:rgba(247,246,228,.85);backdrop-filter:blur(10px)}
-nav .nav-in{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:20px 28px}
-nav .logo{display:flex;align-items:center;gap:10px;color:#16160B;font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800;line-height:1.5;text-decoration:none}
-nav .navlinks{display:flex;align-items:center;gap:24px;font-size:15px;font-weight:600}
-nav .navlinks a:not(.btn){color:#16160B;text-decoration:none}
-nav .navlinks a.active,nav .navlinks a[aria-current="page"]{color:#DB4949}
-nav .navlinks .btn{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:11px 24px;border:0;border-radius:999px;background:#3C014E;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;line-height:1.5;text-decoration:none}
-nav .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:4px;border:0;border-radius:8px;background:none;cursor:pointer}
-nav .nav-toggle span{display:block;width:100%;height:2px;border-radius:2px;background:#16160B}
-nav .mobile-menu{display:none;flex-direction:column;padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06);background:rgba(247,246,228,.97);backdrop-filter:blur(12px)}
-nav .mobile-menu.open{display:flex}
-nav .mobile-menu a:not(.btn){display:block;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.07);color:#16160B;font-size:17px;font-weight:600;text-decoration:none}
-nav .mobile-menu a.active,nav .mobile-menu a[aria-current="page"]{color:#DB4949}
-nav .mobile-menu .btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:14px;padding:16px 24px;border:0;border-radius:999px;background:#3C014E;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:16px;font-weight:700;text-decoration:none}
-footer{margin-top:0;border-top:1px solid rgba(22,22,11,.11);border-radius:0;background:#F7F6E4;color:#16160B}
-footer .foot{display:flex;align-items:stretch;justify-content:space-between;max-width:1200px;margin:0 auto;padding:64px 0 34px 72px;gap:40px}
-footer .foot-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
-footer .foot-flag{display:flex;align-items:center;gap:6px;margin-bottom:-24px}
-footer .brand{display:flex;align-items:center;gap:10px;color:#16160B;font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800}
-footer .tag2{max-width:20em;margin-top:14px;color:#5B5F55;font-size:13px;line-height:1.6}
-footer .footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap}
-footer .footer-links h5{margin:0;color:#16160B;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-footer .footer-links a{display:block;margin-left:10px;color:#7a7a7a;font-size:14px;text-decoration:none}
-footer .legal{display:flex;justify-content:space-between;max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;border-top:1px solid rgba(0,0,0,.08);color:rgba(0,0,0,.6);font-size:12px}
-footer .legal a{color:rgba(0,0,0,.6);text-decoration:none}
-footer .flag-inline{display:none}
-@media(max-width:599px){nav .navlinks{display:none}nav .nav-toggle{display:flex}nav .nav-in{padding:16px 20px}footer .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}footer .foot-right{align-items:flex-start;gap:10px}footer .footer-links{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px}footer .footer-links a{margin-left:0;font-size:15px}footer .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}footer .foot-flag{display:none}footer .flag-inline{display:inline-block}}
-@media(min-width:600px){nav .navlinks{display:flex}nav .nav-toggle{display:none}nav .mobile-menu{display:none!important}}
+/* Canonical React shell. Namespaced to prevent legacy page CSS from changing it. */
+[data-site-header]{position:sticky;top:0;z-index:60;display:block;min-height:80px;background:rgba(247,246,228,.88);backdrop-filter:saturate(180%) blur(12px)}
+.site-shell-nav{position:relative;top:auto;z-index:auto;width:100%;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:#16160B;font-family:"Inter",sans-serif;line-height:1.5}
+.site-shell-nav .site-shell-nav-inner{display:flex;align-items:center;justify-content:space-between;width:auto;min-height:80px;max-width:1200px;margin:0 auto;padding:0 28px}
+.site-shell-nav .site-shell-logo{display:flex;align-items:center;gap:10px;margin:0;padding:0;color:#16160B;font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800;line-height:1.5;text-decoration:none}
+.site-shell-nav .site-shell-links{display:flex;align-items:center;gap:24px;margin:0;padding:0;font-size:15px;font-weight:600}
+.site-shell-nav .site-shell-links a:not(.site-shell-apply){display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0;color:#16160B;text-decoration:none;transition:opacity .14s ease,color .14s ease}
+.site-shell-nav .site-shell-links a:not(.site-shell-apply):hover{opacity:.65}
+.site-shell-nav .site-shell-links a.active,.site-shell-nav .site-shell-links a[aria-current="page"]{color:#DB4949}
+.site-shell-nav .site-shell-apply{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin:0;padding:11px 24px;border:0;border-radius:999px;background:#3C014E;box-shadow:0 8px 20px rgba(60,1,78,.22);color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;line-height:1.5;text-decoration:none;transition:transform .12s ease,background .18s ease}
+.site-shell-nav .site-shell-apply:hover{background:#2D0A47;transform:translateY(-2px)}
+.site-shell-nav .site-shell-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;margin:0;padding:4px;border:0;border-radius:8px;background:none;box-shadow:none;cursor:pointer}
+.site-shell-nav .site-shell-toggle{flex-shrink:0}
+.site-shell-nav .site-shell-toggle span{display:block;width:100%;height:2px;margin:0;padding:0;border-radius:2px;background:#16160B;transition:transform .25s,opacity .25s}
+.site-shell-nav .site-shell-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-shell-nav .site-shell-toggle.open span:nth-child(2){opacity:0}
+.site-shell-nav .site-shell-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.site-shell-nav .site-shell-mobile-menu{display:none;flex-direction:column;margin:0;padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06);background:rgba(247,246,228,.97);backdrop-filter:blur(12px)}
+.site-shell-nav .site-shell-mobile-menu.open{display:flex}
+.site-shell-nav .site-shell-mobile-menu a:not(.site-shell-apply){display:block;margin:0;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.07);color:#16160B;font-size:17px;font-weight:600;text-decoration:none}
+.site-shell-nav .site-shell-mobile-menu a.active,.site-shell-nav .site-shell-mobile-menu a[aria-current="page"]{color:#DB4949}
+.site-shell-nav .site-shell-mobile-menu .site-shell-apply{width:100%;min-height:56px;margin-top:14px;padding:16px 24px;font-size:16px}
+.site-shell-footer{display:block;width:100%;margin:0;padding:0;border:0;border-top:1px solid rgba(22,22,11,.11);border-radius:0;background:#F7F6E4;color:#16160B;font-family:"Inter",sans-serif;line-height:1.5}
+.site-shell-footer .site-shell-footer-main{display:flex;align-items:stretch;justify-content:space-between;width:auto;max-width:1200px;margin:0 auto;padding:64px 0 34px 72px;gap:40px}
+.site-shell-footer .site-shell-footer-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+.site-shell-footer .site-shell-footer-flags{display:flex;align-items:center;gap:6px;margin-bottom:-24px}
+.site-shell-footer .site-shell-footer-brand{display:flex;align-items:center;gap:10px;margin:0;color:#16160B;font-family:"Poppins",system-ui,sans-serif;font-size:22px;font-weight:800}
+.site-shell-footer .site-shell-footer-tagline{max-width:20em;margin:14px 0 0;padding:0;color:#5B5F55;font-size:13px;line-height:1.6}
+.site-shell-footer .site-shell-footer-links{display:flex;align-items:center;justify-content:flex-end;gap:30px;flex-wrap:wrap;margin:0;padding:0}
+.site-shell-footer .site-shell-footer-links h5{margin:0;padding:0;color:#16160B;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.site-shell-footer .site-shell-footer-links a{display:block;margin:0 0 0 10px;padding:0;color:#7a7a7a;font-size:14px;text-decoration:none}
+.site-shell-footer .site-shell-footer-links a:hover{color:#16160B}
+.site-shell-footer .site-shell-footer-legal{display:flex;justify-content:space-between;width:auto;max-width:1200px;margin:0 auto;padding:18px 0 38px 72px;border-top:1px solid rgba(0,0,0,.08);color:rgba(0,0,0,.6);font-size:12px}
+.site-shell-footer .site-shell-footer-legal a{color:rgba(0,0,0,.6);text-decoration:none}
+.site-shell-footer .site-shell-footer-flag-inline{display:none}
+.site-shell-footer .site-shell-footer-flags img,.site-shell-footer .site-shell-footer-flag-inline img{border-radius:2px;object-fit:cover;vertical-align:middle}
+@media(max-width:719px){.site-shell-nav .site-shell-links{display:none}.site-shell-nav .site-shell-toggle{display:flex}.site-shell-nav .site-shell-nav-inner{padding:16px 20px}.site-shell-footer .site-shell-footer-main{flex-direction:column;gap:28px;padding:40px 20px 24px}.site-shell-footer .site-shell-footer-right{align-items:flex-start;gap:10px}.site-shell-footer .site-shell-footer-links{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px}.site-shell-footer .site-shell-footer-links a{margin-left:0;font-size:15px}.site-shell-footer .site-shell-footer-legal{flex-direction:column;gap:8px;padding:16px 20px 32px}.site-shell-footer .site-shell-footer-flags{display:none}.site-shell-footer .site-shell-footer-flag-inline{display:inline-block}}
+@media(min-width:720px) and (max-width:1099px){.site-shell-nav .site-shell-nav-inner{padding:16px 20px}.site-shell-nav .site-shell-links{gap:12px;font-size:13px}.site-shell-nav .site-shell-links .site-shell-apply{padding:10px 18px}}
+@media(min-width:720px){.site-shell-nav .site-shell-links{display:flex}.site-shell-nav .site-shell-toggle{display:none}.site-shell-nav .site-shell-mobile-menu{display:none!important}}
