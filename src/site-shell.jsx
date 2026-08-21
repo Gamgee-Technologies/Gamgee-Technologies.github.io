@@ -16,7 +16,7 @@ function isCurrent(pathname, href) {
 
 function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const pathname = window.location.pathname;
+  const pathname = document.documentElement.dataset.activePath || window.location.pathname;
 
   useEffect(() => {
     const close = () => setOpen(false);
