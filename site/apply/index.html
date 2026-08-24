@@ -38,7 +38,7 @@
   .logo{font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:22px;text-decoration:none;color:var(--ink)}
 
   /* ── PROGRESS STEPPER ── */
-  .stepper-wrap{max-width:700px;margin:0 auto;padding:28px 28px 0}
+  .stepper-wrap{width:min(700px,100%);margin:0 auto;padding:28px 28px 0;transition:width .24s ease,padding .24s ease}
   .stepper{display:flex;align-items:center;justify-content:center;gap:0;position:relative}
   .step-item{display:flex;align-items:center;gap:8px;position:relative;z-index:1}
   .step-item:not(:last-child)::after{content:'';display:block;width:60px;height:1px;background:var(--border);margin:0 4px}
@@ -50,6 +50,12 @@
   .step-label{font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap}
   .step-item.active .step-label{color:var(--coral);font-weight:700}
   .step-item.done .step-label{color:var(--muted)}
+  @media(min-width:601px){
+    .stepper{justify-content:space-between}
+    .step-item:not(:last-child){flex:1}
+    .step-item:not(:last-child)::after{width:auto;flex:1;margin:0 14px}
+    body.location-step-active .stepper-wrap{width:min(940px,calc(100% - 48px));padding-left:0;padding-right:0}
+  }
 
   /* ── MAIN LAYOUT ── */
   .app-wrap{max-width:700px;margin:0 auto;padding:44px 28px 80px}
@@ -181,20 +187,42 @@
   .file-chip .rm svg{width:14px;height:14px}
 
   /* ── LOCATION CARDS ── */
-  .location-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
-  .loc-card{border:2px solid var(--border);border-radius:18px;padding:24px 20px;cursor:pointer;background:#fff;transition:border-color .16s,box-shadow .16s;text-align:left;display:flex;flex-direction:column}
-  .loc-card:hover{border-color:rgba(219,73,73,.4);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+  #screen-1{width:min(940px,calc(100vw - 48px));margin-left:50%;transform:translateX(-50%)}
+  #screen-1 .lede{max-width:620px}
+  .location-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;align-items:stretch;gap:16px;margin:34px 0 32px}
+  .loc-card{border:1px solid rgba(22,22,11,.08);border-radius:18px;padding:16px 16px 20px;cursor:pointer;background:#fff;transition:border-color .16s,box-shadow .16s,transform .16s;text-align:left;display:flex;flex-direction:column;width:100%;height:100%;min-width:0;box-shadow:0 2px 10px rgba(22,22,11,.025)}
+  .loc-card[hidden]{display:none}
+  .loc-card:hover{border-color:rgba(219,73,73,.35);box-shadow:0 10px 24px rgba(22,22,11,.08);transform:translateY(-2px)}
   .loc-card.selected{border-color:var(--coral);box-shadow:0 0 0 3px rgba(219,73,73,.14)}
-  .loc-card h3{font-family:"Poppins",system-ui,sans-serif;font-size:17px;font-weight:700;margin-bottom:10px}
-  .loc-card p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:18px}
-  .loc-cta{display:inline-flex;align-items:center;gap:6px;font-family:"Poppins",system-ui,sans-serif;font-size:13px;font-weight:700;padding:10px 18px;border-radius:999px;border:1.5px solid var(--border);color:var(--ink);background:#fff;transition:border-color .14s;margin-top:auto;align-self:flex-start}
+  .loc-visual{height:148px;border:1px solid rgba(22,22,11,.08);border-radius:14px;background:linear-gradient(145deg,#fff,#fafaf7);margin-bottom:16px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+  .loc-visual img{display:block;width:84%;height:78%;object-fit:contain;filter:grayscale(1);opacity:.28}
+  .loc-visual.world img{width:92%;height:82%;opacity:.2}
+  .loc-visual-badge{position:absolute;right:10px;top:10px;border:1px solid rgba(22,22,11,.22);border-radius:999px;background:rgba(255,255,255,.92);padding:4px 8px;font-family:"Poppins",system-ui,sans-serif;font-size:9px;font-weight:600;color:var(--muted)}
+  .loc-card h3{font-family:"Poppins",system-ui,sans-serif;font-size:18px;font-weight:700;margin-bottom:8px}
+  .loc-card p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:24px}
+  .loc-cta{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;padding:9px 15px;border-radius:999px;border:1.5px solid rgba(219,73,73,.65);color:var(--coral);background:#fff;transition:border-color .14s,background .14s;margin-top:auto;align-self:flex-start;width:auto;white-space:nowrap;letter-spacing:-.01em}
   .loc-cta.primary{background:var(--coral);color:#fff;border-color:var(--coral);box-shadow:0 4px 14px rgba(238,56,66,.28)}
   .loc-cta.primary:hover{box-shadow:0 6px 18px rgba(238,56,66,.36)}
-  .loc-cta:not(.primary):hover{border-color:rgba(22,22,11,.3)}
+  .loc-cta:not(.primary):hover{border-color:var(--coral);background:rgba(219,73,73,.04)}
   .loc-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px}
   .loc-badge.active{background:rgba(219,73,73,.1);color:var(--coral)}
   .loc-badge.open{background:rgba(60,1,78,.07);color:var(--purple)}
   .loc-badge .dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+  .flow-notice{border-radius:14px;padding:16px 18px;margin-bottom:16px;font-size:14px;line-height:1.6}
+  .flow-notice strong{display:block;font-family:"Poppins",system-ui,sans-serif;font-size:14px;margin-bottom:4px}
+  .flow-notice.availability{background:#fff;border:1px solid rgba(219,73,73,.28);color:var(--muted);padding:18px 20px}
+  .flow-notice.rest-world{background:rgba(60,1,78,.06);border:1px solid rgba(60,1,78,.16);color:var(--muted)}
+  .us-flow-intro{font-size:17px;color:var(--muted);line-height:1.6;max-width:38em;margin-bottom:36px}
+  .flow-notice.usa{background:var(--mint);border:none;color:var(--muted);padding:16px 18px}
+  .flow-notice.usa .consultation-choice{gap:10px;background:#fff;border-radius:11px;padding:14px 15px;margin:0}
+  .flow-notice.usa .check-box-sq{width:20px;height:20px;margin-top:2px}
+  .flow-notice.usa .check-opt-body{gap:3px}
+  .flow-notice.usa .consultation-title{font-size:14px;font-weight:600;line-height:1.4}
+  .flow-notice.usa .consultation-description{font-size:12px;font-weight:400;color:var(--muted);line-height:1.45}
+  .flow-notice.usa .consultation-note{font-size:12px;color:var(--muted);line-height:1.5;margin:12px 4px 0}
+  .flow-notice[hidden]{display:none}
+  .mailing-list-card{padding:20px 22px}
+  .mailing-list-card .fcard-label{margin-bottom:14px}
 
   /* ── NAV BUTTONS ── */
   .btn-row{display:flex;align-items:center;justify-content:space-between;margin-top:32px;gap:12px}
@@ -352,13 +380,15 @@
     .row2 .fg{margin-bottom:14px}
     .row2:last-child .fg:last-child{margin-bottom:0}
 
-    .location-cards{grid-template-columns:1fr}
+    #screen-1{width:100%;margin-left:0;transform:none}
+    .location-cards{grid-template-columns:1fr;grid-template-rows:auto;margin-top:26px}
+    .loc-visual{height:156px}
     .btn-row{flex-direction:column-reverse;align-items:stretch}
     .btn-row .btn{justify-content:center}
   }
 </style>
 </head>
-<body>
+<body class="location-step-active">
 
 <!-- NAV -->
 <nav>
@@ -401,14 +431,29 @@
 
   <div class="location-cards">
     <div class="loc-card" id="loc-australia" onclick="selectLocation('australia')">
+      <div class="loc-visual" aria-hidden="true">
+        <img src="/assets/maps/australia-outline.png" alt="">
+      </div>
       <h3>Australia</h3>
-      <p>We are actively selecting dogs for our trial. Apply now to be considered.</p>
-      <div class="loc-cta primary">Accepting applications →</div>
+      <p id="australia-card-copy">We are actively selecting dogs for our trial. Apply now to be considered.</p>
+      <div class="loc-cta primary">Accepting applications</div>
+    </div>
+    <div class="loc-card" id="loc-usa" onclick="selectLocation('usa')">
+      <div class="loc-visual" aria-hidden="true">
+        <img src="/assets/maps/usa-map.svg" alt="">
+      </div>
+      <h3>United States</h3>
+      <p>Join the waitlist and tell us if you would like to discuss other options for your dog.</p>
+      <div class="loc-cta">Join the waitlist</div>
     </div>
     <div class="loc-card" id="loc-elsewhere" onclick="selectLocation('elsewhere')">
+      <div class="loc-visual world" aria-hidden="true">
+        <span class="loc-visual-badge">Not available yet</span>
+        <img src="/assets/maps/world-map.svg" alt="">
+      </div>
       <h3>Everywhere else</h3>
-      <p>GAMGEE is expanding. Join the waitlist for updates on new regions, availability, and what's next.</p>
-      <div class="loc-cta">Join Waitlist →</div>
+      <p>Join the waitlist for updates on availability in your country and what's next.</p>
+      <div class="loc-cta">Join the waitlist</div>
     </div>
   </div>
 
@@ -508,11 +553,13 @@
 </div>
 
 <!-- ════════════════════════════════
-     STEP 2B — YOUR DOG (ELSEWHERE)
+     STEP 2B — YOUR DOG (UNITED STATES / REST OF WORLD)
 ════════════════════════════════ -->
 <div class="step-screen" id="screen-2-elsewhere">
-  <h1>Tell us about you</h1>
-  <p class="lede">We review every application personally. The more you share, the faster we can tell you whether GAMGEE is a fit — and what a vaccine could look like for your dog.</p>
+  <h1 id="international-title">Tell us about you</h1>
+  <div class="flow-notice availability" id="elsewhere-lede">
+    We may not be able to help in your country just yet, but you're still welcome to complete this form. If that changes, our team may reach out to discuss how we could support you and your dog.
+  </div>
 
   <div class="val-banner" id="val-elsewhere">Please fill in all required fields before continuing.</div>
 
@@ -537,7 +584,7 @@
     <div class="row2">
       <div class="fg">
         <label for="e-country">Country <span style="color:var(--coral)">*</span></label>
-        <input type="text" id="e-country" placeholder="e.g. United States">
+        <input type="text" id="e-country" placeholder="e.g. United States" oninput="updateCountrySpecificFlow()">
         <span class="field-error" id="e-country-err">Please enter your country.</span>
       </div>
       <div class="fg">
@@ -555,6 +602,18 @@
       </div>
       <span class="field-error" id="e-contact-err">Please select a contact preference.</span>
     </div>
+  </div>
+
+  <div class="flow-notice usa" id="usa-consultation" hidden>
+    <label class="check-opt consultation-choice">
+      <input type="checkbox" id="e-alternative-consultation">
+      <span class="check-box-sq"></span>
+      <span class="check-opt-body">
+        <span class="consultation-title">I'm interested in a paid consultation</span>
+        <span class="consultation-description">GAMGEE may contact me with information about availability, pricing and scheduling. Leave this unchecked if you only want to register interest.</span>
+      </span>
+    </label>
+    <p class="consultation-note">•&nbsp; This is optional and won't affect your place on the vaccine waitlist.</p>
   </div>
 
   <div class="fcard">
@@ -628,6 +687,18 @@
       <label for="e-extra-notes">Notes for our team</label>
       <textarea id="e-extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation — anything that might help us…"></textarea>
     </div>
+  </div>
+
+  <div class="fcard mailing-list-card">
+    <div class="fcard-label">Stay updated <span class="opt">(optional)</span></div>
+    <label class="check-opt">
+      <input type="checkbox" id="e-mailing-list">
+      <span class="check-box-sq"></span>
+      <span class="check-opt-body">
+        <span>Join the GAMGEE mailing list</span>
+        <span class="note">Receive occasional news and updates by email. You can unsubscribe at any time.</span>
+      </span>
+    </label>
   </div>
 
   <div class="apply-captcha-slot">
@@ -734,6 +805,18 @@
       <label for="extra-notes">Notes for our team</label>
       <textarea id="extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation — anything that might help us…"></textarea>
     </div>
+  </div>
+
+  <div class="fcard mailing-list-card">
+    <div class="fcard-label">Stay updated <span class="opt">(optional)</span></div>
+    <label class="check-opt">
+      <input type="checkbox" id="mailing-list">
+      <span class="check-box-sq"></span>
+      <span class="check-opt-body">
+        <span>Join the GAMGEE mailing list</span>
+        <span class="note">Receive occasional news and updates by email. You can unsubscribe at any time.</span>
+      </span>
+    </label>
   </div>
 
   <div class="apply-captcha-slot">
@@ -846,6 +929,8 @@
       vetPhone:    isAustralia ? val('vet-phone') : '',
       // ── Notes ──
       notes:       isAustralia ? val('extra-notes') : val('e-extra-notes'),
+      alternativeConsultation: !isAustralia && isUnitedStatesCountry(val('e-country')) && ((document.getElementById('e-alternative-consultation') || {}).checked || false),
+      mailingList: (document.getElementById(isAustralia ? 'mailing-list' : 'e-mailing-list') || {}).checked || false,
     };
   }
 
@@ -886,7 +971,7 @@
       name: d.name || '',
       phone: d.phone || '',
       contactPref: d.contactPref || '',
-      location: d.isAustralia ? 'australia' : 'elsewhere',
+      location: d.isAustralia ? 'australia' : (isUnitedStatesCountry(d.country) ? 'usa' : 'rest-world'),
       country: d.country || '',
       city: d.city || '',
       dogName: d.dogName || '',
@@ -902,6 +987,8 @@
       vetEmail: d.vetEmail || '',
       vetPhone: d.vetPhone || '',
       notes: d.notes || '',
+      alternativeConsultation: d.alternativeConsultation ? 'true' : 'false',
+      mailingList: d.mailingList ? 'true' : 'false',
       files: []
     };
 
@@ -951,12 +1038,13 @@
     }
 
     currentStep = n;
+    document.body.classList.toggle('location-step-active', n === 1);
 
     if (n === 2) {
       // show the right sub-screen
-      const screen = selectedLocation === 'elsewhere' ? 'screen-2-elsewhere' : 'screen-2-sydney';
+      const screen = selectedLocation === 'australia' ? 'screen-2-sydney' : 'screen-2-elsewhere';
       document.getElementById(screen).classList.add('active');
-      if (selectedLocation === 'elsewhere') {
+      if (selectedLocation !== 'australia') {
         prepareApplicationCaptcha(document.getElementById(screen));
       }
     } else {
@@ -979,7 +1067,47 @@
     trackApplicationEvent('Application Location Selected', 'application-location-selected');
     document.querySelectorAll('.loc-card').forEach(c => c.classList.remove('selected'));
     document.getElementById('loc-' + loc).classList.add('selected');
+    configureInternationalFlow(loc);
     setTimeout(() => { updateStepperForLocation(loc); goToStep(2); }, 240);
+  }
+
+  function configureInternationalFlow(loc) {
+    var country = document.getElementById('e-country');
+
+    if (loc !== 'australia' && country) {
+      country.value = loc === 'usa' ? 'United States' : '';
+      country.readOnly = loc === 'usa';
+      country.style.background = loc === 'usa' ? '#f5f4ee' : '#fff';
+      country.style.color = loc === 'usa' ? '#5b5f55' : 'var(--ink)';
+      country.style.cursor = loc === 'usa' ? 'not-allowed' : '';
+    }
+    updateCountrySpecificFlow();
+  }
+
+  function isUnitedStatesCountry(country) {
+    var normalised = (country || '').trim().toLowerCase().replace(/[.]/g, '');
+    return normalised === 'united states' || normalised === 'united states of america' || normalised === 'usa' || normalised === 'us' || normalised === 'u s' || normalised === 'america';
+  }
+
+  function updateCountrySpecificFlow() {
+    var country = val('e-country');
+    var isUsa = isUnitedStatesCountry(country);
+    renderInternationalFlow(isUsa);
+  }
+
+  function renderInternationalFlow(isUsa) {
+    var usaConsultation = document.getElementById('usa-consultation');
+    var title = document.getElementById('international-title');
+    var lede = document.getElementById('elsewhere-lede');
+
+    if (usaConsultation) usaConsultation.hidden = !isUsa;
+    if (title) title.textContent = isUsa ? 'Stay connected to future US options' : 'Tell us about you';
+    if (lede) {
+      lede.className = isUsa ? 'us-flow-intro' : 'flow-notice availability';
+      lede.textContent = isUsa
+        ? 'The treatment trial is not currently available in the United States. You can register interest, and separately choose whether you want to hear about a paid consultation.'
+        : "We may not be able to help in your country just yet, but you're still welcome to complete this form. If that changes, our team may reach out to discuss how we could support you and your dog.";
+    }
   }
 
   // Elsewhere skips Medical Information entirely, so the stepper shows
@@ -987,7 +1115,7 @@
   function updateStepperForLocation(loc) {
     var si3 = document.getElementById('si-3');
     var si4Num = document.querySelector('#si-4 .step-num-inner');
-    if (loc === 'elsewhere') {
+    if (loc !== 'australia') {
       si3.style.display = 'none';
       si4Num.textContent = '3';
     } else {
@@ -1190,6 +1318,10 @@
     html += rowIf('Phone', d.phone);
     html += row('Contact preference', d.contactPref);
     html += row('Location', locationStr || (d.isAustralia ? 'Australia' : ''));
+    if (isUnitedStatesCountry(d.country)) {
+      html += row('Alternative-options consultation', d.alternativeConsultation ? 'Yes' : 'No');
+    }
+    html += row('Mailing list', d.mailingList ? 'Yes' : 'No');
 
     // ── Dog ──
     html += row("Dog's name", d.dogName);
@@ -1228,7 +1360,7 @@
 
   function personaliseSuccess() {
     var dogName = formData.dogName || '';
-    var isElsewhere = selectedLocation === 'elsewhere';
+    var isElsewhere = selectedLocation !== 'australia';
     var hero = document.getElementById('success-hero');
     var label = document.getElementById('success-dog-label');
     var headline = document.getElementById('success-headline');

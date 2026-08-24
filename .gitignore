@@ -1,2 +1,6 @@
 .gstack/
 *.log
+
+# Apps Script backend source stays private and outside this public repository.
+Code.gs
+Code.updated.gs
