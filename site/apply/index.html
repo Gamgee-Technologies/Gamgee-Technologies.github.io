@@ -436,8 +436,8 @@
         <img src="/assets/maps/australia-map.svg" alt="">
       </div>
       <h3>Australia</h3>
-      <p id="australia-card-copy">We are actively selecting dogs for our trial. Apply now to be considered.</p>
-      <div class="loc-cta primary">Accepting applications</div>
+      <p id="australia-card-copy">We are actively selecting dogs for our trial. Register your interest to be considered.</p>
+      <div class="loc-cta primary">Register interest in trial</div>
     </div>
     <div class="loc-card" id="loc-usa" onclick="selectLocation('usa')">
       <div class="loc-visual" aria-hidden="true">
@@ -466,7 +466,7 @@
 ════════════════════════════════ -->
 <div class="step-screen" id="screen-2-sydney">
   <h1>Tell us about you</h1>
-  <p class="lede">We review every application personally. The more you share, the faster we can tell you whether GAMGEE is a fit — and what a vaccine could look like for your dog.</p>
+  <p class="lede">We review every registration of interest personally. The more you share, the faster we can tell you whether GAMGEE is a fit and what a vaccine could look like for your dog.</p>
 
   <div class="val-banner" id="val-australia">Please fill in all required fields before continuing.</div>
 
@@ -726,7 +726,7 @@
 ════════════════════════════════ -->
 <div class="step-screen" id="screen-3">
   <h1>Health information</h1>
-  <p class="lede">Upload whatever you have — even partial records help. Our team will review everything and follow up if we need anything else. All files are encrypted and kept strictly confidential.</p>
+  <p class="lede">Upload whatever you have, even partial records help. Our team will review everything and follow up if we need anything else. All files are encrypted and kept strictly confidential.</p>
 
   <div class="fcard">
     <div class="fcard-label">Health situation <span class="opt">(optional)</span></div>
@@ -832,7 +832,7 @@
       Back
     </button>
     <button class="btn btn-primary" onclick="finishAustraliaApplication()">
-      Finish
+      Register interest
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
   </div>
@@ -849,7 +849,7 @@
     </div>
     <span class="success-dog-name" id="success-dog-label"></span>
     <h2 id="success-headline">You've taken the first step.</h2>
-    <p id="success-long-text">Rosie reads every application - then Paul double-checks. If <span id="success-dog-inline">your dog</span> looks like a fit, you'll hear from us within 5 business days. We won't keep you waiting.</p>
+    <p id="success-long-text">Rosie reviews every registration of interest - then Paul double-checks. If <span id="success-dog-inline">your dog</span> looks like a fit, you'll hear from us within 5 business days. We won't keep you waiting.</p>
     <div class="success-divider"></div>
     <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.5)">Questions in the meantime? <a class="email-link" href="mailto:hello@gamgee.io">hello@gamgee.io</a></p>
     <a href="/" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--cyan);color:var(--ink);font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:background .2s">Return to home screen</a>
@@ -1376,7 +1376,7 @@
       if (longText) longText.style.display = 'none';
     } else {
       label.style.display = '';
-      label.textContent = dogName ? dogName + ' · Application received' : 'Application received';
+      label.textContent = dogName ? dogName + ' · Interest registered' : 'Interest registered';
       headline.textContent = dogName ? "You've taken the first step for " + dogName + "." : "You've taken the first step.";
       if (inline) inline.textContent = dogName || 'your dog';
       if (longText) longText.style.display = '';
