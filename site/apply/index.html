@@ -196,7 +196,8 @@
   .loc-card.selected{border-color:var(--coral);box-shadow:0 0 0 3px rgba(219,73,73,.14)}
   .loc-visual{height:148px;border:1px solid rgba(22,22,11,.08);border-radius:14px;background:linear-gradient(145deg,#fff,#fafaf7);margin-bottom:16px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
   .loc-visual img{display:block;width:84%;height:78%;object-fit:contain;filter:grayscale(1);opacity:.28}
-  .loc-visual.world img{width:92%;height:82%;opacity:.2}
+  #loc-australia .loc-visual img{filter:grayscale(1) brightness(2.3);opacity:.24}
+  .loc-visual.world img{width:92%;height:82%;opacity:.28}
   .loc-visual-badge{position:absolute;right:10px;top:10px;border:1px solid rgba(22,22,11,.22);border-radius:999px;background:rgba(255,255,255,.92);padding:4px 8px;font-family:"Poppins",system-ui,sans-serif;font-size:9px;font-weight:600;color:var(--muted)}
   .loc-card h3{font-family:"Poppins",system-ui,sans-serif;font-size:18px;font-weight:700;margin-bottom:8px}
   .loc-card p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:24px}
@@ -432,7 +433,7 @@
   <div class="location-cards">
     <div class="loc-card" id="loc-australia" onclick="selectLocation('australia')">
       <div class="loc-visual" aria-hidden="true">
-        <img src="/assets/maps/australia-outline.png" alt="">
+        <img src="/assets/maps/australia-map.svg" alt="">
       </div>
       <h3>Australia</h3>
       <p id="australia-card-copy">We are actively selecting dogs for our trial. Apply now to be considered.</p>
@@ -449,7 +450,7 @@
     <div class="loc-card" id="loc-elsewhere" onclick="selectLocation('elsewhere')">
       <div class="loc-visual world" aria-hidden="true">
         <span class="loc-visual-badge">Not available yet</span>
-        <img src="/assets/maps/world-map.svg" alt="">
+        <img src="/assets/maps/world-map-no-antarctica.svg" alt="">
       </div>
       <h3>Everywhere else</h3>
       <p>Join the waitlist for updates on availability in your country and what's next.</p>
