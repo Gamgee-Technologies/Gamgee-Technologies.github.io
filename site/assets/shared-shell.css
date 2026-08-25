@@ -5,7 +5,7 @@ nav .logo{display:flex;align-items:center;gap:10px;color:#16160B;font-family:"Po
 nav .navlinks{display:flex;align-items:center;gap:24px;font-size:15px;font-weight:600}
 nav .navlinks a:not(.btn){color:#16160B;text-decoration:none}
 nav .navlinks a.active,nav .navlinks a[aria-current="page"]{color:#DB4949}
-nav .navlinks .btn{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:11px 24px;border:0;border-radius:999px;background:#3C014E;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;line-height:1.5;text-decoration:none}
+nav .navlinks .btn{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:11px 18px;border:0;border-radius:999px;background:#3C014E;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;line-height:1.5;text-decoration:none;white-space:nowrap}
 nav .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:4px;border:0;border-radius:8px;background:none;cursor:pointer}
 nav .nav-toggle span{display:block;width:100%;height:2px;border-radius:2px;background:#16160B}
 nav .mobile-menu{display:none;flex-direction:column;padding:0 20px 20px;border-bottom:1px solid rgba(0,0,0,.06);background:rgba(247,246,228,.97);backdrop-filter:blur(12px)}
@@ -26,4 +26,5 @@ footer .legal{display:flex;justify-content:space-between;max-width:1200px;margin
 footer .legal a{color:rgba(0,0,0,.6);text-decoration:none}
 footer .flag-inline{display:none}
 @media(max-width:599px){nav .navlinks{display:none}nav .nav-toggle{display:flex}nav .nav-in{padding:16px 20px}footer .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}footer .foot-right{align-items:flex-start;gap:10px}footer .footer-links{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px}footer .footer-links a{margin-left:0;font-size:15px}footer .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}footer .foot-flag{display:none}footer .flag-inline{display:inline-block}}
+@media(min-width:600px) and (max-width:1199px){nav .navlinks{gap:16px}}
 @media(min-width:600px){nav .navlinks{display:flex}nav .nav-toggle{display:none}nav .mobile-menu{display:none!important}}
