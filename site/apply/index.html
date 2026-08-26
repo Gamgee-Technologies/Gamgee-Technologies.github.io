@@ -503,10 +503,9 @@
       <label>How would you like to be contacted?</label>
       <div class="radio-group" id="s-contact-group">
         <label class="radio-opt"><input type="radio" name="s-contact-pref" value="WhatsApp"><div class="radio-circle"></div><span class="radio-opt-label">Whatsapp</span></label>
-        <label class="radio-opt"><input type="radio" name="s-contact-pref" value="Email"><div class="radio-circle"></div><span class="radio-opt-label">Email</span></label>
+        <label class="radio-opt"><input type="radio" name="s-contact-pref" value="Email"><div class="radio-circle"></div><span class="radio-opt-label">Email <span class="opt">(default)</span></span></label>
         <label class="radio-opt"><input type="radio" name="s-contact-pref" value="Phone"><div class="radio-circle"></div><span class="radio-opt-label">Phone call</span></label>
       </div>
-      <span class="field-error" id="s-contact-err">Please select a contact preference.</span>
     </div>
   </div>
 
@@ -598,10 +597,9 @@
       <label>How would you like to be contacted?</label>
       <div class="radio-group" id="e-contact-group">
         <label class="radio-opt"><input type="radio" name="e-contact-pref" value="WhatsApp"><div class="radio-circle"></div><span class="radio-opt-label">Whatsapp</span></label>
-        <label class="radio-opt"><input type="radio" name="e-contact-pref" value="Email"><div class="radio-circle"></div><span class="radio-opt-label">Email</span></label>
+        <label class="radio-opt"><input type="radio" name="e-contact-pref" value="Email"><div class="radio-circle"></div><span class="radio-opt-label">Email <span class="opt">(default)</span></span></label>
         <label class="radio-opt"><input type="radio" name="e-contact-pref" value="Phone"><div class="radio-circle"></div><span class="radio-opt-label">Phone call</span></label>
       </div>
-      <span class="field-error" id="e-contact-err">Please select a contact preference.</span>
     </div>
   </div>
 
@@ -908,7 +906,7 @@
       name:        val(p + '-owner-name'),
       email:       val(p + '-owner-email'),
       phone:       val(p + '-owner-phone'),
-      contactPref: (document.querySelector('input[name="' + p + '-contact-pref"]:checked') || {}).value || '',
+      contactPref: (document.querySelector('input[name="' + p + '-contact-pref"]:checked') || {}).value || 'Email',
       // ── Location ──
       isAustralia: isAustralia,
       country:     isAustralia ? 'Australia' : val('e-country'),
@@ -1133,7 +1131,6 @@
     const contactChecked = document.querySelector('input[name="' + prefix + '-contact-pref"]:checked');
     const banner = document.getElementById('val-' + flow);
     const emailErr = document.getElementById(prefix + '-email-err');
-    const contactErr = document.getElementById(prefix + '-contact-err');
     const phoneErr = document.getElementById(prefix + '-phone-err');
     const cityEl = document.getElementById(prefix + '-city');
     const cityErr = document.getElementById(prefix + '-city-err');
@@ -1146,7 +1143,6 @@
     emailEl.classList.remove('invalid');
     if (phoneEl) phoneEl.classList.remove('invalid');
     emailErr.classList.remove('show');
-    contactErr.classList.remove('show');
     if (phoneErr) phoneErr.classList.remove('show');
     if (cityErr) cityErr.classList.remove('show');
     if (countryErr) countryErr.classList.remove('show');
@@ -1158,12 +1154,6 @@
     if (!emailOk) {
       emailEl.classList.add('invalid');
       emailErr.classList.add('show');
-      valid = false;
-    }
-
-    // contact preference check
-    if (!contactChecked) {
-      contactErr.classList.add('show');
       valid = false;
     }
 
