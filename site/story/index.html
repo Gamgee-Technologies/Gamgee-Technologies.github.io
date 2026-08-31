@@ -51,12 +51,61 @@
         "@type": "WebPage",
         "@id": "https://www.gamgee.io/story/"
       },
+      "author": {
+        "@id": "https://www.gamgee.io/#paul-conyngham"
+      },
       "isPartOf": {
         "@id": "https://www.gamgee.io/#website"
       },
       "publisher": {
         "@id": "https://www.gamgee.io/#organization"
+      },
+      "about": {
+        "@id": "https://www.gamgee.io/story/#rosie-cancer-vaccine"
+      },
+      "keywords": [
+        "Rosie cancer vaccine",
+        "personalised mRNA cancer vaccine for dogs",
+        "Paul Conyngham",
+        "Gamgee"
+      ],
+      "inLanguage": "en-AU"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.gamgee.io/story/",
+      "url": "https://www.gamgee.io/story/",
+      "name": "Rosie’s Cancer Vaccine: The Original Dog mRNA Case",
+      "isPartOf": {
+        "@id": "https://www.gamgee.io/#website"
+      },
+      "about": {
+        "@id": "https://www.gamgee.io/story/#rosie-cancer-vaccine"
+      },
+      "breadcrumb": {
+        "@id": "https://www.gamgee.io/story/#breadcrumb"
       }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.gamgee.io/#paul-conyngham",
+      "name": "Paul Conyngham",
+      "url": "https://www.gamgee.io/story/"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.gamgee.io/#organization",
+      "name": "Gamgee",
+      "url": "https://www.gamgee.io/",
+      "founder": {
+        "@id": "https://www.gamgee.io/#paul-conyngham"
+      }
+    },
+    {
+      "@type": "Thing",
+      "@id": "https://www.gamgee.io/story/#rosie-cancer-vaccine",
+      "name": "Rosie’s personalised mRNA cancer vaccine case",
+      "description": "The original single-dog case that led Paul Conyngham to found Gamgee."
     },
     {
       "@type": "BreadcrumbList",
@@ -144,6 +193,7 @@
   .prose p{font-size:17px;line-height:1.7;color:#2a2a1e;margin-bottom:18px;max-width:54ch}
   .prose p:last-child{margin-bottom:0}
   .prose p b{color:var(--ink);font-weight:600}
+  .prose a{color:var(--purple);font-weight:600;text-underline-offset:3px}
 
   /* Photo with caption */
   .story-photo{border-radius:20px;overflow:hidden;margin:36px 0;position:relative}
@@ -180,9 +230,6 @@
   .sidebar-cta{margin-top:40px;background:#fff;border-radius:18px;padding:24px;border:1px solid var(--border)}
   .sidebar-cta p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:16px}
   .sidebar-cta .btn{width:100%;justify-content:center;font-size:14px;padding:13px 20px}
-
-  /* Alternate full-width composition used only by the tablet layout. */
-  .tablet-story-opening,.tablet-story-narrative,.tablet-mission-card{display:none}
 
   /* ── FOOTER ── */
   footer{background:var(--cream);border-top:1px solid var(--border)}
@@ -264,41 +311,21 @@
     .navlinks{display:flex}
     .story-hero h1{font-size:46px}
 
-    /* Keep the narrative left and restore the timeline as a right sidebar. */
+    /* Keep one semantic copy of the narrative beside the timeline. */
     .story-body{
       grid-template-columns:minmax(0,1fr) 220px;
       column-gap:32px;
-      row-gap:40px;
       align-items:start;
       padding-bottom:80px;
     }
+    .story-body > .prose{grid-column:1;grid-row:1}
     .timeline-sidebar{
       position:static;
       top:auto;
       order:0;
       margin-bottom:0;
       grid-column:2;
-      grid-row:2;
-    }
-    .story-body > .prose:not(.tablet-story-opening):not(.tablet-story-narrative){display:none}
-    .tablet-story-opening{
-      display:block;
-      grid-column:1 / -1;
       grid-row:1;
-    }
-    .tablet-story-opening .prose-section{margin-bottom:0}
-    .tablet-story-opening p{max-width:none}
-    .tablet-story-opening .story-photo{margin-bottom:0}
-    .tablet-story-narrative{
-      display:block;
-      grid-column:1;
-      grid-row:2;
-    }
-    .tablet-mission-card{
-      display:block;
-      grid-column:1 / -1;
-      grid-row:3;
-      margin-top:8px;
     }
   }
   @media(min-width:900px) and (max-width:1199px) and (orientation:landscape){
@@ -310,10 +337,6 @@
       gap:56px;
       padding-bottom:90px;
     }
-    .story-body > .prose:not(.tablet-story-opening):not(.tablet-story-narrative){display:block}
-    .tablet-story-opening,
-    .tablet-story-narrative,
-    .tablet-mission-card{display:none}
     .timeline-sidebar{
       position:sticky;top:100px;
       grid-column:auto;grid-row:auto;
@@ -365,7 +388,7 @@
   <header class="story-hero">
     <p class="eyebrow">How it's started</p>
     <h1>Rosie's <span class="hl">story.</span></h1>
-    <p class="lede">How a machine-learning founder used AI to build a cancer treatment for his dog - and what we're doing now.</p>
+    <p class="lede">How a machine-learning founder used AI to build a cancer vaccine for his dog - and what we're doing now.</p>
   </header>
 </div>
 
@@ -378,7 +401,7 @@
 
       <div class="prose-section">
         <span class="section-label">What I did for Rosie</span>
-        <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live.</p>
+        <p>I am Paul Conyngham, Rosie’s owner and the founder of Gamgee. In 2024, Rosie was diagnosed with mast cell cancer. Surgery, chemotherapy and immunotherapy did not stop the cancer from progressing, and her vets gave her months to live.</p>
 
         <figure class="story-photo">
           <img src="../assets/story/Paul+Rosie.webp" alt="Paul and Rosie, Sydney, 2025">
@@ -389,12 +412,12 @@
 
         <p>In December 2025, Rosie received her first injection after a 14-hour drive to Queensland.</p>
 
-        <p>Three months later, the tumours on her legs had significantly reduced, significantly extending the timeline she'd been given.</p>
+        <p>Three months later, the tumours on her legs had significantly reduced and she remained alive beyond the original timeline she had been given.</p>
       </div>
 
       <div class="prose-section">
         <span class="section-label">Why I am building Gamgee</span>
-        <p>The science already exists. Genomic sequencing, protein modelling, mRNA synthesis - the tools are there. What I built for Rosie was not new science. It was new access.</p>
+        <p>Rosie’s case led me to found Gamgee. The underlying tools already exist: genomic sequencing, protein modelling and mRNA synthesis. What I built for Rosie was not new science. It was a new route to access.</p>
 
         <p>I should not have been the only person who could do this. A background in machine learning and months of obsessive research should not be the price of admission. Every dog owner facing this diagnosis deserves the same options I had, without having to become a citizen scientist to get them.</p>
       </div>
@@ -403,7 +426,7 @@
         <div class="mission-card">
           <div class="mc-label">Where we are right now</div>
           <h2>The first end-to-end personalised cancer treatment protocol for dogs.</h2>
-          <p>Together with our partners at UNSW, the University of Queensland, and the Garvan Institute, we have built and validated it.</p>
+          <p>Together with collaborators at UNSW, the University of Queensland and the Garvan Institute, we have built the end-to-end workflow and are now evaluating it through an Australian trial.</p>
           <p>We are currently running a trial in Australia. Registrations of interest are open worldwide. Every case matters, and Australia is where we start.</p>
           <a class="btn btn-coral" href="/apply/">
             Register your interest
@@ -444,7 +467,7 @@
           <div class="tl-dot"></div>
           <div class="tl-date">Mar 2026</div>
           <div class="tl-title">Response</div>
-          <div class="tl-desc">Tumours on her legs significantly reduced, significantly extending the timeline she'd been given.</div>
+          <div class="tl-desc">Tumours on her legs significantly reduced and Rosie remained alive beyond her original prognosis.</div>
         </div>
       </div>
 
@@ -456,42 +479,6 @@
         </a>
       </div>
     </aside>
-
-    <!-- Tablet composition: opening and photo above the narrative/timeline. -->
-    <div class="prose tablet-story-opening">
-      <div class="prose-section">
-        <span class="section-label">What I did for Rosie</span>
-        <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live.</p>
-        <figure class="story-photo">
-          <img src="../assets/story/Paul+Rosie.webp" alt="Paul and Rosie, Sydney, 2025">
-          <figcaption>Paul and Rosie, Sydney. 2025.</figcaption>
-        </figure>
-      </div>
-    </div>
-
-    <div class="prose tablet-story-narrative">
-      <div class="prose-section">
-        <p>I am not a biologist. I have spent 17 years in machine learning. So I did what I know how to do. I started researching, using AI to map the specific mutations driving her cancer, design a personalised mRNA vaccine targeting those mutations, and coordinate its manufacture with researchers at UNSW.</p>
-        <p>In December 2025, Rosie received her first injection after a 14-hour drive to Queensland.</p>
-        <p>Three months later, the tumours on her legs had significantly reduced, significantly extending the timeline she'd been given.</p>
-      </div>
-      <div class="prose-section">
-        <span class="section-label">Why I am building Gamgee</span>
-        <p>The science already exists. Genomic sequencing, protein modelling, mRNA synthesis - the tools are there. What I built for Rosie was not new science. It was new access.</p>
-        <p>I should not have been the only person who could do this. A background in machine learning and months of obsessive research should not be the price of admission. Every dog owner facing this diagnosis deserves the same options I had, without having to become a citizen scientist to get them.</p>
-      </div>
-    </div>
-
-    <div class="mission-card tablet-mission-card">
-      <div class="mc-label">Where we are right now</div>
-      <h2>The first end-to-end personalised cancer treatment protocol for dogs.</h2>
-      <p>Together with our partners at UNSW, the University of Queensland, and the Garvan Institute, we have built and validated it.</p>
-      <p>We are currently running a trial in Australia. Registrations of interest are open worldwide. Every case matters, and Australia is where we start.</p>
-      <a class="btn btn-coral" href="/apply/">
-        Register your interest
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
 
   </div>
 </div>

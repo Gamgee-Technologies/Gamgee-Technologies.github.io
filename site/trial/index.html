@@ -24,11 +24,57 @@
 <meta name="twitter:image" content="https://www.gamgee.io/assets/social/trial.png">
 <meta name="twitter:image:alt" content="Gamgee — Register interest in our dog cancer trial">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.gamgee.io/trial/",
+      "url": "https://www.gamgee.io/trial/",
+      "name": "Register Interest in Our Dog Cancer Trial",
+      "description": "Register your interest in Gamgee’s clinical trial of personalised mRNA cancer vaccines for dogs with cancer in Australia.",
+      "isPartOf": {
+        "@id": "https://www.gamgee.io/#website"
+      },
+      "about": {
+        "@id": "https://www.gamgee.io/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://www.gamgee.io/trial/#breadcrumb"
+      },
+      "inLanguage": "en-AU"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.gamgee.io/trial/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Gamgee",
+          "item": "https://www.gamgee.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dog cancer trial",
+          "item": "https://www.gamgee.io/trial/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="preload" as="image" href="/assets/story/Paul+Rosie.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="/assets/config.js"></script>
+<script src="/assets/forms.js"></script>
 
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-ysLvH5raZiDuvBAlNyRE5.js"></script>
@@ -477,6 +523,50 @@
     font-size:16px;
   }
 
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  /* Mailing list */
+  .mailing-list{position:relative;width:100%;padding:54px 56px 58px;overflow:hidden;border-radius:24px;background:var(--purple);color:#fff}
+  .mailing-list-eyebrow{margin-bottom:15px;color:var(--cyan);font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .mailing-list h2{font-size:40px;font-weight:800;line-height:1.1;letter-spacing:-.025em}
+  .mailing-list-copy{max-width:690px;margin-top:14px;color:rgba(255,255,255,.86);font-size:17px;font-weight:600;line-height:1.55}
+  .mailing-list-form{width:min(470px,100%);margin-top:24px}
+  .mailing-list-fields{display:flex;border:2px solid #fff;border-radius:999px;background:#fff}
+  .mailing-list-form input{min-width:0;flex:1;border:0;border-radius:999px;padding:0 18px;background:#fff;color:var(--ink);font:inherit;outline:none}
+  .mailing-list-form input::placeholder{color:#96968f}
+  .mailing-list-form button{flex:0 0 auto;margin:2px;border:0;border-radius:999px;padding:12px 20px;background:var(--coral);color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:transform .14s,background .14s}
+  .mailing-list-form button:hover{transform:translateY(-1px);background:#c94040}
+  .mailing-list-form button:disabled{cursor:wait;opacity:.72}
+  .mailing-list-fields:focus-within{outline:3px solid var(--cyan);outline-offset:4px}
+  .mailing-list-captcha{display:none;margin-top:16px}
+  .mailing-list-captcha.open{display:block}
+  .mailing-list-captcha p{margin-bottom:8px;color:rgba(255,255,255,.82);font-size:13px;font-weight:600}
+  .mailing-list-feedback{min-height:20px;margin-top:10px;color:#fff;font-size:13px;font-weight:600}
+  .mailing-success-overlay{display:none;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;padding:20px;background:rgba(247,246,228,.56);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+  .mailing-success-overlay.open{display:flex}
+  .mailing-success-dialog{position:relative;width:min(420px,100%);padding:42px 34px 38px;border-radius:24px;background:var(--cream);box-shadow:0 24px 80px rgba(22,22,11,.28);text-align:center}
+  .mailing-success-icon{display:flex;width:36px;height:36px;align-items:center;justify-content:center;margin:0 auto 18px;border-radius:50%;background:var(--coral);color:#fff;font-family:"Poppins",system-ui,sans-serif;font-weight:800}
+  .mailing-success-dialog h2{font-size:30px;font-weight:800;line-height:1.15;letter-spacing:-.025em}
+  .mailing-success-dialog h2 span{color:var(--coral)}
+  .mailing-success-dialog p{margin-top:10px;color:var(--ink);font-size:14px;font-weight:600}
+  .mailing-success-close{position:absolute;top:14px;right:16px;border:0;background:transparent;color:var(--ink);font-size:26px;line-height:1;cursor:pointer}
+
+  @media(max-width:900px){
+    .mailing-list{padding:42px 34px}
+    .mailing-list h2{font-size:34px}
+  }
+
+  @media(max-width:560px){
+    .mailing-list{padding:34px 22px 36px}
+    .mailing-list h2{font-size:30px}
+    .mailing-list-copy{font-size:15px}
+    .mailing-list-fields{flex-direction:column;border:0;border-radius:18px;background:transparent;gap:10px}
+    .mailing-list-form input{min-height:50px;padding:0 16px}
+    .mailing-list-form button{min-height:50px;margin:0;width:100%}
+    .mailing-success-dialog{padding:40px 24px 34px}
+  }
+
   /* Shared Gamgee footer */
   footer{background:var(--cream);border-top:1px solid var(--border)}
   .foot{
@@ -658,7 +748,7 @@
         <div class="story-copy">
           <p>It began with Rosie. Her experience with a personalised neoantigen vaccine encouraged Paul to explore how this approach could one day be made available to every dog with cancer.</p>
           <p>Before an approach like this can become broadly available, we must study it carefully and support it by evidence for review by the relevant veterinary regulators. This clinical trial is an important step in that process, helping us learn from participating dogs and understand the vaccine more fully.</p>
-          <a class="story-link" href="/story/">Read Rosie’s story&nbsp; →</a>
+          <a class="story-link" href="/story/">Read Rosie’s personalised mRNA cancer-vaccine story&nbsp; →</a>
         </div>
       </section>
 
@@ -734,9 +824,37 @@
           <a class="btn cta-button" href="/apply/">Register your interest&nbsp; →</a>
         </div>
       </section>
+
+      <section class="mailing-list" aria-labelledby="mailing-list-title">
+        <div class="mailing-list-eyebrow">Gamgee updates</div>
+        <h2 id="mailing-list-title">Stay informed</h2>
+        <p class="mailing-list-copy">Get occasional updates on our research, clinical trials and progress in personalised cancer care for dogs.</p>
+        <form class="mailing-list-form" id="mailing-list-form" novalidate>
+          <div class="mailing-list-fields">
+            <label class="sr-only" for="mailing-list-email">Your email address</label>
+            <input id="mailing-list-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required>
+            <button type="submit">Join mailing list →</button>
+          </div>
+          <div class="mailing-list-captcha" id="mailing-list-captcha" aria-hidden="true">
+            <p>One quick security check:</p>
+            <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+          </div>
+        </form>
+        <div class="mailing-list-feedback" id="mailing-list-feedback" role="status" aria-live="polite"></div>
+      </section>
     </div>
   </div>
 </main>
+
+
+<div class="mailing-success-overlay" id="mailing-success-overlay" role="dialog" aria-modal="true" aria-labelledby="mailing-success-title" aria-describedby="mailing-success-copy">
+  <div class="mailing-success-dialog">
+    <button class="mailing-success-close" type="button" aria-label="Close mailing-list confirmation">×</button>
+    <div class="mailing-success-icon" aria-hidden="true">✓</div>
+    <h2 id="mailing-success-title">You’re on the <span>list.</span></h2>
+    <p id="mailing-success-copy">Thank you for joining. We’ll keep you updated.</p>
+  </div>
+</div>
 
 <div data-site-footer></div>
 
@@ -759,6 +877,144 @@
       menuButton.setAttribute('aria-label', 'Open menu');
     });
   });
+</script>
+<script>
+(function() {
+  const form = document.getElementById('mailing-list-form');
+  const email = document.getElementById('mailing-list-email');
+  const feedback = document.getElementById('mailing-list-feedback');
+  const captchaWrap = document.getElementById('mailing-list-captcha');
+  const captchaContainer = captchaWrap.querySelector('.gamgee-recaptcha');
+  const overlay = document.getElementById('mailing-success-overlay');
+  const closeButton = overlay.querySelector('.mailing-success-close');
+  const submitButton = form.querySelector('button[type="submit"]');
+  let previousFocus = null;
+  let captchaWidgetId = null;
+  let submitting = false;
+
+  function openMailingSuccess() {
+    previousFocus = document.activeElement;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  }
+
+  function closeMailingSuccess() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (previousFocus) previousFocus.focus();
+  }
+
+  function resetSubmitButton() {
+    submitting = false;
+    submitButton.disabled = false;
+    submitButton.textContent = 'Join mailing list →';
+  }
+
+  function finishSignup() {
+    form.reset();
+    resetSubmitButton();
+    captchaWrap.classList.remove('open');
+    captchaWrap.setAttribute('aria-hidden', 'true');
+    if (captchaWidgetId !== null && window.grecaptcha) {
+      window.grecaptcha.reset(captchaWidgetId);
+    }
+    openMailingSuccess();
+  }
+
+  function submitVerifiedEmail(token) {
+    if (submitting) return;
+    submitting = true;
+    feedback.textContent = '';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Joining…';
+
+    if (location.hostname === '127.0.0.1' || location.hostname === 'localhost') {
+      window.setTimeout(finishSignup, 250);
+      return;
+    }
+
+    fetch(window.GAMGEE_CONFIG.formEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        _sheet: 'Mailing List',
+        email: email.value.trim(),
+        source: 'Trial page mailing-list card',
+        recaptchaToken: token
+      })
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      if (data && data.error) throw new Error(data.error);
+      finishSignup();
+    }).catch(function() {
+      resetSubmitButton();
+      if (captchaWidgetId !== null && window.grecaptcha) {
+        window.grecaptcha.reset(captchaWidgetId);
+      }
+      feedback.textContent = 'We couldn’t add you just now. Please try again.';
+    });
+  }
+
+  function showCaptcha() {
+    captchaWrap.classList.add('open');
+    captchaWrap.setAttribute('aria-hidden', 'false');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Complete security check';
+
+    window.GamgeeForms.loadCaptchaApi().then(function(captcha) {
+      if (captchaWidgetId === null) {
+        captchaWidgetId = captcha.render(captchaContainer, {
+          sitekey: window.GAMGEE_CONFIG.recaptchaSiteKey,
+          callback: submitVerifiedEmail,
+          'expired-callback': function() {
+            resetSubmitButton();
+            feedback.textContent = 'The security check expired. Please try again.';
+          },
+          'error-callback': function() {
+            resetSubmitButton();
+            feedback.textContent = 'The security check could not load. Please try again.';
+          }
+        });
+      } else {
+        captcha.reset(captchaWidgetId);
+      }
+    }).catch(function() {
+      resetSubmitButton();
+      feedback.textContent = 'The security check could not load. Please refresh and try again.';
+    });
+  }
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    feedback.textContent = '';
+
+    if (!email.checkValidity()) {
+      feedback.textContent = 'Please enter a valid email address.';
+      email.focus();
+      return;
+    }
+
+    if (captchaWidgetId !== null && window.grecaptcha) {
+      const token = window.grecaptcha.getResponse(captchaWidgetId);
+      if (token) {
+        submitVerifiedEmail(token);
+        return;
+      }
+    }
+
+    showCaptcha();
+  });
+
+  closeButton.addEventListener('click', closeMailingSuccess);
+  overlay.addEventListener('click', function(event) {
+    if (event.target === overlay) closeMailingSuccess();
+  });
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && overlay.classList.contains('open')) closeMailingSuccess();
+  });
+})();
 </script>
 <script src="/assets/site-footer.js" defer></script>
 </body>

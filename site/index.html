@@ -49,6 +49,9 @@
         "@id": "https://www.gamgee.io/#paul-conyngham",
         "name": "Paul Conyngham"
       },
+      "subjectOf": {
+        "@id": "https://www.gamgee.io/story/#article"
+      },
       "sameAs": [
         "https://www.ycombinator.com/companies/gamgee"
       ]
@@ -186,11 +189,9 @@
   .hero h1{font-size:62px;font-weight:800;line-height:1.03;letter-spacing:-.025em}
   .hero h1 .mark{display:inline-block;background:#75D1DC;border-radius:16px;padding:7px 10px;line-height:1;vertical-align:middle;box-decoration-break:clone;-webkit-box-decoration-break:clone}
   .hero h1 .g{color:var(--coral)}
-  .hero h1 .mark-desktop-1{border-radius:16px 16px 16px 3px}
-  .hero h1 .mark-desktop-2{border-radius:16px 3px 16px 16px}
-  .hero h1 .mark-mobile-group{display:none}
+  .hero h1 .mark-first{border-radius:16px 16px 16px 3px}
+  .hero h1 .mark-second{border-radius:16px 3px 16px 16px}
   .hero h1 .nowrap{white-space:nowrap;display:inline-block}
-  .hero h1 .hero-lead-mobile{display:none}
   .hero .sub{margin-top:24px;max-width:25em;font-size:18px;color:var(--muted);line-height:1.6}
   .hero .act{display:flex;align-items:center;gap:18px;margin-top:34px;flex-wrap:wrap}
   .hero .hero-link{font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;background:none;border:none;padding:0;margin:0;display:inline-flex;align-items:center;gap:10px;box-shadow:none}
@@ -319,39 +320,35 @@
   .backed .row{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:50px;flex-wrap:wrap}
   .backed .lg{font-size:17px;font-weight:700;color:#abad9f}
 
-  /* STAY IN THE LOOP */
-  .social-loop{width:100%;max-width:100%;margin:48px 0;padding:46px 62px 48px;overflow:hidden;border-radius:32px;background:#DDF3F1}
-  #social-loop-title{scroll-margin-top:96px}
-  .social-loop h2{font-size:40px;font-weight:800;line-height:1.1;letter-spacing:-.025em}
-  .social-loop-lede{margin-top:12px;color:var(--muted);font-size:17px;line-height:1.6}
-  .social-loop-grid{display:grid;width:100%;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:18px;margin-top:28px}
-  .social-loop-card{display:grid;width:100%;min-width:0;height:316px;grid-template-rows:54px 70px minmax(0,1fr);gap:12px;overflow:hidden;padding:18px;border:1px solid rgba(22,22,11,.1);border-radius:22px;background:#fff;color:var(--ink);text-decoration:none;transition:border-color .16s ease,transform .16s ease}
-  .social-loop-card:hover{border-color:rgba(60,1,78,.34);transform:translateY(-3px)}
-  .social-loop-card:focus-visible{outline:3px solid var(--coral);outline-offset:4px}
-  .social-loop-card-head{display:grid;grid-template-columns:42px minmax(0,1fr) 24px;height:54px;gap:10px;align-items:start}
-  .social-loop-avatar{display:block;width:42px;height:42px;border-radius:50%;object-fit:cover}
-  .social-loop-account{min-width:0;padding-top:1px}
-  .social-loop-name{display:block;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;line-height:1.25}
-  .social-loop-handle{display:block;margin-top:3px;overflow:hidden;color:#777b72;font-size:11px;line-height:1.3;text-overflow:ellipsis;white-space:nowrap}
-  .social-loop-platform{display:flex;width:24px;height:24px;align-items:center;justify-content:center;color:var(--ink)}
-  .social-loop-platform svg{display:block;width:22px;height:22px;fill:currentColor}
-  .social-loop-platform.substack{color:#FF6719}
-  .social-loop-platform.linkedin{color:#0A66C2;font-family:"Poppins",system-ui,sans-serif;font-size:20px;font-weight:800;letter-spacing:-.08em}
-  .social-loop-copy{display:-webkit-box;margin:0;overflow:hidden;color:#696d65;font-size:12px;line-height:1.45;-webkit-box-orient:vertical;-webkit-line-clamp:4}
-  .social-loop-copy strong{color:#2aaebe;font-weight:500}
-  .social-loop-quote{height:100%;margin:0;padding:12px 13px;border:1px solid rgba(22,22,11,.12);border-radius:17px}
-  .social-loop-quote-head{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700}
-  .social-loop-quote-logo{display:flex;width:26px;height:26px;flex:0 0 26px;align-items:center;justify-content:center;border-radius:50%;background:#050505;color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:15px;font-weight:800}
-  .social-loop-quote-logo img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover}
-  .social-loop-quote-handle{color:#777b72;font-size:10px;font-weight:400}
-  .social-loop-quote p{display:-webkit-box;margin-top:8px;overflow:hidden;color:#696d65;font-size:10px;line-height:1.4;-webkit-box-orient:vertical;-webkit-line-clamp:4}
-  .social-loop-media{display:grid;height:100%;grid-row:2/4;grid-template-rows:minmax(0,1fr) auto;margin:0;overflow:hidden;border:1px solid rgba(22,22,11,.12);border-radius:17px}
-  .social-loop-media>img{display:block;width:100%;height:100%;min-height:0;object-fit:cover}
-  .social-loop-media-title{display:-webkit-box;padding:9px 13px 11px;overflow:hidden;font-family:"Poppins",system-ui,sans-serif;font-size:12px;font-weight:700;line-height:1.3;-webkit-box-orient:vertical;-webkit-line-clamp:2}
-  .social-loop-story{display:grid;height:100%;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center;margin:0;padding:12px;border:1px solid rgba(22,22,11,.12);border-radius:17px}
-  .social-loop-story img{display:block;width:96px;height:76px;border-radius:11px;object-fit:cover}
-  .social-loop-story span{display:-webkit-box;overflow:hidden;font-size:11px;font-weight:600;line-height:1.35;-webkit-box-orient:vertical;-webkit-line-clamp:4}
-  .social-loop-lede,.social-loop-name,.social-loop-handle,.social-loop-copy,.social-loop-media-title,.social-loop-story span{overflow-wrap:anywhere}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  /* MAILING LIST */
+  .mailing-list{position:relative;width:100%;margin:48px 0;padding:54px 56px 58px;overflow:hidden;border-radius:32px;background:#DDF3F1;color:var(--ink)}
+  .mailing-list-eyebrow{margin-bottom:15px;color:var(--purple);font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .mailing-list h2{font-size:40px;font-weight:800;line-height:1.1;letter-spacing:-.025em}
+  .mailing-list-copy{max-width:690px;margin-top:14px;color:var(--muted);font-size:17px;font-weight:600;line-height:1.55}
+  .mailing-list-form{width:min(470px,100%);margin-top:24px}
+  .mailing-list-fields{display:flex;border:2px solid #fff;border-radius:999px;background:#fff}
+  .mailing-list-form input{min-width:0;flex:1;border:0;border-radius:999px;padding:0 18px;background:#fff;color:var(--ink);font:inherit;outline:none}
+  .mailing-list-form input::placeholder{color:#96968f}
+  .mailing-list-form button{flex:0 0 auto;margin:2px;border:0;border-radius:999px;padding:12px 20px;background:var(--coral);color:#fff;font-family:"Poppins",system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:transform .14s,background .14s}
+  .mailing-list-form button:hover{transform:translateY(-1px);background:#c94040}
+  .mailing-list-form button:disabled{cursor:wait;opacity:.72}
+  .mailing-list-fields:focus-within{outline:3px solid var(--cyan);outline-offset:4px}
+  .mailing-list-captcha{display:none;margin-top:16px}
+  .mailing-list-captcha.open{display:block}
+  .mailing-list-captcha p{margin-bottom:8px;color:var(--muted);font-size:13px;font-weight:600}
+  .mailing-list-feedback{min-height:20px;margin-top:10px;color:var(--coral);font-size:13px;font-weight:600}
+  .mailing-success-overlay{display:none;position:fixed;inset:0;z-index:300;align-items:center;justify-content:center;padding:20px;background:rgba(247,246,228,.56);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+  .mailing-success-overlay.open{display:flex}
+  .mailing-success-dialog{position:relative;width:min(420px,100%);padding:42px 34px 38px;border-radius:24px;background:var(--cream);box-shadow:0 24px 80px rgba(22,22,11,.28);text-align:center}
+  .mailing-success-icon{display:flex;width:36px;height:36px;align-items:center;justify-content:center;margin:0 auto 18px;border-radius:50%;background:var(--coral);color:#fff;font-family:"Poppins",system-ui,sans-serif;font-weight:800}
+  .mailing-success-dialog h2{font-size:30px;font-weight:800;line-height:1.15;letter-spacing:-.025em}
+  .mailing-success-dialog h2 span{color:var(--coral)}
+  .mailing-success-dialog p{margin-top:10px;color:var(--ink);font-size:14px;font-weight:600}
+  .mailing-success-close{position:absolute;top:14px;right:16px;border:0;background:transparent;color:var(--ink);font-size:26px;line-height:1;cursor:pointer}
+
 
   /* FOOTER */
   footer{background:var(--purple-deep);color:#fff;border-radius:34px 34px 0 0;margin-top:14px}
@@ -452,21 +449,11 @@
     /* Hide connection card on mobile */
     #connection{display:none}
 
-    /* Stay in the loop */
-    .social-loop{padding:38px 30px 40px}
-    .social-loop h2{font-size:32px}
-    .social-loop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .social-loop-card:last-child{grid-column:1/-1}
 
-    /* Dog row — 2×2 grid on mobile */
-    .dog-row{flex-wrap:wrap;gap:10px;padding:0 12px;width:100%;left:auto;right:auto;margin-left:0;margin-right:0;margin-top:18px}
-    .dog-row picture{height:200px;min-width:0;width:calc(50% - 5px);flex:0 0 calc(50% - 5px)}
 
-    /* Final CTA */
-    .final{padding:48px 22px;text-align:center}
-    .final h2{font-size:28px}
-    .final p{font-size:16px}
-    .final .btn{padding:16px 36px;font-size:17px}
+    /* Mailing list */
+    .mailing-list{padding:42px 34px}
+    .mailing-list h2{font-size:34px}
 
     /* Footer */
     .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}
@@ -503,13 +490,10 @@
     .step h4{font-size:17px;margin:0;line-height:1.15}
     .process h2{font-size:28px;margin:6px 0 4px;line-height:34px}
     .hero h1{font-size:34px;line-height:1.05}
-    .hero h1 .mark{display:inline;padding:1px 6px;line-height:1.05;border-radius:16px}
-    .hero h1 .hero-lead-desktop{display:none}
-    .hero h1 .hero-lead-mobile{display:inline}
-    .hero h1 .mark-mobile-group{display:inline}
-    .hero h1 .mark-mobile-group .mark{display:inline-block;position:relative}
-    .hero h1 .mark-mobile-group .mark:first-child{z-index:2;border-radius:14px 14px 0 0}
-    .hero h1 .mark-mobile-group .mark:last-child{z-index:1;margin-top:-3px;border-radius:0 14px 14px 14px}
+    .hero h1 .nowrap{white-space:normal;display:inline}
+    .hero h1 .mark{display:inline-block;position:relative;padding:1px 6px;line-height:1.05}
+    .hero h1 .mark-first{z-index:2;border-radius:14px 14px 0 0}
+    .hero h1 .mark-second{z-index:1;margin-top:-3px;border-radius:0 14px 14px 14px}
     .intro-copy h3{font-size:22px}
     .intro-copy__location p{font-size:12px}
     .dog-row picture{height:160px}
@@ -517,11 +501,13 @@
     .press-ticker-track a{margin-right:12px}
     .press-ticker-track{animation-duration:35s}
     .press-ticker-track a img{height:26px;max-width:80px}
-    .social-loop{padding:30px 20px 24px;border-radius:24px}
-    .social-loop h2{font-size:28px}
-    .social-loop-lede{font-size:15px}
-    .social-loop-grid{grid-template-columns:1fr;gap:14px;margin-top:26px}
-    .social-loop-card,.social-loop-card:last-child{grid-column:auto;height:316px;min-height:0;padding:18px}
+    .mailing-list{margin:38px 0;padding:34px 22px 36px;border-radius:24px}
+    .mailing-list h2{font-size:30px}
+    .mailing-list-copy{font-size:15px}
+    .mailing-list-fields{flex-direction:column;border:0;border-radius:18px;background:transparent;gap:10px}
+    .mailing-list-form input{min-height:50px;padding:0 16px}
+    .mailing-list-form button{min-height:50px;margin:0;width:100%}
+    .mailing-success-dialog{padding:40px 24px 34px}
   }
 
   /* ── MODALS ── */
@@ -753,7 +739,7 @@
   <div class="hero">
     <div>
       <p class="hero-note">Introducing our first product <span class="monospace-pill">ze-ets-001</span></p>
-      <h1><span class="hero-lead-desktop"><span class="nowrap">The first <span class="mark mark-desktop mark-desktop-1">personalized</span></span> <span class="mark mark-desktop mark-desktop-2">cancer treatment</span></span><span class="hero-lead-mobile">The first </span><span class="mark-mobile-group"><span class="mark">personalized</span> <span class="mark">cancer treatment</span></span> protocol <span style="color:var(--coral)">for dogs.</span></h1>
+      <h1><span class="nowrap">The first <span class="mark mark-first">personalized</span></span> <span class="mark mark-second">cancer treatment</span> protocol <span style="color:var(--coral)">for dogs.</span></h1>
       <div class="act">
         <a class="btn btn-coral" href="/apply/">Register your interest
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -786,7 +772,7 @@
     </div>
     <div class="intro-copy">
       <h3>Hi, I'm Rosie and this is my dog dad Paul.<span class="h3-split">Welcome to <span class="g">GAMGEE.</span></span></h3>
-      <p>We are building personalised mRNA vaccines, built from your dog's own tumour, designed to help their immune system fight back.</p>
+      <p>Gamgee was founded by Paul Conyngham after he designed a personalised mRNA cancer vaccine for his dog Rosie. Now, we’re bringing that hope to more dogs with cancer.</p>
       <div class="intro-copy__location">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
         <p>Currently running clinical trials in Australia and inviting registrations of interest worldwide.</p>
@@ -842,7 +828,7 @@
           <div class="ey">Rosie's Story</div>
           <h3><span class="h3-split">One breakthrough treatment later,</span><span class="h3-split">two more years were added to Rosie's life.</span></h3>
           <p>In 2024, my dog Rosie was diagnosed with mast cell cancer. We tried surgery, chemotherapy, immunotherapy. Nothing worked. The vets gave her months to live. <b>One breakthrough treatment later, two more years were added to Rosie's life.</b></p>
-          <a class="more" href="/story/">Read the full story →</a>
+          <a class="more" href="/story/">Read Rosie's mRNA cancer vaccine story →</a>
         </div>
       </div>
     </div>
@@ -961,71 +947,36 @@
   </div>
 </section>
 
-<!-- STAY IN THE LOOP -->
-<section class="wrap" aria-labelledby="social-loop-title">
-  <div class="social-loop">
-    <h2 id="social-loop-title">Stay in the Loop</h2>
-    <p class="social-loop-lede">Fresh insights, useful ideas, and updates from our blog and social media.</p>
-    <div class="social-loop-grid">
-      <!-- Manual social previews: update the source link, excerpt, and media deliberately. -->
-      <a class="social-loop-card" href="https://x.com/gamgeevetmed/status/2091032316852490403" target="_blank" rel="noopener noreferrer" aria-label="View this Gamgee post on X (opens in a new tab)">
-        <div class="social-loop-card-head">
-          <img class="social-loop-avatar" src="https://pbs.twimg.com/profile_images/2077620187998924800/RnwkdW8-_normal.png" alt="">
-          <span class="social-loop-account">
-            <span class="social-loop-name">Gamgee</span>
-            <span class="social-loop-handle">@gamgeevetmed</span>
-          </span>
-          <span class="social-loop-platform" aria-label="X">
-            <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg>
-          </span>
-        </div>
-        <p class="social-loop-copy">Beyond excited to work with <strong>@foundersfund</strong>, <strong>@GoldenGateVC</strong>, @celinehalioua, @arashf, @gokulr, and Steve Eidelman! Grateful for the support as we build the future of personalized mRNA cancer therapeutics for dogs.</p>
-        <div class="social-loop-quote">
-          <div class="social-loop-quote-head">
-            <span class="social-loop-quote-logo"><img src="https://pbs.twimg.com/profile_images/1966538002856890385/QKU1S5wv_mini.jpg" alt=""></span>
-            <span>fundable <span class="social-loop-quote-handle">@fundable_ai</span></span>
-          </div>
-          <p>@gamgeevetmed ($4M seed, led by @foundersfund, with Golden Gate Ventures and angels @celinehalioua, @arashf, @gokulr and Steve Eidelman): Sequences a dog's tumour against its healthy tissue...</p>
-        </div>
-      </a>
 
-      <a class="social-loop-card social-loop-card-substack" href="https://gamgeetechnologiesinc.substack.com/p/from-decoding-biology-to-designing" target="_blank" rel="noopener noreferrer" aria-label="Read From Decoding Biology to Designing It on Substack (opens in a new tab)">
-        <div class="social-loop-card-head">
-          <img class="social-loop-avatar" src="https://substackcdn.com/image/fetch/$s_!5QCW!,w_88,h_88,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F38946b53-76f2-4b1b-bde3-50a47c8d8460_392x392.png" alt="">
-          <span class="social-loop-account">
-            <span class="social-loop-name">Gamgee</span>
-            <span class="social-loop-handle">gamgeetechnologiesinc</span>
-          </span>
-          <span class="social-loop-platform substack" aria-label="Substack">
-            <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-              <path d="M3 3h18v3H3V3Zm0 5h18v3H3V8Zm2 5h14v9l-7-4-7 4v-9Z"/>
-            </svg>
-          </span>
-        </div>
-        <div class="social-loop-media">
-          <img src="https://substackcdn.com/image/fetch/$s_!ymn3!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72ac2d6d-13fe-42ed-b6c8-b0f1576249b4_1716x917.heic" alt="From Decoding Biology to Designing It">
-          <div class="social-loop-media-title">From Decoding Biology to Designing It</div>
-        </div>
-      </a>
-
-      <a class="social-loop-card" href="https://www.linkedin.com/posts/gamgee-technologies_rosies-legacy-sydney-man-lands-4m-to-activity-7497716123388293120-TK-X" target="_blank" rel="noopener noreferrer" aria-label="View this Gamgee Technologies post on LinkedIn (opens in a new tab)">
-        <div class="social-loop-card-head">
-          <img class="social-loop-avatar" src="https://media.licdn.com/dms/image/v2/D560BAQEIGUB-tc8xKg/company-logo_100_100/B56Z9sQvQQH4AI-/0/1784227755231/gamgee_technologies_logo?e=2147483647&amp;v=beta&amp;t=9ENZi7Qm4FGw52sjHLJHdi4uS48_IncHgXsr_56HDxo" alt="">
-          <span class="social-loop-account">
-            <span class="social-loop-name">Gamgee<br>Technologies (YC S26)</span>
-            <span class="social-loop-handle">1,198 followers</span>
-          </span>
-          <span class="social-loop-platform linkedin" aria-label="LinkedIn">in</span>
-        </div>
-        <p class="social-loop-copy">A big thank you to the team at <strong>The Australian</strong>! They played a massive role in helping Rosie’s story reach a global audience, and we are grateful that they are helping us share the news of Gamgee’s Australian trial.</p>
-        <div class="social-loop-story">
-          <img src="https://media.licdn.com/dms/image/sync/v2/D5627AQEgP1N40153IQ/articleshare-shrink_800/B56aAx8aYoG0AY-/0/1787544317269?e=2147483647&amp;v=beta&amp;t=8OCX8WakL4o32EY0WOiTAtMmyJ6DeG0WQycb-MOv-AM" alt="">
-          <span>‘Rosie’s legacy’: Sydney man lands $4m to fight dog cancer</span>
-        </div>
-      </a>
-    </div>
+<!-- MAILING LIST -->
+<section class="wrap" aria-labelledby="mailing-list-title">
+  <div class="mailing-list">
+    <div class="mailing-list-eyebrow">Gamgee updates</div>
+    <h2 id="mailing-list-title">Stay informed</h2>
+    <p class="mailing-list-copy">Get occasional updates on our research, clinical trials and progress in personalised cancer care for dogs.</p>
+    <form class="mailing-list-form" id="mailing-list-form" novalidate>
+      <div class="mailing-list-fields">
+        <label class="sr-only" for="mailing-list-email">Your email address</label>
+        <input id="mailing-list-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required>
+        <button type="submit">Join mailing list →</button>
+      </div>
+      <div class="mailing-list-captcha" id="mailing-list-captcha" aria-hidden="true">
+        <p>One quick security check:</p>
+        <div class="gamgee-recaptcha" aria-label="Spam protection"></div>
+      </div>
+    </form>
+    <div class="mailing-list-feedback" id="mailing-list-feedback" role="status" aria-live="polite"></div>
   </div>
 </section>
+
+<div class="mailing-success-overlay" id="mailing-success-overlay" role="dialog" aria-modal="true" aria-labelledby="mailing-success-title" aria-describedby="mailing-success-copy">
+  <div class="mailing-success-dialog">
+    <button class="mailing-success-close" type="button" aria-label="Close mailing-list confirmation">×</button>
+    <div class="mailing-success-icon" aria-hidden="true">✓</div>
+    <h2 id="mailing-success-title">You’re on the <span>list.</span></h2>
+    <p id="mailing-success-copy">Thank you for joining. We’ll keep you updated.</p>
+  </div>
+</div>
 
 <!-- FINAL CTA -->
 <section class="full-bleed" id="apply">
@@ -1631,6 +1582,146 @@ document.addEventListener('DOMContentLoaded', function() {
     loadVideo(true);
   });
 });
+</script>
+
+
+<script>
+(function() {
+  const form = document.getElementById('mailing-list-form');
+  const email = document.getElementById('mailing-list-email');
+  const feedback = document.getElementById('mailing-list-feedback');
+  const captchaWrap = document.getElementById('mailing-list-captcha');
+  const captchaContainer = captchaWrap.querySelector('.gamgee-recaptcha');
+  const overlay = document.getElementById('mailing-success-overlay');
+  const closeButton = overlay.querySelector('.mailing-success-close');
+  const submitButton = form.querySelector('button[type="submit"]');
+  let previousFocus = null;
+  let captchaWidgetId = null;
+  let submitting = false;
+
+  function openMailingSuccess() {
+    previousFocus = document.activeElement;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  }
+
+  function closeMailingSuccess() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (previousFocus) previousFocus.focus();
+  }
+
+  function resetSubmitButton() {
+    submitting = false;
+    submitButton.disabled = false;
+    submitButton.textContent = 'Join mailing list →';
+  }
+
+  function finishSignup() {
+    form.reset();
+    resetSubmitButton();
+    captchaWrap.classList.remove('open');
+    captchaWrap.setAttribute('aria-hidden', 'true');
+    if (captchaWidgetId !== null && window.grecaptcha) {
+      window.grecaptcha.reset(captchaWidgetId);
+    }
+    openMailingSuccess();
+  }
+
+  function submitVerifiedEmail(token) {
+    if (submitting) return;
+    submitting = true;
+    feedback.textContent = '';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Joining…';
+
+    if (location.hostname === '127.0.0.1' || location.hostname === 'localhost') {
+      window.setTimeout(finishSignup, 250);
+      return;
+    }
+
+    fetch(window.GAMGEE_CONFIG.formEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        _sheet: 'Mailing List',
+        email: email.value.trim(),
+        source: 'Homepage mailing-list card',
+        recaptchaToken: token
+      })
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      if (data && data.error) throw new Error(data.error);
+      finishSignup();
+    }).catch(function() {
+      resetSubmitButton();
+      if (captchaWidgetId !== null && window.grecaptcha) {
+        window.grecaptcha.reset(captchaWidgetId);
+      }
+      feedback.textContent = 'We couldn’t add you just now. Please try again.';
+    });
+  }
+
+  function showCaptcha() {
+    captchaWrap.classList.add('open');
+    captchaWrap.setAttribute('aria-hidden', 'false');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Complete security check';
+
+    window.GamgeeForms.loadCaptchaApi().then(function(captcha) {
+      if (captchaWidgetId === null) {
+        captchaWidgetId = captcha.render(captchaContainer, {
+          sitekey: window.GAMGEE_CONFIG.recaptchaSiteKey,
+          callback: submitVerifiedEmail,
+          'expired-callback': function() {
+            resetSubmitButton();
+            feedback.textContent = 'The security check expired. Please try again.';
+          },
+          'error-callback': function() {
+            resetSubmitButton();
+            feedback.textContent = 'The security check could not load. Please try again.';
+          }
+        });
+      } else {
+        captcha.reset(captchaWidgetId);
+      }
+    }).catch(function() {
+      resetSubmitButton();
+      feedback.textContent = 'The security check could not load. Please refresh and try again.';
+    });
+  }
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    feedback.textContent = '';
+
+    if (!email.checkValidity()) {
+      feedback.textContent = 'Please enter a valid email address.';
+      email.focus();
+      return;
+    }
+
+    if (captchaWidgetId !== null && window.grecaptcha) {
+      const token = window.grecaptcha.getResponse(captchaWidgetId);
+      if (token) {
+        submitVerifiedEmail(token);
+        return;
+      }
+    }
+
+    showCaptcha();
+  });
+
+  closeButton.addEventListener('click', closeMailingSuccess);
+  overlay.addEventListener('click', function(event) {
+    if (event.target === overlay) closeMailingSuccess();
+  });
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && overlay.classList.contains('open')) closeMailingSuccess();
+  });
+})();
 </script>
 
 <script>
