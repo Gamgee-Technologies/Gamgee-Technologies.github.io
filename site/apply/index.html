@@ -262,7 +262,7 @@
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     min-height:340px;padding-top:40px;padding-bottom:40px;
   }
-  .success-hero.compact h2{margin-bottom:0}
+  .success-hero.compact h2{margin-bottom:16px}
   /* subtle mRNA helix accent rings */
   .success-hero::before,.success-hero::after{
     content:'';position:absolute;border-radius:50%;
@@ -684,7 +684,7 @@
     <div class="fcard-label">Anything else <span class="opt">(optional)</span></div>
     <div class="fg" style="margin-bottom:0">
       <label for="e-extra-notes">Notes for our team</label>
-      <textarea id="e-extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation — anything that might help us…"></textarea>
+      <textarea id="e-extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation, or anything that might help us…"></textarea>
     </div>
   </div>
 
@@ -712,7 +712,7 @@
       Back
     </button>
     <button class="btn btn-primary" onclick="validateAndContinue('elsewhere')">
-      Finish
+      <span id="international-submit-label">Finish</span>
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
   </div>
@@ -726,27 +726,48 @@
   <h1>Health information</h1>
   <p class="lede">Upload whatever you have, even partial records help. Our team will review everything and follow up if we need anything else. All files are encrypted and kept strictly confidential.</p>
 
+  <div class="val-banner" id="val-australia-health">Please answer the required cancer questions before submitting.</div>
+
   <div class="fcard">
-    <div class="fcard-label">Health situation <span class="opt">(optional)</span></div>
+    <div class="fcard-label">Health situation</div>
     <div class="row2">
       <div class="fg">
-        <label for="dog-diagnosis">Diagnosis</label>
-        <input type="text" id="dog-diagnosis" placeholder="e.g. Mast cell tumour">
+        <label for="dog-diagnosis">Cancer type <span style="color:var(--coral)">*</span></label>
+        <select id="dog-diagnosis" onchange="updateAustraliaEligibilityNotice()">
+          <option value="" disabled selected>Select…</option>
+          <option>Mast Cell Tumor</option>
+          <option>Osteosarcoma</option>
+          <option>Other</option>
+        </select>
+        <span class="field-error" id="dog-diagnosis-err">Please select the cancer type.</span>
       </div>
       <div class="fg">
-        <label for="dog-stage">Stage (if known)</label>
-        <select id="dog-stage">
+        <label for="dog-cancer-spread">Has the cancer spread? <span style="color:var(--coral)">*</span></label>
+        <select id="dog-cancer-spread" onchange="updateAustraliaEligibilityNotice()">
           <option value="" disabled selected>Select…</option>
-          <option>Stage 1</option>
-          <option>Stage 2</option>
-          <option>Stage 3</option>
-          <option>Stage 4</option>
-          <option>Unknown / not staged</option>
+          <option>No</option>
+          <option>Yes, same type of tissue only</option>
+          <option>Yes, other types of tissue/organs</option>
         </select>
+        <span class="field-error" id="dog-cancer-spread-err">Please tell us whether the cancer has spread.</span>
       </div>
     </div>
+    <div class="flow-notice availability" id="australia-eligibility-notice" role="status" aria-live="polite" hidden>
+      This cancer currently does not qualify for our trial. However, you can proceed with the form and we can get in touch once we are able to help out.
+    </div>
     <div class="fg">
-      <label for="dog-treatment">Current or prior treatment</label>
+      <label for="dog-stage">Stage (if known)</label>
+      <select id="dog-stage">
+        <option value="" disabled selected>Select…</option>
+        <option>Stage 1</option>
+        <option>Stage 2</option>
+        <option>Stage 3</option>
+        <option>Stage 4</option>
+        <option>Unknown / not staged</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="dog-treatment">Current or prior treatment <span class="opt">(optional)</span></label>
       <textarea id="dog-treatment" placeholder="e.g. Surgery completed, now exploring adjuvant options. No chemo yet."></textarea>
     </div>
     <div class="fg">
@@ -787,7 +808,7 @@
 
   <div class="fcard">
     <div class="fcard-label">Upload files</div>
-    <div class="drop-hint">Any documentation you can share — pathology reports, blood work, imaging — can help us expedite our review. Don't have anything yet? No problem. We'll coordinate with your vet as needed.</div>
+    <div class="drop-hint">Any documentation you can share, including pathology reports, blood work, or imaging, can help us expedite our review. Don't have anything yet? No problem. We'll coordinate with your vet as needed.</div>
     <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
       <p>Upload or drop your files here</p>
@@ -802,7 +823,7 @@
     <div class="fcard-label">Anything else <span class="opt">(optional)</span></div>
     <div class="fg" style="margin-bottom:0">
       <label for="extra-notes">Notes for our team</label>
-      <textarea id="extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation — anything that might help us…"></textarea>
+      <textarea id="extra-notes" style="min-height:160px" placeholder="Timeline, questions, context about your dog's situation, or anything that might help us…"></textarea>
     </div>
   </div>
 
@@ -847,10 +868,10 @@
     </div>
     <span class="success-dog-name" id="success-dog-label"></span>
     <h2 id="success-headline">You've taken the first step.</h2>
-    <p id="success-long-text">Rosie reviews every registration of interest - then Paul double-checks. If <span id="success-dog-inline">your dog</span> looks like a fit, you'll hear from us within 5 business days. We won't keep you waiting.</p>
+    <p id="success-long-text">Rosie reviews every registration of interest, then Paul double-checks. If your dog looks like a fit, we will contact you about the next steps.</p>
     <div class="success-divider"></div>
     <p style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.5)">Questions in the meantime? <a class="email-link" href="mailto:hello@gamgee.io">hello@gamgee.io</a></p>
-    <a href="/" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--cyan);color:var(--ink);font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:background .2s">Return to home screen</a>
+    <a href="/" style="display:inline-block;margin-top:24px;padding:14px 32px;background:var(--cyan);color:var(--ink);font-weight:700;border-radius:12px;text-decoration:none;font-size:15px;transition:background .2s">Return to Gamgee</a>
   </div>
 
   <div class="dog-ticker-section" id="dog-strip-wrap">
@@ -863,7 +884,7 @@
     <div id="review-rows"></div>
   </div>
 
-  <div class="next-steps">
+  <div class="next-steps" id="success-next-steps">
     <div class="ns-label">What happens next</div>
     <div class="ns-item">
       <div class="ns-num">1</div>
@@ -898,9 +919,43 @@
   // Captured form data — stored when user hits Finish so hidden DOM is never queried
   let formData = {};
 
+  function isAustraliaApplicationNonQualifying(cancerType, cancerSpread) {
+    return cancerType === 'Other' ||
+      cancerSpread === 'Yes, other types of tissue/organs';
+  }
+
+  function updateAustraliaEligibilityNotice() {
+    var cancerType = val('dog-diagnosis');
+    var cancerSpread = val('dog-cancer-spread');
+    var notice = document.getElementById('australia-eligibility-notice');
+    var banner = document.getElementById('val-australia-health');
+    var cancerTypeEl = document.getElementById('dog-diagnosis');
+    var cancerSpreadEl = document.getElementById('dog-cancer-spread');
+    var cancerTypeErr = document.getElementById('dog-diagnosis-err');
+    var cancerSpreadErr = document.getElementById('dog-cancer-spread-err');
+
+    if (notice) {
+      notice.hidden = !isAustraliaApplicationNonQualifying(cancerType, cancerSpread);
+    }
+
+    if (cancerType) {
+      if (cancerTypeEl) cancerTypeEl.classList.remove('invalid');
+      if (cancerTypeErr) cancerTypeErr.classList.remove('show');
+    }
+    if (cancerSpread) {
+      if (cancerSpreadEl) cancerSpreadEl.classList.remove('invalid');
+      if (cancerSpreadErr) cancerSpreadErr.classList.remove('show');
+    }
+    if (cancerType && cancerSpread && banner) {
+      banner.classList.remove('show');
+    }
+  }
+
   function captureFormData() {
     const isAustralia = selectedLocation === 'australia';
     const p = isAustralia ? 's' : 'e';
+    const cancerType = isAustralia ? val('dog-diagnosis') : val('e-dog-diagnosis');
+    const cancerSpread = isAustralia ? val('dog-cancer-spread') : '';
     formData = {
       // ── Contact ──
       name:        val(p + '-owner-name'),
@@ -917,7 +972,13 @@
       dogAge:      val(p + '-dog-age'),
       dogSex:      (document.getElementById(p + '-dog-sex') || {}).value || '',
       // ── Health ──
-      diagnosis:     isAustralia ? val('dog-diagnosis') : val('e-dog-diagnosis'),
+      diagnosis:     cancerType,
+      cancerSpread:  cancerSpread,
+      trialEligibility: isAustralia
+        ? (isAustraliaApplicationNonQualifying(cancerType, cancerSpread)
+          ? 'not-currently-eligible'
+          : 'review-required')
+        : '',
       stage:         (document.getElementById(isAustralia ? 'dog-stage' : 'e-dog-stage') || {}).value || '',
       treatment:     isAustralia ? val('dog-treatment') : val('e-dog-treatment'),
       tumourRemoved: (document.getElementById(isAustralia ? 'tumour-removed' : 'e-tumour-removed') || {}).checked || false,
@@ -978,6 +1039,8 @@
       dogAge: d.dogAge || '',
       dogSex: d.dogSex || '',
       diagnosis: d.diagnosis || '',
+      cancerSpread: d.cancerSpread || '',
+      trialEligibility: d.trialEligibility || '',
       stage: d.stage || '',
       treatment: d.treatment || '',
       tumourRemoved: d.tumourRemoved ? 'true' : 'false',
@@ -1098,13 +1161,15 @@
     var usaConsultation = document.getElementById('usa-consultation');
     var title = document.getElementById('international-title');
     var lede = document.getElementById('elsewhere-lede');
+    var submitLabel = document.getElementById('international-submit-label');
 
     if (usaConsultation) usaConsultation.hidden = !isUsa;
     if (title) title.textContent = isUsa ? 'Stay connected to future US options' : 'Tell us about you';
+    if (submitLabel) submitLabel.textContent = isUsa ? 'Join Waitlist' : 'Finish';
     if (lede) {
       lede.className = isUsa ? 'us-flow-intro' : 'flow-notice availability';
       lede.textContent = isUsa
-        ? 'The treatment trial is not currently available in the United States. You can register interest, and separately choose whether you want to hear about a paid consultation.'
+        ? 'Join the waitlist and our team will reach out when the trial becomes available in the United States. You can also choose whether you would like information about a paid consultation.'
         : "We may not be able to help in your country just yet, but you're still welcome to complete this form. If that changes, our team may reach out to discuss how we could support you and your dog.";
     }
   }
@@ -1205,6 +1270,36 @@
   }
 
   function finishAustraliaApplication() {
+    var cancerTypeEl = document.getElementById('dog-diagnosis');
+    var cancerSpreadEl = document.getElementById('dog-cancer-spread');
+    var cancerTypeErr = document.getElementById('dog-diagnosis-err');
+    var cancerSpreadErr = document.getElementById('dog-cancer-spread-err');
+    var banner = document.getElementById('val-australia-health');
+    var firstInvalid = null;
+
+    if (cancerTypeEl) cancerTypeEl.classList.remove('invalid');
+    if (cancerSpreadEl) cancerSpreadEl.classList.remove('invalid');
+    if (cancerTypeErr) cancerTypeErr.classList.remove('show');
+    if (cancerSpreadErr) cancerSpreadErr.classList.remove('show');
+    if (banner) banner.classList.remove('show');
+
+    if (!val('dog-diagnosis')) {
+      if (cancerTypeEl) cancerTypeEl.classList.add('invalid');
+      if (cancerTypeErr) cancerTypeErr.classList.add('show');
+      firstInvalid = cancerTypeEl;
+    }
+    if (!val('dog-cancer-spread')) {
+      if (cancerSpreadEl) cancerSpreadEl.classList.add('invalid');
+      if (cancerSpreadErr) cancerSpreadErr.classList.add('show');
+      if (!firstInvalid) firstInvalid = cancerSpreadEl;
+    }
+    if (firstInvalid) {
+      if (banner) banner.classList.add('show');
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
     captureFormData();
     trackApplicationEvent('Application Finished', 'application-finished');
     submitApplication().then(function(submitted) {
@@ -1292,7 +1387,7 @@
       if (value && ('' + value).trim()) {
         return '<div class="review-row"><span class="review-key">' + key + '</span><span class="review-val">' + value + '</span></div>';
       } else {
-        return '<div class="review-row"><span class="review-key">' + key + '</span><span class="review-val soft">—</span></div>';
+        return '<div class="review-row"><span class="review-key">' + key + '</span><span class="review-val soft">Not provided</span></div>';
       }
     }
     function rowIf(key, value) {
@@ -1321,12 +1416,15 @@
     html += rowIf('Sex & reproductive status', d.dogSex);
 
     // ── Health ──
-    if (d.diagnosis || d.stage || d.treatment || d.tumourRemoved) {
-      html += rowIf('Diagnosis', d.diagnosis);
+    if (d.diagnosis || d.cancerSpread || d.stage || d.treatment || d.tumourRemoved) {
+      html += rowIf(d.isAustralia ? 'Cancer type' : 'Diagnosis', d.diagnosis);
+      if (d.isAustralia) {
+        html += rowIf('Cancer spread', d.cancerSpread);
+      }
       html += rowIf('Stage', d.stage);
       html += rowIf('Prior treatment', d.treatment);
       if (d.tumourRemoved) {
-        html += '<div class="review-row"><span class="review-key">Tumour removed</span><span class="review-val" style="color:var(--coral)">Yes — noted</span></div>';
+        html += '<div class="review-row"><span class="review-key">Tumour removed</span><span class="review-val" style="color:var(--coral)">Yes, noted</span></div>';
       }
     }
 
@@ -1351,25 +1449,91 @@
 
   function personaliseSuccess() {
     var dogName = formData.dogName || '';
-    var isElsewhere = selectedLocation !== 'australia';
+    var dogRef = dogName || 'your dog';
+    var isAustralia = selectedLocation === 'australia';
+    var isNonQualifying = isAustralia && formData.trialEligibility === 'not-currently-eligible';
+    var isUnitedStates = !isAustralia && isUnitedStatesCountry(formData.country);
     var hero = document.getElementById('success-hero');
     var label = document.getElementById('success-dog-label');
     var headline = document.getElementById('success-headline');
     var longText = document.getElementById('success-long-text');
-    var inline = document.getElementById('success-dog-inline');
+    var dogStrip = document.getElementById('dog-strip-wrap');
+    var nextSteps = document.getElementById('success-next-steps');
 
-    hero.classList.toggle('compact', isElsewhere);
+    function step(number, title, copy, isLast) {
+      return '<div class="ns-item"' + (isLast ? ' style="margin-bottom:18px"' : '') + '>' +
+        '<div class="ns-num">' + number + '</div>' +
+        '<div><p><strong>' + title + '</strong> - ' + copy + '</p></div>' +
+      '</div>';
+    }
 
-    if (isElsewhere) {
-      label.style.display = 'none';
-      headline.textContent = "You're on the waitlist.";
-      if (longText) longText.style.display = 'none';
+    function setNextSteps(items, includeProgramInfo) {
+      if (!nextSteps) return;
+      var html = '<div class="ns-label">What happens next</div>';
+      items.forEach(function(item, index) {
+        html += step(index + 1, item[0], item[1], index === items.length - 1);
+      });
+      if (includeProgramInfo) {
+        html += '<div class="mrna-info">' +
+          '<div class="ic">🧬</div>' +
+          '<div><h4>About the mRNA Vaccine Program</h4>' +
+          '<p>This is a personalised cancer treatment, not a standard vaccine. It is built from genomic sequencing of your pet\'s tumour and tailored to each individual case. Our team will explain the full process, timeline, and costs if your dog may qualify. Not all cases are eligible.</p></div>' +
+        '</div>';
+      }
+      nextSteps.innerHTML = html;
+    }
+
+    label.style.display = '';
+    longText.style.display = '';
+
+    if (isAustralia && !isNonQualifying) {
+      hero.classList.remove('compact');
+      label.textContent = dogName ? dogName + ' · Application received' : 'Application received';
+      headline.textContent = dogName ? "We've received " + dogName + "'s application." : "We've received your application.";
+      longText.textContent = 'Rosie reviews every registration of interest, then Paul double-checks. If ' + dogRef + ' looks like a fit, we will contact you about the next steps.';
+      if (dogStrip) dogStrip.style.display = '';
+      setNextSteps([
+        ['Rosie reviews', 'Rosie reviews the information you submitted and assesses whether your dog may be a fit.'],
+        ['Paul double-checks', 'Paul double-checks the application before our team contacts you.'],
+        ['Next steps', 'If your dog may qualify, we contact you and coordinate with your veterinarian.']
+      ], true);
+    } else if (isNonQualifying) {
+      hero.classList.remove('compact');
+      label.textContent = dogName ? dogName + ' · Information received' : 'Information received';
+      headline.textContent = dogName ? "We've received " + dogName + "'s information." : "We've received your dog's information.";
+      longText.textContent = 'Based on the answers provided, ' + dogRef + ' does not currently qualify for this trial. You do not need to apply again. We will get in touch when we are able to help with cases like ' + dogRef + "'s.";
+      if (dogStrip) dogStrip.style.display = 'none';
+      setNextSteps([
+        ['Details saved', 'We have securely saved the information you submitted.'],
+        ['Keep us updated', 'Please contact us if the diagnosis or cancer spread changes.'],
+        ['Future options', 'We will reach out when we are able to help with cases like your dog\'s.']
+      ], false);
+    } else if (isUnitedStates) {
+      hero.classList.add('compact');
+      label.textContent = dogName ? dogName + ' · US waitlist' : 'US waitlist';
+      headline.textContent = dogName ? dogName + ' is on the US waitlist.' : "You're on the US waitlist.";
+      longText.textContent = 'We have saved your details and will reach out when trial options become available in the United States.' +
+        (formData.alternativeConsultation ? ' We also received your consultation interest. Our team will follow up if an appropriate option is available.' : '');
+      if (dogStrip) dogStrip.style.display = 'none';
+      var usSteps = [
+        ['Waitlist confirmed', 'Your details are saved for future United States trial availability.'],
+        ['Updates', 'We will contact you when there is a relevant update or option.']
+      ];
+      usSteps.push(formData.alternativeConsultation
+        ? ['Consultation interest', 'We recorded your interest. Our team will follow up if an appropriate option is available.']
+        : ['No action needed', 'You do not need to apply again.']);
+      setNextSteps(usSteps, false);
     } else {
-      label.style.display = '';
+      hero.classList.add('compact');
       label.textContent = dogName ? dogName + ' · Interest registered' : 'Interest registered';
-      headline.textContent = dogName ? "You've taken the first step for " + dogName + "." : "You've taken the first step.";
-      if (inline) inline.textContent = dogName || 'your dog';
-      if (longText) longText.style.display = '';
+      headline.textContent = "We've registered your interest.";
+      longText.textContent = 'We have saved your details and will reach out when an appropriate Gamgee option becomes available in your region.';
+      if (dogStrip) dogStrip.style.display = 'none';
+      setNextSteps([
+        ['Details saved', 'We have securely saved the information you submitted.'],
+        ['Regional updates', 'We will contact you when an appropriate option becomes available in your region.'],
+        ['No action needed', 'You do not need to register your interest again.']
+      ], false);
     }
   }
 
@@ -1377,6 +1541,7 @@
     var track = document.getElementById('dog-strip');
     var wrap  = document.getElementById('dog-strip-wrap');
     if (!track) return;
+    if (wrap && wrap.style.display === 'none') return;
     track.innerHTML = '';
 
     function buildStrip(urls) {
