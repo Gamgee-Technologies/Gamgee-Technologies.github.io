@@ -920,7 +920,7 @@
   let formData = {};
 
   function isAustraliaApplicationNonQualifying(cancerType, cancerSpread) {
-    return cancerType === 'Other' ||
+    return cancerType === 'Other' &&
       cancerSpread === 'Yes, other types of tissue/organs';
   }
 
