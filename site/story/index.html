@@ -207,6 +207,10 @@
   .mission-card p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.82);margin-bottom:14px}
   .mission-card p:last-of-type{margin-bottom:24px}
   .mission-card .btn{font-size:15px;padding:14px 28px}
+  .mission-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+  .mission-card .trial-details{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.65);box-shadow:none}
+  .mission-card .trial-details:hover{background:rgba(255,255,255,.1)}
+  @media(max-width:600px){.mission-actions{flex-direction:column;align-items:stretch}.mission-actions .btn{justify-content:center;white-space:normal;text-align:center}}
 
   /* ── STICKY TIMELINE SIDEBAR ── */
   .timeline-sidebar{position:sticky;top:100px;align-self:start}
@@ -426,10 +430,10 @@
           <h2>The first end-to-end personalised cancer treatment protocol for dogs.</h2>
           <p>Together with collaborators at UNSW, the University of Queensland and the Garvan Institute, we have built the end-to-end workflow and are now evaluating it through an Australian trial.</p>
           <p>We are currently running a trial in Australia. Registrations of interest are open worldwide. Every case matters, and Australia is where we start.</p>
-          <a class="btn btn-coral" href="/apply/">
-            Register your interest
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <div class="mission-actions">
+            <a class="btn btn-coral" href="/dog-cancer-vaccine/">Explore Our Vaccine <span aria-hidden="true">&rarr;</span></a>
+            <a class="btn trial-details" href="/trial/">Learn About Our Trial <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
       </div>
 
