@@ -268,8 +268,8 @@
   .process .eyebrow{color:var(--ink)}
   .process h2{font-size:44px;font-weight:800;letter-spacing:-.025em;margin:12px 0 6px;color:var(--ink)}
   .process .lede{font-size:17px;color:var(--muted)}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
-  .step{border-radius:24px;padding:32px 28px 34px;min-height:340px;display:flex;flex-direction:column;gap:18px}
+  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:44px}
+  .step{min-width:0;overflow-wrap:anywhere;border-radius:24px;padding:32px 28px 34px;min-height:340px;display:flex;flex-direction:column;gap:18px}
   .s1{background:#3C014E;color:#fff}
   .s2{background:#DB4949;color:#fff}
   .s3{background:#34BBCB;color:#fff}
@@ -441,7 +441,7 @@
 
     /* Process */
     .process h2{font-size:30px}
-    .steps{grid-template-columns:1fr 1fr;gap:14px}
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
     .step{padding:24px 20px 26px;min-height:0;gap:10px}
     .step .num-title{display:flex;align-items:center;gap:10px}
     .step h4{margin:0}
@@ -484,7 +484,7 @@
     .hero .act{flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:12px}
     .hero .act .btn{width:100%;padding:16px 24px}
     .hero .hero-link{justify-content:center;white-space:nowrap}
-    .steps{grid-template-columns:1fr}
+    .steps{grid-template-columns:minmax(0,1fr)}
     .step .num-title{flex-direction:row;min-height:0}
     .step .num{width:36px;height:36px;font-size:14px}
     .step h4{font-size:17px;margin:0;line-height:1.15}
@@ -532,7 +532,7 @@
   }
   .modal-head .modal-eyebrow{
     font-family:"Poppins",system-ui,sans-serif;font-size:11px;font-weight:700;
-    letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:8px;
+    letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:8px;padding-right:40px;
   }
   .modal-head h3{
     font-family:"Poppins",system-ui,sans-serif;font-size:24px;font-weight:800;
@@ -543,7 +543,7 @@
   .modal-body{padding:32px 36px 36px}
 
   .modal-close{
-    position:absolute;top:18px;right:18px;width:36px;height:36px;
+    position:absolute;top:18px;right:18px;width:36px;height:36px;z-index:1;
     background:rgba(255,255,255,.15);border:none;border-radius:50%;
     cursor:pointer;display:flex;align-items:center;justify-content:center;
     color:#fff;transition:background .14s;
@@ -646,7 +646,7 @@
      the end of the stylesheet also lets tablet declarations override the
      shared <=900px compact foundation when the ranges overlap. */
   @media (min-width:600px) and (max-width:1199px){
-    /* Tablets have enough room for the full navigation. */
+    /* Keep full navigation; the narrow-tablet rules below reduce its spacing. */
     .nav-toggle{display:none}
     .navlinks{display:flex}
 
@@ -659,6 +659,13 @@
       max-width:clamp(360px,62.25vw,510px);
     }
     .hero .act{max-width:480px}
+
+    /* Four process cards exceed their minimum widths on narrower tablets. */
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+    /* Let story copy shrink and wrap inside the tablet card. */
+    .rosie > div{min-width:0}
+    .rosie .h3-split{white-space:normal}
 
     /* Keep both lower-row portraits balanced within their wide tablet cards. */
     .dog-row picture:nth-child(3) img,
@@ -679,11 +686,14 @@
   @media (min-width:900px) and (max-width:1199px) and (orientation:landscape){
     /* Landscape tablets follow the desktop composition at a gentler scale. */
     .wrap,.nav-in{width:83.333333%;max-width:1000px}
-    .hero{padding:40px 0 48px;min-height:72vh}
+    /* Restore the complete two-column layout at the inclusive 900px boundary. */
+    .hero{grid-template-columns:1.02fr .98fr;gap:48px;padding:40px 0 48px;min-height:72vh}
     .hero-helix-space{min-height:240px}
     .hero > div:first-child{max-width:none}
     .hero h1{font-size:50px;line-height:1.04}
-    .hero .act{max-width:none;margin-top:30px}
+    .hero h1 .nowrap{white-space:nowrap}
+    .hero .act{max-width:none;margin-top:30px;flex-direction:row;align-items:center}
+    .hero .act .btn{width:auto;padding:16px 30px}
     #helix,#helix-loader{
       width:var(--strip);
       left:auto;
@@ -694,6 +704,13 @@
       padding-left:clamp(48px,5vw,60px);
       padding-right:clamp(48px,5vw,60px);
     }
+  }
+  @media (min-width:600px) and (max-width:699px){
+    /* Preserve a visible logo gap without wrapping the tablet navigation. */
+    .page > nav .nav-in{gap:16px}
+    .page > nav .navlinks{gap:10px;font-size:13px}
+    .page > nav .navlinks a{white-space:nowrap}
+    .page > nav .navlinks .btn{font-size:12px;padding:11px 12px}
   }
 </style>
 <link rel="stylesheet" href="/assets/shared-shell.css">
