@@ -219,13 +219,13 @@
   .mission h2{font-size:40px;font-weight:800;line-height:1.14;letter-spacing:-.02em;max-width:none}
   .mission h2 .hl{color:var(--cyan)}
   .mission h2 .mission-note{display:block;font-size:40px;line-height:1.14;margin-top:18px}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
-  .card{background:#fff;color:var(--ink);border-radius:22px;padding:26px 22px;text-decoration:none;display:block;transition:transform .14s}
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:46px}
+  .card{background:#fff;color:var(--ink);border-radius:22px;padding:26px 22px;text-decoration:none;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:subgrid;grid-row:span 3;row-gap:0;min-width:0;overflow-wrap:anywhere;transition:transform .14s}
   .card:hover{transform:translateY(-4px)}
   .card .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--ink)}
   .card .ct{margin-top:12px;font-size:17px;font-weight:600;line-height:1.4}
   .card .ar{margin-top:22px;font-size:20px;color:var(--purple)}
-  .card .card-btn{margin-top:22px}
+  .card .card-btn{margin-top:22px;justify-self:start;align-self:stretch;max-width:100%;min-width:0;overflow-wrap:anywhere}
   .mission-note{display:block;color:var(--cyan);margin-top:26px;font-size:18px;font-weight:700;}
   .full-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
   .full-bleed .block{border-radius:0;padding:84px 0;margin:0}
@@ -663,6 +663,8 @@
     /* Four process cards exceed their minimum widths on narrower tablets. */
     .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 
+    .card .card-btn{padding-inline:8px;font-size:14px}
+
     /* Let story copy shrink and wrap inside the tablet card. */
     .rosie > div{min-width:0}
     .rosie .h3-split{white-space:normal}
@@ -704,6 +706,20 @@
       padding-left:clamp(48px,5vw,60px);
       padding-right:clamp(48px,5vw,60px);
     }
+  }
+  /* Give tablet story phrases the full card width, as on compact screens. */
+  @media(min-width:901px) and (max-width:1199px){
+    .rosie{grid-template-columns:1fr;gap:18px}
+    .rosie .avatar{width:80px;height:80px}
+    .rosie h3{font-size:clamp(28px,3vw,34px);line-height:1.285714}
+  }
+  /* Use the available story width before balancing narrower phrase lines. */
+  @media(max-width:1199px){
+    .rosie h3{max-width:none}
+    .rosie .h3-split{text-wrap:balance}
+  }
+  @media(max-width:599px){
+    .rosie h3{font-size:clamp(24px,7.5vw,28px);line-height:1.285714}
   }
   @media (min-width:600px) and (max-width:699px){
     /* Preserve a visible logo gap without wrapping the tablet navigation. */
@@ -935,17 +951,17 @@
         <div class="card">
           <div class="lbl">Media</div>
           <div class="ct">Help us reach the dog owners who don't know this exists yet.</div>
-          <button class="btn btn-coral card-btn" onclick="openModal('modal-media')">Get in Touch →</button>
+          <button class="btn btn-coral card-btn" onclick="openModal('modal-media')">Get in Touch&nbsp;→</button>
         </div>
         <div class="card">
           <div class="lbl">Oncologists, Vets, Labs</div>
           <div class="ct">Australia is our base. Help us get to every dog.</div>
-          <button class="btn btn-coral card-btn" onclick="openModal('modal-partner')">Partner With Us →</button>
+          <button class="btn btn-coral card-btn" onclick="openModal('modal-partner')">Partner With Us&nbsp;→</button>
         </div>
         <div class="card">
           <div class="lbl">Donate Data</div>
           <div class="ct">Every case in our dataset makes the science stronger.</div>
-          <button class="btn btn-coral card-btn" onclick="openModal('modal-data')">Contribute Data →</button>
+          <button class="btn btn-coral card-btn" onclick="openModal('modal-data')">Contribute Data&nbsp;→</button>
         </div>
       </div>
     </div>
