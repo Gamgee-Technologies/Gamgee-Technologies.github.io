@@ -1,8 +1,8 @@
 const fs=require('node:fs');
 const assert=require('node:assert/strict');
 const {chromium,launchOptions}=require('./browser-runtime.cjs');
-const html=fs.readFileSync('site/careers/index.html','utf8');
-assert.equal(html,fs.readFileSync('site/careers/Career.html','utf8'),'Both careers entry points must match');
+const html=fs.readFileSync('site/career/index.html','utf8');
+assert.equal(html,fs.readFileSync('site/career/Career.html','utf8'),'Both careers entry points must match');
 const captchaMock=`window.testToken='';window.grecaptcha={render:(node,options)=>{window.testCaptcha=options;node.innerHTML='<textarea name="g-recaptcha-response" hidden></textarea>';return 0},getResponse:()=>window.testToken,reset:()=>{window.testToken=''}};window.careersCaptchaReady();`;
 
 (async()=>{
@@ -15,7 +15,7 @@ const captchaMock=`window.testToken='';window.grecaptcha={render:(node,options)=
       // Every request is intercepted. Tests cannot submit to the live endpoint.
       await page.route('**/*',route=>{
         const url=new URL(route.request().url());
-        if(url.origin==='https://www.gamgee.io'&&url.pathname==='/careers/')return route.fulfill({contentType:'text/html',body:html});
+        if(url.origin==='https://www.gamgee.io'&&url.pathname==='/career/')return route.fulfill({contentType:'text/html',body:html});
         if(url.origin==='https://www.google.com'&&url.pathname==='/recaptcha/api.js')return route.fulfill({contentType:'application/javascript',body:captchaMock});
         if(url.origin==='https://script.google.com'){
           const input=JSON.parse(route.request().postData());requests.push(input);
@@ -27,7 +27,7 @@ const captchaMock=`window.testToken='';window.grecaptcha={render:(node,options)=
         }
         return route.abort();
       });
-      await page.goto('https://www.gamgee.io/careers/#apply-senior-operations-manager');
+      await page.goto('https://www.gamgee.io/career/#apply-senior-operations-manager');
       await page.waitForFunction(()=>window.testCaptcha);
       await page.evaluate(()=>{
         const form=document.querySelector('#form');

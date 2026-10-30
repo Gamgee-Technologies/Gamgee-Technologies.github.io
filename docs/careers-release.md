@@ -1,6 +1,6 @@
 # Careers and shared footer review
 
-The careers page is a self-contained HTML document, including fonts and flags. `site/careers/index.html` and `site/careers/Career.html` are identical entry points. It supports role details, a dedicated application view, and a confirmation view. Shared footer source and its checked-in bundle apply the approved alignment, flag position, US spelling and spacing across existing pages.
+The careers page is a self-contained HTML document, including fonts and flags. `site/career/index.html` and `site/career/Career.html` are identical entry points. It supports role details, a dedicated application view, and a confirmation view. Shared footer source and its checked-in bundle apply the approved alignment, flag position, US spelling and spacing across existing pages.
 
 ## Review checks
 
