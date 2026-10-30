@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "build:footer": "esbuild src/site-footer.jsx --bundle --minify --format=iife --target=es2020 --outfile=site/assets/site-footer.js",
-    "build": "npm run build:footer"
+    "build": "npm run build:footer",
+    "test:careers": "node tests/careers-public-browser.cjs",
+    "test:footer": "node tests/footer-alignment.cjs && node tests/footer-flags.cjs"
   },
   "dependencies": {
     "react": "^19.1.1",

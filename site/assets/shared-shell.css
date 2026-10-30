@@ -68,3 +68,15 @@ footer.site-footer{display:block;width:100%;margin:0;padding:0;border:0;border-t
 @media(min-width:600px) and (max-width:820px){
   .site-footer .site-footer-socials{transform:none}
 }
+
+/* Follow the actual header container, including page-specific tablet widths. */
+.site-footer .site-footer-main,.site-footer .site-footer-legal{box-sizing:border-box;width:var(--footer-shell-width,100%);max-width:1200px;padding-inline:var(--footer-shell-inset,28px);margin-inline:auto}
+@media(max-width:599px){.site-footer .site-footer-main,.site-footer .site-footer-legal{padding-inline:var(--footer-shell-inset,20px)}}
+/* Place country flags beneath Register interest, level with the brand tagline. */
+@media(min-width:600px){.site-footer .site-footer-right{display:grid;grid-template-rows:33px auto;row-gap:14px;justify-items:end;align-content:start}.site-footer .site-footer-product{align-self:center}.site-footer .site-footer-links{flex-wrap:nowrap}.site-footer .site-footer-flags{align-self:start;margin:0}}
+@media(max-width:599px){.site-footer .site-footer-flags{display:flex;margin:0}.site-footer .site-footer-flag-inline{display:none}}
+/* Compact footer spacing; keep the established header edges and flag row. */
+.site-footer .site-footer-main{padding-top:36px;padding-bottom:22px}
+.site-footer .site-footer-legal{padding-top:18px;padding-bottom:38px}
+.site-footer .site-footer-socials{top:18px}
+@media(max-width:599px){.site-footer .site-footer-main{padding-top:28px;padding-bottom:20px;gap:20px}.site-footer .site-footer-right{gap:12px}.site-footer .site-footer-legal{padding-top:16px;padding-bottom:32px;row-gap:12px}}

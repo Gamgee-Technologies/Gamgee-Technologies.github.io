@@ -47,12 +47,13 @@ function SocialLink({ label, href, icon }) {
 }
 
 function SiteFooter() {
+  React.useLayoutEffect(() => { const header=document.querySelector('nav .nav-in, .top-row');if(!header)return;const sync=()=>{const rect=header.getBoundingClientRect();const inset=getComputedStyle(header).paddingLeft;document.querySelectorAll('footer.site-footer').forEach(footer=>{footer.style.setProperty('--footer-shell-width',rect.width+'px');footer.style.setProperty('--footer-shell-inset',inset)})};const observer=new ResizeObserver(sync);observer.observe(header);window.addEventListener('resize',sync);sync();return()=>{observer.disconnect();window.removeEventListener('resize',sync)} }, []);
   return (
     <footer className="site-footer">
       <div className="site-footer-main">
         <div>
           <div className="site-footer-brand">GAMGEE</div>
-          <p className="site-footer-tagline">Personalised cancer treatment for pets. Built one patient at a time.</p>
+          <p className="site-footer-tagline">Personalized cancer treatment for pets. Built one patient at a time.</p>
         </div>
         <div className="site-footer-right">
           <div className="site-footer-product">

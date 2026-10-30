@@ -4,3 +4,8 @@
 # Apps Script backend source stays private and outside this public repository.
 Code.gs
 Code.updated.gs
+
+/apps-script/
+/node_modules/
+/.worktrees/
+/test-results/
