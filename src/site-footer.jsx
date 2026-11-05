@@ -58,8 +58,8 @@ function SiteFooter() {
         <div className="site-footer-right">
           <div className="site-footer-product">
             <div className="site-footer-links">
-              <h5>PRODUCT</h5>
-              <a href="/vet/">For Vets</a>
+              <a href="/career/">Career</a>
+              <a href="/vet/">Partnership</a>
               <a href="/apply/">Register interest</a>
             </div>
           </div>
