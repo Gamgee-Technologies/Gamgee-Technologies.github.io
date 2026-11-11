@@ -33,6 +33,8 @@ footer .flag-inline{display:none}
 @media(max-width:599px){nav .navlinks{display:none}nav .nav-toggle{display:flex}nav .nav-in{padding:16px 20px}footer .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}footer .foot-right{align-items:flex-start;gap:10px}footer .footer-links{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px}footer .footer-links a{margin-left:0;font-size:15px}footer .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}footer .foot-flag{display:none}footer .flag-inline{display:inline-block}}
 @media(min-width:600px) and (max-width:1199px){nav .navlinks{gap:16px}}
 @media(min-width:600px){nav .navlinks{display:flex}nav .nav-toggle{display:none}nav .mobile-menu{display:none!important}}
+/* Use the mobile header while the full navigation would be crowded. */
+@media(min-width:600px) and (max-width:767px){nav .nav-in{padding:16px 20px}nav .navlinks{display:none}nav .nav-toggle{display:flex}nav .mobile-menu{position:absolute;top:100%;left:0;right:0;display:none!important}nav .mobile-menu.open{display:flex!important}}
 
 /* Shared React footer. Namespaced so legacy page styles cannot change its typography or spacing. */
 [data-site-footer]{display:block;width:100%}
@@ -170,7 +172,7 @@ body{background:var(--cream)}.roles{padding-top:64px;min-height:55vh}.secondary:
       <a href="https://www.gamgee.io/mission/">Our mission</a>
       <a href="https://www.gamgee.io/story/">Our story</a>
       <a href="https://www.gamgee.io/media/">In the media</a>
-      <a href="https://www.gamgee.io/vet/">For vets</a>
+      <a href="https://www.gamgee.io/vet/">Partnership</a>
       <a class="btn btn-green" href="https://www.gamgee.io/apply/">Register interest</a>
     </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="
@@ -186,7 +188,7 @@ body{background:var(--cream)}.roles{padding-top:64px;min-height:55vh}.secondary:
     <a href="https://www.gamgee.io/mission/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our mission</a>
     <a href="https://www.gamgee.io/story/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Our story</a>
     <a href="https://www.gamgee.io/media/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">In the media</a>
-    <a href="https://www.gamgee.io/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">For vets</a>
+    <a href="https://www.gamgee.io/vet/" onclick="document.getElementById('mobile-menu').classList.remove('open');document.querySelector('.nav-toggle').classList.remove('open')">Partnership</a>
     <a class="btn btn-green" href="https://www.gamgee.io/apply/">Register interest</a>
   </div>
 </nav>

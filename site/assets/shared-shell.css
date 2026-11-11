@@ -28,6 +28,8 @@ footer .flag-inline{display:none}
 @media(max-width:599px){nav .navlinks{display:none}nav .nav-toggle{display:flex}nav .nav-in{padding:16px 20px}footer .foot{flex-direction:column;gap:28px;padding:40px 20px 24px}footer .foot-right{align-items:flex-start;gap:10px}footer .footer-links{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px}footer .footer-links a{margin-left:0;font-size:15px}footer .legal{flex-direction:column;gap:8px;padding:16px 20px 32px}footer .foot-flag{display:none}footer .flag-inline{display:inline-block}}
 @media(min-width:600px) and (max-width:1199px){nav .navlinks{gap:16px}}
 @media(min-width:600px){nav .navlinks{display:flex}nav .nav-toggle{display:none}nav .mobile-menu{display:none!important}}
+/* Use the mobile header while the full navigation would be crowded. */
+@media(min-width:600px) and (max-width:767px){nav .nav-in{padding:16px 20px}nav .navlinks{display:none}nav .nav-toggle{display:flex}nav .mobile-menu{position:absolute;top:100%;left:0;right:0;display:none!important}nav .mobile-menu.open{display:flex!important}}
 
 /* Shared React footer. Namespaced so legacy page styles cannot change its typography or spacing. */
 [data-site-footer]{display:block;width:100%}
