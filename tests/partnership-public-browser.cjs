@@ -24,10 +24,11 @@ const server = http.createServer((req,res)=>{
   try {
     async function setup(mode='ok', width=1440){
       const context=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
-      await context.addInitScript(()=>{
+      await context.addInitScript((mode)=>{
+        if(mode==='captcha_api_failure')return;
         window.__widgets=[];window.__reset=[];window.__captchaToken='mock-token';
         window.grecaptcha={render(container,options){const id=window.__widgets.length;window.__widgets.push({id,form:container.closest('form').id,size:options.size});const box=document.createElement('div');box.textContent='Security check (test widget)';box.style.cssText='box-sizing:border-box;width:'+ (options.size==='compact'?164:304)+'px;height:'+(options.size==='compact'?144:78)+'px;padding:14px;border:1px solid #ccc;border-radius:3px;background:#fafafa;font:13px Arial';container.appendChild(box);return id;},getResponse(){return window.__captchaToken;},reset(id){window.__reset.push(id);}};
-      });
+      },mode);
       const posts=[];
       await context.route('**/*',async route=>{
         const req=route.request();const url=req.url();
@@ -39,6 +40,7 @@ const server = http.createServer((req,res)=>{
           return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(data)});
         }
         if(url.startsWith(base))return route.continue();
+        if(mode==='captcha_api_failure' && url.includes('google.com/recaptcha/api.js'))return route.abort('failed');
         if(url.startsWith('https://fonts.googleapis.com/'))return route.fulfill({contentType:'text/css',body:fontCSS});
         if(/^https?:/.test(url))return route.fulfill({status:200,contentType:'text/javascript',body:''});
         return route.continue();
@@ -142,6 +144,15 @@ const server = http.createServer((req,res)=>{
       await test.context.close();
     }
     result.checks.push('For both forms, backend errors, empty/null responses, and network failures preserve input, restore controls, reset CAPTCHA, and never show success. Referral duplicate dispatch also produces one request.');
+    const unavailable=await setup('captcha_api_failure');
+    await fill(unavailable.page);await submit(unavailable.page);await failureReady(unavailable.page);
+    assert.match(await unavailable.page.locator('#partnershipForm [data-form-feedback]').innerText(),/Please refresh this page/);
+    assert.equal(await unavailable.page.locator('#partnershipSuccess').isVisible(),false);
+    assert.equal(await unavailable.page.inputValue('#partnerMessage'),'Mock inquiry only.');
+    assert.equal(await unavailable.page.locator('#partnershipForm button[type="submit"]').isDisabled(),false);
+    assert.equal(unavailable.posts.length,0);
+    await unavailable.context.close();
+    result.checks.push('Failed CAPTCHA API load directs the user to refresh, retains answers, restores the button and sends zero requests.');
     assert.deepEqual(result.errors,[]);
     fs.writeFileSync(path.join(output,'validation.json'),JSON.stringify(result,null,2));
     console.log(JSON.stringify(result,null,2));

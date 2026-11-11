@@ -12,7 +12,7 @@
   var captchaPromise = null;
   var submitting = false;
   var accepted = false;
-  var captchaMessage = 'The security check could not load. Try again by focusing a form field or submitting your inquiry.';
+  var captchaMessage = 'The security check could not load. Please refresh this page and try again, or email partners@gamgee.io.';
 
   // Validate trimmed answers before sending the existing homepage Partners payload.
   form.noValidate = true;
@@ -65,7 +65,7 @@
       return Number(container.dataset.widgetId);
     }).catch(function(error) {
       captchaPromise = null;
-      throw error;
+      throw error && error.code === 'configuration' ? error : failure('captcha_unavailable', captchaMessage);
     });
     return captchaPromise;
   }
@@ -159,7 +159,7 @@
     } catch (error) {
       if (error && error.code === 'captcha_required') {
         showError(failure('captcha_required', 'Please complete the security check to send your inquiry.'), true);
-      } else if (error && ['configuration', 'rejected', 'unconfirmed'].indexOf(error.code) !== -1) {
+      } else if (error && ['configuration', 'captcha_unavailable', 'rejected', 'unconfirmed'].indexOf(error.code) !== -1) {
         showError(error, true);
       } else {
         showError(failure('unconfirmed', 'We could not confirm receipt. Your details are still here. Please contact partners@gamgee.io before submitting again.'), true);
