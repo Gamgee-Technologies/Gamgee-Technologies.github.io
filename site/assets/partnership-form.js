@@ -10,6 +10,7 @@
   var submitButton = form.querySelector('button[type="submit"]');
   var success = document.getElementById('partnershipSuccess');
   var captchaPromise = null;
+  var captchaWidgets = {};
   var submitting = false;
   var accepted = false;
   var captchaMessage = 'The security check could not load. Please refresh this page and try again, or email partners@gamgee.io.';
@@ -46,28 +47,50 @@
   }
 
   function prepareCaptcha() {
-    if (captchaPromise) return captchaPromise;
-    captchaPromise = Promise.resolve().then(function() {
-      return helper().loadCaptchaApi();
-    }).then(function(captcha) {
+    if (!captchaPromise) {
+      captchaPromise = Promise.resolve().then(function() {
+        return helper().loadCaptchaApi();
+      });
+    }
+    return captchaPromise.then(function(captcha) {
       var container = form.querySelector('.gamgee-recaptcha');
       var config = global.GAMGEE_CONFIG;
       if (!container || !config || !config.recaptchaSiteKey) {
         throw failure('configuration', 'Please refresh this page to load the security check.');
       }
-      if (!container.dataset.widgetId) {
-        container.dataset.widgetId = String(captcha.render(container, {
+      var style = global.getComputedStyle(form);
+      var availableWidth = form.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      var size = availableWidth >= 304 ? 'normal' : 'compact';
+      if (!captchaWidgets[size]) {
+        var host = document.createElement('div');
+        container.appendChild(host);
+        captchaWidgets[size] = { host: host, id: captcha.render(host, {
           sitekey: config.recaptchaSiteKey,
-          size: 'compact'
-        }));
+          size: size
+        }) };
       }
+      var active = captchaWidgets[size];
+      var previousId = container.dataset.widgetId;
+      if (previousId !== undefined && previousId !== String(active.id)) captcha.reset(Number(previousId));
+      Object.keys(captchaWidgets).forEach(function(key) {
+        captchaWidgets[key].host.hidden = key !== size;
+      });
+      container.dataset.widgetId = String(active.id);
       if (feedback && feedback.textContent === captchaMessage) feedback.textContent = '';
       return Number(container.dataset.widgetId);
     }).catch(function(error) {
       captchaPromise = null;
       throw error && error.code === 'configuration' ? error : failure('captcha_unavailable', captchaMessage);
     });
-    return captchaPromise;
+  }
+
+  // Keep Google's supported sizes intact when a phone rotates or the viewport narrows.
+  if ('ResizeObserver' in global) {
+    var captchaResizeObserver = new global.ResizeObserver(function() {
+      if (!captchaPromise || submitting || accepted) return;
+      prepareOnApproach();
+    });
+    captchaResizeObserver.observe(form);
   }
 
   function prepareOnApproach() {
@@ -135,7 +158,7 @@
 
     try {
       widgetId = await prepareCaptcha();
-      // The shared helper reuses the compact widget through data-widget-id,
+      // The shared helper reuses the active widget through data-widget-id,
       // adds its token, and posts the same JSON contract as the homepage form.
       var result = await forms.submit(payload, { captchaRoot: form });
       if (result && result.error) {

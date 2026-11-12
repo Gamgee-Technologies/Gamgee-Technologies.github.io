@@ -59,7 +59,7 @@ function SiteFooter() {
           <div className="site-footer-product">
             <div className="site-footer-links">
               <a href="/career/">Career</a>
-              <a href="/vet/">Partnership</a>
+              <a href="/partnership/">Partnership</a>
               <a href="/apply/">Register interest</a>
             </div>
           </div>
