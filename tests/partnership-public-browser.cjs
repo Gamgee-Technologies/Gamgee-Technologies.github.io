@@ -27,7 +27,7 @@ const server = http.createServer((req,res)=>{
       await context.addInitScript((mode)=>{
         if(mode==='captcha_api_failure')return;
         window.__widgets=[];window.__reset=[];window.__captchaToken='mock-token';
-        window.grecaptcha={render(container,options){const id=window.__widgets.length;window.__widgets.push({id,form:container.closest('form').id,size:options.size});const box=document.createElement('div');box.textContent='Security check (test widget)';box.style.cssText='box-sizing:border-box;width:'+ (options.size==='compact'?164:304)+'px;height:'+(options.size==='compact'?144:78)+'px;padding:14px;border:1px solid #ccc;border-radius:3px;background:#fafafa;font:13px Arial';container.appendChild(box);return id;},getResponse(){return window.__captchaToken;},reset(id){window.__reset.push(id);}};
+        window.grecaptcha={render(container,options){const id=window.__widgets.length;window.__widgets.push({id,form:container.closest('form').id,size:options.size});const box=document.createElement('div');box.textContent='Security check (test widget)';box.style.cssText='box-sizing:border-box;width:'+ (options.size==='compact'?164:304)+'px;height:'+(options.size==='compact'?144:78)+'px;padding:14px;border:1px solid #ccc;border-radius:3px;background:#fafafa;font:13px Arial';container.appendChild(box);return id;},getResponse(id){return window.__captchaTokens ? window.__captchaTokens[id]||'' : window.__captchaToken;},reset(id){window.__reset.push(id);if(window.__captchaTokens)delete window.__captchaTokens[id];}};
       },mode);
       const posts=[];
       await context.route('**/*',async route=>{
@@ -47,7 +47,7 @@ const server = http.createServer((req,res)=>{
       });
       const page=await context.newPage();
       page.on('pageerror',e=>result.errors.push(e.message));
-      await page.goto(base+'/vet/',{waitUntil:'networkidle'});
+      await page.goto(base+'/partnership/',{waitUntil:'networkidle'});
       await page.evaluate(async()=>{await document.fonts.ready;document.querySelectorAll('img').forEach(i=>i.loading='eager');await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));});
       await page.addStyleTag({content:'html{scroll-behavior:auto!important}'});
       return {context,page,posts};
@@ -73,10 +73,28 @@ const server = http.createServer((req,res)=>{
     async function failureReady(page){await page.waitForFunction(()=>document.querySelector('#partnershipForm [data-form-feedback]').textContent.length>0 && document.getElementById('partnershipForm').getAttribute('aria-busy')!=='true');}
     const visual=await setup();
     assert.equal(await visual.page.locator('body').innerText().then(t=>/Shareable preview|Preview only/.test(t)),false);
-    assert.equal(await visual.page.locator('nav a[href="/vet/"]').first().innerText(),'Partnership');
+    assert.equal(await visual.page.locator('nav a[href="/partnership/"]').first().innerText(),'Partnership');
     for(const width of [1920,1440,1200,1024,901,900,850,768,767,650,600,390,320]){
       await visual.page.setViewportSize({width,height:1000});
       await visual.page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+      await visual.page.locator('#partnershipForm').scrollIntoViewIfNeeded();
+      await visual.page.waitForFunction(()=>{
+        const form=document.getElementById('partnershipForm'),s=getComputedStyle(form);
+        const available=form.clientWidth-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight);
+        const container=form.querySelector('.gamgee-recaptcha');
+        const active=window.__widgets[Number(container.dataset.widgetId)];
+        return active && active.size===(available>=304?'normal':'compact');
+      });
+      const controls=await visual.page.evaluate(()=>{
+        const form=document.getElementById('partnershipForm'),s=getComputedStyle(form),r=form.getBoundingClientRect();
+        const widget=form.querySelector('.gamgee-recaptcha > div:not([hidden])').getBoundingClientRect();
+        const button=form.querySelector('button[type="submit"]').getBoundingClientRect();
+        return {width:innerWidth,widgetWidth:widget.width,widgetHeight:widget.height,left:widget.left,right:widget.right,contentLeft:r.left+parseFloat(s.paddingLeft),contentRight:r.right-parseFloat(s.paddingRight),buttonTop:button.top,widgetBottom:widget.bottom};
+      });
+      assert.ok(controls.left>=controls.contentLeft-1 && controls.right<=controls.contentRight+1,JSON.stringify(controls));
+      if(width===1440)assert.equal(controls.widgetWidth,304);
+      if(width===390){assert.equal(controls.widgetWidth,304);assert.ok(controls.buttonTop>controls.widgetBottom);}
+      if(width===320)assert.equal(controls.widgetWidth,164,JSON.stringify(controls));
       await visual.page.evaluate(()=>scrollTo(0,0));
       const geometry=await visual.page.evaluate(()=>{
         function bounds(selector){const el=document.querySelector(selector),r=el.getBoundingClientRect(),s=getComputedStyle(el);return {left:r.left+parseFloat(s.paddingLeft),right:r.right-parseFloat(s.paddingRight)};}
@@ -85,7 +103,7 @@ const server = http.createServer((req,res)=>{
       assert.equal(geometry.width,geometry.scrollWidth);
       assert.deepEqual(geometry.brokenImages,[]);
       for(const edge of ['left','right'])for(const section of ['body','footer'])assert.ok(Math.abs(geometry.header[edge]-geometry[section][edge])<=1,JSON.stringify(geometry));
-      if(width<768){await visual.page.locator('.nav-toggle').click();assert.ok(await visual.page.locator('#mobile-menu a[href="/vet/"]').isVisible());await visual.page.locator('.nav-toggle').click();}
+      if(width<768){await visual.page.locator('.nav-toggle').click();assert.ok(await visual.page.locator('#mobile-menu a[href="/partnership/"]').isVisible());await visual.page.locator('.nav-toggle').click();}
       if([1440,390,320].includes(width)){
         await visual.page.screenshot({path:path.join(output,'hero-'+width+'.png')});
         await visual.page.screenshot({path:path.join(output,'page-'+width+'.png'),fullPage:true});
@@ -97,6 +115,7 @@ const server = http.createServer((req,res)=>{
     }
     assert.equal(visual.posts.length,0);
     await visual.page.setViewportSize({width:1440,height:1000});
+    await visual.page.waitForFunction(()=>window.__widgets[Number(document.querySelector('#partnershipForm .gamgee-recaptcha').dataset.widgetId)].size==='normal');
     await visual.page.locator('.rd-hero a').click();assert.equal(new URL(visual.page.url()).hash,'#partner-inquiry');
     assert.ok((await visual.page.locator('.vp-email-button').getAttribute('href')).startsWith('mailto:partners@gamgee.io'));
     await submit(visual.page);assert.equal(await visual.page.evaluate(()=>document.activeElement.id),'partnerFirstName');
@@ -114,8 +133,9 @@ const server = http.createServer((req,res)=>{
     await visual.page.locator('.js-open-referral').click();
     await visual.page.waitForFunction(()=>window.__widgets.some(w=>w.form==='referralForm'));
     const widgets=await visual.page.evaluate(()=>window.__widgets);
-    assert.deepEqual(widgets.map(w=>w.size),['compact','compact']);
-    assert.equal(new Set(widgets.map(w=>w.id)).size,2);
+    assert.deepEqual(widgets.map(w=>w.size),['normal','compact','compact']);
+    assert.equal(new Set(widgets.map(w=>w.id)).size,3);
+    assert.equal(await visual.page.locator('#partnershipForm .vp-captcha-label').count(),0);
     await visual.page.evaluate(()=>{
       const form=document.getElementById('referralForm');for(const field of form.querySelectorAll('[required]')){
         if(field.type==='checkbox')field.checked=true;
@@ -127,7 +147,7 @@ const server = http.createServer((req,res)=>{
     await visual.page.keyboard.press('Escape');assert.equal(await visual.page.locator('#referralOverlay').isVisible(),false);
     await visual.context.close();
     result.checks.push('13 responsive widths, shared header/body/footer edges, embedded-font visual captures, no preview labels, working anchors and mailto.');
-    result.checks.push('Blank/whitespace/email/CAPTCHA validation, trimmed Partners payload, one POST for double dispatch, success on explicit status:ok, independent compact partnership/referral widgets and Referral routing. All POSTs intercepted.');
+    result.checks.push('Responsive normal/compact CAPTCHA switches without clipping and reuses widget instances after resizing. Blank/whitespace/email/CAPTCHA validation, trimmed Partners payload, one POST for double dispatch, success on explicit status:ok, independent partnership/referral widgets and Referral routing. All POSTs intercepted.');
     for(const mode of ['error','empty','null','network']){
       const test=await setup(mode);await fill(test.page);await submit(test.page);await failureReady(test.page);
       assert.ok(await test.page.locator('#partnershipForm').isVisible());assert.equal(await test.page.locator('#partnershipSuccess').isVisible(),false);
@@ -144,6 +164,23 @@ const server = http.createServer((req,res)=>{
       await test.context.close();
     }
     result.checks.push('For both forms, backend errors, empty/null responses, and network failures preserve input, restore controls, reset CAPTCHA, and never show success. Referral duplicate dispatch also produces one request.');
+    const resized=await setup();
+    await fill(resized.page);
+    await resized.page.waitForFunction(()=>document.querySelector('#partnershipForm .gamgee-recaptcha').dataset.widgetId!==undefined);
+    await resized.page.evaluate(()=>{const id=document.querySelector('#partnershipForm .gamgee-recaptcha').dataset.widgetId;window.__captchaTokens={[id]:'solved-normal'};});
+    for(const [width,size,token] of [[320,'compact','solved-compact'],[1440,'normal','solved-normal-again']]){
+      await resized.page.setViewportSize({width,height:1000});
+      await resized.page.waitForFunction(size=>window.__widgets[Number(document.querySelector('#partnershipForm .gamgee-recaptcha').dataset.widgetId)].size===size,size);
+      await submit(resized.page);await failureReady(resized.page);
+      assert.equal(resized.posts.length,0,'A solved token from the previous widget must not be reused');
+      assert.match(await resized.page.locator('[data-form-feedback]').innerText(),/complete the security check/);
+      await resized.page.evaluate(token=>{const id=document.querySelector('#partnershipForm .gamgee-recaptcha').dataset.widgetId;window.__captchaTokens[id]=token;},token);
+    }
+    await submit(resized.page);await resized.page.locator('#partnershipSuccess').waitFor({state:'visible'});
+    assert.equal(resized.posts.length,1);assert.equal(resized.posts[0].body.recaptchaToken,'solved-normal-again');
+    assert.equal(await resized.page.evaluate(()=>window.__widgets.length),2);
+    await resized.context.close();
+    result.checks.push('Solved tokens are cleared when switching CAPTCHA sizes; both directions require a fresh solve, reuse two instances, and submit only the active widget token.');
     const unavailable=await setup('captcha_api_failure');
     await fill(unavailable.page);await submit(unavailable.page);await failureReady(unavailable.page);
     assert.match(await unavailable.page.locator('#partnershipForm [data-form-feedback]').innerText(),/Please refresh this page/);

@@ -6,6 +6,7 @@
     "build": "npm run build:footer",
     "test:careers": "node tests/careers-public-browser.cjs",
     "test:partnership": "node tests/partnership-public-browser.cjs",
+    "test:partnership-route": "node tests/partnership-route-browser.cjs",
     "test:footer": "node tests/footer-alignment.cjs && node tests/footer-flags.cjs"
   },
   "dependencies": {
